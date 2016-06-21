@@ -1,0 +1,24 @@
+CmsBundle\Entity\Artiste:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\ArtisteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        titre:
+            type: string
+            length: 255
+            column: Titre
+        image:
+            type: string
+            length: 255
+            column: Image
+    lifecycleCallbacks: {  }

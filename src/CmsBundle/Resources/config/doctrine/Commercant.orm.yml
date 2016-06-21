@@ -1,0 +1,20 @@
+CmsBundle\Entity\Commercant:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\CommercantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        adresse:
+            type: string
+            length: 255
+            column: Adresse
+    lifecycleCallbacks: {  }

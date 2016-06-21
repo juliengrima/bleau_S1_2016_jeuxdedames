@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commercant list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commercant in commercants %}
+            <tr>
+                <td><a href="{{ path('commercant_show', { 'id': commercant.id }) }}">{{ commercant.id }}</a></td>
+                <td>{{ commercant.nom }}</td>
+                <td>{{ commercant.adresse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('commercant_show', { 'id': commercant.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commercant_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

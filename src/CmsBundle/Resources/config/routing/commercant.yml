@@ -1,0 +1,24 @@
+commercant_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Commercant:index" }
+    methods:  GET
+
+commercant_show:
+    path:     /{id}/show
+    defaults: { _controller: "CmsBundle:Commercant:show" }
+    methods:  GET
+
+commercant_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Commercant:new" }
+    methods:  [GET, POST]
+
+commercant_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Commercant:edit" }
+    methods:  [GET, POST]
+
+commercant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CmsBundle:Commercant:delete" }
+    methods:  DELETE

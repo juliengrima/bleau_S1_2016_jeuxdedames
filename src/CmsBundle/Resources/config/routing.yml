@@ -1,0 +1,19 @@
+cms_accueil:
+    resource: "@CmsBundle/Resources/config/routing/accueil.yml"
+    prefix:   /accueil
+
+cms_artiste:
+    resource: "@CmsBundle/Resources/config/routing/artiste.yml"
+    prefix:   /artiste
+
+cms_commercant:
+    resource: "@CmsBundle/Resources/config/routing/commercant.yml"
+    prefix:   /commercant
+
+cms_homepage:
+    path:     /
+    defaults: { _controller: CmsBundle:Default:index }
+
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: CmsBundle:Admin:index }

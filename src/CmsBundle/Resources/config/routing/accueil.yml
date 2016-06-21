@@ -1,0 +1,24 @@
+accueil_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Accueil:index" }
+    methods:  GET
+
+accueil_show:
+    path:     /{id}/show
+    defaults: { _controller: "CmsBundle:Accueil:show" }
+    methods:  GET
+
+accueil_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Accueil:new" }
+    methods:  [GET, POST]
+
+accueil_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Accueil:edit" }
+    methods:  [GET, POST]
+
+accueil_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CmsBundle:Accueil:delete" }
+    methods:  DELETE
