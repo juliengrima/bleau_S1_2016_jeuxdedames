@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30dfabf2-6ac3-470b-8f4e-241c8e4ac127" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/WcSCmS.iml" afterPath="$PROJECT_DIR$/.idea/WcSCmS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Form/AccueilType.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Form/AccueilType.php" />
-    </list>
+    <list default="true" id="30dfabf2-6ac3-470b-8f4e-241c8e4ac127" name="Default" comment="" />
     <ignored path="jeuxdedames.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -272,12 +267,12 @@
       <workItem from="1466429989646" duration="6373000" />
       <workItem from="1466437822035" duration="2062000" />
       <workItem from="1466511361539" duration="4476000" />
-      <workItem from="1466517746543" duration="1597000" />
+      <workItem from="1466517746543" duration="1628000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16066000" />
+    <option name="totallyTimeSpent" value="16097000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="-4" width="1313" height="772" extended-state="6" />
