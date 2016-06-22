@@ -1,0 +1,13 @@
+<?php
+
+namespace CmsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Accueil
+ */
+class Accueil
+{
+ 
+}

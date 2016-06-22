@@ -9,8 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Accueil
 {
+ 
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
