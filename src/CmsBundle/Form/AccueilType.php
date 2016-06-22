@@ -18,6 +18,7 @@ class AccueilType extends AbstractType
             ->add('titre')
             ->add('image')
             ->add('contenu')
+            ->add('bonjour')
         ;
     }
     

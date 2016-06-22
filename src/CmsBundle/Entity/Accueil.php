@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Accueil
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -28,6 +28,11 @@ class Accueil
      * @var string
      */
     private $contenu;
+
+    /**
+     * @var string
+     */
+    private $bonjour;
 
 
     /**
@@ -107,5 +112,28 @@ class Accueil
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set bonjour
+     *
+     * @param string $bonjour
+     * @return Accueil
+     */
+    public function setBonjour($bonjour)
+    {
+        $this->bonjour = $bonjour;
+
+        return $this;
+    }
+
+    /**
+     * Get bonjour
+     *
+     * @return string 
+     */
+    public function getBonjour()
+    {
+        return $this->bonjour;
     }
 }

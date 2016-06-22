@@ -21,4 +21,9 @@ CmsBundle\Entity\Accueil:
             type: string
             length: 255
             column: Contenu
+
+        bonjour:
+            type: string
+            length: 255
+            column: Bonjour
     lifecycleCallbacks: {  }

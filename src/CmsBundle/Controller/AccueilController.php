@@ -38,6 +38,7 @@ class AccueilController extends Controller
         $accueil = new Accueil();
         $form = $this->createForm('CmsBundle\Form\AccueilType', $accueil);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($accueil);
