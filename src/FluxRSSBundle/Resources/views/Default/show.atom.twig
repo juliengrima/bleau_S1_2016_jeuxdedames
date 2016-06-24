@@ -12,7 +12,7 @@
     {% for entity in category.activejobs %}
         <entry>
             <title>{{ entity.position }} ({{ entity.location }})</title>
-            <link href="{{ url('ens_job_show', { 'id': entity.id, 'company': entity.companyslug, 'location': entity.locationslug, 'position': entity.positionslug }) }}" />
+            <link href="{{ url('article_show', { 'id': entity.id, 'company': entity.Article 'location': entity.locationslug, 'position': entity.positionslug }) }}" />
             <id>{{ entity.id }}</id>
             <updated>{{ entity.createdAt.format(constant('DATE_ATOM')) }}</updated>
             <summary type="xhtml">

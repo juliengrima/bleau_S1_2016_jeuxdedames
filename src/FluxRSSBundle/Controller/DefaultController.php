@@ -12,7 +12,7 @@ class DefaultController extends Controller
     }
 $format = $this->getRequest()->getRequestFormat();
 
-return $this->render('FluxRSSBundle:Category:show.'.$format.'.twig', array(
+return $this->render('FluxRSSBundle:Category:show.html.twig', array(
 'category' => $category,
 'last_page' => $last_page,
 'previous_page' => $previous_page,
