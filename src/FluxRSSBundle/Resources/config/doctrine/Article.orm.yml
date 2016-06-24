@@ -1,0 +1,11 @@
+FluxRSSBundle\Entity\Article:
+    type: entity
+    table: null
+    repositoryClass: FluxRSSBundle\Repository\ArticleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
