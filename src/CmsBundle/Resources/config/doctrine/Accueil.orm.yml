@@ -16,14 +16,15 @@ CmsBundle\Entity\Accueil:
         image:
             type: string
             length: 255
+            nullable: true
             column: Image
         contenu:
             type: string
             length: 255
             column: Contenu
-
-        bonjour:
-            type: string
-            length: 255
-            column: Bonjour
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+      prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+      preUpdate: [ preUpload, setUpdatedAtValue ]
+      postPersist: [ upload ]
+      postUpdate: [ upload ]
+      postRemove: [ removeUpload ]

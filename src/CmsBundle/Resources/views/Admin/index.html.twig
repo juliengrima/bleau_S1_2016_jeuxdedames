@@ -1,3 +1,11 @@
-<a href="/WcSCmS/web/app_dev.php/accueil/1/edit">Accueil</a>
-<a href="/WcSCmS/web/app_dev.php/artiste/1/edit">Artiste</a>
-<a href="/WcSCmS/web/app_dev.php/commercant/1/edit">Commercant</a>
+{% for accueil in accueils %}
+    <a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Edit accueil</a>
+{% endfor %}
+
+{% for artiste in artistes %}
+    <a href="{{ path ('artiste_edit' , { 'id' : artiste.id}) }}">Edit artiste</a>
+{% endfor %}
+
+{% for commercant in commercants %}
+    <a href="{{ path ('commercant_edit' , { 'id' : commercant.id}) }}">Edit commercant</a>
+{% endfor %}

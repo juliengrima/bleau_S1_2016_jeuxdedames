@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CmsBundle\Entity\Accueil;
 use CmsBundle\Form\AccueilType;
 
+
 /**
  * Accueil controller.
  *

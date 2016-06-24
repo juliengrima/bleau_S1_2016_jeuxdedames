@@ -16,9 +16,8 @@ class AccueilType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('image')
+            ->add('file', 'file', array('label' => 'Image', 'required' => false))
             ->add('contenu')
-            ->add('bonjour')
         ;
     }
     

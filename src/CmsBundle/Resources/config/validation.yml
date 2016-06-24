@@ -1,0 +1,5 @@
+Ens\CmsBundle\Entity\Accueil:
+    properties:
+        # ...
+        file:
+            - Image: ~
