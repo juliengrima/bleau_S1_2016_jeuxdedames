@@ -18,7 +18,7 @@ class Accueil
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
     public function getWebPath()
@@ -30,6 +30,7 @@ class Accueil
     {
         return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
     }
+
     /**
      * @ORM\PrePersist
      */
@@ -73,7 +74,6 @@ class Accueil
         if (null === $this->file) {
             return;
         }
-
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
@@ -92,7 +92,10 @@ class Accueil
         }
     }
 
-    //generate
+
+
+
+    /*generate*/
     /**
      * @var integer
      */
@@ -192,4 +195,5 @@ class Accueil
     {
         return $this->contenu;
     }
+
 }
