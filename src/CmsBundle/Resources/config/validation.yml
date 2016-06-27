@@ -3,3 +3,10 @@ Ens\CmsBundle\Entity\Accueil:
         # ...
         file:
             - Image: ~
+
+
+Ens\CmsBundle\Entity\Artiste:
+    properties:
+        # ...
+        file:
+            - Image: ~
