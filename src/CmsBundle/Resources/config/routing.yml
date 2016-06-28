@@ -18,10 +18,6 @@ admin_homepage:
     path:     /admin
     defaults: { _controller: CmsBundle:Admin:index }
 
-user_index:
-    path:     /userindex
-    defaults: { _controller: CmsBundle:User:index }
-
 user_artiste:
     path:     /userartistes
     defaults: { _controller: CmsBundle:User:artistes }
