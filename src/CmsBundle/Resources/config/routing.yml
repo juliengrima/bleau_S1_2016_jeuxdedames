@@ -17,3 +17,20 @@ cms_homepage:
 admin_homepage:
     path:     /admin
     defaults: { _controller: CmsBundle:Admin:index }
+
+user_index:
+    path:     /userindex
+    defaults: { _controller: CmsBundle:User:index }
+
+user_artiste:
+    path:     /userartistes
+    defaults: { _controller: CmsBundle:User:artistes }
+
+user_commercant:
+    path:     /usercommercants
+    defaults: { _controller: CmsBundle:User:commercants }
+
+user_partenaire:
+    path:     /userpartenaires
+    defaults: { _controller: CmsBundle:User:partenaires }
+
