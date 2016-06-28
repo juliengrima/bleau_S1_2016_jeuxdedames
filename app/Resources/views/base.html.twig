@@ -3,11 +3,56 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Les jeux de dames{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
+        <!-- Appel CSS Boostrap -->
+        <meta name="viewport" content="width=device-width" />
+
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+        <!-- Appel feuille de style -->
+        {% block stylesheets %}
+        <link rel="stylesheet" href="style.css"/>
+        <script type="text/javascript" src="js/main.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="style1.css"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+        {% endblock %}
     </head>
+        <!-- ******** NAVBAR ******* -->
+    <header>
+        <div class="head_content">
+            <a class="flottement-gauche menu" font-family "Damion" href="index.html">Jeux de Dames</a>
+            <a class="flottement-droite menu" href="Artistes.html">Artistes</a>
+            <a class="flottement-droite menu" href="Commerçants.html">Commerçants</a>
+            <a class="flottement-droite menu" href="partenaires.html">Partenaires</a>
+        </div>
+    </header>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer>
+        <!-- ******** FOOTER ******** -->
+
+        <div id="">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 reseaux">
+                    <h5>Jeux de Dames</h5>
+                    <p class="txt-fin">
+                        <a href="#"><i class="ion-social-twitter"></i></a>
+                        <a href="#"><i class="ion-social-instagram"></i></a>
+                        <a href="#"><i class="ion-social-dribbble"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div><!--/row -->
+    </footer>
 </html>
