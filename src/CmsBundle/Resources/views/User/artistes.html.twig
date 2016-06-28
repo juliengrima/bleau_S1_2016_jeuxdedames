@@ -14,12 +14,17 @@
 
 <!-- Début des animations images artistes -->
 
-
+    {#{% for artiste in artistes %}#}
+        {#<div class="col-md-3">#}
+            {#<h3>artise.name</h3>#}
+            {#<img src="artiste.image" />#}
+        {#</div>#}
+    {#{% endfor %}#}
 <div class="container">
     <div class="section">
         <div class="col-md-3">
             <h3>Caroline Maniere</h3>
-            <img src="images/AgnesBleicher.jpeg" />
+            <img src="{{ asset ('bundles/cms/images/AgnesBleicher.jpeg') }}" />
         </div>
         <div class="col-md-3">
             <h3>Anne Biro</h3>
