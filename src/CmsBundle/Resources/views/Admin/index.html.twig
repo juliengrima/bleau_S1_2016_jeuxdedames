@@ -1,11 +1,28 @@
-{% for accueil in accueils %}
-    <a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Edit accueil</a>
-{% endfor %}
+{% extends 'baseadmin.html.twig' %}
 
-{% for artiste in artistes %}
-    <a href="{{ path ('artiste_edit' , { 'id' : artiste.id}) }}">Edit artiste</a>
-{% endfor %}
+{% block body %}
+    <div class="imageadmin" style="background-color: #1a1aff";>
 
-{% for commercant in commercants %}
-    <a href="{{ path ('commercant_edit' , { 'id' : commercant.id}) }}">Edit commercant</a>
-{% endfor %}
+        <h1>
+            Editer votre page Accueil.
+        </h1>
+        {% for accueil in accueils %}
+            <a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Edit accueil</a>
+        {% endfor %}
+
+        <h1>
+            Editer votre page Artiste.
+        </h1>
+        {% for artiste in artistes %}
+            <a href="{{ path ('artiste_edit' , { 'id' : artiste.id}) }}">Edit artiste</a>
+        {% endfor %}
+
+        <h1>
+            Editer votre page Commerçant.
+        </h1>
+        {% for commercant in commercants %}
+            <a href="{{ path ('commercant_edit' , { 'id' : commercant.id}) }}">Edit commercant</a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
