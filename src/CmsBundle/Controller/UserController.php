@@ -13,7 +13,13 @@ class UserController extends Controller
 
     public function artistesAction()
     {
-        return $this->render('CmsBundle:User:artistes.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+
+        return $this->render('CmsBundle:User:artistes.html.twig', array(
+            'artistes' => $artistes,
+        ));
     }
 
     public function commercantsAction()
