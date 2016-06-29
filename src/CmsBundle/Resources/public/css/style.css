@@ -187,4 +187,18 @@ header .lien{
 
 /*************** FIN PAGE PARTENAIRES ***************/
 
+/*************** POLICE D ECRITURE POUR LES CRUDS *****************/
+.policeecriture {
+    margin-top: 20px;
+    font-size: 60px;
+    color: #DDDDDD;
+    margin-bottom: 40px;
+}
+.policeecriture2 {
+    margin-top: 20px;
+    font-size: 40px;
+    color: yellow;
+    margin-bottom: 40px;
+}
 
+/**************** FIN POLICE ECRITURE CRUD *************************/

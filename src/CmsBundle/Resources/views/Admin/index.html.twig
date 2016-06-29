@@ -1,28 +1,26 @@
 {% extends 'baseadmin.html.twig' %}
-
 {% block body %}
-    <div class="imageadmin" style="background-color: #1a1aff";>
+    <div style="background-color: #03C9A9";>
 
-        <h1>
-            Editer votre page Accueil.
-        </h1>
         {% for accueil in accueils %}
-            <a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Edit accueil</a>
+            <a href="{{ path('accueil_edit', { 'id': accueil.id }) }}"><p class="animated  jello" style="font-size: 45px";>Editer votre page Accueil.<img style="margin:auto;margin-bottom:60px;width:30px;height:30px;margin-top:50px; " src="{{ asset('bundles/cms/images/plume.gif') }}"></p>
+            </a>
         {% endfor %}
 
-        <h1>
-            Editer votre page Artiste.
-        </h1>
         {% for artiste in artistes %}
-            <a href="{{ path ('artiste_edit' , { 'id' : artiste.id}) }}">Edit artiste</a>
+            <a href="{{ path ('artiste_edit' , { 'id' : artiste.id}) }}"><p class="animated  tada" style="font-size: 45px" >Editer votre page Artiste.<img style="margin:auto;margin-bottom:60px;width:30px;height:30px;margin-top:50px;" src="{{ asset('bundles/cms/images/plume.gif') }}"></p>
+            </a>
         {% endfor %}
 
-        <h1>
-            Editer votre page Commerçant.
-        </h1>
         {% for commercant in commercants %}
-            <a href="{{ path ('commercant_edit' , { 'id' : commercant.id}) }}">Edit commercant</a>
+            <a href="{{ path ('commercant_edit' , { 'id' : commercant.id}) }}"><p class="animated  jello" style="font-size: 45px">Editer votre page Commerçant.<img style="margin:auto;margin-bottom:60px;width:30px;height:30px;margin-top:50px;" src="{{ asset('bundles/cms/images/plume.gif') }}"></p>
+            </a>
         {% endfor %}
     </div>
 
+
+{% endblock %}
+{% block plop %}
+
+    <div class="item"><img style="margin-left:100px;width:auto;height:350px;" src="{{ asset('bundles/cms/images/jeuxdedames.png') }}"></div>
 {% endblock %}
