@@ -3,7 +3,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff;
+    background-color: #00BCD4;
     margin: 0;
 }
 
@@ -44,6 +44,7 @@ header .head_content{
     height: 46px;
     margin: 0 auto;
     background: white;
+    font-family: "Damion", Helvetica, Arial, sans-serif;
 }
 
 header .menu{
@@ -70,7 +71,10 @@ header .lien{
     float: left;
 }
 
+
 /***************FIN NAVBAR ******************/
+
+
 
 /*************** col-md-6 artistes ******************/
 
@@ -170,6 +174,16 @@ header .lien{
     clear: both;
 }
 
+
+#footer{
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 2px;
+    background: #2f2f2f;
+    color: white;
+    clear: both;
+}
 /*************** FIN FOOTER ******************/
 
 /*************** PAGE PARTENAIRES ***************/
