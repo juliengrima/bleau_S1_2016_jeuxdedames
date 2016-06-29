@@ -5,11 +5,11 @@
 <!-- Début des animations images artistes -->
 
     {% for artiste in artistes %}
-        <div class="col-md-3">
-            {{ artiste.nom }}
-            {{ artiste.titre }}
+        <div class="col-md-4 artistepage">
+            <p style="margin: auto;">{{ artiste.nom }}{{ artiste.titre }}</p>
+
             <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
-        </div>
+         </div>
     {% endfor %}
 
 {#<div class="container">#}
