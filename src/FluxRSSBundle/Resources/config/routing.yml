@@ -1,0 +1,3 @@
+flux_rss_homepage:
+    path:     /
+    defaults: { _controller: FluxRSSBundle:Default:index }

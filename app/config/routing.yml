@@ -1,3 +1,7 @@
+flux_rss:
+    resource: "@FluxRSSBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cms:
     resource: "@CmsBundle/Resources/config/routing.yml"
     prefix:   /
