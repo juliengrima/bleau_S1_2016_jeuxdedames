@@ -1,8 +1,8 @@
-{% extends 'baseadmin.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block body %}
     {% for artiste in artistes %}
         <div class="col-md-4 artistepage">
-            <p style="margin: auto;">{{ artiste.nom }}{{ artiste.titre }}</p>
+            <p class="ecritureartiste" style="margin-right: 53px;">{{ artiste.nom }}{{ artiste.titre }}</p>
             <a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a>
             <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
          </div>
