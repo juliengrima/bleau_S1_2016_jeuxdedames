@@ -1,11 +1,10 @@
 {% extends 'baseadmin.html.twig' %}
 {% block body %}
     {% for artiste in artistes %}
-        <div class="backgroundartiste">
-            <div class="col-md-4 artistepage">
-                <p style="margin: auto;">{{ artiste.nom }}{{ artiste.titre }}</p>
-                    <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
-            </div>
-        </div>
+        <div class="col-md-4 artistepage">
+            <p style="margin: auto;">{{ artiste.nom }}{{ artiste.titre }}</p>
+            <a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a>
+            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
+         </div>
     {% endfor %}
 {% endblock %}
