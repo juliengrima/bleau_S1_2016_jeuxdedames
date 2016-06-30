@@ -1,7 +1,6 @@
 {% extends 'baseadmin.html.twig' %}
 {% block body %}
     {% for artiste in artistes %}
-<<<<<<< HEAD
         <div class="col-md-4 artistepage">
             <p style="margin: auto;">{{ artiste.nom }}{{ artiste.titre }}</p>
             <a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a>
