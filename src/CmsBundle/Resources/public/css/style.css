@@ -80,7 +80,7 @@ header .lien{
 
 .artistepage{
     width: 200px;
-    background-color: #3E9199;
+    background: yellow;
     margin-left: 25x;
     margin-right: 25px;
 }
@@ -105,7 +105,7 @@ h3{
 /*************** col-md-6 artistes ******************/
 
 #h {
-    font-family: 'Open-sans';
+    font-family: "Damion", Helvetica, Arial, sans-serif;
     height: 400px;
     width: 100%;
     background-color: #288493;
@@ -228,3 +228,10 @@ h3{
 /*************** FIN PAGE PARTENAIRES ***************/
 
 
+/*************** PAGE ARTISTE **********************/
+
+.backbackback {
+    background: slategrey;
+}
+
+/***************FIN PAGE ARTISTE ********************/
