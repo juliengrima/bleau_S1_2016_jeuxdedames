@@ -2,6 +2,21 @@
 
 {% block body %}
 <div class="partenaires">
+
+    {% for partenaire in partenaires %}
+        <div class="col-md-3">
+            <img class="droite" src="{{ asset ('bundles/cms/images/partenaires/aiglenoir.jpeg') }}" alt="jeuxdedames">
+        </div>
+    {% endfor %}
+    <div>
+        <a href="{{ path('partenaire_new') }}">Create a new entry</a>
+    </div>
+{% endblock %}
+
+
+
+
+{#
     <div class="col-md-3">
         <img class="droite" src="{{ asset ('bundles/cms/images/partenaires/aiglenoir.jpeg') }}" alt="jeuxdedames">
     </div>
@@ -68,6 +83,5 @@
             <h2 class="h2">Sur nos différents<br/>réseaux sociaux</h2>
             <button class="btn-green">Cliquez ici</button>
         </div>
-    </div>
+    </div>#}
 
-{% endblock %}
