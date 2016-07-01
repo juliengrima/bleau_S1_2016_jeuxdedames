@@ -1,196 +1,154 @@
 body {
     font-family: "Damion", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.42857143;
-    color: #333;
+    color: white;
     background-color: #00BCD4;
-    margin: 0;
+    margin: auto;
 }
-
 h4 {
     text-align: center;
-    font-size: 25px;
-}
+    font-size: 30px;
+    color: yellow;
 
+}
 h1 {
-    font-size: 36px;
+    font-size: 40px;
     text-align: center;
+}
+h3{
+    text-align: center;
+    font-size: 30px;
 }
 
 h6, h5{
-    font-size: 20px,
+    font-size: 30px;
 }
-
 p {
-    padding: 0;
-    margin-bottom: 12px;
+    padding: auto;
+    margin-bottom: 15px;
     font-family: 'Damion', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 28px;
-    color: #666;
-    margin-top: 5px;
+    color: black;
+    margin-top: 15px;
 }
-
 /************** NAVBAR ***************/
-
 header{
-    background: white;
+    background: #03C9A9;
     height: 48px;
 }
-
 header .head_content{
-    max-width: 980px;
-    height: 46px;
-    margin: 0 auto;
-    background: white;
+    height: 35px;
+    margin: auto;
+    background: #03C9A9;
     font-family: "Damion", Helvetica, Arial, sans-serif;
 }
-
+/**** TEXT DANS LA NAVBAR ****/
 header .menu{
-    color: #E7D64B;
-    text-decoration: none;
-    font-size: 25px;
+    color: #ffff1a;
+    font-size: 30px;
     font-weight: bold;
 
-    padding: 6px 10px;
-    margin: 7px 8px 7px 8px;
-    border-radius: 8px ;
-    transition: background .5s;
+    margin: 10px 10px 10px 10px;
 }
-
 header .lien{
-    margin: 7px 5px 0 0 ;
+    margin: 20px  ;
 }
-
 .flottement-droite{
     float: right;
 }
-
 .flottement-gauche{
     float: left;
 }
-
-
 /***************FIN NAVBAR ******************/
-
 .section{
     padding-top: 50px;
 }
-
 .artistepage{
     width: 200px;
-    background: yellow;
+    background: #DDDDDD;
     margin-left: 25x;
     margin-right: 25px;
 }
-
 img{
-    height: 220px;
-    width: 200px;
-    margin-right: -15px;
-    margin-left: -15px
-
+    height: auto;
+    width: auto;
+    margin-right: 2px;
 }
-
-h3{
-    text-align: center;
-    font-size: 15px;
-}
-
 .espace{
     margin-top: 25px;
 }
-
-/*************** col-md-6 artistes ******************/
-
+/* col-md-6 artistes **/
+/** Partie arrière du slide **/
 #h {
     font-family: "Damion", Helvetica, Arial, sans-serif;
-    height: 400px;
-    width: 100%;
+    height: 450px;
     background-color: #288493;
 }
-
 #h h1 {
-    color: white;
-    font-size: 40px;
-    line-height: 55px;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    font-weight: 300;
+    color: #ffff1a;
+    font-size: 60px;
+    letter-spacing: 5px;
+    margin-bottom: 70px;
 }
-
-/****************fin col-md-6 artistes *******************/
-
-/*************** TEXTE PRESENTATION *************/
-
+/**fin col-md-6 artistes */
+/* TEXTE PRESENTATION */
+/** PLACEMENT+POLICE DES TRITRES AU DESSUS DES 3BLOCKS**/
 #g{
     padding-bottom: 70px;
     background: #03C9A9;
-    color: white;
+    color: #ffff1a;
     height: 450px;
 }
-
-
-#g i {
-    font-size: 40px;
-    color: white;
-    margin-bottom: 20px;
-}
-
 #g h4 {
-    font-weight: 700px;
-    letter-spacing: 1px;
-}
+    letter-spacing: 2px;
+    color: #ffff1a;
 
+}
+/** DISPOSITION DES 3 BLOCKS **/
 .presentation{
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
-
-/*************** FIN TEXTE PRESENTATION *************/
-
-/*************** NOTRE EQUIPE *************/
+/* FIN TEXTE PRESENTATION */
+/** NOTRE EQUIPE **/
 .title-equipe {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     text-align: center;
+    letter-spacing: 2px;
+    margin-left: -60px;
+    color: #ffff1a;
 }
-
 .row-equipe{
-    height: 500px;
+    height: auto;
     width: 100%;
 }
-
 .col-md-5{
-    width: 41.66666667%;
+    width: 50%;
 }
-
 .col-md-7{
-    width: 58.33333333%;
+    width: 50%;
 }
-
 .img-responsive {
-    margin-left: 200px;
+    margin-left: auto;
     display: block;
     clear: both;
 }
-
+.container {
+}
 .btn-green {
     background: #03C9A9;
-    color: white
+    color: white;
 }
-
-
 .p-equipe{
     margin: 0 0 10px;
 }
-
-/*************** FIN NOTRE EQUIPE *************/
-
-/*************** FOOTER *******************/
-
+/** FIN NOTRE EQUIPE **/
+/** FOOTER **/
 .row{
     text-align: center;
     padding-top: 10px;
@@ -199,39 +157,15 @@ h3{
     color: white;
     clear: both;
 }
-
-
 #footer{
-    width: 100%;
+    width: auto;
     text-align: center;
-    padding-top: 40px;
-    padding-bottom: 2px;
-    background: #2f2f2f;
+    background-color: black;
     color: white;
-    clear: both;
 }
-/*************** FIN FOOTER ******************/
-
-/*************** PAGE PARTENAIRES ***************/
-
+/** FIN FOOTER **/
+/** PAGE PARTENAIRES **/
 .partenaires{
     padding-top: 50px;
 }
-
-.droite, .gauche{
-    height: 120px;
-    width: 180px;
-    padding-top: 20px;
-    margin-left: 40px;
-}
-
-/*************** FIN PAGE PARTENAIRES ***************/
-
-
-/*************** PAGE ARTISTE **********************/
-
-.backbackback {
-    background: slategrey;
-}
-
-/***************FIN PAGE ARTISTE ********************/
+/** FIN PAGE PARTENAIRES **/
