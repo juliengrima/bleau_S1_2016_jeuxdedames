@@ -5,7 +5,8 @@
 
     {% for partenaire in partenaires %}
         <div class="col-md-3">
-            <img class="droite" src="{{ asset ('bundles/cms/images/partenaires/aiglenoir.jpeg') }}" alt="jeuxdedames">
+            <img src="{{ asset('uploads/imgcms/') }}{{ partenaire.image }}" >
+            <a href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">edit</a>
         </div>
     {% endfor %}
     <div>

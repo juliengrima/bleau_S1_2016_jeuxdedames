@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Accueil
 {
     public $file;
-
+    
     protected function getUploadDir()
     {
         return 'uploads/imgcms';

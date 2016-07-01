@@ -72,25 +72,36 @@ class PartenaireController extends Controller
      *
      */
     public function editAction(Request $request, Partenaire $partenaire)
-    {
-        $deleteForm = $this->createDeleteForm($partenaire);
-        $editForm = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
-        $editForm->handleRequest($request);
+        {
+            $deleteForm = $this->createDeleteForm($partenaire);
+            $editForm = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
+            $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($partenaire);
-            $em->flush();
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
 
-            return $this->redirectToRoute('partenaire_edit', array('id' => $partenaire->getId()));
+                if($editForm->get('file')->getData() != null) {
+
+                    if($partenaire->getImage() != null) {
+                        unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
+                        $partenaire->setImage(null);
+                    }
+                }
+
+                $partenaire->preUpload();
+
+                $em->persist($partenaire);
+                $em->flush();
+
+                return $this->redirectToRoute('partenaire_edit', array('id' => $partenaire->getId()));
+            }
+
+            return $this->render('CmsBundle:partenaire:edit.html.twig', array(
+                'partenaire' => $partenaire,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
         }
-
-        return $this->render('CmsBundle:partenaire:edit.html.twig', array(
-            'partenaire' => $partenaire,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Deletes a Partenaire entity.
