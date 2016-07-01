@@ -10,6 +10,10 @@ cms_commercant:
     resource: "@CmsBundle/Resources/config/routing/commercant.yml"
     prefix:   /commercant
 
+cms_partenaire:
+    resource: "@CmsBundle/Resources/config/routing/partenaire.yml"
+    prefix:   /partenaire
+
 cms_homepage:
     path:     /
     defaults: { _controller: CmsBundle:Default:index }

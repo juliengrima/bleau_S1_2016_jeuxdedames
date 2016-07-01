@@ -1,0 +1,20 @@
+CmsBundle\Entity\Partenaire:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\PartenaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        image:
+            type: string
+            length: 255
+    lifecycleCallbacks:
+      prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+      preUpdate: [ preUpload, setUpdatedAtValue ]
+      postPersist: [ upload ]
+      postUpdate: [ upload ]
+      postRemove: [ removeUpload ]

@@ -10,3 +10,9 @@ Ens\CmsBundle\Entity\Artiste:
         # ...
         file:
             - Image: ~
+
+Ens\CmsBundle\Entity\Partenaire:
+    properties:
+        # ...
+        file:
+            - Image: ~
