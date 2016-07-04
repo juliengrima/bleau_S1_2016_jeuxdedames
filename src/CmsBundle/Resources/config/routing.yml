@@ -16,7 +16,7 @@ cms_partenaire:
 
 cms_homepage:
     path:     /
-    defaults: { _controller: CmsBundle:Default:index }
+    defaults: { _controller: CmsBundle:User:index }
 
 admin_homepage:
     path:     /admin

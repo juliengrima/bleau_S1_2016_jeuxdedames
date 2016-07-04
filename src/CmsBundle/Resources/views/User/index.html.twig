@@ -2,11 +2,12 @@
 
 {% block body %}
 <!-- ******** CAROUSSEL ******** -->
-<body>
 <div id="h">
     <div class="section">
         <div class="col-md-12 artistes">
-            <h1>Découvrez tous nos artistes</h1>
+            {% for accueil in accueils %}
+            <h1>{{ accueil.titre }}</h1>
+            {% endfor %}
             <figure>
                 <marquee behavior="scroll"  direction="left" height="200"
                          width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
