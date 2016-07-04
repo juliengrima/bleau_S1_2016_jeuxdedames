@@ -18,6 +18,12 @@ class AccueilType extends AbstractType
             ->add('titre')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
             ->add('contenu')
+            ->add('premiertitre')
+            ->add('premiercontenu')
+            ->add('deuxiemetitre')
+            ->add('deuxiemecontenu')
+            ->add('troisiemetitre')
+            ->add('troisiemecontenu')
         ;
     }
     
