@@ -66,8 +66,7 @@ header .lien{
     padding-top: 50px;
 }
 .artistepage{
-    width: 200px;
-    background: ;
+    width: auto;
     margin-left: 25px;
     margin-right: 25px;
 }
@@ -128,7 +127,7 @@ img{
     width: 100%;
 }
 .col-md-5{
-    width: 50%;
+    width: auto;
 }
 .col-md-7{
     width: 50%;
@@ -170,3 +169,9 @@ img{
 }
 /** FIN PAGE PARTENAIRES **/
 /** ARTISTE **/
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    color: black;
+
+}

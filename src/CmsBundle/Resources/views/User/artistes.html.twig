@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <div class="container-fluid">
+
     {% for artiste in artistes %}
-           <div class="container-fluid">
-               <div class="col-md-4 artistepage">
+               <div class="col-md-5 artistepage">
                    <p class="ecritureartiste" style="margin-right: 53px;">{{ artiste.nom }}{{ artiste.titre }}</p>
                    <a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a>
                    <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
                 </div>
-            </div>
     {% endfor %}
-        <div>
+    </div>
+
+    <div>
             <a href="{{ path('artiste_new') }}">Create a new entry</a>
         </div>
 {% endblock %}
