@@ -96,7 +96,8 @@ class Artiste
 
 
     /*generate*/
-    
+
+  
     /**
      * @var integer
      */
@@ -111,6 +112,11 @@ class Artiste
      * @var string
      */
     private $image;
+
+    /**
+     * @var boolean
+     */
+    private $ajouterslider;
 
 
     /**
@@ -167,5 +173,28 @@ class Artiste
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set ajouterslider
+     *
+     * @param boolean $ajouterslider
+     * @return Artiste
+     */
+    public function setAjouterslider($ajouterslider)
+    {
+        $this->ajouterslider = $ajouterslider;
+
+        return $this;
+    }
+
+    /**
+     * Get ajouterslider
+     *
+     * @return boolean 
+     */
+    public function getAjouterslider()
+    {
+        return $this->ajouterslider;
     }
 }
