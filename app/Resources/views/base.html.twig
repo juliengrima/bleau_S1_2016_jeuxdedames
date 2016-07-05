@@ -4,21 +4,22 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Les jeux de dames{% endblock %}</title>
 
-        <!-- Appel CSS Boostrap -->
-        <meta name="viewport" content="width=device-width" />
-
-        <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
-        <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}" >
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="{{ asset ('bundles/cms/js/bootstrap.min.js') }}"></script>
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-        <!-- Appel feuille de style -->
         {% block stylesheets %}
+
+            <!-- Appel CSS Boostrap -->
+            <meta name="viewport" content="width=device-width" />
+
+            <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
+            <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}" >
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}">
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="{{ asset ('bundles/cms/js/bootstrap.min.js') }}"></script>
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+            <!-- Appel feuille de style -->
         <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
         <script type="text/javascript" src="{{ asset('bundles/cms/js/main.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
