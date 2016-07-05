@@ -96,8 +96,9 @@ class Artiste
 
 
     /*generate*/
+    
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -105,11 +106,6 @@ class Artiste
      * @var string
      */
     private $nom;
-
-    /**
-     * @var string
-     */
-    private $titre;
 
     /**
      * @var string
@@ -151,29 +147,6 @@ class Artiste
     }
 
     /**
-     * Set titre
-     *
-     * @param string $titre
-     * @return Artiste
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get titre
-     *
-     * @return string 
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
      * Set image
      *
      * @param string $image
@@ -195,6 +168,4 @@ class Artiste
     {
         return $this->image;
     }
-
-
 }
