@@ -129,9 +129,7 @@ img{
 .col-md-5{
     width: auto;
 }
-.col-md-7{
-    width: 50%;
-}
+
 .img-responsive {
     margin-left: auto;
     display: block;
@@ -173,5 +171,9 @@ input {
     -webkit-appearance: textfield;
     background-color: white;
     color: black;
+}
+.flotte {
+    float: left;
+    width: 40%;
 
 }
