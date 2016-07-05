@@ -2,7 +2,13 @@
 
 {% block body %}
     <div class="policeecrituretitre">
-    <p class="policeecrituretitre">Titre de votre page</p>
+
+        <p class="policeecrituretitre">Titre de votre page</p>
+
+    {{ form_start(edit_form) }}
+
+
+    <div class="policeecrituretitre">
             {{ form_widget(edit_form.titre) }}
 
     <p ><h1 class="annonceaccueil">Cette partie administrative concerne la partie en 3 blocs</h1></p>

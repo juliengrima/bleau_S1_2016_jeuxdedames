@@ -61,7 +61,7 @@
         </div>
         <div class="flotte">
             {% for accueil in accueils %}
-            <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
+            <img class="flotte" src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
             <p><a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">editez la page</a></p>
             {% endfor %}
         </div>
