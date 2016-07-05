@@ -131,9 +131,7 @@ img{
 }
 
 .img-responsive {
-    margin-left: auto;
-    display: block;
-    clear: both;
+line-height: block;
 }
 .container {
 }
@@ -173,7 +171,8 @@ input {
     color: black;
 }
 .flotte {
-    float: left;
+    float: right;
     width: 40%;
+    margin-bottom: 30px;
 
 }
