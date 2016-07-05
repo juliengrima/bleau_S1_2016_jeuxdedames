@@ -19,7 +19,6 @@ CmsBundle\Entity\Artiste:
             column: Image
         ajouterslider:
             type: boolean
-
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]
