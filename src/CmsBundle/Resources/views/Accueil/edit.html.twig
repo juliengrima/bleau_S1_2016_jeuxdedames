@@ -1,13 +1,21 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
     {{ form_start(edit_form) }}
-        <a href="{{ path('accueil_index') }}"><p class="policeecriture">Back to the list</p></a>
-            <p class="policeecriture2">Titre</p>
+
+    <a href="{{ path('accueil_index') }}"><p class="policeecriture">Back to the list</p></a>
+
+
+    <p class="policeecriture2">Titre</p>
             {{ form_widget(edit_form.titre) }}
-            <p class="policeecriture2">Image</p>
+
+
+    <p class="policeecriture2">Image</p>
             {{ form_widget(edit_form.file) }}
-            <p class="policeecriture2">Contenu</p>
+
+
+    <p class="policeecriture2">Contenu</p>
             {{ form_widget(edit_form.contenu) }}<br />
             <p class="policeecriture2">premiertitre</p>
             {{ form_widget(edit_form.premiertitre) }}
@@ -21,7 +29,9 @@
             {{ form_widget(edit_form.troisiemetitre) }}
             <p class="policeecriture2">troisiemecontenu</p>
             {{ form_widget(edit_form.troisiemecontenu) }}
-        <input type="submit" value="Modifier" />
+
+
+    <input type="submit" value="Modifier" />
         {{ form_end(edit_form) }}
 
 {% endblock %}

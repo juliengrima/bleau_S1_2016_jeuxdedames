@@ -126,13 +126,6 @@ img{
     height: auto;
     width: 100%;
 }
-.col-md-5{
-    width: auto;
-}
-
-.img-responsive {
-line-height: block;
-}
 .container {
 }
 .btn-green {
@@ -174,5 +167,13 @@ input {
     float: right;
     width: 40%;
     margin-bottom: 30px;
-
+}
+.ecritureartiste {
+    text-align: center;
+}
+.editartiste {
+    text-align: center;
+}
+.policeecriture {
+    color: white;
 }
