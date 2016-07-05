@@ -1,35 +1,54 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-
-    {{ form_start(edit_form) }}
-
-
-    <p class="policeecriture2">Titre</p>
+    <div class="policeecrituretitre">
+    <p class="policeecrituretitre">Titre de votre page</p>
             {{ form_widget(edit_form.titre) }}
 
+    <p ><h1 class="annonceaccueil">Cette partie administrative concerne la partie en 3 blocs</h1></p>
+    </div>
 
-    <p class="policeecriture2">Image</p>
-            {{ form_widget(edit_form.file) }}
-
-
-    <p class="policeecriture2">Contenu</p>
-            {{ form_widget(edit_form.contenu) }}<br />
-            <p class="policeecriture2">premiertitre</p>
+<div class="alginementcentreaccueil">
+    <div>
+    <p class="policeecriture2">Premier titre</p>
             {{ form_widget(edit_form.premiertitre) }}
-            <p class="policeecriture2">premiercontenu</p>
+    <p class="policeecriture2">Paragraphe du premier Titre</p>
             {{ form_widget(edit_form.premiercontenu) }}
-            <p class="policeecriture2">deuxiemetitre</p>
+    </div>
+
+    <div class="block2accueil">
+    <p class="policeecriture2">Deuxieme Titre</p>
             {{ form_widget(edit_form.deuxiemetitre) }}
-            <p class="policeecriture2">deuxiemecontenu</p>
+    <p class="policeecriture2">Paragraphe du deuxième Titre</p>
             {{ form_widget(edit_form.deuxiemecontenu) }}
-            <p class="policeecriture2">troisiemetitre</p>
+    </div>
+
+
+    <div class="block3accueil">
+    <p class="policeecriture2">Troisième Paragraphe</p>
             {{ form_widget(edit_form.troisiemetitre) }}
-            <p class="policeecriture2">troisiemecontenu</p>
+    </div>
+
+    <div class="block3accueil">
+    <p class="policeecriture2">Paragraphe du troisième Titre</p>
             {{ form_widget(edit_form.troisiemecontenu) }}
+    </div>
+</div>
+
+    <p ><h1 class="annonceaccueil">Cette partie administrative concerne la partie du bas avec le texte descriptif + l'image</h1></p>
 
 
-    <input type="submit" value="Modifier" />
-        {{ form_end(edit_form) }}
+    <div class="blockcontenueaccueil">
+    <p class="policeecriture4">Texte descriptif en bas de votre page à côter de l'image</p>
+    {{ form_widget(edit_form.contenu) }}
+     <p class="policeecriture4">Image à côter du texte descriptif</p>
+    {{ form_widget(edit_form.file) }}
+
+</div>
+
+    <div class="modifieraccueil">
+        <input type="submit" value="Modifier" />
+    {{ form_end(edit_form) }}
+    </div>
 
 {% endblock %}
