@@ -1,0 +1,11 @@
+CmsBundle\Entity\Archive:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\ArchiveRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
