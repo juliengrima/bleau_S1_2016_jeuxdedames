@@ -2,8 +2,11 @@
 {% block body %}
     {% for artiste in artistes %}
         {% if artiste.archive == true %}
-            <p>{{ artiste.nom }}</p>
-            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+        <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
+            <p class="ecritureartiste">{{ artiste.nom }}</p>
+                <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
+            <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a></p>
+        </div>
         {% endif %}
     {% endfor %}
 {% endblock %}
