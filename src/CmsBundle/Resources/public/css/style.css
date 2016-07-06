@@ -214,3 +214,10 @@ input {
 .alginementcentreaccueil {
     text-align: center;
 }
+
+/* WEBKIT CHECKBOX EDIT FORM */
+input[type=checkbox]
+{
+    -webkit-appearance:checkbox;
+}
+
