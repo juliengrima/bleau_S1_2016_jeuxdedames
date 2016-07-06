@@ -5,7 +5,7 @@
            <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
                <p class="ecritureartiste">{{ artiste.nom }}</p>
                <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
-               <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a></p>
+               <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
            </div>
             {% if artiste.archive == true %}
                 
