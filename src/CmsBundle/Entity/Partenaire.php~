@@ -23,55 +23,77 @@ class Partenaire
 
     public function getWebPath()
     {
-        return null === $this->logo ? null : $this->getUploadDir().'/'.$this->logo;
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
     }
 
     public function getAbsolutePath()
     {
-        return null === $this->logo ? null : $this->getUploadRootDir().'/'.$this->logo;
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
     }
 
     /**
-     * @var int
+     * @ORM\PrePersist
      */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $image;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function preUpload()
     {
-        return $this->id;
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->image = uniqid() . '.' . $this->file->guessExtension();
+        }
     }
 
     /**
-     * Set image
-     *
-     * @param string $image
-     * @return Partenaire
+     * @ORM\PrePersist
      */
-    public function setImage($image)
+    public function setCreatedAtValue()
     {
-        $this->image = $image;
-
-        return $this;
+        // Add your code here
     }
 
     /**
-     * Get image
-     *
-     * @return string 
+     * @ORM\PrePersist
      */
-    public function getImage()
+    public function setExpiresAtValue()
     {
-        return $this->image;
+        // Add your code here
     }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->file->move($this->getUploadRootDir(), $this->image);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
+    
+    
+//Generate
+
 }

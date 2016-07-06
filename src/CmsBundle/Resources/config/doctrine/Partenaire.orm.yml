@@ -12,6 +12,9 @@ CmsBundle\Entity\Partenaire:
         image:
             type: string
             length: 255
+        donation:
+            type: string
+            length: 255
     lifecycleCallbacks:
       prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
       preUpdate: [ preUpload, setUpdatedAtValue ]
