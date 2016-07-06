@@ -1,32 +1,60 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+    <div class="policeecrituretitre">
+
+        <p class="policeecrituretitre">Titre de votre page</p>
+
     {{ form_start(edit_form) }}
-        <a href="{{ path('accueil_index') }}"><p class="policeecriture">Back to the list</p></a>
-            <p class="policeecriture2">Titre</p>
+
+
+    <div class="policeecrituretitre">
             {{ form_widget(edit_form.titre) }}
-            <p class="policeecriture2">Image</p>
-            {{ form_widget(edit_form.file) }}
-            <p class="policeecriture2">Contenu</p>
-            {{ form_widget(edit_form.contenu) }}<br />
+
+    <p ><h1 class="annonceaccueil">Cette partie administrative concerne la partie en 3 blocs</h1></p>
+    </div>
+
+<div class="alginementcentreaccueil">
+    <div>
+    <p class="policeecriture2">Premier titre</p>
+            {{ form_widget(edit_form.premiertitre) }}
+    <p class="policeecriture2">Paragraphe du premier Titre</p>
+            {{ form_widget(edit_form.premiercontenu) }}
+    </div>
+
+    <div class="block2accueil">
+    <p class="policeecriture2">Deuxieme Titre</p>
+            {{ form_widget(edit_form.deuxiemetitre) }}
+    <p class="policeecriture2">Paragraphe du deuxième Titre</p>
+            {{ form_widget(edit_form.deuxiemecontenu) }}
+    </div>
+
+
+    <div class="block3accueil">
+    <p class="policeecriture2">Troisième Paragraphe</p>
+            {{ form_widget(edit_form.troisiemetitre) }}
+    </div>
+
+    <div class="block3accueil">
+    <p class="policeecriture2">Paragraphe du troisième Titre</p>
+            {{ form_widget(edit_form.troisiemecontenu) }}
+    </div>
+</div>
+
+    <p ><h1 class="annonceaccueil">Cette partie administrative concerne la partie du bas avec le texte descriptif + l'image</h1></p>
+
+
+    <div class="blockcontenueaccueil">
+    <p class="policeecriture4">Texte descriptif en bas de votre page à côter de l'image</p>
+    {{ form_widget(edit_form.contenu) }}
+     <p class="policeecriture4">Image à côter du texte descriptif</p>
+    {{ form_widget(edit_form.file) }}
+
+</div>
+
+    <div class="modifieraccueil">
         <input type="submit" value="Modifier" />
-        {{ form_end(edit_form) }}
+    {{ form_end(edit_form) }}
+    </div>
 
-{#    <h1>Accueil edit</h1>
-
-        {{ form_start(edit_form) }}
-            {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-        {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('accueil_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>#}
 {% endblock %}

@@ -66,9 +66,8 @@ header .lien{
     padding-top: 50px;
 }
 .artistepage{
-    width: 200px;
-    background: #DDDDDD;
-    margin-left: 25x;
+    width: auto;
+    margin-left: 25px;
     margin-right: 25px;
 }
 img{
@@ -127,17 +126,6 @@ img{
     height: auto;
     width: 100%;
 }
-.col-md-5{
-    width: 50%;
-}
-.col-md-7{
-    width: 50%;
-}
-.img-responsive {
-    margin-left: auto;
-    display: block;
-    clear: both;
-}
 .container {
 }
 .btn-green {
@@ -169,3 +157,60 @@ img{
     padding-top: 50px;
 }
 /** FIN PAGE PARTENAIRES **/
+/** ARTISTE **/
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    color: black;
+}
+.flotte {
+    float: right;
+    width: 50%;
+    margin-bottom: 30px;
+}
+.ecritureartiste {
+    text-align: center;
+}
+.editartiste {
+    text-align: center;
+}
+.policeecriture {
+    color: white;
+}
+.policeecriture2 {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+.policeecrituretitre {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+.annonceaccueil{
+    color: #122b40;
+    font-size: 40px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.policeecriture3{
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+.policeecriture4 {
+    color: white;
+    font-size: 35px;
+}
+
+.blockcontenueaccueil{
+    text-align: left;
+}
+.modifieraccueil {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.alginementcentreaccueil {
+    text-align: center;
+}

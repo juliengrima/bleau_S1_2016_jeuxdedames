@@ -109,6 +109,36 @@ class Accueil
     /**
      * @var string
      */
+    private $premiertitre;
+
+    /**
+     * @var string
+     */
+    private $premiercontenu;
+
+    /**
+     * @var string
+     */
+    private $deuxiemetitre;
+
+    /**
+     * @var string
+     */
+    private $deuxiemecontenu;
+
+    /**
+     * @var string
+     */
+    private $troisiemetitre;
+
+    /**
+     * @var string
+     */
+    private $troisiemecontenu;
+
+    /**
+     * @var string
+     */
     private $image;
 
     /**
@@ -148,6 +178,144 @@ class Accueil
     public function getTitre()
     {
         return $this->titre;
+    }
+
+    /**
+     * Set premiertitre
+     *
+     * @param string $premiertitre
+     * @return Accueil
+     */
+    public function setPremiertitre($premiertitre)
+    {
+        $this->premiertitre = $premiertitre;
+
+        return $this;
+    }
+
+    /**
+     * Get premiertitre
+     *
+     * @return string 
+     */
+    public function getPremiertitre()
+    {
+        return $this->premiertitre;
+    }
+
+    /**
+     * Set premiercontenu
+     *
+     * @param string $premiercontenu
+     * @return Accueil
+     */
+    public function setPremiercontenu($premiercontenu)
+    {
+        $this->premiercontenu = $premiercontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get premiercontenu
+     *
+     * @return string 
+     */
+    public function getPremiercontenu()
+    {
+        return $this->premiercontenu;
+    }
+
+    /**
+     * Set deuxiemetitre
+     *
+     * @param string $deuxiemetitre
+     * @return Accueil
+     */
+    public function setDeuxiemetitre($deuxiemetitre)
+    {
+        $this->deuxiemetitre = $deuxiemetitre;
+
+        return $this;
+    }
+
+    /**
+     * Get deuxiemetitre
+     *
+     * @return string 
+     */
+    public function getDeuxiemetitre()
+    {
+        return $this->deuxiemetitre;
+    }
+
+    /**
+     * Set deuxiemecontenu
+     *
+     * @param string $deuxiemecontenu
+     * @return Accueil
+     */
+    public function setDeuxiemecontenu($deuxiemecontenu)
+    {
+        $this->deuxiemecontenu = $deuxiemecontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get deuxiemecontenu
+     *
+     * @return string 
+     */
+    public function getDeuxiemecontenu()
+    {
+        return $this->deuxiemecontenu;
+    }
+
+    /**
+     * Set troisiemetitre
+     *
+     * @param string $troisiemetitre
+     * @return Accueil
+     */
+    public function setTroisiemetitre($troisiemetitre)
+    {
+        $this->troisiemetitre = $troisiemetitre;
+
+        return $this;
+    }
+
+    /**
+     * Get troisiemetitre
+     *
+     * @return string 
+     */
+    public function getTroisiemetitre()
+    {
+        return $this->troisiemetitre;
+    }
+
+    /**
+     * Set troisiemecontenu
+     *
+     * @param string $troisiemecontenu
+     * @return Accueil
+     */
+    public function setTroisiemecontenu($troisiemecontenu)
+    {
+        $this->troisiemecontenu = $troisiemecontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get troisiemecontenu
+     *
+     * @return string 
+     */
+    public function getTroisiemecontenu()
+    {
+        return $this->troisiemecontenu;
     }
 
     /**
@@ -195,5 +363,4 @@ class Accueil
     {
         return $this->contenu;
     }
-
 }

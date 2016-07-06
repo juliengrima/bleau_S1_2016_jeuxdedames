@@ -13,14 +13,12 @@ CmsBundle\Entity\Artiste:
             type: string
             length: 255
             column: Nom
-        titre:
-            type: string
-            length: 255
-            column: Titre
         image:
             type: string
             length: 255
             column: Image
+        ajouterslider:
+            type: boolean
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]

@@ -96,8 +96,9 @@ class Artiste
 
 
     /*generate*/
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -109,12 +110,12 @@ class Artiste
     /**
      * @var string
      */
-    private $titre;
+    private $image;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $image;
+    private $ajouterslider;
 
 
     /**
@@ -151,29 +152,6 @@ class Artiste
     }
 
     /**
-     * Set titre
-     *
-     * @param string $titre
-     * @return Artiste
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get titre
-     *
-     * @return string 
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
      * Set image
      *
      * @param string $image
@@ -196,5 +174,26 @@ class Artiste
         return $this->image;
     }
 
+    /**
+     * Set ajouterslider
+     *
+     * @param boolean $ajouterslider
+     * @return Artiste
+     */
+    public function setAjouterslider($ajouterslider)
+    {
+        $this->ajouterslider = $ajouterslider;
 
+        return $this;
+    }
+
+    /**
+     * Get ajouterslider
+     *
+     * @return boolean 
+     */
+    public function getAjouterslider()
+    {
+        return $this->ajouterslider;
+    }
 }

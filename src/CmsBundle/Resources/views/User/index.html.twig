@@ -2,43 +2,21 @@
 
 {% block body %}
 <!-- ******** CAROUSSEL ******** -->
-<body>
 <div id="h">
     <div class="section">
         <div class="col-md-12 artistes">
-            <h1>Découvrez tous nos artistes</h1>
+            {% for accueil in accueils %}
+            <h1>{{ accueil.titre }}</h1>
+            {% endfor %}
             <figure>
                 <marquee behavior="scroll"  direction="left" height="200"
                          width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/AgnesBleicher.jpeg') }}" border="0" />
-                    </a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/AlexandraKraif.png') }}"border="0" />
-                    </a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/AlyaFobis.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/AnneBiro.jpeg') }}" border="0"/>
-                    </a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/AnneBour.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CarinaBarone.png') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CarolineManiere.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CelineParmentier.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CatherineRoze.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/ChantalBir.png') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/ClaireNicolle.jpeg') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CecileLambertAbadir.png') }}" border="0" /></a>
-                    <a href="http://lien-de-l-image.html">
-                        <img height="150" width="200" src="{{ asset ('bundles/cms/images/CorineDelaporte.png') }}" border="0" /></a>
+
+                    {% for artiste in artistes %}
+                        {% if artiste.ajouterslider == true %}
+                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                        {% endif %}
+                    {% endfor %}
                 </marquee>
             </figure>
         </div>
@@ -51,20 +29,22 @@
     <div class="container">
         <div class="section presentation">
             <div class="col-md-4 colonne">
-                <h4>Présentation</h4>
-                <p>« Les Jeux de Dames » est une association bellifontaine créée en janvier 2015, pour animer Fontainebleau lors de la Journée internationale de la Femme, avec les femmes artistes et artisans créatrices de Seine et Marne et le soutien des commerçants. Ensemble, Artistes et Commerçants imaginent une nouvelle « mise en scène ».
-                    Les œuvres d’art exposées dans les vitrines vont créer un lien, une communication… le début d’une histoire entre le commerçant, l’artiste, et le passant.</p>
+                {% for accueil in accueils %}
+                <h4>{{ accueil.premiertitre }}</h4>
+                <p>{{ accueil.premiercontenu }}</p>
+                {% endfor %}
             </div>
             <div class="col-md-4 colonne">
-                <h4>du concept</h4>
-                <p>
-                    Avec ce projet, Jeux de Dames propose l’Art à disposition de chacun, au regard de tous, dans la rue, ainsi que quelques expositions ou animations artistiques différentes à découvrir lors de cette manifestation. Plus d’une centaine d’artistes femmes exposent à Fontainebleau.Des hôtels, Le Victoria, l’hôtel de Londres, le Napoléon ou la Demeure du Parc vous invitent à visiter des expositions d’artistes choisies tout le long de la semaine. Un marché des Artisans-créatrices sur la place Napoléon et à L’aigle Noir.</p>
+                {% for accueil in accueils %}
+                    <h4>{{ accueil.deuxiemetitre }}</h4>
+                    <p>{{ accueil.deuxiemecontenu }}</p>
+                {% endfor %}
             </div>
             <div class="col-md-4 colonne">
-                <h4>Jeux de Dames</h4>
-                <p>
-                    Ce salon propose des animations des étudiants de BTS (Assistant Manager) du Lycée Uruguay France et de l’IUT de Fontainebleau « Unité Commerciale ». Un concert est proposé par l’association « Le Jardin Musical » à 18h au 11 place d’Armes à Fontainebleau.
-                    Le site Web a été créé et mis en ligne par les élèves de Terminale STMG (SIG) du Lycée Uruguay France..</p>
+                {% for accueil in accueils %}
+                    <h4>{{ accueil.troisiemetitre }}</h4>
+                    <p>{{ accueil.troisiemecontenu }}</p>
+                {% endfor %}
             </div>
         </div><!--/row -->
     </div><!--/container -->
@@ -75,13 +55,15 @@
 <div class="container">
     <div class="row-equipes">
         <div class="col-md-5">
-            <h1 class="title-equipe">Notre équipe</h1>
-            <p class="p-equipe">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-            <p class="p-equipe">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+            {% for accueil in accueils %}
+            <p class="p-equipe">{{ accueil.contenu }}</p>
+            {% endfor %}
         </div>
-
-        <div class="col-md-7">
-            <img class="img-responsive" src="{{ asset('bundles/cms/images/logo.png') }}" width="350">
+        <div class="flotte">
+            {% for accueil in accueils %}
+            <img class="flotte" src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
+            <p><a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">editez la page</a></p>
+            {% endfor %}
         </div>
     </div><!--/row -->
 </div>

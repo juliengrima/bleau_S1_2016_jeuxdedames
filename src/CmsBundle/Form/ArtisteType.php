@@ -16,8 +16,8 @@ class ArtisteType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('titre')
-            ->add('file', 'file', array('label' => 'Image', 'required' => false));
+            ->add('file', 'file', array('label' => 'Image', 'required' => false))
+            ->add('ajouterslider')
         ;
     }
     

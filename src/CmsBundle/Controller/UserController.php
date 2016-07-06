@@ -8,7 +8,15 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CmsBundle:User:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $accueils = $em->getRepository('CmsBundle:Accueil')->findAll();
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findall();
+
+        return $this->render('CmsBundle:User:index.html.twig', array(
+            'accueils' => $accueils,
+            'artistes' => $artistes,
+        ));
     }    
 
     public function artistesAction()
