@@ -107,7 +107,7 @@ class Partenaire
     private $image;
 
     /**
-     * @var string
+     * @var integer
      */
     private $donation;
 
@@ -148,7 +148,7 @@ class Partenaire
     /**
      * Set donation
      *
-     * @param string $donation
+     * @param integer $donation
      * @return Partenaire
      */
     public function setDonation($donation)
@@ -161,7 +161,7 @@ class Partenaire
     /**
      * Get donation
      *
-     * @return string 
+     * @return integer 
      */
     public function getDonation()
     {
