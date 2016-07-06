@@ -8,22 +8,14 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $accueils = $em->getRepository('CmsBundle:Accueil')->findAll();
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findall();
-
-        return $this->render('CmsBundle:User:index.html.twig', array(
-            'accueils' => $accueils,
-            'artistes' => $artistes,
-        ));
+        return $this->render('CmsBundle:User:index.html.twig');
     }    
 
     public function artistesAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findby(array(),array ('donation' => 'desc'));
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
             'artistes' => $artistes,
@@ -39,7 +31,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findby(array(),array ('donation' => 'desc'));
 
         return $this->render('CmsBundle:User:partenaires.html.twig' , array (
             'partenaires' => $partenaires,
