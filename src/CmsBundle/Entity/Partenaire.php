@@ -95,8 +95,9 @@ class Partenaire
     
     
 //Generate
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -104,6 +105,11 @@ class Partenaire
      * @var string
      */
     private $image;
+
+    /**
+     * @var string
+     */
+    private $donation;
 
 
     /**
@@ -139,5 +145,26 @@ class Partenaire
         return $this->image;
     }
 
+    /**
+     * Set donation
+     *
+     * @param string $donation
+     * @return Partenaire
+     */
+    public function setDonation($donation)
+    {
+        $this->donation = $donation;
 
+        return $this;
+    }
+
+    /**
+     * Get donation
+     *
+     * @return string 
+     */
+    public function getDonation()
+    {
+        return $this->donation;
+    }
 }
