@@ -21,6 +21,8 @@ CmsBundle\Entity\Artiste:
             type: boolean
         archive:
             type: boolean
+        creation:
+            type: date
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]
