@@ -1,0 +1,11 @@
+CmsBundle\Entity\Presse:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\PresseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }

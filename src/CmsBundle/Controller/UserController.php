@@ -45,4 +45,24 @@ class UserController extends Controller
             'partenaires' => $partenaires,
         ));
     }
+    public function archivesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $archives = $em->getRepository('CmsBundle:Archive')->findAll();
+
+        return $this->render('CmsBundle:User:archives.html.twig' , array (
+            'archives' => $archives,
+        ));
+    }
+    public function pressesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $archives = $em->getRepository('CmsBundle:Presse')->findAll();
+
+        return $this->render('CmsBundle:User:presses.html.twig' , array (
+            'archives' => $archives,
+        ));
+    }
 }
