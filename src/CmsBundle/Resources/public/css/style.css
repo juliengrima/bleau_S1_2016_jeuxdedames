@@ -220,4 +220,27 @@ input[type=checkbox]
 {
     -webkit-appearance:checkbox;
 }
+/** PARTIE ARTISTE **/
+
+.imageartistes {
+    max-width: 100%;
+    max-height: 187.99px;
+}
+.grid-item {
+    width: 200px;
+}
+.grid-item--width2 {
+    width: 400px;
+}
+#artiste_creation_year {
+    color:black;
+}
+#artiste_creation_month {
+    color:black;
+}
+#artiste_creation_day {
+    color:black;
+}
+
+/** FIN PARTIE ARTISTE **/
 
