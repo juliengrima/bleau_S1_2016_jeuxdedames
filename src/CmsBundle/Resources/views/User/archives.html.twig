@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <H1>wesh</H1>
+    {% for artiste in artistes %}
+        {% if artiste.archive == true %}
+            <p>{{ artiste.nom }}</p>
+            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+        {% endif %}
+    {% endfor %}
 {% endblock %}

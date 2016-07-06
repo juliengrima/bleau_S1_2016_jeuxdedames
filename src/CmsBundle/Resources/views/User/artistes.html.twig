@@ -6,8 +6,10 @@
                <p class="ecritureartiste">{{ artiste.nom }}</p>
                <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
                <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a></p>
-
            </div>
+            {% if artiste.archive == false %}
+                
+            {% endif %}
         {% endfor %}
     </div>
     <div class="row">
