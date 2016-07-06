@@ -117,6 +117,11 @@ class Artiste
      */
     private $ajouterslider;
 
+    /**
+     * @var boolean
+     */
+    private $archive;
+
 
     /**
      * Get id
@@ -195,5 +200,28 @@ class Artiste
     public function getAjouterslider()
     {
         return $this->ajouterslider;
+    }
+
+    /**
+     * Set archive
+     *
+     * @param boolean $archive
+     * @return Artiste
+     */
+    public function setArchive($archive)
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+
+    /**
+     * Get archive
+     *
+     * @return boolean 
+     */
+    public function getArchive()
+    {
+        return $this->archive;
     }
 }

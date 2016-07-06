@@ -18,6 +18,7 @@ class ArtisteType extends AbstractType
             ->add('nom')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
             ->add('ajouterslider')
+            ->add('archive')
         ;
     }
     
