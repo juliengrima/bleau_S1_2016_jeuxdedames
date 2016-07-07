@@ -222,11 +222,11 @@ input[type=checkbox]
 }
 /** PARTIE ARTISTE **/
 
-/**.imageartistes {
+.imageartistes {
     max-width: 100%;
     max-height: 187.99px;
 }
-**/
+
 .grid-item {
     width: 200px;
 }
@@ -245,3 +245,95 @@ input[type=checkbox]
 
 /** FIN PARTIE ARTISTE **/
 
+/************** CSS DES IMAGES QUI TOURNENT ***/
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+figure.snip1239 {
+    font-family: 'Raleway', Arial, sans-serif;
+    color: #fff;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 220px;
+    max-width: 110px;
+    width: 100%;
+    color: #ffffff;
+    text-align: left;
+    background-color: #07090c;
+    font-size: 16px;
+    -webkit-perspective: 50em;
+    perspective: 50em;
+    padding-top: 150px;
+    margin-left: 55px;
+}
+figure.snip1239 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+figure.snip1239 img {
+    opacity: 1;
+    max-width: 100%;
+    vertical-align: top;
+    padding: 30px;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+figure.snip1239 figcaption {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    -webkit-transform: rotateY(90deg) translate(50%, -50%) scale(0.5);
+    transform: rotateY(90deg) translate(50%, -50%) scale(0.5);
+    z-index: 1;
+    opacity: 0;
+    padding: 0 30px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+figure.snip1239 h3,
+figure.snip1239 p {
+    line-height: 1.5em;
+}
+figure.snip1239 h3 {
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+figure.snip1239 p {
+    font-size: 0.8em;
+    font-weight: 500;
+    margin: 0 0 15px;
+}
+figure.snip1239 .read-more {
+    border: 2px solid #ffffff;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+}
+figure.snip1239 .read-more:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+figure.snip1239:hover img,
+figure.snip1239.hover img {
+    -webkit-transform: rotateY(-100deg) translateX(50%) scale(0.5);
+    transform: rotateY(-100deg) translateX(50%) scale(0.5);
+    opacity: 0;
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+}
+figure.snip1239:hover figcaption,
+figure.snip1239.hover figcaption {
+    -webkit-transform: rotateY(0deg) translate(0, -50%) scale(1);
+    transform: rotateY(0deg) translate(0, -50%) scale(1);
+    opacity: 1;
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+/**** FIN DU CSS DES IMAGES QUI TOURNENT *******/
