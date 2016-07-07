@@ -1,32 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {#<div class="partenaires">#}
+    <div class="partenaires">
         {% for artiste in artistes %}
-           {#<div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">#}
-               {#<p class="ecritureartiste">{{ artiste.nom }}</p>#}
-               {#<img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >#}
-               {#<p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>#}
-           {#</div>#}
-
-
-
-            <figure class="snip1239">
-                <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" alt="sample82"/>
-                <figcaption>
-                    <p class="ecritureartiste"><h3>{{ artiste.nom }}</h3></p>
-                    <p>I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway. </p>
-                    <a href="#" class="read-more">Read More</a>
-                </figcaption>
-            </figure>
-
-
-
-
+           <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
+               <p class="ecritureartiste">{{ artiste.nom }}</p>
+               <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
+               <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+           </div>
             {% if artiste.archive == true %}
                 
             {% endif %}
         {% endfor %}
-    {#</div>#}
+    </div>
     <div class="row">
         <a href="{{ path('artiste_new') }}">Create a new entry</a>
     </div>
