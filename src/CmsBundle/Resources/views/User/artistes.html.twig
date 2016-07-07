@@ -2,11 +2,14 @@
 {% block body %}
     <div class="partenaires">
         {% for artiste in artistes %}
-           <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
-               <p class="ecritureartiste">{{ artiste.nom }}</p>
-               <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
+           {#<div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">#}
+            <div class="grid">
+                <div class="grid-item"><p class="ecritureartiste">{{ artiste.nom }}</p>
+                    <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" ></div>
+
+            </div>
+
                <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
-           </div>
             {% if artiste.archive == true %}
                 
             {% endif %}
