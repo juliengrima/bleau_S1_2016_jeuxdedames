@@ -38,3 +38,23 @@ user_presse:
     path:     /userpresses
     defaults: { _controller: CmsBundle:User:presses }
 
+
+index:
+    path:     /
+    defaults: { _controller: CmsBundle:Commercant:index }
+
+new:
+    path:     /new
+    defaults: { _controller: CmsBundle:Commercant:new }
+
+show:
+    path:     /show
+    defaults: { _controller: CmsBundle:Commercant:show }
+
+edit:
+    path:     /edit
+    defaults: { _controller: CmsBundle:Commercant:edit }
+
+delete:
+    path:     /delete
+    defaults: { _controller: CmsBundle:Commercant:delete }

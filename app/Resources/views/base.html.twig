@@ -1,66 +1,74 @@
+
 <!DOCTYPE html>
 <html>
+
+<!-- Website made by Nicolas Capron && Pol Soyez -->
+
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Les jeux de dames{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width" />
 
         {% block stylesheets %}
 
-            <!-- Website made by Nicolas Capron && Pol Soyez -->
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}"/>
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}"/>
 
-            <!-- Appel CSS Boostrap -->
-            <meta name="viewport" content="width=device-width" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+            <!-- Appel feuille de style -->
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
+
+        {% endblock %}
+    </head>
+
+    <body>
+
+        <!-- ******** NAVBAR ******* -->
+        <header>
+            <div class="head_content">
+                <a class="menu_gauche menu" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
+                <a class="menu_droite menu" href="{{ path('user_archive') }}">Archives</a>
+                <a class="menu_droite menu" href="{{ path('user_presse') }}">Presse</a>
+                <a class="menu_droite menu" href="{{ path('user_partenaire') }}">Partenaires</a>
+                <a class="menu_droite menu" href="{{ path('user_commercant') }}">Commerçants</a>
+                <a class="menu_droite menu" href="{{ path('user_artiste') }}">Artistes</a>
+            </div>
+        </header>
+
+        {% block body %}{% endblock %}
+
+        <footer>
+            <!-- ******** FOOTER ******** -->
+            <div id="">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 reseaux">
+                        <h5>Jeux de Dames</h5>
+                        <p class="txt-fin">
+                            <a href="#"><i class="ion-social-twitter"></i></a>
+                            <a href="#"><i class="ion-social-instagram"></i></a>
+                            <a href="#"><i class="ion-social-dribbble"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        {% block javascripts %}
 
             <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
             <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
-            <script src="{{ asset ('bundles/cms/js/masonry.pkgd.js') }}"></script>
-            <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}" >
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}">
+
             <!-- Latest compiled and minified JavaScript -->
             <script src="{{ asset ('bundles/cms/js/bootstrap.min.js') }}"></script>
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-            <!-- Appel feuille de style -->
-        <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
-        <script type="text/javascript" src="{{ asset('bundles/cms/js/main.js') }}"></script>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+            <script src="{{ asset ('bundles/cms/js/masonry.pkgd.js') }}"></script>
+
+            <script type="text/javascript" src="{{ asset('bundles/cms/js/main.js') }}"></script>
+
         {% endblock %}
-    </head>
-        <!-- ******** NAVBAR ******* -->
-    <header>
-        <div class="head_content">
-            <a class="flottement-gauche menu" font-family "Damion" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
-            <a class="flottement-droite menu" href="{{ path('user_archive') }}">Archives</a>
-            <a class="flottement-droite menu" href="{{ path('user_presse') }}">Presse</a>
-            <a class="flottement-droite menu" href="{{ path('user_partenaire') }}">Partenaires</a>
-            <a class="flottement-droite menu" href="{{ path('user_commercant') }}">Commerçants</a>
-            <a class="flottement-droite menu" href="{{ path('user_artiste') }}">Artistes</a>
 
-
-        </div>
-    </header>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
-    <footer>
-        <!-- ******** FOOTER ******** -->
-
-        <div id="">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 reseaux">
-                    <h5>Jeux de Dames</h5>
-                    <p class="txt-fin">
-                        <a href="#"><i class="ion-social-twitter"></i></a>
-                        <a href="#"><i class="ion-social-instagram"></i></a>
-                        <a href="#"><i class="ion-social-dribbble"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        </div><!--/row -->
-    </footer>
 </html>

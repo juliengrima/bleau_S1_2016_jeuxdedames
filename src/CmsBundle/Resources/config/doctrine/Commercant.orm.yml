@@ -9,12 +9,20 @@ CmsBundle\Entity\Commercant:
             generator:
                 strategy: AUTO
     fields:
-        nom:
-            type: string
-            length: 255
-            column: Nom
         adresse:
             type: string
             length: 255
             column: Adresse
+        codepostal:
+            type: string
+            length: 255
+            column: Codepostal
+        ville:
+            type: string
+            length: 255
+            column: Ville
+        pays:
+            type: string
+            length: 255
+            column: Pays
     lifecycleCallbacks: {  }

@@ -1,36 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends "::base.html.twig" %}
+
+{% block title %}CmsBundle:Commercant:show{% endblock %}
 
 {% block body %}
-    <h1>Commercant</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ commercant.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ commercant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ commercant.adresse }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('commercant_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<h1>Welcome to the Commercant:show page</h1>
 {% endblock %}

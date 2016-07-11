@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: "Damion", Helvetica, Arial, sans-serif;
     font-size: 20px;
@@ -49,16 +54,15 @@ header .menu{
     color: #ffff1a;
     font-size: 30px;
     font-weight: bold;
-
     margin: 10px 10px 10px 10px;
 }
 header .lien{
     margin: 20px  ;
 }
-.flottement-droite{
+.menu_droite {
     float: right;
 }
-.flottement-gauche{
+.menu_gauche{
     float: left;
 }
 /***************FIN NAVBAR ******************/
@@ -239,4 +243,11 @@ input[type=checkbox]
 }
 
 /** FIN PARTIE ARTISTE **/
+
+/**Map**/
+#map{
+    height: 60%;
+    width: 100%;
+}
+
 

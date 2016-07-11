@@ -32,7 +32,22 @@ class UserController extends Controller
 
     public function commercantsAction()
     {
-        return $this->render('CmsBundle:User:commercants.html.twig');
+        $commerçant = array(
+            array(
+                'adresse' => "37 rue saint honoré",
+                'code' => 77300,
+                'ville' => 'Fontainebleau'
+            ),
+            array(
+                'adresse' => 'Place de la bastille',
+                'code' => '',
+                'ville' => 'Paris'
+            )
+        );
+        
+        return $this->render('CmsBundle:User:commercants.html.twig', array(
+            'commercants' => $commerçant,
+        ));
     }
 
     public function partenairesAction()

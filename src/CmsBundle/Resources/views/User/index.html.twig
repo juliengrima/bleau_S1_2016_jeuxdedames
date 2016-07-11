@@ -14,7 +14,7 @@
 
                     {% for artiste in artistes %}
                         {% if artiste.ajouterslider == true %}
-                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                            <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
                         {% endif %}
                     {% endfor %}
                 </marquee>
