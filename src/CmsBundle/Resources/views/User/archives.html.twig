@@ -1,12 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Année d'archive <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">2016</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">2017</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">2018</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     {% for artiste in artistes %}
         <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
-        {% if artiste.archive == true %}
-            <p class="ecritureartiste">{{ artiste.nom }}</p>
+            {% if artiste.archive == true %}
+                <p class="ecritureartiste">{{ artiste.nom }}</p>
                 <img class="imageartistes"src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" >
-            <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a></p>
-        {% endif %}
+                <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">edit</a></p>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}
