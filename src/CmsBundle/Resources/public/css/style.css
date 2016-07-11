@@ -218,7 +218,7 @@ input[type=checkbox]
 /** PARTIE ARTISTE **/
 
 .imageartistes {
-    max-width: 100%;
+    max-width: 250px;
     max-height: 187.99px;
 }
 
