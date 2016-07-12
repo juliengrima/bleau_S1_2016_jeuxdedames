@@ -33,6 +33,10 @@ p {
     color: black;
     margin-top: 15px;
 }
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
 /************** NAVBAR ***************/
 header{
     background: #03C9A9;
@@ -55,12 +59,14 @@ header .menu{
 header .lien{
     margin: 20px  ;
 }
-.flottement-droite{
-    float: right;
-}
-.flottement-gauche{
-    float: left;
-}
+
+/*.flottement-droite{*/
+    /*float: right;*/
+/*}*/
+/*.flottement-gauche{*/
+    /*float: left;*/
+/*}*/
+
 /***************FIN NAVBAR ******************/
 .section{
     padding-top: 50px;
@@ -165,6 +171,9 @@ input {
 }
 .ecritureartiste {
     text-align: center;
+    color: White;
+    font-size: 30px;
+    margin-left: 111px;
 }
 .editartiste {
     text-align: center;
@@ -252,12 +261,12 @@ figure.snip1239 {
     width: 100%;
     color: #ffffff;
     text-align: left;
-    background-color: #07090c;
+    background-color: #3E9199;
     font-size: 16px;
     -webkit-perspective: 50em;
     perspective: 50em;
-    padding-top: 150px;
     margin-left: 55px;
+    margin-top: 50px;
 }
 figure.snip1239 * {
     -webkit-box-sizing: border-box;
