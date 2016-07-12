@@ -38,34 +38,30 @@ p {
     margin-right: 0px;
 }
 /************** NAVBAR ***************/
-header{
-    background: #03C9A9;
-    height: 48px;
+
+.container-fluid {
+    background-color: #03C9A9;
 }
-header .head_content{
-    height: 35px;
-    margin: auto;
+.navbar-brand {
     background: #03C9A9;
     font-family: "Damion", Helvetica, Arial, sans-serif;
+    height: 48px;
+    font-color: #ffff1a;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 10px 10px 10px;
 }
-/**** TEXT DANS LA NAVBAR ****/
-header .menu{
+
+.textenavbar {
+
+    background: #03C9A9;
+    font-family: "Damion", Helvetica, Arial, sans-serif;
+    height: 48px;
     color: #ffff1a;
     font-size: 30px;
     font-weight: bold;
-
     margin: 10px 10px 10px 10px;
 }
-header .lien{
-    margin: 20px  ;
-}
-
-/*.flottement-droite{*/
-    /*float: right;*/
-/*}*/
-/*.flottement-gauche{*/
-    /*float: left;*/
-/*}*/
 
 /***************FIN NAVBAR ******************/
 .section{
@@ -132,8 +128,7 @@ img{
     height: auto;
     width: 100%;
 }
-.container {
-}
+
 .btn-green {
     background: #03C9A9;
     color: white;

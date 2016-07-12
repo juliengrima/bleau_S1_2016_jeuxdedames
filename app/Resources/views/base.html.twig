@@ -30,16 +30,20 @@
     </head>
         <!-- ******** NAVBAR ******* -->
     <header>
-        <div class="head_content">
-            <a class="flottement-gauche menu" font-family "Damion" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
-            <a class="flottement-droite menu" href="{{ path('user_archive') }}">Archives</a>
-            <a class="flottement-droite menu" href="{{ path('user_presse') }}">Presse</a>
-            <a class="flottement-droite menu" href="{{ path('user_partenaire') }}">Partenaires</a>
-            <a class="flottement-droite menu" href="{{ path('user_commercant') }}">Commerçants</a>
-            <a class="flottement-droite menu" href="{{ path('user_artiste') }}">Artistes</a>
-
-
-        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="textenavbar" href="{{ path('user_artiste') }}">Artistes</a>
+                    <a class="textenavbar" href="{{ path('user_commercant') }}">Commerçants</a>
+                    <a class="textenavbar" href="{{ path('user_partenaire') }}">Partenaires</a>
+                    <a class="textenavbar" href="{{ path('user_presse') }}">Presse</a>
+                    <a class="textenavbar" href="{{ path('user_archive') }}">Archives</a>
+                </ul>
+            </div>
+        </nav>
     </header>
     <body>
         {% block body %}{% endblock %}
