@@ -1,16 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="partenaires">
+    <div class="partenaires snip1239">
         {% for artiste in artistes %}
-        {% if artiste.archive == false %}
-
-            <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
-                <p class="ecritureartiste">{{ artiste.nom }}</p>
-                <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
-                     <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
-                </div>
-            </div>
-
+            {% if artiste.archive == false %}
+                <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
+                    <p class="ecritureartiste">{{ artiste.nom }}</p>
+                    <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                        <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+             </div>
+    </div>
         {% endif %}
         {% endfor %}
     <div class="row">

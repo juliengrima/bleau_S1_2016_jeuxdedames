@@ -10,10 +10,9 @@
 
             <!-- Appel CSS Boostrap -->
             <meta name="viewport" content="width=device-width" />
-
             <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
             <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
-            <script src="{{ asset ('bundles/cms/js/masonry.pkgd.js') }}"></script>
+            <script src="{{ asset ('bundles/cms/js/masonry.js') }}"></script>
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}" >
             <!-- Optional theme -->
@@ -44,7 +43,8 @@
     </header>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
     <footer>
         <!-- ******** FOOTER ******** -->
