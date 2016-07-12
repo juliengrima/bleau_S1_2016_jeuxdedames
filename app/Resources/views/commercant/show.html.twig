@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commercant</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commercant.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ commercant.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Codepostale</th>
+                <td>{{ commercant.codepostal }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ commercant.ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commercant_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

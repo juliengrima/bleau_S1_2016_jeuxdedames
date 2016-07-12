@@ -18,7 +18,6 @@ class CommercantType extends AbstractType
             ->add('adresse')
             ->add('codepostal')
             ->add('ville')
-            ->add('pays')
         ;
     }
     

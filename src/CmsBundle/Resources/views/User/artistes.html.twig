@@ -2,18 +2,26 @@
 {% block body %}
     <div class="partenaires">
         {% for artiste in artistes %}
-        {% if artiste.archive == false %}
+            {% if artiste.archive == false %}
 
-            <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
-                <p class="ecritureartiste">{{ artiste.nom }}</p>
-                <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
-                     <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
+                    <p class="ecritureartiste">{{ artiste.nom }}</p>
+                    <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                         <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                    </div>
                 </div>
-            </div>
 
-        {% endif %}
+            {% endif %}
         {% endfor %}
     <div class="row">
         <a href="{{ path('artiste_new') }}">Create a new entry</a>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+
+    </script>
 {% endblock %}

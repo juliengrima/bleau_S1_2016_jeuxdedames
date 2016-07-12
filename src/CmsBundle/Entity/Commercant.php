@@ -20,25 +20,20 @@ class Commercant
     private $adresse;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $codepostal;
+    private $code;
 
     /**
      * @var string
      */
     private $ville;
 
-    /**
-     * @var string
-     */
-    private $pays;
-
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -49,6 +44,7 @@ class Commercant
      * Set adresse
      *
      * @param string $adresse
+     *
      * @return Commercant
      */
     public function setAdresse($adresse)
@@ -61,7 +57,7 @@ class Commercant
     /**
      * Get adresse
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
@@ -69,32 +65,34 @@ class Commercant
     }
 
     /**
-     * Set codepostal
+     * Set code
      *
-     * @param string $codepostal
+     * @param integer $code
+     *
      * @return Commercant
      */
-    public function setCodepostal($codepostal)
+    public function setCode($code)
     {
-        $this->codepostal = $codepostal;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codepostal
+     * Get code
      *
-     * @return string 
+     * @return integer
      */
-    public function getCodepostal()
+    public function getCode()
     {
-        return $this->codepostal;
+        return $this->code;
     }
 
     /**
      * Set ville
      *
      * @param string $ville
+     *
      * @return Commercant
      */
     public function setVille($ville)
@@ -107,33 +105,10 @@ class Commercant
     /**
      * Get ville
      *
-     * @return string 
+     * @return string
      */
     public function getVille()
     {
         return $this->ville;
-    }
-
-    /**
-     * Set pays
-     *
-     * @param string $pays
-     * @return Commercant
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return string 
-     */
-    public function getPays()
-    {
-        return $this->pays;
     }
 }

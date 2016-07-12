@@ -5,7 +5,7 @@
     <div id="map"></div>
 
 <!-- ******** RESEAUX ******** -->
-
+<div id="test"></div>
     <div class="row">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 reseaux">
@@ -22,37 +22,99 @@
 
     {{ parent() }}
     <script>
+        $(document).ready(function() {
+            var $urlJson = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJ-7wHAAFy5kcRhFlEb6qlhuc&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc';
+
+            $.ajax({
+                type: "GET", //rest Type
+                dataType: 'jsonp', //mispelled
+                url: $urlJson,
+                async: false,
+                contentType: "application/json; charset=UTF-8",
+                success: function (msg) {
+                    alert(msg);
+                },
+                error:
+                    function(data){
+                        alert("error");
+                    }
+            });
+//
+//            var $html = '';
+//            $.getJSON( $urlJson, function(data){
+//                alert(data);
+//                $html = data;
+//            });
+
+        });
+
         var geocoder;
         var map;
+
+
         function initMap() {
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
+                center: {lat: 48.408, lng: 2.699 },
+                zoom: 14
             });
-            alert('plop');
             codeAddress();
         }
 
        // function initialize() {
 
         function codeAddress() {
+            var image = {
+                url: 'http://www.signegeneve.ch/wp-content/themes/parallelus-salutation/assets/images/gmap-marker.png'
+                // This marker is 20 pixels wide by 32 pixels high.
+            };
+            var image2 = {
+                url: 'http://maps.google.com/mapfiles/marker_yellow.png'
+                // This marker is 20 pixels wide by 32 pixels high.
+            };
+
             {% for commercant in commercants %}
-                var address = '{{ commercant['adresse'] }}, {{ commercant['code'] }}, {{ commercant['ville'] }}';
-                alert('plip');
-                geocoder.geocode( { 'address': address}, function(results, status) {
+                var address = '{{ commercant.adresse }} {{ commercant.code }} {{ commercant.ville }}';
+                    geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        alert('plaapp');
                         map.setCenter(results[0].geometry.location);
                         var marker = new google.maps.Marker({
                             map: map,
-                            position: results[0].geometry.location
+                            position: results[0].geometry.location,
+                            placeId: results[0].place_id,
+                        {% if commercant.code == 77300 %}
+                            icon: image,
+                        {% else %}
+                            icon: image2,
+                        {% endif %}
                         });
+                        //var id_place = results[0].place_id;
+                       // var desc = jQuery.parseJSON('https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJ-7wHAAFy5kcRhFlEb6qlhuc&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc');
+                        var $html = '';
+//                        $.each($.parseJSON(desc), function(key,obj) { //$.parseJSON() method is needed unless chrome is throwing error.
+//                            $html = $html + ("<p>"+ obj[key] +"</p>");
+//                        });
+                        var description =
+                                '<p style="color: black;">' + $html + '</p>' +
+                                '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc"/>';
+
+                        attachDescription(marker, description);
                     } else {
                         alert("Geocode was not successful for the following reason: " + status);
                     }
                 });
             {% endfor %}
+        }
+
+        function attachDescription(marker, description) {
+
+            var infowindow = new google.maps.InfoWindow({
+                content: description
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(marker.get('map'), marker);
+            });
         }
 
 

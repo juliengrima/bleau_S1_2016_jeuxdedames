@@ -2,63 +2,127 @@
 
 namespace CmsBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use CmsBundle\Entity\Commercant;
+use CmsBundle\Form\CommercantType;
+
+/**
+ * Commercant controller.
+ *
+ */
 class CommercantController extends Controller
 {
+    /**
+     * Lists all Commercant entities.
+     *
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
 
-        return $this->render('CmsBundle:Commercant:index.html.twig', array(
+        return $this->render('commercant/index.html.twig', array(
             'commercants' => $commercants,
-            ));
+        ));
     }
 
-    public function newAction()
+    /**
+     * Creates a new Commercant entity.
+     *
+     */
+    public function newAction(Request $request)
     {
-        $commercants = new Commercant();
-        $form = $this->createForm('CmsBundle\Form\CommercantType', $commercants);
+        $commercant = new Commercant();
+        $form = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($commercants);
+            $em->persist($commercant);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_show', array('id' => $commercants->getId()));
+            return $this->redirectToRoute('commercant_show', array('id' => $commercant->getId()));
         }
 
-        return $this->render('CmsBundle:Commercant:new.html.twig', array(
-            'commercant' => $commercants,
+        return $this->render('commercant/new.html.twig', array(
+            'commercant' => $commercant,
             'form' => $form->createView(),
         ));
     }
 
-    public function showAction()
+    /**
+     * Finds and displays a Commercant entity.
+     *
+     */
+    public function showAction(Commercant $commercant)
     {
-        $deleteForm = $this->createDeleteForm($commercants);
+        $deleteForm = $this->createDeleteForm($commercant);
 
-        return $this->render('CmsBundle:Commercant:show.html.twig', array(
-            'commercants' => $commercants,
+        return $this->render('commercant/show.html.twig', array(
+            'commercant' => $commercant,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    public function editAction()
+    /**
+     * Displays a form to edit an existing Commercant entity.
+     *
+     */
+    public function editAction(Request $request, Commercant $commercant)
     {
-        return $this->render('CmsBundle:Commercant:edit.html.twig', array(
-            // ...
+        $deleteForm = $this->createDeleteForm($commercant);
+        $editForm = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($commercant);
+            $em->flush();
+
+            return $this->redirectToRoute('commercant_edit', array('id' => $commercant->getId()));
+        }
+
+        return $this->render('commercant/edit.html.twig', array(
+            'commercant' => $commercant,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    public function deleteAction()
+    /**
+     * Deletes a Commercant entity.
+     *
+     */
+    public function deleteAction(Request $request, Commercant $commercant)
     {
-        return $this->render('CmsBundle:Commercant:delete.html.twig', array(
-            // ...
-        ));
+        $form = $this->createDeleteForm($commercant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($commercant);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('commercant_index');
     }
 
+    /**
+     * Creates a form to delete a Commercant entity.
+     *
+     * @param Commercant $commercant The Commercant entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Commercant $commercant)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('commercant_delete', array('id' => $commercant->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }
