@@ -24,7 +24,7 @@ class CommercantController extends Controller
 
         $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
 
-        return $this->render('commercant/index.html.twig', array(
+        return $this->render('CmsBundle:commercant:index.html.twig', array(
             'commercants' => $commercants,
         ));
     }
@@ -47,7 +47,7 @@ class CommercantController extends Controller
             return $this->redirectToRoute('commercant_show', array('id' => $commercant->getId()));
         }
 
-        return $this->render('commercant/new.html.twig', array(
+        return $this->render('CmsBundle:commercant:new.html.twig', array(
             'commercant' => $commercant,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class CommercantController extends Controller
     {
         $deleteForm = $this->createDeleteForm($commercant);
 
-        return $this->render('commercant/show.html.twig', array(
+        return $this->render('CmsBundle:commercant:show.html.twig', array(
             'commercant' => $commercant,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class CommercantController extends Controller
             return $this->redirectToRoute('commercant_edit', array('id' => $commercant->getId()));
         }
 
-        return $this->render('commercant/edit.html.twig', array(
+        return $this->render('CmsBundle:commercant:edit.html.twig', array(
             'commercant' => $commercant,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

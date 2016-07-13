@@ -16,7 +16,7 @@ class CommercantType extends AbstractType
     {
         $builder
             ->add('adresse')
-            ->add('codepostal')
+            ->add('code')
             ->add('ville')
         ;
     }
