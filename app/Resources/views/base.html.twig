@@ -31,7 +31,7 @@
     </head>
         {% endblock %}
 
-    {% block body %}
+
         <!-- ******** NAVBAR ******* -->
     <header>
         <nav class="navbar navbar-default">
@@ -41,15 +41,15 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <a class="textenavbar" href="{{ path('user_artiste') }}">Artistes</a>
-                    <a class="textenavbar" href="{{ path('user_commercant') }}">Commerçants</a>
                     <a class="textenavbar" href="{{ path('user_partenaire') }}">Partenaires</a>
+                    <a class="textenavbar" href="{{ path('user_commercant') }}">Commerçants</a>
                     <a class="textenavbar" href="{{ path('user_presse') }}">Presse</a>
                     <a class="textenavbar" href="{{ path('user_archive') }}">Archives</a>
                 </ul>
             </div>
         </nav>
     </header>
-
+{% block body %}{% endblock %}
         <footer>
             <!-- ******** FOOTER ******** -->
             <div id="">
@@ -62,7 +62,7 @@
                             <a href="#"><i class="ion-social-dribbble"></i></a>
                         </p>
                     </div>
-        {% endblock %}
+
 
 
         {% block javascripts %}
