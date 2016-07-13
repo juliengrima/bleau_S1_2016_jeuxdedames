@@ -41,22 +41,25 @@ p {
 
 .container-fluid {
     background-color: #03C9A9;
+    height: 50px;
 }
-.navbar-brand {
+.jeuxdedames {
     background: #03C9A9;
     font-family: "Damion", Helvetica, Arial, sans-serif;
     height: 48px;
-    font-color: #ffff1a;
+    color: #ffff1a;
     font-size: 30px;
     font-weight: bold;
     margin: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+
 }
 
 .textenavbar {
 
     background: #03C9A9;
     font-family: "Damion", Helvetica, Arial, sans-serif;
-    height: 48px;
+    height: 60px;
     color: #ffff1a;
     font-size: 30px;
     font-weight: bold;
