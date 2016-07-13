@@ -12,6 +12,13 @@
 
         {% block stylesheets %}
 
+            <!-- Website made by Nicolas Capron && Pol Soyez -->
+
+            <!-- Appel CSS Boostrap -->
+            <meta name="viewport" content="width=device-width" />
+            <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
+            <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
+            <script src="{{ asset ('bundles/cms/js/masonry.js') }}"></script>
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}"/>
             <!-- Optional theme -->
@@ -21,25 +28,27 @@
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
             <!-- Appel feuille de style -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
-
-        {% endblock %}
     </head>
+        {% endblock %}
 
-    <body>
-
+    {% block body %}
         <!-- ******** NAVBAR ******* -->
-        <header>
-            <div class="head_content">
-                <a class="menu_gauche menu" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
-                <a class="menu_droite menu" href="{{ path('user_archive') }}">Archives</a>
-                <a class="menu_droite menu" href="{{ path('user_presse') }}">Presse</a>
-                <a class="menu_droite menu" href="{{ path('user_partenaire') }}">Partenaires</a>
-                <a class="menu_droite menu" href="{{ path('user_commercant') }}">Commerçants</a>
-                <a class="menu_droite menu" href="{{ path('user_artiste') }}">Artistes</a>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="jeuxdedames" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="textenavbar" href="{{ path('user_artiste') }}">Artistes</a>
+                    <a class="textenavbar" href="{{ path('user_commercant') }}">Commerçants</a>
+                    <a class="textenavbar" href="{{ path('user_partenaire') }}">Partenaires</a>
+                    <a class="textenavbar" href="{{ path('user_presse') }}">Presse</a>
+                    <a class="textenavbar" href="{{ path('user_archive') }}">Archives</a>
+                </ul>
             </div>
-        </header>
-
-        {% block body %}{% endblock %}
+        </nav>
+    </header>
 
         <footer>
             <!-- ******** FOOTER ******** -->
@@ -53,9 +62,8 @@
                             <a href="#"><i class="ion-social-dribbble"></i></a>
                         </p>
                     </div>
-                </div>
-            </div>
-        </footer>
+        {% endblock %}
+
 
         {% block javascripts %}
 
