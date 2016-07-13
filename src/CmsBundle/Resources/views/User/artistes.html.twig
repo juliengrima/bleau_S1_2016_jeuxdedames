@@ -4,11 +4,11 @@
         {% for artiste in artistes %}
             {% if artiste.archive == false %}
                 <div class="col-md-3 artistepage">
-                    <p class="ecritureartiste">{{ artiste.nom }}</p>
                     <figure class="snip1239">
-                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                        <p class="ecritureartiste">{{ artiste.nom }}</p>
+                        <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
                     </figure>
-                    <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                    <p class="editartiste2" ><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
                 </div>
             {% endif %}
         {% endfor %}

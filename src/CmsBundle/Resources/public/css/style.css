@@ -180,11 +180,13 @@ input {
 .ecritureartiste {
     text-align: center;
     color: White;
-    font-size: 30px;
     margin-left: 111px;
 }
 .editartiste {
     text-align: center;
+}
+.editartiste2{
+    margin-left: 130px;
 }
 .policeecriture {
     color: white;
@@ -314,7 +316,7 @@ figure.snip1239 h3 {
     text-transform: uppercase;
 }
 figure.snip1239 p {
-    font-size: 0.8em;
+    font-size: 20px;
     font-weight: 500;
     margin: 0 0 15px;
 }
