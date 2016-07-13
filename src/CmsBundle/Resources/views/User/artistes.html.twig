@@ -6,7 +6,7 @@
                 <div class="col-md-3 artistepage">
                     <p class="ecritureartiste">{{ artiste.nom }}</p>
                     <figure class="snip1239">
-                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                        <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
                     </figure>
                     <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
                 </div>

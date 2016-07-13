@@ -21,34 +21,8 @@
 {% block javascripts %}
 
     {{ parent() }}
-
-    {{ parent() }}
     <script>
-        $(document).ready(function() {
-            var $urlJson = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJ-7wHAAFy5kcRhFlEb6qlhuc&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc';
 
-            $.ajax({
-                type: "GET", //rest Type
-                dataType: 'jsonp', //mispelled
-                url: $urlJson,
-                async: false,
-                contentType: "application/json; charset=UTF-8",
-                success: function (msg) {
-                    alert(msg);
-                },
-                error:
-                    function(data){
-                        alert("error");
-                    }
-            });
-//
-//            var $html = '';
-//            $.getJSON( $urlJson, function(data){
-//                alert(data);
-//                $html = data;
-//            });
-
-        });
 
         var geocoder;
         var map;
@@ -89,23 +63,15 @@
                             icon: image2,
                         {% endif %}
                         });
-                        //var id_place = results[0].place_id;
-                       // var desc = jQuery.parseJSON('https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJ-7wHAAFy5kcRhFlEb6qlhuc&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc');
-                        var $html = '';
-//                        $.each($.parseJSON(desc), function(key,obj) { //$.parseJSON() method is needed unless chrome is throwing error.
-//                            $html = $html + ("<p>"+ obj[key] +"</p>");
-//                        });
-                        var description =
-                                '<p style="color: black;">' + $html + '</p>' +
-                                '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc"/>';
 
                         attachDescription(marker, description);
                     } else {
                         alert("Geocode was not successful for the following reason: " + status);
                     }
                 });
-            {% endfor %}
+
         }
+
 
         function attachDescription(marker, description) {
 
@@ -118,9 +84,23 @@
             });
         }
 
+        alert("error");
+        var description =
+                '<div><p>{{ commercant.adresse }}</p></div>'+
+                '<div><p>{{ commercant.ville }}</p></div>'+
+                '<div><p>{{ commercant.code }}</p></div>';
+
+        alert("error");
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: '{{ commercant.adresse }}'
+        });
+
+
 
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc&callback=initMap" async defer></script>
-
+{% endfor %}
 {% endblock %}

@@ -41,6 +41,7 @@ class ArtisteController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $artiste->setDate(new \DateTime());
             $em->persist($artiste);
             $em->flush();
 
