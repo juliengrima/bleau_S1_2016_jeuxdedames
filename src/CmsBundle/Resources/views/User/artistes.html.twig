@@ -7,6 +7,11 @@
                     <p class="ecritureartiste">{{ artiste.nom }}</p>
                     <figure class="snip1239">
                         <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
+                        <figcaption>
+                            <h3>{{ artiste.nom }}</h3>
+                            <p>{{ artiste.texte }}</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </figcaption>
                     </figure>
                     <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
                 </div>

@@ -17,6 +17,10 @@ CmsBundle\Entity\Artiste:
             type: string
             length: 255
             column: Image
+        texte:
+            type: string
+            length: 255
+            column: texte
         ajouterslider:
             type: boolean
         archive:

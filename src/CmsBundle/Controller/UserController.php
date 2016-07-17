@@ -32,21 +32,12 @@ class UserController extends Controller
 
     public function commercantsAction()
     {
-        $commerçant = array(
-            array(
-                'adresse' => "37 rue saint honoré",
-                'code' => 77300,
-                'ville' => 'Fontainebleau'
-            ),
-            array(
-                'adresse' => 'Place de la bastille',
-                'code' => '',
-                'ville' => 'Paris'
-            )
-        );
+        $em = $this->getDoctrine()->getManager();
+
+        $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
         
         return $this->render('CmsBundle:User:commercants.html.twig', array(
-            'commercants' => $commerçant,
+            'commercants' => $commercants,
         ));
     }
 

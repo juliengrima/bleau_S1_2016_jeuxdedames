@@ -113,6 +113,11 @@ class Artiste
     private $image;
 
     /**
+     * @var string
+     */
+    private $texte;
+
+    /**
      * @var boolean
      */
     private $ajouterslider;
@@ -122,16 +127,11 @@ class Artiste
      */
     private $archive;
 
-    /**
-     * @var \DateTime
-     */
-    private $creation;
-
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -142,6 +142,7 @@ class Artiste
      * Set nom
      *
      * @param string $nom
+     *
      * @return Artiste
      */
     public function setNom($nom)
@@ -154,7 +155,7 @@ class Artiste
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -165,6 +166,7 @@ class Artiste
      * Set image
      *
      * @param string $image
+     *
      * @return Artiste
      */
     public function setImage($image)
@@ -177,7 +179,7 @@ class Artiste
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -185,9 +187,34 @@ class Artiste
     }
 
     /**
+     * Set texte
+     *
+     * @param string $texte
+     *
+     * @return Artiste
+     */
+    public function setTexte($texte)
+    {
+        $this->texte = $texte;
+
+        return $this;
+    }
+
+    /**
+     * Get texte
+     *
+     * @return string
+     */
+    public function getTexte()
+    {
+        return $this->texte;
+    }
+
+    /**
      * Set ajouterslider
      *
      * @param boolean $ajouterslider
+     *
      * @return Artiste
      */
     public function setAjouterslider($ajouterslider)
@@ -200,7 +227,7 @@ class Artiste
     /**
      * Get ajouterslider
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAjouterslider()
     {
@@ -211,6 +238,7 @@ class Artiste
      * Set archive
      *
      * @param boolean $archive
+     *
      * @return Artiste
      */
     public function setArchive($archive)
@@ -223,33 +251,10 @@ class Artiste
     /**
      * Get archive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getArchive()
     {
         return $this->archive;
-    }
-
-    /**
-     * Set creation
-     *
-     * @param \DateTime $creation
-     * @return Artiste
-     */
-    public function setCreation($creation)
-    {
-        $this->creation = $creation;
-
-        return $this;
-    }
-
-    /**
-     * Get creation
-     *
-     * @return \DateTime 
-     */
-    public function getCreation()
-    {
-        return $this->creation;
     }
 }

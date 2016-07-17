@@ -23,7 +23,6 @@
     {{ parent() }}
     <script>
 
-
         var geocoder;
         var map;
 
@@ -32,7 +31,7 @@
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.408, lng: 2.699 },
-                zoom: 14
+                zoom: 6
             });
             codeAddress();
         }
@@ -48,7 +47,6 @@
                 url: 'http://maps.google.com/mapfiles/marker_yellow.png'
                 // This marker is 20 pixels wide by 32 pixels high.
             };
-
             {% for commercant in commercants %}
                 var address = '{{ commercant.adresse }} {{ commercant.code }} {{ commercant.ville }}';
                     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -64,11 +62,17 @@
                         {% endif %}
                         });
 
+                        var description =
+                                '<div><p>{{ commercant.adresse }}</p></div>'+
+                                '<div><p>{{ commercant.ville }}</p></div>'+
+                                '<div><p>{{ commercant.code }}</p></div>';
+
                         attachDescription(marker, description);
                     } else {
                         alert("Geocode was not successful for the following reason: " + status);
                     }
                 });
+            {% endfor %}
 
         }
 
@@ -84,23 +88,8 @@
             });
         }
 
-        alert("error");
-        var description =
-                '<div><p>{{ commercant.adresse }}</p></div>'+
-                '<div><p>{{ commercant.ville }}</p></div>'+
-                '<div><p>{{ commercant.code }}</p></div>';
-
-        alert("error");
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: '{{ commercant.adresse }}'
-        });
-
-
-
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa232Ch8q6OuI0qAkNV4s36dSJKSCaswc&callback=initMap" async defer></script>
-{% endfor %}
+
 {% endblock %}
