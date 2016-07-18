@@ -1,18 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="partenaires">
+    <div class="">
         {% for artiste in artistes %}
             {% if artiste.archive == false %}
-                <div class="col-md-3 artistepage">
-                    <figure class="snip1239">
-                        <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
-                        <figcaption>
-                            <h3 class="editartiste2">{{ artiste.nom }}</h3>
-                            <p class="editartiste2">{{ artiste.texte }}</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </figcaption>
-                    </figure>
-                    <p class="editartiste2" ><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="row">
+                        <figure class="snip1239">
+                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
+                            <figcaption>
+                                <h3 class="editartiste2">{{ artiste.nom }}</h3>
+                                <p class="editartiste2">{{ artiste.texte }}</p>
+                                <a href="#" class="read-more">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <p class="editartiste2" ><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}

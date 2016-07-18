@@ -1,15 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="partenaires">
-
-    {% for partenaire in partenaires %}
-        <div class="col-md-3 col-md-offset-1 col-md-3 col-md-offset-1 col-md-3 artistepage">
-            <img src="{{ asset('uploads/imgcms/') }}{{ partenaire.image }}" >
-            <p class="editartiste"><a href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a></p>
-        </div>
-    {% endfor %}
-</div>
+    <div class="">
+        {% for partenaire in partenaires %}
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <div class="row">
+                    <figure class="snip1239">
+                        <img src="{{ asset('uploads/imgcms/') }}{{ partenaire.image }}"/>
+                        <figcaption>
+                            {#<h3 class="editartiste2">{{ artiste.nom }}</h3>#}
+                            {#<p class="editartiste2">{{ artiste.texte }}</p>#}
+                            <a href="#" class="read-more">Read More</a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <p class="editartiste"><a href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     <div class="row">
         <a href="{{ path('partenaire_new') }}">Créer une nouvelle entrée.</a>
     </div>
