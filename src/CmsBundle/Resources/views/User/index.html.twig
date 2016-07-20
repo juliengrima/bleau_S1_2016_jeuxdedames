@@ -14,7 +14,11 @@
 
                     {% for artiste in artistes %}
                         {% if artiste.ajouterslider == true %}
-                            <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                            {% if (artiste.lien != null) %}
+                                <a href="{{ artiste.lien }}"><img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
+                            {% else %}
+                                <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </marquee>

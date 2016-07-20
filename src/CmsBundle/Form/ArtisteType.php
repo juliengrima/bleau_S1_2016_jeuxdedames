@@ -20,6 +20,7 @@ class ArtisteType extends AbstractType
             ->add('texte')
             ->add('ajouterslider')
             ->add('archive')
+            ->add('lien')
         ;
     }
     
