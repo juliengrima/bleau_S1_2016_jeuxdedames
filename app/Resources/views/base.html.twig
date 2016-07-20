@@ -22,11 +22,11 @@
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}"/>
             <!-- Optional theme -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}"/>
-
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/font-awesome.css') }}"/>
+            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/font-awesome.min.css') }}"/>
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
             <!-- Appel feuille de style -->
-            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
 
         {% endblock %}
@@ -67,17 +67,19 @@
                     <div class="col-md-8 col-md-offset-2 reseaux">
                         <h6>Vous pouvez nous retrouver</h6>
                         <h2 class="h2">Sur nos différents<br/>réseaux sociaux</h2>
-                        <button class="btn-green">Cliquez ici</button>
+                        {#<button class="btn-green">Cliquez ici</button>#}
                     </div>
                 </div>
             <div class="row">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+                <i class="fa fa-youtube" aria-hidden="true"></i>
+                <a href="#"><i class="ion-social-twitter"></i></a>
+
+            </div>
+            <div class="row">
                 <div class="col-md-8 col-md-offset-2 reseaux">
                     <h5>Jeux de Dames</h5>
-                    <p class="txt-fin">
-                        <a href="#"><i class="ion-social-twitter"></i></a>
-                        <a href="#"><i class="ion-social-instagram"></i></a>
-                        <a href="#"><i class="ion-social-dribbble"></i></a>
-                    </p>
                 </div>
             </div>
     </footer>
