@@ -9,6 +9,10 @@ CmsBundle\Entity\Commercant:
             generator:
                 strategy: AUTO
     fields:
+        image:
+            type: string
+            length: 255
+            column: image
         adresse:
             type: string
             length: 255
