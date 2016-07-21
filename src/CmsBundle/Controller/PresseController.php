@@ -96,7 +96,7 @@ class PresseController extends Controller
             return $this->redirectToRoute('presse_edit', array('id' => $presse->getId()));
         }
 
-        return $this->render('CmsBundle:Presse:edit.html.twig', array(
+        return $this->render('CmsBundle:presse:edit.html.twig', array(
             'presse' => $presse,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

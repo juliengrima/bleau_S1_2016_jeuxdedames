@@ -55,7 +55,8 @@
                         var description =
                                 '<div><p>{{ commercant.adresse }}</p></div>'+
                                 '<div><p>{{ commercant.ville }}</p></div>'+
-                                '<div><p>{{ commercant.code }}</p></div>';
+                                '<div><p>{{ commercant.ville }}</p></div>'+
+                                '<div><img src="{{ asset('uploads/imgcms/') }}{{ commercant.image }}"/></div>';
 
                         attachDescription(marker, description);
                     } else {

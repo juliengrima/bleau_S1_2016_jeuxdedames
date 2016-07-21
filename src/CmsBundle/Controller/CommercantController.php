@@ -79,6 +79,14 @@ class CommercantController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if($editForm->get('file')->getData() != null) {
+
+                if($commercant->getImage() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$commercant->getImage());
+                    $commercant->setImage(null);
+                }
+            }
+            $commercant->preUpload();
             $em->persist($commercant);
             $em->flush();
 
@@ -91,6 +99,7 @@ class CommercantController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
 
     /**
      * Deletes a Commercant entity.
