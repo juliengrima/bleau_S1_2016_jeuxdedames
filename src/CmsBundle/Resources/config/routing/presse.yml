@@ -1,0 +1,24 @@
+presse_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Presse:index" }
+    methods:  GET
+
+presse_show:
+    path:     /{id}/show
+    defaults: { _controller: "CmsBundle:Presse:show" }
+    methods:  GET
+
+presse_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Presse:new" }
+    methods:  [GET, POST]
+
+presse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Presse:edit" }
+    methods:  [GET, POST]
+
+presse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CmsBundle:Presse:delete" }
+    methods:  DELETE

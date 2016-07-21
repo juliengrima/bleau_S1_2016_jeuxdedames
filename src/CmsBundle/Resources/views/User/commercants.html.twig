@@ -21,7 +21,7 @@
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.408, lng: 2.699 },
-                zoom: 6
+                zoom: 14
             });
             codeAddress();
         }
@@ -55,7 +55,8 @@
                         var description =
                                 '<div><p>{{ commercant.adresse }}</p></div>'+
                                 '<div><p>{{ commercant.ville }}</p></div>'+
-                                '<div><p>{{ commercant.code }}</p></div>';
+                                '<div><p>{{ commercant.ville }}</p></div>'+
+                                '<div><img src="{{ asset('uploads/imgcms/') }}{{ commercant.image }}"/></div>';
 
                         attachDescription(marker, description);
                     } else {
