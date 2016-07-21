@@ -9,19 +9,28 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Presse
 {
-    /**
-     * @var int
-     */
-    private $id;
+    public $file;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    protected function getUploadDir()
     {
-        return $this->id;
+        return 'uploads/imgcms';
     }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    ##generate##
+
 }

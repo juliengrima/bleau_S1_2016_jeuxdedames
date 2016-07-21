@@ -18,6 +18,11 @@ cms_homepage:
     path:     /
     defaults: { _controller: CmsBundle:User:index }
 
+cms_presse:
+    resource: "@CmsBundle/Resources/config/routing/presse.yml"
+    prefix:   /presse
+
+
 user_artiste:
     path:     /userartistes
     defaults: { _controller: CmsBundle:User:artistes }

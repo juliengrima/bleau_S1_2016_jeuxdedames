@@ -16,3 +16,9 @@ Ens\CmsBundle\Entity\Partenaire:
         # ...
         file:
             - Image: ~
+
+Ens\CmsBundle\Entity\Presse:
+    properties:
+        # ...
+        file:
+            - Image: ~
