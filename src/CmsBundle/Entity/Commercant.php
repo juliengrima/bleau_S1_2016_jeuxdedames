@@ -94,6 +94,7 @@ class Commercant
     }
 
     /*generate*/
+
     /**
      * @var integer
      */
@@ -118,11 +119,6 @@ class Commercant
      * @var string
      */
     private $ville;
-
-    /**
-     * @var \CmsBundle\Entity\Langue
-     */
-    private $langue;
 
 
     /**
@@ -229,29 +225,5 @@ class Commercant
     public function getVille()
     {
         return $this->ville;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param \CmsBundle\Entity\Langue $langue
-     *
-     * @return Commercant
-     */
-    public function setLangue(\CmsBundle\Entity\Langue $langue = null)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return \CmsBundle\Entity\Langue
-     */
-    public function getLangue()
-    {
-        return $this->langue;
     }
 }

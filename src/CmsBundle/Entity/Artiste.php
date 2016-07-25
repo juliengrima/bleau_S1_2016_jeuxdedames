@@ -96,6 +96,7 @@ class Artiste
 
     /*generate*/
     
+
     /**
      * @var integer
      */
@@ -135,11 +136,6 @@ class Artiste
      * @var boolean
      */
     private $archive;
-
-    /**
-     * @var \CmsBundle\Entity\Langue
-     */
-    private $langue;
 
 
     /**
@@ -318,29 +314,5 @@ class Artiste
     public function getArchive()
     {
         return $this->archive;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param \CmsBundle\Entity\Langue $langue
-     *
-     * @return Artiste
-     */
-    public function setLangue(\CmsBundle\Entity\Langue $langue = null)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return \CmsBundle\Entity\Langue
-     */
-    public function getLangue()
-    {
-        return $this->langue;
     }
 }

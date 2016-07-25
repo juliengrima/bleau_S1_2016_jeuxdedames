@@ -95,6 +95,7 @@ class Presse
 
     /*generate*/
 
+ 
     /**
      * @var integer
      */
@@ -124,11 +125,6 @@ class Presse
      * @var \DateTime
      */
     private $date;
-
-    /**
-     * @var \CmsBundle\Entity\Langue
-     */
-    private $langue;
 
 
     /**
@@ -259,29 +255,5 @@ class Presse
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param \CmsBundle\Entity\Langue $langue
-     *
-     * @return Presse
-     */
-    public function setLangue(\CmsBundle\Entity\Langue $langue = null)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return \CmsBundle\Entity\Langue
-     */
-    public function getLangue()
-    {
-        return $this->langue;
     }
 }

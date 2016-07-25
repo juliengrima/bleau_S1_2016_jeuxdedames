@@ -112,11 +112,6 @@ class Partenaire
      */
     private $donation;
 
-    /**
-     * @var \CmsBundle\Entity\Langue
-     */
-    private $langue;
-
 
     /**
      * Get id
@@ -174,29 +169,5 @@ class Partenaire
     public function getDonation()
     {
         return $this->donation;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param \CmsBundle\Entity\Langue $langue
-     *
-     * @return Partenaire
-     */
-    public function setLangue(\CmsBundle\Entity\Langue $langue = null)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return \CmsBundle\Entity\Langue
-     */
-    public function getLangue()
-    {
-        return $this->langue;
     }
 }

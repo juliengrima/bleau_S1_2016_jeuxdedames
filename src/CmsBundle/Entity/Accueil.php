@@ -97,6 +97,7 @@ class Accueil
 
     /*generate*/
 
+
     /**
      * @var integer
      */
@@ -152,6 +153,18 @@ class Accueil
      */
     private $langue;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accueil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -401,18 +414,6 @@ class Accueil
     public function getLangue()
     {
         return $this->langue;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $accueil;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

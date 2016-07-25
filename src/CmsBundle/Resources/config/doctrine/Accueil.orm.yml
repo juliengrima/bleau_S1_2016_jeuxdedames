@@ -60,5 +60,5 @@ CmsBundle\Entity\Accueil:
     oneToMany:
         accueil:
             targetEntity: CmsBundle\Entity\Accueil
-            mappedBy: langue
+            mappedBy: accueil
             cascade:   [persist]
