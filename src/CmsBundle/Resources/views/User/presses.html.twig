@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
+
     <H1>Presse !</H1>
+
     {% for presse in presses %}
-    <p>{{ presse.nom }}</p>
-    <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
-    <p>{{ presse.texte }}</p>
-    <p>{{ presse.date|date("m/d/Y") }}</p>
+
+    <div class="container">
+        <p>{{ presse.nom }}</p>
+            <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
+                <p>{{ presse.texte }}</p>
+                    <p>{{ presse.date|date("m/d/Y") }}</p>
+    </div>
+
     {% endfor %}
+
     <div class="row">
         <a href="{{ path('presse_new') }}">Créer une nouvelle entrée.</a>
     </div>
+
 {% endblock %}

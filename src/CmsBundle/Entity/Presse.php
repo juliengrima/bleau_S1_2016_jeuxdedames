@@ -95,6 +95,7 @@ class Presse
 
     /*generate*/
 
+ 
     /**
      * @var integer
      */
@@ -255,5 +256,4 @@ class Presse
     {
         return $this->date;
     }
-
 }

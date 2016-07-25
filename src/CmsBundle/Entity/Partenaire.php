@@ -96,6 +96,7 @@ class Partenaire
     
 //Generate
 
+
     /**
      * @var integer
      */
@@ -115,7 +116,7 @@ class Partenaire
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -126,6 +127,7 @@ class Partenaire
      * Set image
      *
      * @param string $image
+     *
      * @return Partenaire
      */
     public function setImage($image)
@@ -138,7 +140,7 @@ class Partenaire
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -149,6 +151,7 @@ class Partenaire
      * Set donation
      *
      * @param integer $donation
+     *
      * @return Partenaire
      */
     public function setDonation($donation)
@@ -161,7 +164,7 @@ class Partenaire
     /**
      * Get donation
      *
-     * @return integer 
+     * @return integer
      */
     public function getDonation()
     {

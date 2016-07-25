@@ -46,9 +46,19 @@ CmsBundle\Entity\Accueil:
             type: string
             length: 255
             column: Contenu
+        langue:
+            type: string
+            lenght: 2
+            column: langue
     lifecycleCallbacks:
         prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ preUpload, setUpdatedAtValue ]
         postPersist: [ upload ]
         postUpdate: [ upload ]
         postRemove: [ removeUpload ]
+
+    oneToMany:
+        accueil:
+            targetEntity: CmsBundle\Entity\Accueil
+            mappedBy: accueil
+            cascade:   [persist]

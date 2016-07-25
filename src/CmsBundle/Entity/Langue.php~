@@ -1,0 +1,72 @@
+<?php
+
+namespace CmsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+class Langue
+{
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accueil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     *
+     * @return Langue
+     */
+    public function addAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil[] = $accueil;
+
+        return $this;
+    }
+
+    /**
+     * Remove accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     */
+    public function removeAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil->removeElement($accueil);
+    }
+
+    /**
+     * Get accueil
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccueil()
+    {
+        return $this->accueil;
+    }
+}

@@ -5,13 +5,12 @@ namespace CmsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Presse
+ * Accueil
  */
-class Presse
+class Accueilen
 {
-
     public $file;
-
+    
     protected function getUploadDir()
     {
         return 'uploads/imgcms';
@@ -93,7 +92,8 @@ class Presse
         }
     }
 
-    /*generate*/
 
- 
+
+
+    /*generate*/
 }

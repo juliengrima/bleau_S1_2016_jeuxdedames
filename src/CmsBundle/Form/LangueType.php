@@ -5,8 +5,9 @@ namespace CmsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class PresseType extends AbstractType
+class LangueType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,12 +16,9 @@ class PresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('file', 'file', array('label' => 'Image', 'required' => false))
-            ->add('texte', 'textarea')
-            ->add('lien', 'textarea')
-            ->add('date')
-        ;
+            ->add('accueil', CollectionType::class, array(
+            'entry_type' => AccueilType::class
+        ));
     }
     
     /**
@@ -29,7 +27,7 @@ class PresseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CmsBundle\Entity\Presse'
+            'data_class' => 'CmsBundle\Entity\Accueil'
         ));
     }
 }

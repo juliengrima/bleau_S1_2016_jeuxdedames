@@ -19,17 +19,17 @@ class Artiste
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     public function getWebPath()
     {
-        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
     }
 
     public function getAbsolutePath()
     {
-        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+        return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
     }
 
     /**
@@ -94,9 +94,8 @@ class Artiste
     }
 
 
-
     /*generate*/
-
+    
 
     /**
      * @var integer

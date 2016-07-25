@@ -226,5 +226,4 @@ class Commercant
     {
         return $this->ville;
     }
-
 }
