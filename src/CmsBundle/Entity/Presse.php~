@@ -93,7 +93,7 @@ class Presse
         }
     }
 
-    ##generate##
+    /*generate*/
 
     /**
      * @var integer

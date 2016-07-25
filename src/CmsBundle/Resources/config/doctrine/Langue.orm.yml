@@ -1,0 +1,20 @@
+CmsBundle\Entity\Langue:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\ArtisteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: 255
+            column: Type
+        abréviation:
+            type: string
+            length: 2
+            column: Abreviation
+

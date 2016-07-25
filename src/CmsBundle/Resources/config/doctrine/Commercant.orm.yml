@@ -27,3 +27,7 @@ CmsBundle\Entity\Commercant:
           postPersist: [ upload ]
           postUpdate: [ upload ]
           postRemove: [ removeUpload ]
+
+    manyToOne:
+        Langue:
+            targetEntity: CmsBundle\Entity\Langue

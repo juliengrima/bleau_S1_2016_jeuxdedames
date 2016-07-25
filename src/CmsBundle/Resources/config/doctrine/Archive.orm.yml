@@ -9,3 +9,7 @@ CmsBundle\Entity\Archive:
             generator:
                 strategy: AUTO
     lifecycleCallbacks: {  }
+
+    manyToOne:
+        langue:
+            targetEntity: CmsBundle\Entity\Langue

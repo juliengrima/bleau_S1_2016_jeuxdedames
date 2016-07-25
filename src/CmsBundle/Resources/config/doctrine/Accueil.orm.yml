@@ -52,3 +52,7 @@ CmsBundle\Entity\Accueil:
         postPersist: [ upload ]
         postUpdate: [ upload ]
         postRemove: [ removeUpload ]
+
+    manyToOne:
+        langue:
+            targetEntity: CmsBundle\Entity\Langue
