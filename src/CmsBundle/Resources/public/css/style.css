@@ -5,7 +5,7 @@ html, body {
 }
 body {
     font-family: "Damion", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.42857143;
     color: white;
     background-color: #00BCD4;
@@ -42,8 +42,6 @@ p {
     padding: auto;
     margin-bottom: 15px;
     font-family: 'Damion', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
     color: black;
     margin-top: 15px;
 }
