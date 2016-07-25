@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<<<<<<< HEAD
     <H1>Presse !</H1>
-=======
     {% for presse in presses %}
     <p>{{ presse.nom }}</p>
     <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
@@ -12,5 +10,4 @@
     <div class="row">
         <a href="{{ path('presse_new') }}">Créer une nouvelle entrée.</a>
     </div>
->>>>>>> 238d925c03995755f65cc3f1052d0aabcefa3795
 {% endblock %}
