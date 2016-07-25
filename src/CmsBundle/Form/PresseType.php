@@ -17,8 +17,8 @@ class PresseType extends AbstractType
         $builder
             ->add('nom')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
-            ->add('texte')
-            ->add('lien')
+            ->add('texte', 'textarea')
+            ->add('lien', 'textarea')
             ->add('date')
         ;
     }
