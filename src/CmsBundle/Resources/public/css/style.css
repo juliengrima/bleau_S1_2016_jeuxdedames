@@ -7,7 +7,7 @@ body {
     font-size: 15px;
     line-height: 1.42857143;
     color: white;
-    background-color: #00BCD4;
+    /*background-color: #00BCD4;*/
     margin: auto;
 }
 h4 {
@@ -43,6 +43,29 @@ p {
     color: black;
     margin-top: 15px;
 }
+img{
+    height: auto;
+    width: auto;
+    margin-right: 2px;
+}
+.vcenter {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 300px; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
+.edit_admin{
+    text-align: center;
+}
+.edit_admin a{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+}
 
 /************** Icone reseau **********/
 
@@ -54,6 +77,7 @@ p {
 
 .navbar{
     border: none !important;
+    margin-bottom: 0px !important;
 }
 .nav_custom {
     background-color: #03C9A9;
@@ -61,7 +85,7 @@ p {
 
 .nav_custom a {
     font-family: "Damion", Helvetica, Arial, sans-serif !important;
-    color: #ffff1a;
+    color: #ffff1a !important;
     font-size: 30px;
     font-weight: bold;
 }
@@ -74,98 +98,9 @@ p {
 
 /***************FIN NAVBAR ******************/
 
-.section{
-    padding-top: 50px;
-}
-.artistepage{
-    width: auto;
-    margin-left: 25px;
-    margin-right: 25px;
-}
-img{
-    height: auto;
-    width: auto;
-    margin-right: 2px;
-}
-.espace{
-    margin-top: 25px;
-}
-/* col-md-6 artistes **/
-/** Partie arrière du slide **/
-#h {
-    font-family: "Damion", Helvetica, Arial, sans-serif;
-    height: 450px;
-    background-color: #288493;
-}
-#h h1 {
-    color: #ffff1a;
-    font-size: 60px;
-    letter-spacing: 5px;
-    margin-bottom: 70px;
-}
-/**fin col-md-6 artistes */
+/*************** FOOTER *********************/
 
-/*** ARCHIVE ***/
-
-.ecriturearchivenomartiste {
-    text-align: center;
-    color: white;
-    font-size: 30px;
-}
-
-/*** FIN ARCHIVE **/
-
-/* TEXTE PRESENTATION */
-/** PLACEMENT+POLICE DES TRITRES AU DESSUS DES 3BLOCKS**/
-#g{
-    padding-bottom: 70px;
-    background: #03C9A9;
-    color: #ffff1a;
-    height: 450px;
-}
-#g h4 {
-    letter-spacing: 2px;
-    color: #ffff1a;
-
-}
-/** DISPOSITION DES 3 BLOCKS **/
-.presentation{
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-/* FIN TEXTE PRESENTATION */
-/** NOTRE EQUIPE **/
-.title-equipe {
-    margin-bottom: 30px;
-    margin-top: 30px;
-    text-align: center;
-    letter-spacing: 2px;
-    margin-left: -60px;
-    color: #ffff1a;
-}
-.row-equipe{
-    height: auto;
-    width: 100%;
-}
-
-.btn-green {
-    background: #03C9A9;
-    color: white;
-}
-.p-equipe{
-    margin: 0 0 10px;
-    font-family: "Damion", Helvetica, Arial, sans-serif;
-}
-.joliejoliejolie {
-    font-family: "Damion", Helvetica, Arial, sans-serif;
-    font-size: 20px ;
-}
-
-/** FIN NOTRE EQUIPE **/
-/** FOOTER **/
-.row{
+footer .row{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 2px;
@@ -180,19 +115,92 @@ footer{
     width: auto;
     text-align: center;
     color: white;
+    font-family: "Damion", Helvetica, Arial, sans-serif !important;
 }
-/** FIN FOOTER **/
+
+/*************** FIN FOOTER *******************/
+
+
+/********* HOME PAGE **********/
+.carousel_jdd{
+    font-family: "Damion", Helvetica, Arial, sans-serif;
+    background-color: #288493;
+}
+
+.carousel_jdd h1 {
+    color: #ffff1a;
+    font-size: 60px;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+.carousel_jdd figure{
+    margin-bottom: 50px;
+}
+
+.home_presentation{
+    padding-bottom: 50px;
+    padding-top: 50px;
+    background-color: #03C9A9;
+}
+
+.home_equipe{
+    background-color: #00BCD4;
+}
+
+.vcenter img{
+    width: 100%;
+    max-height: 400px;
+}
+.home_presentation{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.pres_equipe{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+@media screen and (max-width: 990px) {
+    .home_presentation {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        text-align: center;
+    }
+    .home_contenu{
+        margin-bottom: 30px;
+    }
+    .home_equipe .vcenter{
+        min-height: 0px;
+        min-width: 0px;
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+/*** ARCHIVE ***/
+
+.ecriturearchivenomartiste {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+/*** FIN ARCHIVE **/
+
+
+.artistepage{
+    width: auto;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+/** FIN NOTRE EQUIPE **/
+
 /** ARTISTE **/
 input {
     -webkit-appearance: textfield;
     background-color: white;
     color: black;
 }
-.flotte {
-    float: right;
-    width: 50%;
-    margin-bottom: 30px;
-}
+
 .ecritureartiste {
     text-align: center;
     color: White;
