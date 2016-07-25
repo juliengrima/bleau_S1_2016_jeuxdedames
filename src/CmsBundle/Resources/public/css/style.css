@@ -213,8 +213,10 @@ input {
 }
 .policeecrituretitre {
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .annonceaccueil{
     color: #122b40;

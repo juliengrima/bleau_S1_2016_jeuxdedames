@@ -1,21 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Partenaire edit</h1>
+    <h1 style="margin-bottom: 35px;">Page d'édition des Partenaires </h1>
 
-    {{ form_start(edit_form) }}
+
+    <div class="policeecrituretitre">
+        <p class="policeecriture2">Télécharger l'image de votre partenaire</p>
+        {{ form_widget(edit_form.file) }}
+    </div>
+
+    <div class="policeecrituretitre">
+        <p class="policeecriture2">Ajouter le montant du don</p>
+        {{ form_widget(edit_form.donation) }}
+    </div>
+
+    <div class="policeecrituretitre">
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <input type="submit" value="Editer le contenu" />
+        {{ form_end(edit_form) }}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('partenaire_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="policeecrituretitre">
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Supprimer l'artiste">
+        {{ form_end(delete_form) }}
+    </div>
+
+    <div class="policeecrituretitre">
+        <a href="{{ path('partenaire_index') }}">Back to the list</a>
+    </div>
+    
 {% endblock %}
