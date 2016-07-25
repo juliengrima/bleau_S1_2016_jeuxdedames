@@ -20,3 +20,4 @@ CmsBundle\Entity\Partenaire:
       postPersist: [ upload ]
       postUpdate: [ upload ]
       postRemove: [ removeUpload ]
+
