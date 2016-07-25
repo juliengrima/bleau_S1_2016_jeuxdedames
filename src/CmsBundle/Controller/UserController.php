@@ -54,12 +54,14 @@ class UserController extends Controller
     public function archivesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 1));
 
-        $archives = $em->getRepository('CmsBundle:Archive')->findAll();
+        foreach ($artistes as $artiste) {
+            $years[] = $artiste->getDate()->format("Y");
+        }
 
         return $this->render('CmsBundle:User:archives.html.twig' , array (
-            'archives' => $archives,
+            'years' => $years,
             'artistes' => $artistes,
         ));
     }
