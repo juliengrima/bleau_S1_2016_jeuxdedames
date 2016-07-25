@@ -1,20 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Presse edit</h1>
+
+    <div class="row">
+        <h1>Presse edition</h1>
+    </div>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+    <div class="container">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <p class="policeecriture2">Titre de l'article</p>
+            <p>{{ form_widget(edit_form.file) }}</p>
+            <p>{{ form_widget(edit_form.texte) }}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <p class="policeecriture2">Choisissez votre lien et votre date
+                {{ form_widget(edit_form.lien) }}
+                {{ form_widget(edit_form.date) }}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <p class="policeecriture2">Sélectionner votre image</p>
+            <p>{{ form_widget(edit_form.file) }}</p>
+
+        </div>
+    </div>
+
+
+
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('presse_index') }}">Back to the list</a>
+            <a href="{{ path('presse_index') }}">Retour à la liste</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
