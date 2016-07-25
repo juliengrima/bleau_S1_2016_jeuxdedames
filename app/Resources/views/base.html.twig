@@ -11,89 +11,85 @@
 
         {% block stylesheets %}
 
-            <!-- Website made by Nicolas Capron && Pol Soyez -->
-
             <!-- Appel CSS Boostrap -->
-            <meta name="viewport" content="width=device-width" />
-            <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
-            <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
-            <script src="{{ asset ('bundles/cms/js/masonry.js') }}"></script>
-            <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap.min.css') }}"/>
-            <!-- Optional theme -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/bootstrap-theme.min.css') }}"/>
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/font-awesome.css') }}"/>
-            <link rel="stylesheet" href="{{ asset ('bundles/cms/css/font-awesome.min.css') }}"/>
+
+            <!-- Font Google -->
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+
             <!-- Appel feuille de style -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
 
         {% endblock %}
-</head>
+    </head>
 
-<body>
-        <!-- ******** NAVBAR ******* -->
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="jeuxdedames" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
+    <body>
+        <header>
+
+            <!-- ******** NAVBAR ******* -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="jeuxdedames" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
+                    </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_artiste') }}">Artistes</a>
+                        <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_partenaire') }}">Partenaires</a>
+                        <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_commercant') }}">Commerçants</a>
+                        <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_presse') }}">Presse</a>
+                        <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_archive') }}">Archives</a>
+                    </ul>
                 </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_artiste') }}">Artistes</a>
-                    <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_partenaire') }}">Partenaires</a>
-                    <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_commercant') }}">Commerçants</a>
-                    <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_presse') }}">Presse</a>
-                    <a class="hvr-underline-from-left jeuxdedames" href="{{ path('user_archive') }}">Archives</a>
-                </ul>
-            </div>
-            </div>
-        </nav>
-    </header>
-    {% block body %}{% endblock %}
+                </div>
+            </nav>
+        </header>
 
-    <footer>
-        <!-- ******** FOOTER ******** -->
-            <div class="row">
+        {% block body %}{% endblock %}
+
+        <footer>
+            <!-- ******** FOOTER ******** -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 reseaux">
                         <h6>Vous pouvez nous retrouver</h6>
-                        <h2 class="h2">Sur nos différents<br/>réseaux sociaux</h2>
+                        <h2>Sur nos différents réseaux sociaux</h2>
                         {#<button class="btn-green">Cliquez ici</button>#}
                     </div>
                 </div>
-            <div class="row">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-                <i class="fa fa-youtube" aria-hidden="true"></i>
-
-
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 reseaux">
-                    <h5>Jeux de Dames</h5>
+                <div class="row">
+                    <a href="#" class="icone_reseau"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
+                    <a href="#" class="icone_reseau"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
+                    <a href="#" class="icone_reseau"><i class="fa fa-youtube fa-4x" aria-hidden="true"></i></a>
                 </div>
-            </div>
-    </footer>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 reseaux">
+                        <h5>Jeux de Dames</h5>
+                    </div>
+                </div>
+        </footer>
+
         {% block javascripts %}
 
+            <!-- Appel Jquery -->
             <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}" ></script>
             <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}" ></script>
 
-            <!-- Latest compiled and minified JavaScript -->
+            <!-- Appel JavaScript Bootstrap -->
             <script src="{{ asset ('bundles/cms/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset ('bundles/cms/js/masonry.pkgd.js') }}"></script>
 
+            <!-- Appel Javascript perso -->
             <script type="text/javascript" src="{{ asset('bundles/cms/js/main.js') }}"></script>
 
         {% endblock %}
-</body>
+
+    </body>
 </html>
