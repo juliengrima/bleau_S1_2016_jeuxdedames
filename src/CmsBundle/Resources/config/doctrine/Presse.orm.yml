@@ -8,4 +8,28 @@ CmsBundle\Entity\Presse:
             id: true
             generator:
                 strategy: AUTO
-    lifecycleCallbacks: {  }
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        image:
+            type: string
+            length: 255
+            column: image
+        texte:
+            type: string
+            length: 255
+            column: texte
+        lien:
+            type: string
+            length: 255
+            column: lien
+        date:
+            type: date
+    lifecycleCallbacks:
+          prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+          preUpdate: [ preUpload, setUpdatedAtValue ]
+          postPersist: [ upload ]
+          postUpdate: [ upload ]
+          postRemove: [ removeUpload ]

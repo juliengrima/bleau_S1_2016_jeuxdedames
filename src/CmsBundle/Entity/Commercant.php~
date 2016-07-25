@@ -9,106 +9,28 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commercant
 {
-    /**
-     * @var integer
-     */
-    private $id;
+    public $file;
 
-    /**
-     * @var string
-     */
-    private $adresse;
-
-    /**
-     * @var integer
-     */
-    private $code;
-
-    /**
-     * @var string
-     */
-    private $ville;
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    protected function getUploadDir()
     {
-        return $this->id;
+        return 'uploads/imgcms';
     }
 
-    /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return Commercant
-     */
-    public function setAdresse($adresse)
+    protected function getUploadRootDir()
     {
-        $this->adresse = $adresse;
-
-        return $this;
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
+    public function getWebPath()
     {
-        return $this->adresse;
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
     }
 
-    /**
-     * Set code
-     *
-     * @param integer $code
-     *
-     * @return Commercant
-     */
-    public function setCode($code)
+    public function getAbsolutePath()
     {
-        $this->code = $code;
-
-        return $this;
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
     }
 
-    /**
-     * Get code
-     *
-     * @return integer
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
+    ##generate##
 
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return Commercant
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
 }

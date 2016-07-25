@@ -25,6 +25,8 @@ CmsBundle\Entity\Artiste:
             type: string
             length: 255
             column: lien
+        date:
+            type: datetime
         ajouterslider:
             type: boolean
         archive:

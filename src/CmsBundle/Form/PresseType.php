@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CommercantType extends AbstractType
+class PresseType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,11 @@ class CommercantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adresse')
-            ->add('code')
-            ->add('ville')
+            ->add('nom')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
+            ->add('texte')
+            ->add('lien')
+            ->add('date')
         ;
     }
     
@@ -28,7 +29,7 @@ class CommercantType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CmsBundle\Entity\Commercant'
+            'data_class' => 'CmsBundle\Entity\Presse'
         ));
     }
 }

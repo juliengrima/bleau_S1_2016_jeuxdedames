@@ -97,6 +97,7 @@ class Artiste
 
     /*generate*/
 
+
     /**
      * @var integer
      */
@@ -116,6 +117,16 @@ class Artiste
      * @var string
      */
     private $texte;
+
+    /**
+     * @var string
+     */
+    private $lien;
+
+    /**
+     * @var \DateTime
+     */
+    private $date;
 
     /**
      * @var boolean
@@ -211,6 +222,54 @@ class Artiste
     }
 
     /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Artiste
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Artiste
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
      * Set ajouterslider
      *
      * @param boolean $ajouterslider
@@ -256,34 +315,5 @@ class Artiste
     public function getArchive()
     {
         return $this->archive;
-    }
-    /**
-     * @var string
-     */
-    private $lien;
-
-
-    /**
-     * Set lien
-     *
-     * @param string $lien
-     *
-     * @return Artiste
-     */
-    public function setLien($lien)
-    {
-        $this->lien = $lien;
-
-        return $this;
-    }
-
-    /**
-     * Get lien
-     *
-     * @return string
-     */
-    public function getLien()
-    {
-        return $this->lien;
     }
 }
