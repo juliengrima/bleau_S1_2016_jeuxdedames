@@ -3,17 +3,28 @@
 namespace CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Archive
- */
 class Langue
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accueil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -24,62 +35,38 @@ class Langue
     {
         return $this->id;
     }
-    /**
-     * @var string
-     */
-    private $type;
 
     /**
-     * @var string
-     */
-    private $abréviation;
-
-
-    /**
-     * Set type
+     * Add accueil
      *
-     * @param string $type
+     * @param \CmsBundle\Entity\Accueil $accueil
      *
      * @return Langue
      */
-    public function setType($type)
+    public function addAccueil(\CmsBundle\Entity\Accueil $accueil)
     {
-        $this->type = $type;
+        $this->accueil[] = $accueil;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Remove accueil
      *
-     * @return string
+     * @param \CmsBundle\Entity\Accueil $accueil
      */
-    public function getType()
+    public function removeAccueil(\CmsBundle\Entity\Accueil $accueil)
     {
-        return $this->type;
+        $this->accueil->removeElement($accueil);
     }
 
     /**
-     * Set abréviation
+     * Get accueil
      *
-     * @param string $abréviation
-     *
-     * @return Langue
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setAbréviation($abréviation)
+    public function getAccueil()
     {
-        $this->abréviation = $abréviation;
-
-        return $this;
-    }
-
-    /**
-     * Get abréviation
-     *
-     * @return string
-     */
-    public function getAbréviation()
-    {
-        return $this->abréviation;
+        return $this->accueil;
     }
 }

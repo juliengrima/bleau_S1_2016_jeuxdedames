@@ -96,6 +96,7 @@ class Partenaire
     
 //Generate
 
+
     /**
      * @var integer
      */
@@ -111,11 +112,16 @@ class Partenaire
      */
     private $donation;
 
+    /**
+     * @var \CmsBundle\Entity\Langue
+     */
+    private $langue;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -126,6 +132,7 @@ class Partenaire
      * Set image
      *
      * @param string $image
+     *
      * @return Partenaire
      */
     public function setImage($image)
@@ -138,7 +145,7 @@ class Partenaire
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -149,6 +156,7 @@ class Partenaire
      * Set donation
      *
      * @param integer $donation
+     *
      * @return Partenaire
      */
     public function setDonation($donation)
@@ -161,10 +169,34 @@ class Partenaire
     /**
      * Get donation
      *
-     * @return integer 
+     * @return integer
      */
     public function getDonation()
     {
         return $this->donation;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param \CmsBundle\Entity\Langue $langue
+     *
+     * @return Partenaire
+     */
+    public function setLangue(\CmsBundle\Entity\Langue $langue = null)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return \CmsBundle\Entity\Langue
+     */
+    public function getLangue()
+    {
+        return $this->langue;
     }
 }

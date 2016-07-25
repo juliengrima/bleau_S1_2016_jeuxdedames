@@ -96,6 +96,7 @@ class Accueil
 
 
     /*generate*/
+
     /**
      * @var integer
      */
@@ -146,11 +147,16 @@ class Accueil
      */
     private $contenu;
 
+    /**
+     * @var string
+     */
+    private $langue;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -161,6 +167,7 @@ class Accueil
      * Set titre
      *
      * @param string $titre
+     *
      * @return Accueil
      */
     public function setTitre($titre)
@@ -173,7 +180,7 @@ class Accueil
     /**
      * Get titre
      *
-     * @return string 
+     * @return string
      */
     public function getTitre()
     {
@@ -184,6 +191,7 @@ class Accueil
      * Set premiertitre
      *
      * @param string $premiertitre
+     *
      * @return Accueil
      */
     public function setPremiertitre($premiertitre)
@@ -196,7 +204,7 @@ class Accueil
     /**
      * Get premiertitre
      *
-     * @return string 
+     * @return string
      */
     public function getPremiertitre()
     {
@@ -207,6 +215,7 @@ class Accueil
      * Set premiercontenu
      *
      * @param string $premiercontenu
+     *
      * @return Accueil
      */
     public function setPremiercontenu($premiercontenu)
@@ -219,7 +228,7 @@ class Accueil
     /**
      * Get premiercontenu
      *
-     * @return string 
+     * @return string
      */
     public function getPremiercontenu()
     {
@@ -230,6 +239,7 @@ class Accueil
      * Set deuxiemetitre
      *
      * @param string $deuxiemetitre
+     *
      * @return Accueil
      */
     public function setDeuxiemetitre($deuxiemetitre)
@@ -242,7 +252,7 @@ class Accueil
     /**
      * Get deuxiemetitre
      *
-     * @return string 
+     * @return string
      */
     public function getDeuxiemetitre()
     {
@@ -253,6 +263,7 @@ class Accueil
      * Set deuxiemecontenu
      *
      * @param string $deuxiemecontenu
+     *
      * @return Accueil
      */
     public function setDeuxiemecontenu($deuxiemecontenu)
@@ -265,7 +276,7 @@ class Accueil
     /**
      * Get deuxiemecontenu
      *
-     * @return string 
+     * @return string
      */
     public function getDeuxiemecontenu()
     {
@@ -276,6 +287,7 @@ class Accueil
      * Set troisiemetitre
      *
      * @param string $troisiemetitre
+     *
      * @return Accueil
      */
     public function setTroisiemetitre($troisiemetitre)
@@ -288,7 +300,7 @@ class Accueil
     /**
      * Get troisiemetitre
      *
-     * @return string 
+     * @return string
      */
     public function getTroisiemetitre()
     {
@@ -299,6 +311,7 @@ class Accueil
      * Set troisiemecontenu
      *
      * @param string $troisiemecontenu
+     *
      * @return Accueil
      */
     public function setTroisiemecontenu($troisiemecontenu)
@@ -311,7 +324,7 @@ class Accueil
     /**
      * Get troisiemecontenu
      *
-     * @return string 
+     * @return string
      */
     public function getTroisiemecontenu()
     {
@@ -322,6 +335,7 @@ class Accueil
      * Set image
      *
      * @param string $image
+     *
      * @return Accueil
      */
     public function setImage($image)
@@ -334,7 +348,7 @@ class Accueil
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -345,6 +359,7 @@ class Accueil
      * Set contenu
      *
      * @param string $contenu
+     *
      * @return Accueil
      */
     public function setContenu($contenu)
@@ -357,10 +372,80 @@ class Accueil
     /**
      * Get contenu
      *
-     * @return string 
+     * @return string
      */
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Accueil
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accueil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     *
+     * @return Accueil
+     */
+    public function addAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil[] = $accueil;
+
+        return $this;
+    }
+
+    /**
+     * Remove accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     */
+    public function removeAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil->removeElement($accueil);
+    }
+
+    /**
+     * Get accueil
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccueil()
+    {
+        return $this->accueil;
     }
 }

@@ -29,5 +29,5 @@ CmsBundle\Entity\Commercant:
           postRemove: [ removeUpload ]
 
     manyToOne:
-        Langue:
+        langue:
             targetEntity: CmsBundle\Entity\Langue

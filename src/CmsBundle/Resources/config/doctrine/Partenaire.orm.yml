@@ -22,5 +22,5 @@ CmsBundle\Entity\Partenaire:
       postRemove: [ removeUpload ]
 
     manyToOne:
-        Langue:
+        langue:
             targetEntity: CmsBundle\Entity\Langue

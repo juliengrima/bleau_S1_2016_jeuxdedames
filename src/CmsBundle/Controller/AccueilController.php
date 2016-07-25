@@ -2,6 +2,8 @@
 
 namespace CmsBundle\Controller;
 
+use CmsBundle\Entity\Langue;
+use CmsBundle\Form\LangueType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -36,20 +38,32 @@ class AccueilController extends Controller
      */
     public function newAction(Request $request)
     {
-        $accueil = new Accueil();
-        $form = $this->createForm('CmsBundle\Form\AccueilType', $accueil);
+        $langue = new Accueil();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $accueil_fr = new Accueil();
+        $accueil_fr->setLangue('fr');
+        $langue->getAccueil()->add($accueil_fr);
+        $accueil_en = new Accueil();
+        $accueil_en->setLangue('en');
+        $langue->getAccueil()->add($accueil_en);
+        // end dummy code
+
+        $form = $this->createForm(LangueType::class, $langue);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($accueil);
+            $em->persist($accueil_fr);
+            $em->persist($accueil_en);
             $em->flush();
 
-            return $this->redirectToRoute('accueil_show', array('id' => $accueil->getId()));
+            return $this->redirectToRoute('accueil_index');
         }
 
         return $this->render('CmsBundle:Accueil:new.html.twig', array(
-            'accueil' => $accueil,
+            'langue' => $langue,
             'form' => $form->createView(),
         ));
     }
