@@ -14,9 +14,24 @@ CmsBundle\Entity\Partenaire:
             length: 255
         donation:
             type: integer
+        adresse:
+            type: string
+            length: 255
+        lien:
+            type: string
+            length: 255
+        langue:
+            type: string
+            length: 2
     lifecycleCallbacks:
       prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
       preUpdate: [ preUpload, setUpdatedAtValue ]
       postPersist: [ upload ]
       postUpdate: [ upload ]
       postRemove: [ removeUpload ]
+
+    oneToMany:
+        partenaire:
+            targetEntity: CmsBundle\Entity\Artiste
+            mappedBy: partenaire
+            cascade:   [persist]

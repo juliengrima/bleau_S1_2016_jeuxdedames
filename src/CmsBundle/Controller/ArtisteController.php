@@ -59,15 +59,19 @@ class ArtisteController extends Controller
                     ))
             ->add('submit','submit')
             ->getForm();
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $artiste_fr->setDate(new \DateTime());            
+            $artiste_en->setDate(new \DateTime());
+            $artiste_es->setDate(new \DateTime());
             $em->persist($artiste_fr);
             $em->persist($artiste_en);
             $em->persist($artiste_es);
             $em->flush();
 
-            return $this->redirectToRoute('artiste_index');
+            return $this->redirectToRoute('artiste_new');
         }
 
         return $this->render('CmsBundle:Artiste:new.html.twig', array(

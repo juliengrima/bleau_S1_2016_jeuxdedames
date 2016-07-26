@@ -2,6 +2,7 @@
 
 namespace CmsBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -35,20 +36,42 @@ class PartenaireController extends Controller
      */
     public function newAction(Request $request)
     {
-        $partenaire = new Partenaire();
-        $form = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
+        $langue = new Partenaire();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $artiste_fr = new Partenaire();
+        $artiste_fr->setLangue('fr');
+        $langue->getPartenaire()->add($artiste_fr);
+        $artiste_en = new Partenaire();
+        $artiste_en->setLangue('en');
+        $langue->getPartenaire()->add($artiste_en);
+        $artiste_es= new Partenaire();
+        $artiste_es->setLangue('es');
+        $langue->getPartenaire()->add($artiste_es);
+
+        // end dummy code
+
+        $form = $this->createFormBuilder($langue)
+            ->add('partenaire', CollectionType::class, array(
+                'entry_type' => PartenaireType::class
+            ))
+            ->add('submit','submit')
+            ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($partenaire);
+            $em->persist($partenaire_fr);
+            $em->persist($partenaire_en);
+            $em->persist($partenaire_es);
             $em->flush();
 
-            return $this->redirectToRoute('partenaire_show', array('id' => $partenaire->getId()));
+            return $this->redirectToRoute('artiste_new');
         }
 
-        return $this->render('CmsBundle:partenaire:new.html.twig', array(
-            'partenaire' => $partenaire,
+        return $this->render('CmsBundle:Artiste:new.html.twig', array(
+            'langue' => $langue,
             'form' => $form->createView(),
         ));
     }
@@ -72,36 +95,36 @@ class PartenaireController extends Controller
      *
      */
     public function editAction(Request $request, Partenaire $partenaire)
-        {
-            $deleteForm = $this->createDeleteForm($partenaire);
-            $editForm = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
-            $editForm->handleRequest($request);
+    {
+        $deleteForm = $this->createDeleteForm($partenaire);
+        $editForm = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
+        $editForm->handleRequest($request);
 
-            if ($editForm->isSubmitted() && $editForm->isValid()) {
-                $em = $this->getDoctrine()->getManager();
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
 
-                if($editForm->get('file')->getData() != null) {
+            if($editForm->get('file')->getData() != null) {
 
-                    if($partenaire->getImage() != null) {
-                        unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
-                        $partenaire->setImage(null);
-                    }
+                if($partenaire->getImage() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
+                    $partenaire->setImage(null);
                 }
-
-                $partenaire->preUpload();
-
-                $em->persist($partenaire);
-                $em->flush();
-
-                return $this->redirectToRoute('partenaire_edit', array('id' => $partenaire->getId()));
             }
 
-            return $this->render('CmsBundle:partenaire:edit.html.twig', array(
-                'partenaire' => $partenaire,
-                'edit_form' => $editForm->createView(),
-                'delete_form' => $deleteForm->createView(),
-            ));
+            $partenaire->preUpload();
+
+            $em->persist($partenaire);
+            $em->flush();
+
+            return $this->redirectToRoute('partenaire_edit', array('id' => $partenaire->getId()));
         }
+
+        return $this->render('CmsBundle:partenaire:edit.html.twig', array(
+            'partenaire' => $partenaire,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Deletes a Partenaire entity.
