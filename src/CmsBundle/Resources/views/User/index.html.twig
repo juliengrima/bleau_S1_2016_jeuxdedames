@@ -1,90 +1,69 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- ******** CAROUSSEL ******** -->
-    <div id="h">
-        <div class="section">
-            <div class="col-md-12 artistes">
-                {% for accueil in accueils %}
-                <h1>{{ accueil.titre }}</h1>
-                {% endfor %}
-                <figure>
-                    <marquee behavior="scroll"  direction="left" height="200"
-                             width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
 
-                        {% for artiste in artistes %}
-                            {% if artiste.ajouterslider == true %}
-                                {% if (artiste.lien != null) %}
-                                    <a href="{{ artiste.lien }}"><img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
-                                {% else %}
-                                    <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    </marquee>
-                </figure>
-            </div>
-        </div>
-    </div>
-
-<!-- ******** TEXTE PRESENTATION ******** -->
-
-<div id="g">
-    <div class="container">
-        <div class="section presentation">
-            <div class="col-md-4 colonne">
-                {% for accueil in accueils %}
-                <h4>{{ accueil.premiertitre }}</h4>
-                <p class="premiertexte">{{ accueil.premiercontenu }}</p>
-                <h4 class="joliejoliejolie">{{ accueil.premiertitre }}</h4>
-                <p class="joliejoliejolie">{{ accueil.premiercontenu }}</p>
-                {% endfor %}
-            </div>
-            <div class="col-md-4 colonne">
-                {% for accueil in accueils %}
-                    <h4>{{ accueil.deuxiemetitre }}</h4>
-                    <p class="premiertexte" >{{ accueil.deuxiemecontenu }}</ppremiertexte>
-                    <h4 class="joliejoliejolie">{{ accueil.deuxiemetitre }}</h4>
-                    <p class="joliejoliejolie">{{ accueil.deuxiemecontenu }}</p>
-                {% endfor %}
-            </div>
-            <div class="col-md-4 colonne">
-                {% for accueil in accueils %}
-                    <h4>{{ accueil.troisiemetitre }}</h4>
-                    <p class="premiertexte">{{ accueil.troisiemecontenu }}</p>
-                    <h4 class="joliejoliejolie">{{ accueil.troisiemetitre }}</h4>
-                    <p class="joliejoliejolie">{{ accueil.troisiemecontenu }}</p>
-                {% endfor %}
-            </div>
-        </div><!--/row -->
-    </div><!--/container -->
-</div>
-
-<!-- ******** NOTRE EQUIPE ******** -->
-
-<div class="container">
-    <div class="row-equipes">
-        <div class="col-md-5">
-            {% for accueil in accueils %}
-            <p class="joliejoliejolie">{{ accueil.contenu }}</p>
-            {% endfor %}
-        </div>
-        <div class="flotte">
-            {% for accueil in accueils %}
-            <img class="flotte" src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
-            {% endfor %}
-        </div>
-    </div><!--/row -->
-</div>
     {% for accueil in accueils %}
-        <div class="row">
-    <p class="row"><a href="{{ path('accueil_edit', { 'id': accueil.id }) }}">editez la page</a></p>
-</div>
+
+        <div class="container-fluid">
+            <!-- ******** CAROUSSEL ******** -->
+            <div class="row carousel_jdd">
+                <div class="section">
+                    <div class="col-md-12">
+                        <h1>{{ accueil.titre }}</h1>
+                        <figure>
+                            <marquee behavior="scroll"  direction="left" height="200" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
+                                {% for artiste in artistes %}
+                                    {% if artiste.ajouterslider == true %}
+                                        {% if (artiste.lien != null) %}
+                                            <a href="{{ artiste.lien }}"><img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
+                                        {% else %}
+                                            <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </marquee>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+                <!-- ******** TEXTE PRESENTATION ******** -->
+
+            <div class="row home_presentation">
+                <div class="section">
+                    <div class="col-md-4 home_contenu">
+                        <h4 class="">{{ accueil.premiertitre }}</h4>
+                        <p class="">{{ accueil.premiercontenu }}</p>
+                    </div>
+                    <div class="col-md-4 home_contenu">
+                        <h4 class="">{{ accueil.deuxiemetitre }}</h4>
+                        <p class="">{{ accueil.deuxiemecontenu }}</p>
+                    </div>
+                    <div class="col-md-4 home_contenu">
+                        <h4 class="">{{ accueil.troisiemetitre }}</h4>
+                        <p class="">{{ accueil.troisiemecontenu }}</p>
+                    </div>
+                </div><!--/row -->
+            </div>
+
+            <!-- ******** NOTRE EQUIPE ******** -->
+
+            <div class="row home_equipe">
+                <div class="col-md-6 pres_equipe vcenter">
+                    <p class="">{{ accueil.contenu }}</p>
+                </div>
+                <div class="col-md-6 vcenter">
+                    <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
+                </div>
+
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page</a>
+                </div>
+            {#{% endif %}#}
+            </div>
+        </div>
+
     {% endfor %}
 
-    <!-- ******** APPEL AU MENU DEROULANT ******** -->
-
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-</body>
 {% endblock %}
