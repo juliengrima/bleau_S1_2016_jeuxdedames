@@ -4,24 +4,10 @@
     <h1>Artiste creation </h1>
 
     {{ form_start(form) }}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <div class="col-md-3">
-                    <p>nom :{{ form_widget(form.nom) }}</p>
-                </div>
-                <p>image :{{ form_widget(form.file) }}</p>
-                <p>ajouter au slider :{{ form_widget(form.ajouterslider) }}</p>
-                <p>lien :{{ form_widget(form.lien) }}</p>
-                <p>texte :{{ form_widget(form.texte) }}</p>
-                <p>archive :{{ form_widget(form.archive) }}</p>
-            </div>
-        </div>
-    </div>
+    {% for artiste in langue %}
     {{ form_widget(form) }}
-
-    <input type="submit" value="Créer" />
-
+    {% endfor %}
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
     <ul>

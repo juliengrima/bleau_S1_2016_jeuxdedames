@@ -112,6 +112,33 @@ class Partenaire
      */
     private $donation;
 
+    /**
+     * @var string
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     */
+    private $lien;
+
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $partenaire;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -169,5 +196,111 @@ class Partenaire
     public function getDonation()
     {
         return $this->donation;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Partenaire
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Partenaire
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Partenaire
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Add partenaire
+     *
+     * @param \CmsBundle\Entity\Artiste $partenaire
+     *
+     * @return Partenaire
+     */
+    public function addPartenaire(\CmsBundle\Entity\Artiste $partenaire)
+    {
+        $this->partenaire[] = $partenaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove partenaire
+     *
+     * @param \CmsBundle\Entity\Artiste $partenaire
+     */
+    public function removePartenaire(\CmsBundle\Entity\Artiste $partenaire)
+    {
+        $this->partenaire->removeElement($partenaire);
+    }
+
+    /**
+     * Get partenaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPartenaire()
+    {
+        return $this->partenaire;
     }
 }

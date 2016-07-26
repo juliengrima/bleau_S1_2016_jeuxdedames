@@ -97,7 +97,6 @@ class Accueil
 
     /*generate*/
 
-
     /**
      * @var integer
      */

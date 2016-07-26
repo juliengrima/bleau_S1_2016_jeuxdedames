@@ -95,7 +95,6 @@ class Presse
 
     /*generate*/
 
- 
     /**
      * @var integer
      */
