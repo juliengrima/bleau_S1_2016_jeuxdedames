@@ -40,15 +40,15 @@ class PartenaireController extends Controller
 
         // dummy code - this is here just so that the Task has some tags
         // otherwise, this isn't an interesting example
-        $artiste_fr = new Partenaire();
-        $artiste_fr->setLangue('fr');
-        $langue->getPartenaire()->add($artiste_fr);
-        $artiste_en = new Partenaire();
-        $artiste_en->setLangue('en');
-        $langue->getPartenaire()->add($artiste_en);
-        $artiste_es= new Partenaire();
-        $artiste_es->setLangue('es');
-        $langue->getPartenaire()->add($artiste_es);
+        $partenaire_fr = new Partenaire();
+        $partenaire_fr->setLangue('fr');
+        $langue->getPartenaire()->add($partenaire_fr);
+        $partenaire_en = new Partenaire();
+        $partenaire_en->setLangue('en');
+        $langue->getPartenaire()->add($partenaire_en);
+        $partenaire_es= new Partenaire();
+        $partenaire_es->setLangue('es');
+        $langue->getPartenaire()->add($partenaire_es);
 
         // end dummy code
 
@@ -67,10 +67,10 @@ class PartenaireController extends Controller
             $em->persist($partenaire_es);
             $em->flush();
 
-            return $this->redirectToRoute('artiste_new');
+            return $this->redirectToRoute('partenaire_new');
         }
 
-        return $this->render('CmsBundle:Artiste:new.html.twig', array(
+        return $this->render('CmsBundle:partenaire:new.html.twig', array(
             'langue' => $langue,
             'form' => $form->createView(),
         ));

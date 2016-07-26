@@ -64,8 +64,8 @@ class ArtisteController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $artiste_fr->setDate(new \DateTime());            
-            $artiste_en->setDate(new \DateTime());
-            $artiste_es->setDate(new \DateTime());
+            $artiste_en->setDate($artiste_fr->getDate());
+            $artiste_es->setDate($artiste_fr->getDate());
             $em->persist($artiste_fr);
             $em->persist($artiste_en);
             $em->persist($artiste_es);
