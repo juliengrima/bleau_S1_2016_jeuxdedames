@@ -33,6 +33,11 @@ h3 .editartiste2{
     color: black;
     margin-top: 15px;
 }
+#artiste_texte{
+    padding: auto;
+    font-size: 15px;
+    color: black;
+}
 
 h6, h5{
     font-size: 30px;
