@@ -23,7 +23,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 0));
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
             'artistes' => $artistes,

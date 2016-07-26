@@ -42,18 +42,12 @@
                 <input type="submit" value="Editer le contenu" />
                     {{ form_end(edit_form) }}
         </div>
-
-        <div class="col-md-6 col-sm-4 col-xs-6 row ">
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer l'artiste">
-                    {{ form_end(delete_form) }}
-        </div>
     </div>
 
 
     <div class="row">
         <div class="policeecrituretitre">
-            <a href="{{ path('artiste_index') }}">Retour à la liste</a>
+            <a href="{{ path('user_artiste') }}">Retour à la liste</a>
         </div>
     </div>
 

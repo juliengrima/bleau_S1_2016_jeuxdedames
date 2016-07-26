@@ -1,34 +1,81 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
-    <div class="">
-        {% for artiste in artistes %}
-            {% if artiste.archive == false %}
+    <div class="container-fluid block_artiste">
+        <div class="row">
+            {% for artiste in artistes %}
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="row">
                         <figure class="snip1239">
                             <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
                             <figcaption>
-                                <h3 class="editartiste2">{{ artiste.nom }}</h3>
-                                <p class="editartiste2">{{ artiste.texte }}</p>
-                                <a href="#" class="read-more">Read More</a>
+                                <h3>{{ artiste.nom }}</h3>
+                                <p>{{ artiste.texte }}</p>
+                                <a href="{{ artiste.lien }}" class="read-more">An savoir plus</a>
                             </figcaption>
                         </figure>
                     </div>
                     <div class="row">
-                        <p class="editartiste2" ><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                        <div class="edit_admin">
+                            <a class="btn btn-default edit_admin" href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a>
+                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('artiste_delete', {'id':  artiste.Id  }) }}" title="Supprimer">Supprimer</a>
+                        </div>
+
                     </div>
                 </div>
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('artiste_new') }}">Ajouter un nouvel artiste</a>
+            </div>
+            {#{% endif %}#}
+        </div>
     </div>
 
-    <div class="row">
-        <a href="{{ path('artiste_new') }}">Créer une nouvelle entrée.</a>
+    {#   MODAL   #}
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de vouloir supprimer cet artiste ?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn" id="confirmModalNo" name="non" value="Non">
+                    <input type="button" class="btn" id="confirmModalYes" name="oui" value="Oui">
+                </div>
+            </div>
+        </div>
     </div>
+    {#   MODAL   #}
+
 {% endblock %}
 
 {% block javascripts %}
-
     {{ parent() }}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
 
+        $(document).ready(function () {
+            var theHREF;
+
+            $(".confirmModalLink").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#confirmModal").modal("show");
+            });
+
+            $("#confirmModalNo").click(function(e) {
+                $("#confirmModal").modal("hide");
+            });
+
+            $("#confirmModalYes").click(function(e) {
+                window.location.href = theHREF;
+            });
+
+        });
+    </script>
 {% endblock %}

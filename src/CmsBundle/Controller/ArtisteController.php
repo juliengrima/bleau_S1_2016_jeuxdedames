@@ -17,21 +17,6 @@ use CmsBundle\Form\ArtisteType;
 class ArtisteController extends Controller
 {
     /**
-     * Lists all Artiste entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
-
-        return $this->render('CmsBundle:Artiste:index.html.twig', array(
-            'artistes' => $artistes,
-        ));
-    }
-
-    /**
      * Creates a new Artiste entity.
      *
      */
@@ -71,26 +56,11 @@ class ArtisteController extends Controller
             $em->persist($artiste_es);
             $em->flush();
 
-            return $this->redirectToRoute('artiste_new');
+            return $this->redirectToRoute('user_artiste');
         }
 
-        return $this->render('CmsBundle:Artiste:new.html.twig', array(
-            'langue' => $langue,
+        return $this->render('@Cms/Artiste/new.html.twig', array(
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Artiste entity.
-     *
-     */
-    public function showAction(Artiste $artiste)
-    {
-        $deleteForm = $this->createDeleteForm($artiste);
-
-        return $this->render('CmsBundle:Artiste:show.html.twig', array(
-            'artiste' => $artiste,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -100,7 +70,6 @@ class ArtisteController extends Controller
      */
     public function editAction(Request $request, Artiste $artiste)
     {
-        $deleteForm = $this->createDeleteForm($artiste);
         $editForm = $this->createForm('CmsBundle\Form\ArtisteType', $artiste);
         $editForm->handleRequest($request);
 
@@ -120,48 +89,35 @@ class ArtisteController extends Controller
             $em->persist($artiste);
             $em->flush();
 
-            return $this->redirectToRoute('artiste_edit', array('id' => $artiste->getId()));
+            return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
         }
 
         return $this->render('CmsBundle:Artiste:edit.html.twig', array(
             'artiste' => $artiste,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
-
-
     /**
-     * Deletes a Artiste entity.
+     * Remove an existing record and a file.
      *
      */
-    public function deleteAction(Request $request, Artiste $artiste)
-    {
-        $form = $this->createDeleteForm($artiste);
-        $form->handleRequest($request);
+    public function deleteAction($id) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($artiste);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $artiste = $em->getRepository('CmsBundle:Artiste')->find($id);
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+
+        if (!$artiste) {
+            throw $this->createNotFoundException(
+                'Pas de document trouvé' . $id
+            );
         }
 
-        return $this->redirectToRoute('artiste_index');
-    }
+        $em->remove($artiste);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Artiste entity.
-     *
-     * @param Artiste $artiste The Artiste entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Artiste $artiste)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('artiste_delete', array('id' => $artiste->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return $this->redirect($this->generateUrl('user_artiste', array(
+            'artistes' => $artistes,
+        )));
     }
 }

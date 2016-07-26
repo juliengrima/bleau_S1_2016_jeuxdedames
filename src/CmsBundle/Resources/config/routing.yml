@@ -1,65 +1,48 @@
-cms_accueil:
-    resource: "@CmsBundle/Resources/config/routing/accueil.yml"
-    prefix:   /accueil
-
-cms_artiste:
-    resource: "@CmsBundle/Resources/config/routing/artiste.yml"
-    prefix:   /artiste
-
-cms_commercant:
-    resource: "@CmsBundle/Resources/config/routing/commercant.yml"
-    prefix:   /commercant
-
-cms_partenaire:
-    resource: "@CmsBundle/Resources/config/routing/partenaire.yml"
-    prefix:   /partenaire
-
 cms_homepage:
     path:     /
     defaults: { _controller: CmsBundle:User:index }
 
+cms_accueil:
+    resource: "@CmsBundle/Resources/config/routing/accueil.yml"
+    prefix:   /admin/accueil
+
+cms_artiste:
+    resource: "@CmsBundle/Resources/config/routing/artiste.yml"
+    prefix:   /admin/artiste
+
+cms_commercant:
+    resource: "@CmsBundle/Resources/config/routing/commercant.yml"
+    prefix:   /admin/commercant
+
+cms_partenaire:
+    resource: "@CmsBundle/Resources/config/routing/partenaire.yml"
+    prefix:   /admin/partenaire
+
 cms_presse:
     resource: "@CmsBundle/Resources/config/routing/presse.yml"
-    prefix:   /presse
+    prefix:   /admin/presse
+
+user:
+    resource: "@CmsBundle/Resources/config/routing/user.yml"
+    prefix:   /user
 
 
-user_artiste:
-    path:     /userartistes
-    defaults: { _controller: CmsBundle:User:artistes }
-
-user_commercant:
-    path:     /usercommercants
-    defaults: { _controller: CmsBundle:User:commercants }
-
-user_partenaire:
-    path:     /userpartenaires
-    defaults: { _controller: CmsBundle:User:partenaires }
-
-user_archive:
-    path:     /userarchives
-    defaults: { _controller: CmsBundle:User:archives }
-
-user_presse:
-    path:     /userpresses
-    defaults: { _controller: CmsBundle:User:presses }
-
-
-index:
-    path:     /
-    defaults: { _controller: CmsBundle:Commercant:index }
-
-new:
-    path:     /new
-    defaults: { _controller: CmsBundle:Commercant:new }
-
-show:
-    path:     /show
-    defaults: { _controller: CmsBundle:Commercant:show }
-
-edit:
-    path:     /edit
-    defaults: { _controller: CmsBundle:Commercant:edit }
-
-delete:
-    path:     /delete
-    defaults: { _controller: CmsBundle:Commercant:delete }
+#index:
+#    path:     /
+#    defaults: { _controller: CmsBundle:Commercant:index }
+#
+#new:
+#    path:     /new
+#    defaults: { _controller: CmsBundle:Commercant:new }
+#
+#show:
+#    path:     /show
+#    defaults: { _controller: CmsBundle:Commercant:show }
+#
+#edit:
+#    path:     /edit
+#    defaults: { _controller: CmsBundle:Commercant:edit }
+#
+#delete:
+#    path:     /delete
+#    defaults: { _controller: CmsBundle:Commercant:delete }

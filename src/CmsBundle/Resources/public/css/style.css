@@ -24,20 +24,6 @@ h3{
     text-align: center;
     font-size: 30px;
 }
-h3 .editartiste2{
-    padding: auto;
-    margin-bottom: 15px;
-    font-family: 'Damion', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    color: black;
-    margin-top: 15px;
-}
-#artiste_texte{
-    padding: auto;
-    font-size: 15px;
-    color: black;
-}
 
 h6, h5{
     font-size: 30px;
@@ -51,7 +37,6 @@ p {
 img{
     height: auto;
     width: auto;
-    margin-right: 2px;
 }
 .vcenter {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -72,6 +57,11 @@ img{
     padding-right: 0px;
 }
 
+.row{
+    clear: both;
+    margin-left: 0px;
+    margin-right: 0px;
+}
 /************** Icone reseau **********/
 
 .icone_reseau{
@@ -109,10 +99,6 @@ footer .row{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 2px;
-    color: white;
-    clear: both;
-    margin-left: 0px;
-    margin-right: 0px;
 }
 
 footer{
@@ -180,6 +166,14 @@ footer{
         text-align: center;
     }
 }
+
+/******* ARTISTE *******/
+.block_artiste{
+    background-color: #00BCD4;
+}
+figure img{
+    max-height: 230px;
+}
 /*** ARCHIVE ***/
 
 .ecriturearchivenomartiste {
@@ -214,9 +208,6 @@ input {
 .editartiste {
     text-align: center;
 }
-/*.editartiste2{*/
-    /*margin-left: 130px;*/
-/*}*/
 .policeecriture {
     color: white;
 }
@@ -287,16 +278,15 @@ input[type=checkbox]
 
 /** FIN PARTIE ARTISTE **/
 
-/**Map**/
+/****** Map ********/
+
 #map{
     height: 60%;
     width: 100%;
 }
 
 
-/************  TEST ********/
-
-/************  ANIMATION IMAGE ARTISTE ********/
+/************  ANIMATION IMAGE ********/
 figure.snip1239 {
     font-family: 'Raleway', Arial, sans-serif;
     position: relative;
@@ -434,4 +424,4 @@ figure.snip1239.hover figcaption {
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-/*************** FIN ANIMATION IMAGE ARTISTE *******************/
+/*************** FIN ANIMATION IMAGE *******************/
