@@ -1,13 +1,3 @@
-artiste_index:
-    path:     /
-    defaults: { _controller: "CmsBundle:Artiste:index" }
-    methods:  GET
-
-artiste_show:
-    path:     /{id}/show
-    defaults: { _controller: "CmsBundle:Artiste:show" }
-    methods:  GET
-
 artiste_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Artiste:new" }
@@ -21,4 +11,5 @@ artiste_edit:
 artiste_delete:
     path:     /{id}/delete
     defaults: { _controller: "CmsBundle:Artiste:delete" }
-    methods:  DELETE
+    requirements:
+        id:  \d+

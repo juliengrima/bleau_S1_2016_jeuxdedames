@@ -1,0 +1,19 @@
+user_artiste:
+    path:     /artistes
+    defaults: { _controller: CmsBundle:User:artistes }
+
+user_commercant:
+    path:     /commercants
+    defaults: { _controller: CmsBundle:User:commercants }
+
+user_partenaire:
+    path:     /partenaires
+    defaults: { _controller: CmsBundle:User:partenaires }
+
+user_archive:
+    path:     /archives
+    defaults: { _controller: CmsBundle:User:archives }
+
+user_presse:
+    path:     /presses
+    defaults: { _controller: CmsBundle:User:presses }
