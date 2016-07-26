@@ -95,8 +95,6 @@ class Artiste
 
 
     /*generate*/
-    
-
     /**
      * @var integer
      */
@@ -137,6 +135,23 @@ class Artiste
      */
     private $archive;
 
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $artiste;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -314,5 +329,63 @@ class Artiste
     public function getArchive()
     {
         return $this->archive;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Artiste
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Add artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     *
+     * @return Artiste
+     */
+    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste[] = $artiste;
+
+        return $this;
+    }
+
+    /**
+     * Remove artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     */
+    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste->removeElement($artiste);
+    }
+
+    /**
+     * Get artiste
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtiste()
+    {
+        return $this->artiste;
     }
 }

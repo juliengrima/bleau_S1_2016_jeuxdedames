@@ -95,6 +95,7 @@ class Commercant
 
     /*generate*/
 
+
     /**
      * @var integer
      */

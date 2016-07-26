@@ -31,9 +31,18 @@ CmsBundle\Entity\Artiste:
             type: boolean
         archive:
             type: boolean
+        langue:
+            type: string
+            lenght: 2
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]
           postPersist: [ upload ]
           postUpdate: [ upload ]
           postRemove: [ removeUpload ]
+
+    oneToMany:
+        artiste:
+            targetEntity: CmsBundle\Entity\Artiste
+            mappedBy: artiste
+            cascade:   [persist]
