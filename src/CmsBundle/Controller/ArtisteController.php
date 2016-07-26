@@ -2,6 +2,8 @@
 
 namespace CmsBundle\Controller;
 
+use CmsBundle\Form\AccueilType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,21 +22,44 @@ class ArtisteController extends Controller
      */
     public function newAction(Request $request)
     {
-        $artiste = new Artiste();
-        $form = $this->createForm('CmsBundle\Form\ArtisteType', $artiste);
+        $langue = new Artiste();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $artiste_fr = new Artiste();
+        $artiste_fr->setLangue('fr');
+        $langue->getArtiste()->add($artiste_fr);
+        $artiste_en = new Artiste();
+        $artiste_en->setLangue('en');
+        $langue->getArtiste()->add($artiste_en);
+        $artiste_es= new Artiste();
+        $artiste_es->setLangue('es');
+        $langue->getArtiste()->add($artiste_es);
+
+        // end dummy code
+
+        $form = $this->createFormBuilder($langue)
+            ->add('artiste', CollectionType::class, array(
+                'entry_type' => ArtisteType::class
+                    ))
+            ->add('submit','submit')
+            ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $artiste->setDate(new \DateTime());
-            $em->persist($artiste);
+            $artiste_fr->setDate(new \DateTime());            
+            $artiste_en->setDate($artiste_fr->getDate());
+            $artiste_es->setDate($artiste_fr->getDate());
+            $em->persist($artiste_fr);
+            $em->persist($artiste_en);
+            $em->persist($artiste_es);
             $em->flush();
 
-            return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
+            return $this->redirectToRoute('user_artiste');
         }
 
         return $this->render('@Cms/Artiste/new.html.twig', array(
-            'artiste' => $artiste,
             'form' => $form->createView(),
         ));
     }

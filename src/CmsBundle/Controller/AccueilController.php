@@ -48,6 +48,10 @@ class AccueilController extends Controller
         $accueil_en = new Accueil();
         $accueil_en->setLangue('en');
         $langue->getAccueil()->add($accueil_en);
+        $accueil_es = new Accueil();
+        $accueil_es->setLangue('es');
+        $langue->getAccueil()->add($accueil_es);
+
         // end dummy code
 
         $form = $this->createForm(LangueType::class, $langue);
@@ -57,6 +61,7 @@ class AccueilController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($accueil_fr);
             $em->persist($accueil_en);
+            $em->persist($accueil_es);
             $em->flush();
 
             return $this->redirectToRoute('accueil_index');

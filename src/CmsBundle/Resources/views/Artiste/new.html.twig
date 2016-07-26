@@ -3,6 +3,7 @@
 {% block body %}
     <h1>Artiste creation </h1>
     {{ form_start(form) }}
+
     <div>
 
         <!-- Nav tabs -->
@@ -45,6 +46,12 @@
 
 
     <input type="submit" value="Créer" />
+
+
+    {% for artiste in langue %}
+    {{ form_widget(form) }}
+    {% endfor %}
+    <input type="submit" value="Create" />
 
     {{ form_end(form) }}
 
