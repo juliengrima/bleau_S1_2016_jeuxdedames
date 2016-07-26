@@ -4,8 +4,10 @@
     <h1>Partenaire creation</h1>
 
     {{ form_start(form) }}
+    {% for partenaire in langue %}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {% endfor %}
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
     <ul>
