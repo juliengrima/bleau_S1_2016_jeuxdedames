@@ -95,6 +95,7 @@ class Presse
 
     /*generate*/
 
+
     /**
      * @var integer
      */
@@ -125,6 +126,23 @@ class Presse
      */
     private $date;
 
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $presse;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->presse = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -254,5 +272,63 @@ class Presse
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Presse
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Add presse
+     *
+     * @param \CmsBundle\Entity\Presse $presse
+     *
+     * @return Presse
+     */
+    public function addPresse(\CmsBundle\Entity\Presse $presse)
+    {
+        $this->presse[] = $presse;
+
+        return $this;
+    }
+
+    /**
+     * Remove presse
+     *
+     * @param \CmsBundle\Entity\Presse $presse
+     */
+    public function removePresse(\CmsBundle\Entity\Presse $presse)
+    {
+        $this->presse->removeElement($presse);
+    }
+
+    /**
+     * Get presse
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPresse()
+    {
+        return $this->presse;
     }
 }

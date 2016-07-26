@@ -273,11 +273,11 @@ class Partenaire
     /**
      * Add partenaire
      *
-     * @param \CmsBundle\Entity\Artiste $partenaire
+     * @param \CmsBundle\Entity\Partenaire $partenaire
      *
      * @return Partenaire
      */
-    public function addPartenaire(\CmsBundle\Entity\Artiste $partenaire)
+    public function addPartenaire(\CmsBundle\Entity\Partenaire $partenaire)
     {
         $this->partenaire[] = $partenaire;
 
@@ -287,9 +287,9 @@ class Partenaire
     /**
      * Remove partenaire
      *
-     * @param \CmsBundle\Entity\Artiste $partenaire
+     * @param \CmsBundle\Entity\Partenaire $partenaire
      */
-    public function removePartenaire(\CmsBundle\Entity\Artiste $partenaire)
+    public function removePartenaire(\CmsBundle\Entity\Partenaire $partenaire)
     {
         $this->partenaire->removeElement($partenaire);
     }
