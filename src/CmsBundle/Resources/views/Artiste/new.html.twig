@@ -2,26 +2,60 @@
 
 {% block body %}
     <h1>Artiste creation </h1>
-
     {{ form_start(form) }}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <div class="col-md-3">
-                    <p>nom :{{ form_widget(form.nom) }}</p>
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div class="col-md-3">
+                                <p>nom :{{ form_widget(form.nom) }}</p>
+                            </div>
+                            <p>image :{{ form_widget(form.file) }}</p>
+                            <p>ajouter au slider :{{ form_widget(form.ajouterslider) }}</p>
+                            <p>lien :{{ form_widget(form.lien) }}</p>
+                            <p>texte :{{ form_widget(form.texte) }}</p>
+                            <p>archive :{{ form_widget(form.archive) }}</p>
+                        </div>
+                    </div>
                 </div>
-                <p>image :{{ form_widget(form.file) }}</p>
-                <p>ajouter au slider :{{ form_widget(form.ajouterslider) }}</p>
-                <p>lien :{{ form_widget(form.lien) }}</p>
-                <p>texte :{{ form_widget(form.texte) }}</p>
-                <p>archive :{{ form_widget(form.archive) }}</p>
+                {{ form_widget(form) }}
             </div>
+            <div role="tabpanel" class="tab-pane" id="profile">...</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>
         </div>
+
     </div>
-    {{ form_widget(form) }}
+
+
+
+
 
     <input type="submit" value="Créer" />
 
     {{ form_end(form) }}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
 {% endblock %}

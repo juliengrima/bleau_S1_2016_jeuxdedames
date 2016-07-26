@@ -33,4 +33,49 @@
             {#{% endif %}#}
         </div>
     </div>
+
+    {#   MODAL   #}
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de vouloir supprimer cet artiste ?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn" id="confirmModalNo" name="non" value="Non">
+                    <input type="button" class="btn" id="confirmModalYes" name="oui" value="Oui">
+                </div>
+            </div>
+        </div>
+    </div>
+    {#   MODAL   #}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+
+        $(document).ready(function () {
+            var theHREF;
+
+            $(".confirmModalLink").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#confirmModal").modal("show");
+            });
+
+            $("#confirmModalNo").click(function(e) {
+                $("#confirmModal").modal("hide");
+            });
+
+            $("#confirmModalYes").click(function(e) {
+                window.location.href = theHREF;
+            });
+
+        });
+    </script>
 {% endblock %}
