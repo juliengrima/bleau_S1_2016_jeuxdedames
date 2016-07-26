@@ -95,6 +95,7 @@ class Artiste
 
 
     /*generate*/
+
     /**
      * @var integer
      */

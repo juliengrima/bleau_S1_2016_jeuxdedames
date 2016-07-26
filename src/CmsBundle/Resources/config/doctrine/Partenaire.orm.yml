@@ -32,6 +32,6 @@ CmsBundle\Entity\Partenaire:
 
     oneToMany:
         partenaire:
-            targetEntity: CmsBundle\Entity\Artiste
+            targetEntity: CmsBundle\Entity\Partenaire
             mappedBy: partenaire
             cascade:   [persist]
