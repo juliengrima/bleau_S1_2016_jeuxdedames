@@ -1,18 +1,175 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Partenaire creation</h1>
-
+    {{ dump(form) }}
+    <h1>Créer Partenaire </h1>
     {{ form_start(form) }}
-    {% for partenaire in langue %}
-        {{ form_widget(form) }}
-    {% endfor %}
+
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {% for accueil in form.partenaire %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% elseif (accueil.vars.value.langue == 'en')%}
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% else %}
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% for accueil in form.partenaire %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <h1>Langue: Français</h1>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Adresse</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Photo de l'oeuvre</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
+                                    {{ form_errors(accueil.file) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Lien vers l'artiste</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
+                                    {{ form_errors(accueil.lien) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="checkbox">
+                                <p class="">Donation</p>
+                                    <label>
+                                        {{ form_widget(accueil.donation) }}
+                                    </label>
+                                    {{ form_errors(accueil.donation) }}
+                                </div>
+                            </div>
+                        </div>
+                {% elseif (accueil.vars.value.langue == 'en') %}
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                                                <div class="container">
+                            <div class="row">
+                                <p class="">Adresse</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Photo de l'oeuvre</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
+                                    {{ form_errors(accueil.file) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Lien vers l'artiste</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
+                                    {{ form_errors(accueil.lien) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="checkbox">
+                                <p class="">Donation</p>
+                                    <label>
+                                        {{ form_widget(accueil.donation) }}
+                                    </label>
+                                    {{ form_errors(accueil.donation) }}
+                                </div>
+                            </div>
+                        </div>
+                {% elseif (accueil.vars.value.langue == 'es') %}
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                                                <div class="container">
+                            <div class="row">
+                                <p class="">Adresse</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Photo de l'oeuvre</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
+                                    {{ form_errors(accueil.file) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Lien vers l'artiste</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
+                                    {{ form_errors(accueil.lien) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="checkbox">
+                                <p class="">Donation</p>
+                                    <label>
+                                        {{ form_widget(accueil.donation) }}
+                                    </label>
+                                    {{ form_errors(accueil.donation) }}
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
     <input type="submit" value="Create" />
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('partenaire_index') }}">Back to the list</a>
-        </li>
-    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
 {% endblock %}

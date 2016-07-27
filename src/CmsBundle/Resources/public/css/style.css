@@ -1,3 +1,9 @@
+@media screen and (max-width: 340px) {
+    nav .pull-right{
+        display:block;
+        clear:both; !important;
+    }
+}
 html, body {
     height: 100%;
     margin: 0;
