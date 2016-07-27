@@ -2,11 +2,6 @@
 
 {% block body %}
 
-    <ul>
-        <li><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}">Français</a></li>
-        <li><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}">Anglais</a></li>
-        <li><a href="{{ path('cms_homepage', { '_locale': 'es' }) }}">Espagnol</a></li>
-    </ul>
     {% for accueil in accueils %}
 
         <div class="container-fluid">
