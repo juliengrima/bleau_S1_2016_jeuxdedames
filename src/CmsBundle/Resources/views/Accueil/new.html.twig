@@ -233,7 +233,7 @@
                             </div>
                             {#</div>#}
                         </div>
-                        <div class="row">
+                        <div class="row hidden">
                             {#<div class="col-md-3 col-sm-3 col-xs-5">#}
                             <p class="">Troisième Contenu</p>
                             {#</div>#}
@@ -345,7 +345,7 @@
                             </div>
                             {#</div>#}
                         </div>
-                        <div class="row">
+                        <div class="row hidden">
                             {#<div class="col-md-3 col-sm-3 col-xs-5">#}
                             <p class="">Troisième Contenu</p>
                             {#</div>#}
@@ -367,9 +367,4 @@
     <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('accueil_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

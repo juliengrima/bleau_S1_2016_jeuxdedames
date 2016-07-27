@@ -55,16 +55,31 @@
                 <div class="col-md-6 vcenter">
                     <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
                 </div>
-
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <div class="edit_admin">
-                    <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page</a>
-                </div>
-            {#{% endif %}#}
             </div>
         </div>
 
+        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+
+            <div class="row">
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page d'accueil</a>
+                </div>
+            </div>
+
+        {#{% endif %}#}
+
+
     {% endif %}
     {% endfor %}
+
+    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+        {% if accueils == null %}
+            <div class="row">
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('accueil_new') }}">Créer la page d'accueil</a>
+                </div>
+            </div>
+        {% endif %}
+    {#{% endif %}#}
 
 {% endblock %}

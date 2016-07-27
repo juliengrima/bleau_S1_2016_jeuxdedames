@@ -3,6 +3,7 @@
 namespace CmsBundle\Controller;
 
 use CmsBundle\Form\LangueType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -16,21 +17,6 @@ use CmsBundle\Form\AccueilType;
  */
 class AccueilController extends Controller
 {
-    /**
-     * Lists all Accueil entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $accueils = $em->getRepository('CmsBundle:Accueil')->findAll();
-
-        return $this->render('CmsBundle:Accueil:index.html.twig', array(
-            'accueils' => $accueils,
-        ));
-    }
-
     /**
      * Creates a new Accueil entity.
      *
@@ -59,11 +45,15 @@ class AccueilController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($accueil_fr);
+
+            $accueil_en->setImage($accueil_fr->getImage());
+            $accueil_es->setImage($accueil_fr->getImage());
+
             $em->persist($accueil_en);
             $em->persist($accueil_es);
             $em->flush();
 
-            return $this->redirectToRoute('accueil_index');
+            return $this->redirectToRoute('cms_homepage');
         }
 
         return $this->render('CmsBundle:Accueil:new.html.twig', array(
@@ -73,36 +63,40 @@ class AccueilController extends Controller
     }
 
     /**
-     * Finds and displays a Accueil entity.
-     *
-     */
-    public function showAction(Accueil $accueil)
-    {
-        $deleteForm = $this->createDeleteForm($accueil);
-
-        return $this->render('CmsBundle:Accueil:show.html.twig', array(
-            'accueil' => $accueil,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing Accueil entity.
      *
      */
     public function editAction(Request $request, Accueil $accueil)
     {
-        $deleteForm = $this->createDeleteForm($accueil);
-        $editForm = $this->createForm('CmsBundle\Form\AccueilType', $accueil);
+        $em = $this->getDoctrine()->getManager();
+
+        $accueil_fr = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'fr'));
+        $accueil_en = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'en'));
+        $accueil_es = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'es'));
+
+        $langue = new Accueil();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $langue->getAccueil()->add($accueil_fr);
+        $langue->getAccueil()->add($accueil_en);
+        $langue->getAccueil()->add($accueil_es);
+
+        $editForm = $this->createFormBuilder($langue)
+            ->add('accueil', CollectionType::class, array(
+                'entry_type' => AccueilType::class
+            ))
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            if($editForm->get('file')->getData() != null) {
+            if ($editForm->get('file')->getData() != null) {
 
-                if($accueil->getImage() != null) {
-                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$accueil->getImage());
+                if ($accueil->getImage() != null) {
+                    unlink(__DIR__ . '/../../../web/uploads/imgcms/' . $accueil->getImage());
                     $accueil->setImage(null);
                 }
             }
@@ -112,47 +106,12 @@ class AccueilController extends Controller
             $em->persist($accueil);
             $em->flush();
 
-            return $this->redirectToRoute('accueil_edit', array('id' => $accueil->getId()));
+            return $this->redirectToRoute('cms_homepage');
         }
 
         return $this->render('CmsBundle:Accueil:edit.html.twig', array(
             'accueil' => $accueil,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
-    }
-
-    /**
-     * Deletes a Accueil entity.
-     *
-     */
-    public function deleteAction(Request $request, Accueil $accueil)
-    {
-        $form = $this->createDeleteForm($accueil);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($accueil);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('accueil_index');
-    }
-
-    /**
-     * Creates a form to delete a Accueil entity.
-     *
-     * @param Accueil $accueil The Accueil entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Accueil $accueil)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('accueil_delete', array('id' => $accueil->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }
