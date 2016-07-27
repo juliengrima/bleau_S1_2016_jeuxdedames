@@ -4,9 +4,366 @@
     <h1>Accueil creation</h1>
 
     {{ form_start(form) }}
-    {% for accueil in langue %}
-        {{ form_widget(form) }}
-    {% endfor %}
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {% for accueil in form.accueil %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% elseif (accueil.vars.value.langue == 'en')%}
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% else %}
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% for accueil in form.accueil %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <h1>Langue: Français</h1>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.titre) }}
+                                {{ form_errors(accueil.titre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.contenu) }}
+                                {{ form_errors(accueil.contenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiertitre) }}
+                                {{ form_errors(accueil.premiertitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiercontenu) }}
+                                {{ form_errors(accueil.premiercontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemetitre) }}
+                                {{ form_errors(accueil.deuxiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemecontenu) }}
+                                {{ form_errors(accueil.deuxiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemetitre) }}
+                                {{ form_errors(accueil.troisiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemecontenu) }}
+                                {{ form_errors(accueil.troisiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                    </div>
+                {% elseif (accueil.vars.value.langue == 'en') %}
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.titre) }}
+                                {{ form_errors(accueil.titre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.contenu) }}
+                                {{ form_errors(accueil.contenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiertitre) }}
+                                {{ form_errors(accueil.premiertitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiercontenu) }}
+                                {{ form_errors(accueil.premiercontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemetitre) }}
+                                {{ form_errors(accueil.deuxiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemecontenu) }}
+                                {{ form_errors(accueil.deuxiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemetitre) }}
+                                {{ form_errors(accueil.troisiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemecontenu) }}
+                                {{ form_errors(accueil.troisiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                    </div>
+                {% elseif (accueil.vars.value.langue == 'es') %}
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.titre) }}
+                                {{ form_errors(accueil.titre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Premier contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.contenu) }}
+                                {{ form_errors(accueil.contenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second Titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiertitre) }}
+                                {{ form_errors(accueil.premiertitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Second contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.premiercontenu) }}
+                                {{ form_errors(accueil.premiercontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemetitre) }}
+                                {{ form_errors(accueil.deuxiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.deuxiemecontenu) }}
+                                {{ form_errors(accueil.deuxiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième titre</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemetitre) }}
+                                {{ form_errors(accueil.troisiemetitre) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.troisiemecontenu) }}
+                                {{ form_errors(accueil.troisiemecontenu) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                        <div class="row">
+                            {#<div class="col-md-3 col-sm-3 col-xs-5">#}
+                            <p class="">Troisième Contenu</p>
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-7">#}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            {#</div>#}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
     <input type="submit" value="Create" />
     {{ form_end(form) }}
 

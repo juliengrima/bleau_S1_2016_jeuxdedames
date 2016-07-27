@@ -97,4 +97,355 @@ class Accueil
 
     /*generate*/
 
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $titre;
+
+    /**
+     * @var string
+     */
+    private $premiertitre;
+
+    /**
+     * @var string
+     */
+    private $premiercontenu;
+
+    /**
+     * @var string
+     */
+    private $deuxiemetitre;
+
+    /**
+     * @var string
+     */
+    private $deuxiemecontenu;
+
+    /**
+     * @var string
+     */
+    private $troisiemetitre;
+
+    /**
+     * @var string
+     */
+    private $troisiemecontenu;
+
+    /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $contenu;
+
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accueil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Accueil
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set premiertitre
+     *
+     * @param string $premiertitre
+     *
+     * @return Accueil
+     */
+    public function setPremiertitre($premiertitre)
+    {
+        $this->premiertitre = $premiertitre;
+
+        return $this;
+    }
+
+    /**
+     * Get premiertitre
+     *
+     * @return string
+     */
+    public function getPremiertitre()
+    {
+        return $this->premiertitre;
+    }
+
+    /**
+     * Set premiercontenu
+     *
+     * @param string $premiercontenu
+     *
+     * @return Accueil
+     */
+    public function setPremiercontenu($premiercontenu)
+    {
+        $this->premiercontenu = $premiercontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get premiercontenu
+     *
+     * @return string
+     */
+    public function getPremiercontenu()
+    {
+        return $this->premiercontenu;
+    }
+
+    /**
+     * Set deuxiemetitre
+     *
+     * @param string $deuxiemetitre
+     *
+     * @return Accueil
+     */
+    public function setDeuxiemetitre($deuxiemetitre)
+    {
+        $this->deuxiemetitre = $deuxiemetitre;
+
+        return $this;
+    }
+
+    /**
+     * Get deuxiemetitre
+     *
+     * @return string
+     */
+    public function getDeuxiemetitre()
+    {
+        return $this->deuxiemetitre;
+    }
+
+    /**
+     * Set deuxiemecontenu
+     *
+     * @param string $deuxiemecontenu
+     *
+     * @return Accueil
+     */
+    public function setDeuxiemecontenu($deuxiemecontenu)
+    {
+        $this->deuxiemecontenu = $deuxiemecontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get deuxiemecontenu
+     *
+     * @return string
+     */
+    public function getDeuxiemecontenu()
+    {
+        return $this->deuxiemecontenu;
+    }
+
+    /**
+     * Set troisiemetitre
+     *
+     * @param string $troisiemetitre
+     *
+     * @return Accueil
+     */
+    public function setTroisiemetitre($troisiemetitre)
+    {
+        $this->troisiemetitre = $troisiemetitre;
+
+        return $this;
+    }
+
+    /**
+     * Get troisiemetitre
+     *
+     * @return string
+     */
+    public function getTroisiemetitre()
+    {
+        return $this->troisiemetitre;
+    }
+
+    /**
+     * Set troisiemecontenu
+     *
+     * @param string $troisiemecontenu
+     *
+     * @return Accueil
+     */
+    public function setTroisiemecontenu($troisiemecontenu)
+    {
+        $this->troisiemecontenu = $troisiemecontenu;
+
+        return $this;
+    }
+
+    /**
+     * Get troisiemecontenu
+     *
+     * @return string
+     */
+    public function getTroisiemecontenu()
+    {
+        return $this->troisiemecontenu;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Accueil
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Accueil
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Accueil
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Add accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     *
+     * @return Accueil
+     */
+    public function addAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil[] = $accueil;
+
+        return $this;
+    }
+
+    /**
+     * Remove accueil
+     *
+     * @param \CmsBundle\Entity\Accueil $accueil
+     */
+    public function removeAccueil(\CmsBundle\Entity\Accueil $accueil)
+    {
+        $this->accueil->removeElement($accueil);
+    }
+
+    /**
+     * Get accueil
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccueil()
+    {
+        return $this->accueil;
+    }
 }

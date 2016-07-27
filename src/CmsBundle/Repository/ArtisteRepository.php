@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArtisteRepository extends EntityRepository
 {
+    public function getIdItemArtiste()
+        {
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT MAX(a.item_id) FROM CmsBundle:Artiste a'
+                )
+                ->getResult();
+        }
 }

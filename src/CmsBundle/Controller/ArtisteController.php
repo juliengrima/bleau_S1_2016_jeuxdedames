@@ -22,6 +22,9 @@ class ArtisteController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
+
         $langue = new Artiste();
 
         // dummy code - this is here just so that the Task has some tags
@@ -42,16 +45,28 @@ class ArtisteController extends Controller
             ->add('artiste', CollectionType::class, array(
                 'entry_type' => ArtisteType::class
                     ))
-            ->add('submit','submit')
             ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $artiste_fr->setDate(new \DateTime());            
+            $artiste_fr->setDate(new \DateTime());
+            $artiste_fr->setItemId($id_item_max[0][1] + 1);
             $artiste_en->setDate($artiste_fr->getDate());
             $artiste_es->setDate($artiste_fr->getDate());
+            $artiste_en->setAjouterslider(0);
+            $artiste_es->setAjouterslider(0);
+            $artiste_en->setArchive(0);
+            $artiste_es->setArchive(0);
+            $artiste_en->setItemId($artiste_fr->getItemId());
+            $artiste_es->setItemId($artiste_fr->getItemId());
+
             $em->persist($artiste_fr);
+
+            $artiste_en->setImage($artiste_fr->getImage());
+            $artiste_es->setImage($artiste_fr->getImage());
+
             $em->persist($artiste_en);
             $em->persist($artiste_es);
             $em->flush();
@@ -70,7 +85,28 @@ class ArtisteController extends Controller
      */
     public function editAction(Request $request, Artiste $artiste)
     {
-        $editForm = $this->createForm('CmsBundle\Form\ArtisteType', $artiste);
+        $em = $this->getDoctrine()->getManager();
+
+        $id_item = $artiste->getItemId();
+
+        $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
+        $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
+        $artiste_es = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'es', 'item_id' => $id_item));
+
+        $langue = new Artiste();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $langue->getArtiste()->add($artiste_fr);
+        $langue->getArtiste()->add($artiste_en);
+        $langue->getArtiste()->add($artiste_es);
+
+        $editForm = $this->createFormBuilder($langue)
+            ->add('artiste', CollectionType::class, array(
+                'entry_type' => ArtisteType::class
+            ))
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -93,8 +129,7 @@ class ArtisteController extends Controller
         }
 
         return $this->render('CmsBundle:Artiste:edit.html.twig', array(
-            'artiste' => $artiste,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
     /**

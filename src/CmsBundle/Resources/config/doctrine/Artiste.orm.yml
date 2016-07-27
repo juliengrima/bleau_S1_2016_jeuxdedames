@@ -34,6 +34,11 @@ CmsBundle\Entity\Artiste:
         langue:
             type: string
             lenght: 2
+        item_id:
+            type: integer
+            generator:
+                strategy: IDENTITY
+
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]

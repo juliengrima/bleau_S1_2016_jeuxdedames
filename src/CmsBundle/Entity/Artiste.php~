@@ -96,4 +96,297 @@ class Artiste
 
     /*generate*/
 
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nom;
+
+    /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $texte;
+
+    /**
+     * @var string
+     */
+    private $lien;
+
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+    /**
+     * @var boolean
+     */
+    private $ajouterslider;
+
+    /**
+     * @var boolean
+     */
+    private $archive;
+
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $artiste;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Artiste
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Artiste
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set texte
+     *
+     * @param string $texte
+     *
+     * @return Artiste
+     */
+    public function setTexte($texte)
+    {
+        $this->texte = $texte;
+
+        return $this;
+    }
+
+    /**
+     * Get texte
+     *
+     * @return string
+     */
+    public function getTexte()
+    {
+        return $this->texte;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Artiste
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Artiste
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set ajouterslider
+     *
+     * @param boolean $ajouterslider
+     *
+     * @return Artiste
+     */
+    public function setAjouterslider($ajouterslider)
+    {
+        $this->ajouterslider = $ajouterslider;
+
+        return $this;
+    }
+
+    /**
+     * Get ajouterslider
+     *
+     * @return boolean
+     */
+    public function getAjouterslider()
+    {
+        return $this->ajouterslider;
+    }
+
+    /**
+     * Set archive
+     *
+     * @param boolean $archive
+     *
+     * @return Artiste
+     */
+    public function setArchive($archive)
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+
+    /**
+     * Get archive
+     *
+     * @return boolean
+     */
+    public function getArchive()
+    {
+        return $this->archive;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Artiste
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Add artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     *
+     * @return Artiste
+     */
+    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste[] = $artiste;
+
+        return $this;
+    }
+
+    /**
+     * Remove artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     */
+    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste->removeElement($artiste);
+    }
+
+    /**
+     * Get artiste
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtiste()
+    {
+        return $this->artiste;
+    }
 }

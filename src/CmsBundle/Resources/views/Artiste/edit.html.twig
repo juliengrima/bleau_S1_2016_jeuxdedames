@@ -1,54 +1,264 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(form) }}
+    <h1>Artiste creation </h1>
+    {{ form_start(form) }}
 
-    <h1 style="margin-bottom: 35px;">Page d'édition des Artistes</h1>
-        {{ form_start(edit_form) }}
-            <div class="policeecrituretitre">
-                <p class="policeecriture2">Titre de l'image de votre Artiste</p>
-                    {{ form_widget(edit_form.nom) }}
-            </div>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {% for accueil in form.artiste %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% elseif (accueil.vars.value.langue == 'en')%}
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% else %}
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
 
-    <div class="container row">
-        <div class="col-md-3 col-sm-4 col-xs-6 ">
-            <p class="policeecriture2">Ajouter votre Image</p>
-                {{ form_widget(edit_form.file) }}
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% for accueil in form.artiste %}
+                {% if (accueil.vars.value.langue == 'fr') %}
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <h1>Langue: Français</h1>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Nom</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.nom) }}
+                                {{ form_errors(accueil.nom) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Photo de l'oeuvre</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Texte descriptif</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.texte) }}
+                                {{ form_errors(accueil.texte) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Lien vers l'artiste</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.lien) }}
+                                {{ form_errors(accueil.lien) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
+                                </label>
+                                {{ form_errors(accueil.ajouterslider) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.archive) }} Ajouter aux archives
+                                </label>
+                                {{ form_errors(accueil.archive) }}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elseif (accueil.vars.value.langue == 'en') %}
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Nom</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.nom) }}
+                                {{ form_errors(accueil.nom) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Photo de l'oeuvre</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Texte descriptif</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.texte) }}
+                                {{ form_errors(accueil.texte) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Lien vers l'artiste</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.lien) }}
+                                {{ form_errors(accueil.lien) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
+                                </label>
+                                {{ form_errors(accueil.ajouterslider) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.archive) }} Ajouter aux archives
+                                </label>
+                                {{ form_errors(accueil.archive) }}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elseif (accueil.vars.value.langue == 'es') %}
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Nom</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.nom) }}
+                                {{ form_errors(accueil.nom) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Photo de l'oeuvre</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.file) }}
+                                {{ form_errors(accueil.file) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Texte descriptif</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.texte) }}
+                                {{ form_errors(accueil.texte) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="">Lien vers l'artiste</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(accueil.lien) }}
+                                {{ form_errors(accueil.lien) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
+                                </label>
+                                {{ form_errors(accueil.ajouterslider) }}
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(accueil.archive) }} Ajouter aux archives
+                                </label>
+                                {{ form_errors(accueil.archive) }}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
 
-        <div class="col-md-3 col-sm-4 col-xs-6 ">
-            <p class="policeecriture2">Texte de votre image</p>
-                {{ form_widget(edit_form.texte) }}
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6 ">
-            <p class="policeecriture2">Ajout Slider</p>
-                {{ form_widget(edit_form.ajouterslider) }}
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6">
-             <p class="policeecriture2">Ajout Archive</p>
-                    {{ form_widget(edit_form.archive) }}
-        </div>
     </div>
 
-    <div class="policeecrituretitre">
-        <p class="policeecriture2">Ajouter le lien vers votre artiste</p>
-            {{ form_widget(edit_form.lien) }}
-    </div>
+    <input type="submit" value="Create" />
 
-    <div class="container">
-        <div class="col-md-6 col-sm-4 col-xs-6 row ">
-            {{ form_widget(edit_form) }}
-                <input type="submit" value="Editer le contenu" />
-                    {{ form_end(edit_form) }}
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="policeecrituretitre">
-            <a href="{{ path('user_artiste') }}">Retour à la liste</a>
-        </div>
-    </div>
+    {{ form_end(form) }}
 
 {% endblock %}
