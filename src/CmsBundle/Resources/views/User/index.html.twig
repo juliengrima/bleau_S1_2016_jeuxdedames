@@ -56,7 +56,7 @@
                     <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
                 </div>
 
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
                 <div class="edit_admin">
                     <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page</a>
                 </div>
