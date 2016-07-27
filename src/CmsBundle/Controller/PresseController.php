@@ -67,10 +67,10 @@ class PresseController extends Controller
             $em->persist($presse_es);
             $em->flush();
 
-            return $this->redirectToRoute('partenaire_new');
+            return $this->redirectToRoute('presse_new');
         }
 
-        return $this->render('CmsBundle:partenaire:new.html.twig', array(
+        return $this->render('CmsBundle:presse:new.html.twig', array(
             'langue' => $langue,
             'form' => $form->createView(),
         ));
@@ -130,33 +130,23 @@ class PresseController extends Controller
      * Deletes a Presse entity.
      *
      */
-    public function deleteAction(Request $request, Presse $presse)
-    {
-        $form = $this->createDeleteForm($presse);
-        $form->handleRequest($request);
+    public function deleteAction($id) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($presse);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $presse = $em->getRepository('CmsBundle:Presse')->find($id);
+        $presses = $em->getRepository('CmsBundle:Presse')->findAll();
+
+        if (!$presse) {
+            throw $this->createNotFoundException(
+                'Pas de document trouvé' . $id
+            );
         }
 
-        return $this->redirectToRoute('presse_index');
-    }
+        $em->remove($presse);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Presse entity.
-     *
-     * @param Presse $presse The Presse entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Presse $presse)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('presse_delete', array('id' => $presse->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return $this->redirect($this->generateUrl('user_presse', array(
+            'presses' => $presses,
+        )));
     }
 }

@@ -14,9 +14,29 @@
                     </figure>
                 </div>
                 <div class="row">
-                    <p class="editartiste"><a href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a></p>
+                    <div class="edit_admin">
+                        <a class="btn btn-default edit_admin" href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a>
+                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('partenaire_delete', {'id':  partenaire.Id  }) }}" title="Supprimer">Supprimer</a>
+                    </div>
                 </div>
             </div>
+
+            {#   MODAL   #}
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Êtes-vous sûr de vouloir supprimer ce partenaire ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn" id="confirmModalNo" name="non" value="Non">
+                            <input type="button" class="btn" id="confirmModalYes" name="oui" value="Oui">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#   MODAL   #}
+
         {% endfor %}
     </div>
     <div class="row">
