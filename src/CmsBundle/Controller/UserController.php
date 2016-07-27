@@ -6,12 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
+    private function UserGetLocal(){
+        $request = $this->get('request');
+        return $request->getLocale();
+    }
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $accueils = $em->getRepository('CmsBundle:Accueil')->findAll();
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+        $local = $this->UserGetLocal();
+
+        $accueils = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => $local));
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local));
 
         return $this->render('CmsBundle:User:index.html.twig', array(
             'accueils' => $accueils,
@@ -23,7 +30,9 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 0));
+        $local = $this->UserGetLocal();
+
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 0));
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
             'artistes' => $artistes,
@@ -35,7 +44,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
-        
+
         return $this->render('CmsBundle:User:commercants.html.twig', array(
             'commercants' => $commercants,
         ));
@@ -45,7 +54,9 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findby(array(),array ('donation' => 'desc'));
+        $local = $this->UserGetLocal();
+
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findBy(array('langue' => $local, 'donation' => 'desc'));
 
         return $this->render('CmsBundle:User:partenaires.html.twig' , array (
             'partenaires' => $partenaires,
@@ -54,7 +65,10 @@ class UserController extends Controller
     public function archivesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 1));
+
+        $local = $this->UserGetLocal();
+
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 1));
 
         foreach ($artistes as $artiste) {
             $years[] = $artiste->getDate()->format("Y");
@@ -69,7 +83,9 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $presses = $em->getRepository('CmsBundle:Presse')->findAll();
+        $local = $this->UserGetLocal();
+
+        $presses = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local));
 
         return $this->render('CmsBundle:User:presses.html.twig' , array (
             'presses' => $presses,

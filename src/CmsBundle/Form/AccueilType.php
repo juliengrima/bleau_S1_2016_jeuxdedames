@@ -17,13 +17,13 @@ class AccueilType extends AbstractType
         $builder
             ->add('titre')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
-            ->add('contenu', 'textarea')
+            ->add('contenu')
             ->add('premiertitre')
-            ->add('premiercontenu' , 'textarea')
+            ->add('premiercontenu')
             ->add('deuxiemetitre' )
-            ->add('deuxiemecontenu' , 'textarea')
+            ->add('deuxiemecontenu')
             ->add('troisiemetitre')
-            ->add('troisiemecontenu' , 'textarea')
+            ->add('troisiemecontenu')
         ;
     }
     

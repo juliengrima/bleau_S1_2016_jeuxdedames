@@ -2,7 +2,6 @@
 
 namespace CmsBundle\Controller;
 
-use CmsBundle\Entity\Langue;
 use CmsBundle\Form\LangueType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
