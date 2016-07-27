@@ -56,7 +56,11 @@ class UserController extends Controller
 
         $local = $this->UserGetLocal();
 
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findBy(array('langue' => $local, 'donation' => 'desc'));
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')
+            ->findBy(
+                array('langue' => $local),
+                array('donation' => 'desc')
+            );
 
         return $this->render('CmsBundle:User:partenaires.html.twig' , array (
             'partenaires' => $partenaires,

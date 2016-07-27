@@ -44,26 +44,12 @@ class CommercantController extends Controller
             $em->persist($commercant);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_show', array('id' => $commercant->getId()));
+            return $this->redirectToRoute('commercant_index', array('id' => $commercant->getId()));
         }
 
         return $this->render('CmsBundle:commercant:new.html.twig', array(
             'commercant' => $commercant,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Commercant entity.
-     *
-     */
-    public function showAction(Commercant $commercant)
-    {
-        $deleteForm = $this->createDeleteForm($commercant);
-
-        return $this->render('CmsBundle:commercant:show.html.twig', array(
-            'commercant' => $commercant,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -90,7 +76,7 @@ class CommercantController extends Controller
             $em->persist($commercant);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_edit', array('id' => $commercant->getId()));
+            return $this->redirectToRoute('commercant_index', array('id' => $commercant->getId()));
         }
 
         return $this->render('CmsBundle:commercant:edit.html.twig', array(

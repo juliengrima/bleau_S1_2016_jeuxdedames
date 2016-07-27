@@ -3,11 +3,6 @@ commercant_index:
     defaults: { _controller: "CmsBundle:Commercant:index" }
     methods:  GET
 
-commercant_show:
-    path:     /{id}/show
-    defaults: { _controller: "CmsBundle:Commercant:show" }
-    methods:  GET
-
 commercant_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Commercant:new" }

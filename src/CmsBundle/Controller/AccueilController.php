@@ -45,6 +45,10 @@ class AccueilController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($accueil_fr);
+
+            $accueil_en->setImage($accueil_fr->getImage());
+            $accueil_es->setImage($accueil_fr->getImage());
+
             $em->persist($accueil_en);
             $em->persist($accueil_es);
             $em->flush();

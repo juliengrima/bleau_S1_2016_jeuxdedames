@@ -67,7 +67,7 @@ class PartenaireController extends Controller
             $em->persist($partenaire_es);
             $em->flush();
 
-            return $this->redirectToRoute('partenaire_new');
+            return $this->redirectToRoute('user_partenaire');
         }
 
         return $this->render('CmsBundle:partenaire:new.html.twig', array(

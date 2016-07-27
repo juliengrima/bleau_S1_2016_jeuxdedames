@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="">
+    <div class="container-fluid">
         {% for partenaire in partenaires %}
             <div class="col-md-3 col-sm-4 col-xs-6">
                 <div class="row">
@@ -38,8 +38,12 @@
             {#   MODAL   #}
 
         {% endfor %}
-    </div>
-    <div class="row">
-        <a href="{{ path('partenaire_new') }}">Créer une nouvelle entrée.</a>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('partenaire_new') }}">Ajouter un nouveau partenaire</a>
+            </div>
+            {#{% endif %}#}
+        </div>
     </div>
 {% endblock %}
