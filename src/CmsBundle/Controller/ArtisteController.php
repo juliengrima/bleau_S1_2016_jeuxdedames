@@ -122,7 +122,7 @@ class ArtisteController extends Controller
 
             $artiste->preUpload();
 
-            $em->persist($artiste);
+            $em->persist($langue);
             $em->flush();
 
             return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
