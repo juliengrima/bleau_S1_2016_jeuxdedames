@@ -123,6 +123,7 @@ class PartenaireController extends Controller
             'partenaire' => $partenaire,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         ));
     }
 
