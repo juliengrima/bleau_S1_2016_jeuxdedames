@@ -4,16 +4,39 @@
 
     <H1>Presse !</H1>
 
-    {% for presse in presses %}
+    <div class="container-fluid block_artiste">
+        <div class="row">
+            {% for presse in presses %}
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="row">
+                        <figure class="snip1239">
+                            <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
+                            <figcaption>
+                                <h3>{{ presse.nom }}</h3>
+                                <p>{{ presse.texte }}</p>
+                                <p>{{ presse.date|date("d/m/Y") }}</p>
+                                <a href="{{ presse.lien }}" class="read-more">An savoir plus</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <div class="edit_admin">
+                            <a class="btn btn-default edit_admin" href="{{ path('presse_edit', { 'id': presse.id }) }}">Editer</a>
+                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('presse_delete', {'id':  presse.Id  }) }}" title="Supprimer">Supprimer</a>
+                        </div>
 
-    <div class="container">
-        <p>{{ presse.nom }}</p>
-            <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
-                <p>{{ presse.texte }}</p>
-                    <p>{{ presse.date|date("m/d/Y") }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('presse_new') }}">Ajouter une nouvelle presse</a>
+            </div>
+            {#{% endif %}#}
+        </div>
     </div>
-
-    {% endfor %}
 
     <div class="row">
         <a href="{{ path('presse_new') }}">Créer une nouvelle entrée.</a>

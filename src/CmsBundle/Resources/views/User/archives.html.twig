@@ -20,7 +20,7 @@
                                     <figcaption>
                                         <h3 class="editartiste2">{{ artiste.nom }}</h3>
                                         <p class="editartiste2">{{ artiste.texte }}</p>
-                                        <a href="#" class="read-more">Read More</a>
+                                        <a href="{{ artiste.lien }}" class="read-more">Read More</a>
                                     </figcaption>
                                 </figure>
                                 <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
