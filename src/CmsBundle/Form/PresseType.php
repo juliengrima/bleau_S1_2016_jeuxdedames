@@ -18,7 +18,7 @@ class PresseType extends AbstractType
             ->add('nom')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
             ->add('texte', 'textarea')
-            ->add('lien', 'textarea')
+            ->add('lien')
             ->add('date')
         ;
     }

@@ -132,6 +132,11 @@ class Presse
     private $langue;
 
     /**
+     * @var integer
+     */
+    private $item_id;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $presse;
@@ -296,6 +301,30 @@ class Presse
     public function getLangue()
     {
         return $this->langue;
+    }
+
+    /**
+     * Set itemId
+     *
+     * @param integer $itemId
+     *
+     * @return Presse
+     */
+    public function setItemId($itemId)
+    {
+        $this->item_id = $itemId;
+
+        return $this;
+    }
+
+    /**
+     * Get itemId
+     *
+     * @return integer
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
     }
 
     /**
