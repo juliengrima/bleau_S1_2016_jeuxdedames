@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<<<<<<< HEAD
-    <h1>Commercant creation</h1>
+    <h1>Creation d'un nouveau commerçant</h1>
 
     {{ form_start(form) }}
     <div class="container">
@@ -11,7 +10,38 @@
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                 {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                {{ form_errors(form.adressee) }}
+                {{ form_errors(form.adresse) }}
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p class="">Code Postal</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.code, {'attr': {'class': 'form-control', 'placeholder': 'Code postal'}}) }}
+                {{ form_errors(form.code) }}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p class="">Ville</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                {{ form_errors(form.ville) }}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p class="">Photo de l'emplacement</p>
+            <div class="input-group">
+                {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(form.file) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+        <input type="submit" value="Create" />
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Créer Partenaire </h1>
+    <h1>Editer Partenaire </h1>
     {{ form_start(form) }}
 
     <div>
@@ -56,11 +56,10 @@
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="checkbox">
                                 <p class="">Donation</p>
-                                    <label>
-                                        {{ form_widget(accueil.donation) }}
-                                    </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.donation, {'attr': {'class': 'form-control'}}) }}
                                     {{ form_errors(accueil.donation) }}
                                 </div>
                             </div>
@@ -99,11 +98,10 @@
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="checkbox">
                                 <p class="">Donation</p>
-                                    <label>
-                                        {{ form_widget(accueil.donation) }}
-                                    </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.donation, {'attr': {'class': 'form-control'}}) }}
                                     {{ form_errors(accueil.donation) }}
                                 </div>
                             </div>
@@ -142,11 +140,10 @@
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="checkbox">
                                 <p class="">Donation</p>
-                                    <label>
-                                        {{ form_widget(accueil.donation) }}
-                                    </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.donation, {'attr': {'class': 'form-control'}}) }}
                                     {{ form_errors(accueil.donation) }}
                                 </div>
                             </div>

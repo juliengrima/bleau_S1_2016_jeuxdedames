@@ -19,16 +19,6 @@ class PartenaireController extends Controller
      * Lists all Partenaire entities.
      *
      */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
-
-        return $this->render('CmsBundle:partenaire:index.html.twig', array(
-            'partenaires' => $partenaires,
-        ));
-    }
 
     /**
      * Creates a new Partenaire entity.
@@ -36,6 +26,9 @@ class PartenaireController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
+
         $langue = new Partenaire();
 
         // dummy code - this is here just so that the Task has some tags
@@ -56,13 +49,24 @@ class PartenaireController extends Controller
             ->add('partenaire', CollectionType::class, array(
                 'entry_type' => PartenaireType::class
             ))
-            ->add('submit','submit')
             ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $partenaire_fr->setItemId($id_item_max[0][1] + 1);
             $em->persist($partenaire_fr);
+            $em->persist($partenaire_en);
+            $em->persist($partenaire_es);
+            $partenaire_en->setItemId($artiste_fr->getItemId());
+            $partenaire_es->setItemId($artiste_fr->getItemId());
+
+            $em->persist($artiste_fr);
+
+            $partenaire_en->setImage($artiste_fr->getImage());
+            $partenaire_es->setImage($artiste_fr->getImage());
+
             $em->persist($partenaire_en);
             $em->persist($partenaire_es);
             $em->flush();
@@ -70,25 +74,11 @@ class PartenaireController extends Controller
             return $this->redirectToRoute('user_partenaire');
         }
 
-        return $this->render('CmsBundle:partenaire:new.html.twig', array(
-            'langue' => $langue,
+        return $this->render('@Cms/partenaire/new.html.twig', array(
             'form' => $form->createView(),
         ));
     }
-
-    /**
-     * Finds and displays a Partenaire entity.
-     *
-     */
-    public function showAction(Partenaire $partenaire)
-    {
-        $deleteForm = $this->createDeleteForm($partenaire);
-
-        return $this->render('CmsBundle:partenaire:show.html.twig', array(
-            'partenaire' => $partenaire,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
 
     /**
      * Displays a form to edit an existing Partenaire entity.
@@ -96,8 +86,28 @@ class PartenaireController extends Controller
      */
     public function editAction(Request $request, Partenaire $partenaire)
     {
-        $deleteForm = $this->createDeleteForm($partenaire);
-        $editForm = $this->createForm('CmsBundle\Form\PartenaireType', $partenaire);
+        $em = $this->getDoctrine()->getManager();
+
+        $id_item = $partenaire->getItemId();
+
+        $partenaire_fr = $em->getRepository('CmsBundle:Partenaire')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
+        $partenaire_en = $em->getRepository('CmsBundle:Partenaire')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
+        $partenaire_es = $em->getRepository('CmsBundle:Partenaire')->findOneBy(array('langue' => 'es', 'item_id' => $id_item));
+
+        $langue = new Partenaire();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $langue->getPartenaire()->add($partenaire_fr);
+        $langue->getPartenaire()->add($partenaire_en);
+        $langue->getPartenaire()->add($partenaire_es);
+
+        $editForm = $this->createFormBuilder($langue)
+            ->add('partenaire', CollectionType::class, array(
+                'entry_type' => PartenaireType::class
+            ))
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -113,17 +123,16 @@ class PartenaireController extends Controller
 
             $partenaire->preUpload();
 
-            $em->persist($partenaire);
+            $em->persist($langue);
             $em->flush();
 
-            return $this->redirectToRoute('partenaire_edit', array('id' => $partenaire->getId()));
+            return $this->redirectToRoute('user_partenaire', array('id' => $partenaire->getId()));
         }
 
         return $this->render('CmsBundle:partenaire:edit.html.twig', array(
             'partenaire' => $partenaire,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'form' => $form->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
@@ -131,33 +140,23 @@ class PartenaireController extends Controller
      * Deletes a Partenaire entity.
      *
      */
-    public function deleteAction(Request $request, Partenaire $partenaire)
-    {
-        $form = $this->createDeleteForm($partenaire);
-        $form->handleRequest($request);
+    public function deleteAction($id) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($partenaire);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $partenaire = $em->getRepository('CmsBundle:Partenaire')->find($id);
+        $partenaire = $em->getRepository('CmsBundle:Partenaire')->findAll();
+
+        if (!$partenaire) {
+            throw $this->createNotFoundException(
+                'Pas de document trouvé' . $id
+            );
         }
 
-        return $this->redirectToRoute('partenaire_index');
-    }
+        $em->remove($partenaire);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Partenaire entity.
-     *
-     * @param Partenaire $partenaire The Partenaire entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Partenaire $partenaire)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('partenaire_delete', array('id' => $partenaire->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return $this->redirect($this->generateUrl('user_partenaire', array(
+            'partenaires' => $partenaire,
+        )));
     }
 }
