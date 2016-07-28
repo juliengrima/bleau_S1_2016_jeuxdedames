@@ -113,17 +113,19 @@ class ArtisteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            if($editForm->get('file')->getData() != null) {
-
-                if($artiste->getImage() != null) {
-                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$artiste->getImage());
-                    $artiste->setImage(null);
-                }
-            }
+//            if($editForm->get('file')->getData() != null) {
+//
+//                if($artiste->getImage() != null) {
+//                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$artiste->getImage());
+//                    $artiste->setImage(null);
+//                }
+//            }
 
             $artiste->preUpload();
 
-            $em->persist($langue);
+            $em->persist($artiste_fr);
+            $em->persist($artiste_en);
+            $em->persist($artiste_es);
             $em->flush();
 
             return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
@@ -138,7 +140,6 @@ class ArtisteController extends Controller
      *
      */
     public function deleteAction($id) {
-
         $em = $this->getDoctrine()->getManager();
         $artiste = $em->getRepository('CmsBundle:Artiste')->find($id);
         $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();

@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $local = $this->UserGetLocal();
 
-        $presses = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local));
+        $presses = $em->getRepository('CmsBundle:Presse')->findBy(array('langue' => $local));
 
         return $this->render('CmsBundle:User:presses.html.twig' , array (
             'presses' => $presses,
