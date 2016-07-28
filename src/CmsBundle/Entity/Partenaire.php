@@ -96,7 +96,6 @@ class Partenaire
     
 //Generate
 
-
     /**
      * @var integer
      */
@@ -126,6 +125,11 @@ class Partenaire
      * @var string
      */
     private $langue;
+
+    /**
+     * @var integer
+     */
+    private $item_id;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -268,6 +272,30 @@ class Partenaire
     public function getLangue()
     {
         return $this->langue;
+    }
+
+    /**
+     * Set itemId
+     *
+     * @param integer $itemId
+     *
+     * @return Partenaire
+     */
+    public function setItemId($itemId)
+    {
+        $this->item_id = $itemId;
+
+        return $this;
+    }
+
+    /**
+     * Get itemId
+     *
+     * @return integer
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
     }
 
     /**
