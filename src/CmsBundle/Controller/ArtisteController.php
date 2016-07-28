@@ -55,10 +55,10 @@ class ArtisteController extends Controller
             $artiste_fr->setItemId($id_item_max[0][1] + 1);
             $artiste_en->setDate($artiste_fr->getDate());
             $artiste_es->setDate($artiste_fr->getDate());
-            $artiste_en->setAjouterslider(0);
-            $artiste_es->setAjouterslider(0);
-            $artiste_en->setArchive(0);
-            $artiste_es->setArchive(0);
+            $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
+            $artiste_es->setAjouterslider($artiste_fr->getAjouterslider());
+            $artiste_en->setArchive(1);
+            $artiste_es->setArchive(1);
             $artiste_en->setItemId($artiste_fr->getItemId());
             $artiste_es->setItemId($artiste_fr->getItemId());
 
