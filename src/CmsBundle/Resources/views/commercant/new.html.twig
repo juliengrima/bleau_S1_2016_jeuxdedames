@@ -7,7 +7,7 @@
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            {% for accueil in form.artiste %}
+            {% for accueil in form.commercant %}
                 {% if (accueil.vars.value.langue == 'fr') %}
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
                 {% elseif (accueil.vars.value.langue == 'en')%}
@@ -30,8 +30,29 @@
                                 <p class="">Ardresse</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Code Postal</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.code, {'attr': {'class': 'form-control', 'placeholder': 'Code Postal'}}) }}
+                                    {{ form_errors(accueil.code) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Ville</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                                    {{ form_errors(accueil.ville) }}
                                 </div>
                             </div>
                         </div>
@@ -44,120 +65,42 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Texte descriptif</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.texte, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                                    {{ form_errors(accueil.texte) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Lien vers l'artiste</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 {% elseif (accueil.vars.value.langue == 'en') %}
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <h1>Langue: {{ accueil.vars.value.langue }}</h1>
                         <div class="container">
                             <div class="row">
-                                <p class="">Nom</p>
+                                <p class="">Ardresse</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
                                 </div>
                             </div>
                         </div>
-                        <div class="row hidden">
-                            <p class="">Photo de l'oeuvre</p>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
-                                {{ form_errors(accueil.file) }}
-                            </div>
-                        </div>
+
                         <div class="container">
                             <div class="row">
-                                <p class="">Texte descriptif</p>
+                                <p class="">Code Postal</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.texte, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                                    {{ form_errors(accueil.texte) }}
+                                    {{ form_widget(accueil.code, {'attr': {'class': 'form-control', 'placeholder': 'Code Postal'}}) }}
+                                    {{ form_errors(accueil.code) }}
                                 </div>
                             </div>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <p class="">Lien vers l'artiste</p>
+                                <p class="">Ville</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
+                                    {{ form_widget(accueil.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                                    {{ form_errors(accueil.ville) }}
                                 </div>
                             </div>
                         </div>
-                        <div class="row hidden">
-                            <div class="checkbox">
-                                <label>
-                                    {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                </label>
-                                {{ form_errors(accueil.ajouterslider) }}
-                            </div>
-                        </div>
-                        <div class="row hidden">
-                            <div class="checkbox">
-                                <label>
-                                    {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                </label>
-                                {{ form_errors(accueil.archive) }}
-                            </div>
-                        </div>
-                    </div>
-                {% elseif (accueil.vars.value.langue == 'es') %}
-                    <div role="tabpanel" class="tab-pane" id="messages">
-                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
                         <div class="container">
                             <div class="row">
-                                <p class="">Nom</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row hidden">
                                 <p class="">Photo de l'oeuvre</p>
                                 <div class="input-group">
                                     {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
@@ -165,47 +108,49 @@
                                 </div>
                             </div>
                         </div>
+                {% elseif (accueil.vars.value.langue == 'es') %}
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
                         <div class="container">
                             <div class="row">
-                                <p class="">Texte descriptif</p>
+                                <p class="">Ardresse</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.texte, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                                    {{ form_errors(accueil.texte) }}
+                                    {{ form_widget(accueil.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                                    {{ form_errors(accueil.adresse) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Code Postal</p>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(accueil.code, {'attr': {'class': 'form-control', 'placeholder': 'Code Postal'}}) }}
+                                    {{ form_errors(accueil.code) }}
                                 </div>
                             </div>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <p class="">Lien vers l'artiste</p>
+                                <p class="">Ville</p>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
+                                    {{ form_widget(accueil.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                                    {{ form_errors(accueil.ville) }}
                                 </div>
                             </div>
                         </div>
                         <div class="container">
-                            <div class="row hidden">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
+                            <div class="row">
+                                <p class="">Photo de l'oeuvre</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
+                                    {{ form_errors(accueil.file) }}
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="row hidden">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 {% endif %}
             {% endfor %}
         </div>
