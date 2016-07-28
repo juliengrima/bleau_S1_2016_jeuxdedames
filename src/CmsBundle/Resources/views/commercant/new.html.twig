@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<<<<<<< HEAD
     <h1>Commercant creation</h1>
 
     {{ form_start(form) }}
@@ -12,14 +13,5 @@
                 {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
                 {{ form_errors(form.adressee) }}
             </div>
-        </div>
-    </div>
-    {{ form_end(form) }}
 
-    <input type="submit" value="Create" />
-    <ul>
-        <li>
-            <a href="{{ path('commercant_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
