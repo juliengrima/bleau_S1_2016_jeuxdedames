@@ -146,7 +146,7 @@
                                 <div class="checkbox">
                                 <p class="">Donation</p>
                                     <label>
-                                        {{ form_widget(accueil.donation) }}
+                                        {{ form_widget(accueil.donation, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}})}}
                                     </label>
                                     {{ form_errors(accueil.donation) }}
                                 </div>
