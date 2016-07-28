@@ -2,10 +2,10 @@
 
 namespace CmsBundle\Controller;
 
+
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use CmsBundle\Entity\Presse;
 use CmsBundle\Form\PresseType;
 
@@ -16,26 +16,14 @@ use CmsBundle\Form\PresseType;
 class PresseController extends Controller
 {
     /**
-     * Lists all Presse entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $presses = $em->getRepository('CmsBundle:Presse')->findAll();
-
-        return $this->render('CmsBundle:presse:index.html.twig', array(
-            'presses' => $presses,
-        ));
-    }
-
-    /**
      * Creates a new Presse entity.
      *
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $id_item_max = $em->getRepository('CmsBundle:Presse')->getIdItemPresse();
+
         $langue = new Presse();
 
         // dummy code - this is here just so that the Task has some tags
@@ -58,35 +46,29 @@ class PresseController extends Controller
             ))
             ->add('submit','submit')
             ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $presse_fr->setItemId($id_item_max[0][1] + 1);
+            $presse_en->setItemId($presse_fr->getItemId());
+            $presse_es->setItemId($presse_fr->getItemId());
+
             $em->persist($presse_fr);
+
+            $presse_en->setImage($presse_fr->getImage());
+            $presse_es->setImage($presse_fr->getImage());
+
             $em->persist($presse_en);
             $em->persist($presse_es);
             $em->flush();
 
-            return $this->redirectToRoute('presse_new');
+            return $this->redirectToRoute('user_presse');
         }
 
-        return $this->render('CmsBundle:presse:new.html.twig', array(
-            'langue' => $langue,
+        return $this->render('@Cms/presse/new.html.twig', array(
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Presse entity.
-     *
-     */
-    public function showAction(Presse $presse)
-    {
-        $deleteForm = $this->createDeleteForm($presse);
-
-        return $this->render('CmsBundle:presse:show.html.twig', array(
-            'presse' => $presse,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -96,8 +78,29 @@ class PresseController extends Controller
      */
     public function editAction(Request $request, Presse $presse)
     {
-        $deleteForm = $this->createDeleteForm($presse);
-        $editForm = $this->createForm('CmsBundle\Form\PresseType', $presse);
+        $em = $this->getDoctrine()->getManager();
+
+        $id_item = $presse->getItemId();
+
+        $presse_fr = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
+        $presse_en = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
+        $presse_es = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'es', 'item_id' => $id_item));
+
+        $langue = new Presse();
+
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $langue->getPresse()->add($presse_fr);
+        $langue->getPresse()->add($presse_en);
+        $langue->getPresse()->add($presse_es);
+
+        $editForm = $this->createFormBuilder($langue)
+            ->add('presse', CollectionType::class, array(
+                'entry_type' => PresseType::class
+            ))
+            ->add('submit','submit')
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -113,21 +116,18 @@ class PresseController extends Controller
 
             $presse->preUpload();
 
-            $em->persist($presse);
+            $em->persist($langue);
             $em->flush();
 
-            return $this->redirectToRoute('presse_edit', array('id' => $presse->getId()));
+            return $this->redirectToRoute('user_presse', array('id' => $presse->getId()));
         }
 
         return $this->render('CmsBundle:presse:edit.html.twig', array(
-            'presse' => $presse,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
-
     /**
-     * Deletes a Presse entity.
+     * Remove an existing record and a file.
      *
      */
     public function deleteAction($id) {

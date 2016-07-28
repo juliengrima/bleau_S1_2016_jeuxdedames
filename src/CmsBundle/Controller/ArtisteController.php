@@ -2,11 +2,10 @@
 
 namespace CmsBundle\Controller;
 
-use CmsBundle\Form\AccueilType;
+
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use CmsBundle\Entity\Artiste;
 use CmsBundle\Form\ArtisteType;
 
@@ -45,6 +44,7 @@ class ArtisteController extends Controller
             ->add('artiste', CollectionType::class, array(
                 'entry_type' => ArtisteType::class
                     ))
+            ->add('submit','submit')
             ->getForm();
 
         $form->handleRequest($request);
@@ -105,6 +105,7 @@ class ArtisteController extends Controller
             ->add('artiste', CollectionType::class, array(
                 'entry_type' => ArtisteType::class
             ))
+            ->add('submit','submit')
             ->getForm();
 
         $editForm->handleRequest($request);

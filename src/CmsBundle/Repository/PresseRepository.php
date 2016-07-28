@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class PresseRepository extends EntityRepository
 {
+    public function getIdItemPresse()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT MAX(a.item_id) FROM CmsBundle:Presse a'
+            )
+            ->getResult();
+    }
 }
