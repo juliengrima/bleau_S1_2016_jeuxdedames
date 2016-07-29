@@ -44,7 +44,7 @@ class CommercantController extends Controller
             $em->persist($commercant);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_index', array('id' => $commercant->getId()));
+            return $this->redirectToRoute('user_commercant', array('id' => $commercant->getId()));
         }
 
         return $this->render('CmsBundle:commercant:new.html.twig', array(
