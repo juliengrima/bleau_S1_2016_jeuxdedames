@@ -85,39 +85,28 @@ class CommercantController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
+
 
     /**
-     * Deletes a Commercant entity.
+     * Remove an existing record and a file.
      *
      */
-    public function deleteAction(Request $request, Commercant $commercant)
-    {
-        $form = $this->createDeleteForm($commercant);
-        $form->handleRequest($request);
+    public function deleteAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $commercant = $em->getRepository('CmsBundle:Commercant')->find($id);
+        $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($commercant);
-            $em->flush();
+        if (!$commercant) {
+            throw $this->createNotFoundException(
+                'Pas de document trouvé' . $id
+            );
         }
 
-        return $this->redirectToRoute('commercant_index');
-    }
+        $em->remove($commercant);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Commercant entity.
-     *
-     * @param Commercant $commercant The Commercant entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Commercant $commercant)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('commercant_delete', array('id' => $commercant->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return $this->redirect($this->generateUrl('user_commercant', array(
+            'commercant' => $commercants,
+        )));
     }
 }

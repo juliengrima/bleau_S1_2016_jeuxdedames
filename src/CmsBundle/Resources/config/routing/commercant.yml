@@ -16,4 +16,5 @@ commercant_edit:
 commercant_delete:
     path:     /{id}/delete
     defaults: { _controller: "CmsBundle:Commercant:delete" }
-    methods:  DELETE
+    requirements:
+        id:  \d+

@@ -35,37 +35,26 @@
        // function initialize() {
 
         function codeAddress() {
-            var image = {
-                url: 'http://www.signegeneve.ch/wp-content/themes/parallelus-salutation/assets/images/gmap-marker.png'
-                // This marker is 20 pixels wide by 32 pixels high.
-            };
-            var image2 = {
-                url: 'http://maps.google.com/mapfiles/marker_yellow.png'
-                // This marker is 20 pixels wide by 32 pixels high.
-            };
             {% for commercant in commercants %}
                 var address = '{{ commercant.adresse }} {{ commercant.code }} {{ commercant.ville }}';
                     geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location,
-                        {% if commercant.code == 77300 %}
-                            icon: image,
-                        {% else %}
-                            icon: image2,
-                        {% endif %}
-                        });
+                            map.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location});
 
-                        var description =
+                            var description =
                                 '<div><img src="{{ asset('uploads/imgcms/') }}{{ commercant.image }}"/></div>'+
                                 '<div><p>{{ commercant.adresse }}</p></div>'+
                                 '<div><p>{{ commercant.code }}</p></div>'+
-                                '<div><p>{{ commercant.ville }}</p></div>';
+                                '<div><p>{{ commercant.ville }}</p></div>'+
+                                {% for commercant in commercants %}
+                                '<div><a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">edit</a></div>'+
+                                '<div><a class="btn btn-default edit_admin confirmModalLink" href="{{ path('commercant_delete', {'id':  commercant.id  }) }}" title="Supprimer">Supprimer</a>';
+                                {% endfor %}
 
-
-                        attachDescription(marker, description);
+                            attachDescription(marker, description);
                     } else {
                         alert("Geocode was not successful for the following reason: " + status);
                     }
