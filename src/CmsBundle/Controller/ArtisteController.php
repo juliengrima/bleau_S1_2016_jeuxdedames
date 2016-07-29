@@ -105,7 +105,6 @@ class ArtisteController extends Controller
             ->add('artiste', CollectionType::class, array(
                 'entry_type' => ArtisteType::class
             ))
-            ->add('submit','submit')
             ->getForm();
 
         $editForm->handleRequest($request);

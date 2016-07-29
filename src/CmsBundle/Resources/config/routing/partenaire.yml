@@ -21,4 +21,7 @@ partenaire_edit:
 partenaire_delete:
     path:     /{id}/delete
     defaults: { _controller: "CmsBundle:Partenaire:delete" }
-    methods:  DELETE
+    requirements:
+        id:  \d+
+
+

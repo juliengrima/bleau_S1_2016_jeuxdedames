@@ -98,7 +98,6 @@ class PresseController extends Controller
             ->add('presse', CollectionType::class, array(
                 'entry_type' => PresseType::class
             ))
-            ->add('submit','submit')
             ->getForm();
 
         $editForm->handleRequest($request);
@@ -106,17 +105,20 @@ class PresseController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            if($editForm->get('file')->getData() != null) {
+//            if($editForm->get('file')->getData() != null) {
+//
+//                if($partenaire->getImage() != null) {
+//                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
+//                    $partenaire->setImage(null);
+//                }
+//            }
 
-                if($presse->getImage() != null) {
-                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$presse->getImage());
-                    $presse->setImage(null);
-                }
-            }
 
             $presse->preUpload();
 
-            $em->persist($langue);
+            $em->persist($presse_fr);
+            $em->persist($presse_en);
+            $em->persist($presse_es);
             $em->flush();
 
             return $this->redirectToRoute('user_presse', array('id' => $presse->getId()));

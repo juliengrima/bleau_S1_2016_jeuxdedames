@@ -2,10 +2,10 @@
 
 namespace CmsBundle\Controller;
 
+
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use CmsBundle\Entity\Partenaire;
 use CmsBundle\Form\PartenaireType;
 
@@ -16,18 +16,13 @@ use CmsBundle\Form\PartenaireType;
 class PartenaireController extends Controller
 {
     /**
-     * Lists all Partenaire entities.
-     *
-     */
-
-    /**
      * Creates a new Partenaire entity.
      *
      */
     public function newAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
+        $id_item_max = $em->getRepository('CmsBundle:Partenaire')->getIdItemPartenaire();
 
         $langue = new Partenaire();
 
@@ -49,6 +44,7 @@ class PartenaireController extends Controller
             ->add('partenaire', CollectionType::class, array(
                 'entry_type' => PartenaireType::class
             ))
+            ->add('submit','submit')
             ->getForm();
 
         $form->handleRequest($request);
@@ -56,16 +52,13 @@ class PartenaireController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $partenaire_fr->setItemId($id_item_max[0][1] + 1);
+            $partenaire_en->setItemId($partenaire_fr->getItemId());
+            $partenaire_es->setItemId($partenaire_fr->getItemId());
+
             $em->persist($partenaire_fr);
-            $em->persist($partenaire_en);
-            $em->persist($partenaire_es);
-            $partenaire_en->setItemId($artiste_fr->getItemId());
-            $partenaire_es->setItemId($artiste_fr->getItemId());
 
-            $em->persist($artiste_fr);
-
-            $partenaire_en->setImage($artiste_fr->getImage());
-            $partenaire_es->setImage($artiste_fr->getImage());
+            $partenaire_en->setImage($partenaire_fr->getImage());
+            $partenaire_es->setImage($partenaire_fr->getImage());
 
             $em->persist($partenaire_en);
             $em->persist($partenaire_es);
@@ -78,7 +71,6 @@ class PartenaireController extends Controller
             'form' => $form->createView(),
         ));
     }
-    
 
     /**
      * Displays a form to edit an existing Partenaire entity.
@@ -106,6 +98,7 @@ class PartenaireController extends Controller
             ->add('partenaire', CollectionType::class, array(
                 'entry_type' => PartenaireType::class
             ))
+            ->add('submit','submit')
             ->getForm();
 
         $editForm->handleRequest($request);
@@ -113,38 +106,38 @@ class PartenaireController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            if($editForm->get('file')->getData() != null) {
-
-                if($partenaire->getImage() != null) {
-                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
-                    $partenaire->setImage(null);
-                }
-            }
+//            if($editForm->get('file')->getData() != null) {
+//
+//                if($partenaire->getImage() != null) {
+//                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
+//                    $partenaire->setImage(null);
+//                }
+//            }
+            
 
             $partenaire->preUpload();
 
-            $em->persist($langue);
+            $em->persist($partenaire_fr);
+            $em->persist($partenaire_en);
+            $em->persist($partenaire_es);
             $em->flush();
 
             return $this->redirectToRoute('user_partenaire', array('id' => $partenaire->getId()));
         }
 
         return $this->render('CmsBundle:partenaire:edit.html.twig', array(
-            'partenaire' => $partenaire,
-            'edit_form' => $editForm->createView(),
             'form' => $editForm->createView(),
         ));
     }
-
     /**
-     * Deletes a Partenaire entity.
+     * Remove an existing record and a file.
      *
      */
     public function deleteAction($id) {
 
         $em = $this->getDoctrine()->getManager();
         $partenaire = $em->getRepository('CmsBundle:Partenaire')->find($id);
-        $partenaire = $em->getRepository('CmsBundle:Partenaire')->findAll();
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
 
         if (!$partenaire) {
             throw $this->createNotFoundException(
@@ -156,7 +149,7 @@ class PartenaireController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl('user_partenaire', array(
-            'partenaires' => $partenaire,
+            'partenaires' => $partenaires,
         )));
     }
 }
