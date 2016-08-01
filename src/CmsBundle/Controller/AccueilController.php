@@ -25,19 +25,12 @@ class AccueilController extends Controller
     {
         $langue = new Accueil();
 
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
         $accueil_fr = new Accueil();
         $accueil_fr->setLangue('fr');
         $langue->getAccueil()->add($accueil_fr);
         $accueil_en = new Accueil();
         $accueil_en->setLangue('en');
         $langue->getAccueil()->add($accueil_en);
-        $accueil_es = new Accueil();
-        $accueil_es->setLangue('es');
-        $langue->getAccueil()->add($accueil_es);
-
-        // end dummy code
 
         $form = $this->createForm(LangueType::class, $langue);
         $form->handleRequest($request);
@@ -47,10 +40,8 @@ class AccueilController extends Controller
             $em->persist($accueil_fr);
 
             $accueil_en->setImage($accueil_fr->getImage());
-            $accueil_es->setImage($accueil_fr->getImage());
 
             $em->persist($accueil_en);
-            $em->persist($accueil_es);
             $em->flush();
 
             return $this->redirectToRoute('cms_homepage');
@@ -66,21 +57,17 @@ class AccueilController extends Controller
      * Displays a form to edit an existing Accueil entity.
      *
      */
-    public function editAction(Request $request, Accueil $accueil)
+    public function editAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $accueil_fr = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'fr'));
         $accueil_en = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'en'));
-        $accueil_es = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'es'));
 
         $langue = new Accueil();
 
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
         $langue->getAccueil()->add($accueil_fr);
         $langue->getAccueil()->add($accueil_en);
-        $langue->getAccueil()->add($accueil_es);
 
         $editForm = $this->createFormBuilder($langue)
             ->add('accueil', CollectionType::class, array(
@@ -92,18 +79,21 @@ class AccueilController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            
 
-            $accueil->preUpload();
+            $accueil_fr->preUpload();
 
-            $em->persist($accueil);
+            $em->persist($accueil_fr);
+            $em->flush();
+
+            $accueil_en->setImage($accueil_fr->getImage());
+            $em->persist($accueil_en);
             $em->flush();
 
             return $this->redirectToRoute('cms_homepage');
         }
 
         return $this->render('CmsBundle:Accueil:edit.html.twig', array(
-            'accueil' => $accueil,
+            'accueil' => $langue,
             'form' => $editForm->createView(),
         ));
     }
