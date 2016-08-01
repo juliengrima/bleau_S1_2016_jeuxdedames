@@ -98,7 +98,6 @@ class PartenaireController extends Controller
             ->add('partenaire', CollectionType::class, array(
                 'entry_type' => PartenaireType::class
             ))
-            ->add('submit','submit')
             ->getForm();
 
         $editForm->handleRequest($request);
