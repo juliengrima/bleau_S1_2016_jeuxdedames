@@ -2054,3 +2054,9 @@ figure.snip1239.hover figcaption {
 #menu-accordeon li:hover li {
     max-height: 15em;
 }
+/******* FIN ******/
+/****** commercants ***/
+.imagecommercant {
+    width: 50%;
+    float: right;
+}

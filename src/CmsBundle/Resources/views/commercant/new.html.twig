@@ -37,11 +37,11 @@
     <div class="container">
         <div class="row">
             <p class="">Photo de l'emplacement</p>
-            <div class="input-group">
-                {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
+            <div class="input-group ">
+                {{ form_widget(form.file, {'attr': {'class':'help-block'}}) }}
                 {{ form_errors(form.file) }}
             </div>
         </div>
     {{ form_end(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Créer" />
 {% endblock %}

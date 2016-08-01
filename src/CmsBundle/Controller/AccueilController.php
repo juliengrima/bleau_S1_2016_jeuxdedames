@@ -96,7 +96,7 @@ class AccueilController extends Controller
             if ($editForm->get('file')->getData() != null) {
 
                 if ($accueil->getImage() != null) {
-                    unlink(__DIR__ . '/../../../web/uploads/imgcms/' . $accueil->getImage());
+                    unlink (__DIR__ . '/../../../web/uploads/imgcms/' . $accueil->getImage());
                     $accueil->setImage(null);
                 }
             }
