@@ -34,10 +34,6 @@ class ArtisteController extends Controller
         $artiste_en = new Artiste();
         $artiste_en->setLangue('en');
         $langue->getArtiste()->add($artiste_en);
-        $artiste_es= new Artiste();
-        $artiste_es->setLangue('es');
-        $langue->getArtiste()->add($artiste_es);
-
         // end dummy code
 
         $form = $this->createFormBuilder($langue)
@@ -54,21 +50,15 @@ class ArtisteController extends Controller
             $artiste_fr->setDate(new \DateTime());
             $artiste_fr->setItemId($id_item_max[0][1] + 1);
             $artiste_en->setDate($artiste_fr->getDate());
-            $artiste_es->setDate($artiste_fr->getDate());
             $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
-            $artiste_es->setAjouterslider($artiste_fr->getAjouterslider());
             $artiste_en->setArchive(1);
-            $artiste_es->setArchive(1);
             $artiste_en->setItemId($artiste_fr->getItemId());
-            $artiste_es->setItemId($artiste_fr->getItemId());
 
             $em->persist($artiste_fr);
 
             $artiste_en->setImage($artiste_fr->getImage());
-            $artiste_es->setImage($artiste_fr->getImage());
 
             $em->persist($artiste_en);
-            $em->persist($artiste_es);
             $em->flush();
 
             return $this->redirectToRoute('user_artiste');
@@ -91,7 +81,6 @@ class ArtisteController extends Controller
 
         $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
         $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
-        $artiste_es = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'es', 'item_id' => $id_item));
 
         $langue = new Artiste();
 
@@ -99,7 +88,6 @@ class ArtisteController extends Controller
         // otherwise, this isn't an interesting example
         $langue->getArtiste()->add($artiste_fr);
         $langue->getArtiste()->add($artiste_en);
-        $langue->getArtiste()->add($artiste_es);
 
         $editForm = $this->createFormBuilder($langue)
             ->add('artiste', CollectionType::class, array(
@@ -112,19 +100,11 @@ class ArtisteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-//            if($editForm->get('file')->getData() != null) {
-//
-//                if($artiste->getImage() != null) {
-//                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$artiste->getImage());
-//                    $artiste->setImage(null);
-//                }
-//            }
 
             $artiste->preUpload();
 
             $em->persist($artiste_fr);
             $em->persist($artiste_en);
-            $em->persist($artiste_es);
             $em->flush();
 
             return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
