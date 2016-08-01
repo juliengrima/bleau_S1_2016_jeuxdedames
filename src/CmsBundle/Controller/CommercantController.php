@@ -80,7 +80,7 @@ class CommercantController extends Controller
 
         return $this->render('CmsBundle:commercant:edit.html.twig', array(
             'commercant' => $commercant,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 

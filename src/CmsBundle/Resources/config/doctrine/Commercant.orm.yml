@@ -16,6 +16,9 @@ CmsBundle\Entity\Commercant:
         adresse:
             type: string
             length: 255
+        nom:
+            type: string
+            length: 255
         code:
             type: integer
         ville:

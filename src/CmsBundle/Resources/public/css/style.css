@@ -302,7 +302,9 @@ input[type=checkbox]
     height: 60%;
     width: 100%;
 }
-
+#map h3{
+    color: black;
+}
 
 /************  ANIMATION IMAGE ********/
 figure.snip1239 {

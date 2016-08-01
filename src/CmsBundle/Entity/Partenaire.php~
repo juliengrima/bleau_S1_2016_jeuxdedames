@@ -96,4 +96,239 @@ class Partenaire
     
 //Generate
 
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var integer
+     */
+    private $donation;
+
+    /**
+     * @var string
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     */
+    private $lien;
+
+    /**
+     * @var string
+     */
+    private $langue;
+
+    /**
+     * @var integer
+     */
+    private $item_id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $partenaire;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Partenaire
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set donation
+     *
+     * @param integer $donation
+     *
+     * @return Partenaire
+     */
+    public function setDonation($donation)
+    {
+        $this->donation = $donation;
+
+        return $this;
+    }
+
+    /**
+     * Get donation
+     *
+     * @return integer
+     */
+    public function getDonation()
+    {
+        return $this->donation;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Partenaire
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Partenaire
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return Partenaire
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * Set itemId
+     *
+     * @param integer $itemId
+     *
+     * @return Partenaire
+     */
+    public function setItemId($itemId)
+    {
+        $this->item_id = $itemId;
+
+        return $this;
+    }
+
+    /**
+     * Get itemId
+     *
+     * @return integer
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
+    }
+
+    /**
+     * Add partenaire
+     *
+     * @param \CmsBundle\Entity\Partenaire $partenaire
+     *
+     * @return Partenaire
+     */
+    public function addPartenaire(\CmsBundle\Entity\Partenaire $partenaire)
+    {
+        $this->partenaire[] = $partenaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove partenaire
+     *
+     * @param \CmsBundle\Entity\Partenaire $partenaire
+     */
+    public function removePartenaire(\CmsBundle\Entity\Partenaire $partenaire)
+    {
+        $this->partenaire->removeElement($partenaire);
+    }
+
+    /**
+     * Get partenaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPartenaire()
+    {
+        return $this->partenaire;
+    }
 }
