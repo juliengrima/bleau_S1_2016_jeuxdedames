@@ -49,10 +49,8 @@
                                 '<div><p>{{ commercant.adresse }}</p></div>'+
                                 '<div><p>{{ commercant.code }}</p></div>'+
                                 '<div><p>{{ commercant.ville }}</p></div>'+
-                                {% for commercant in commercants %}
                                 '<div><a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">Editer</a></div>'+
                                 '<div><a class="btn btn-default edit_admin confirmModalLink" href="{{ path('commercant_delete', {'id':  commercant.id  }) }}" title="Supprimer">Supprimer</a>';
-                                {% endfor %}
 
                             attachDescription(marker, description);
                     } else {

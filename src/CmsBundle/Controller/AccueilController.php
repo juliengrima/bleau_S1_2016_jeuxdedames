@@ -92,14 +92,7 @@ class AccueilController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
-            if ($editForm->get('file')->getData() != null) {
-
-                if ($accueil->getImage() != null) {
-                    unlink (__DIR__ . '/../../../web/uploads/imgcms/' . $accueil->getImage());
-                    $accueil->setImage(null);
-                }
-            }
+            
 
             $accueil->preUpload();
 

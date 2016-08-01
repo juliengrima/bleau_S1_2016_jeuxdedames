@@ -59,7 +59,6 @@ class CommercantController extends Controller
      */
     public function editAction(Request $request, Commercant $commercant)
     {
-        $deleteForm = $this->createDeleteForm($commercant);
         $editForm = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
         $editForm->handleRequest($request);
 
@@ -82,7 +81,6 @@ class CommercantController extends Controller
         return $this->render('CmsBundle:commercant:edit.html.twig', array(
             'commercant' => $commercant,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
