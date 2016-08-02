@@ -12,12 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class PartenaireRepository extends EntityRepository
 {
-    public function getIdItemPartenaire()
-        {
-            return $this->getEntityManager()
-                ->createQuery(
-                    'SELECT MAX(a.item_id) FROM CmsBundle:Partenaire a'
-                )
-                ->getResult();
-        }
+
 }

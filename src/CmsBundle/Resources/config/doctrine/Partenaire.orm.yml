@@ -20,22 +20,10 @@ CmsBundle\Entity\Partenaire:
         lien:
             type: string
             length: 255
-        langue:
-            type: string
-            length: 2
-        item_id:
-            type: integer
-            generator:
-                strategy: IDENTITY
-    lifecycleCallbacks:
-      prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
-      preUpdate: [ preUpload, setUpdatedAtValue ]
-      postPersist: [ upload ]
-      postUpdate: [ upload ]
-      postRemove: [ removeUpload ]
 
-    oneToMany:
-        partenaire:
-            targetEntity: CmsBundle\Entity\Partenaire
-            mappedBy: partenaire
-            cascade:   [persist]
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

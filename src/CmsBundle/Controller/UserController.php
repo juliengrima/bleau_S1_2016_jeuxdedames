@@ -52,17 +52,13 @@ class UserController extends Controller
 
     public function partenairesAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
-        $local = $this->UserGetLocal();
-
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')
-            ->findBy(
-                array('langue' => $local),
-                array('donation' => 'desc')
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findBy(array(), array('donation' => 'desc')
             );
 
-        return $this->render('CmsBundle:User:partenaires.html.twig' , array (
+        return $this->render('CmsBundle:User:partenaires.html.twig', array(
             'partenaires' => $partenaires,
         ));
     }
