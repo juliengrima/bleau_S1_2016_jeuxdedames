@@ -26,5 +26,3 @@ class ExternalLinkFilter extends \Twig_Extension
         return 'external_link_filter';
     }
 }
-
-?>

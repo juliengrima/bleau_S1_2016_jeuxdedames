@@ -50,6 +50,9 @@ CmsBundle\Entity\Accueil:
             type: string
             lenght: 2
             column: langue
+        langue_active:
+            type: boolean
+
     lifecycleCallbacks:
         prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ preUpload, setUpdatedAtValue ]
