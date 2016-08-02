@@ -23,6 +23,7 @@ class ArtisteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
+        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
         $langue = new Artiste();
 
@@ -31,10 +32,13 @@ class ArtisteController extends Controller
         $artiste_fr = new Artiste();
         $artiste_fr->setLangue('fr');
         $langue->getArtiste()->add($artiste_fr);
-        $artiste_en = new Artiste();
-        $artiste_en->setLangue('en');
-        $langue->getArtiste()->add($artiste_en);
-        // end dummy code
+
+        if ($langue_active == true){
+            $artiste_en = new Artiste();
+            $artiste_en->setLangue('en');
+            $langue->getArtiste()->add($artiste_en);
+        }
+
 
         $form = $this->createFormBuilder($langue)
             ->add('artiste', CollectionType::class, array(
@@ -48,16 +52,22 @@ class ArtisteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $artiste_fr->setDate(new \DateTime());
             $artiste_fr->setItemId($id_item_max[0][1] + 1);
-            $artiste_en->setDate($artiste_fr->getDate());
-            $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
-            $artiste_en->setArchive($artiste_fr->getArchive());
-            $artiste_en->setItemId($artiste_fr->getItemId());
+
+            if ($langue_active == true){
+                $artiste_en->setDate($artiste_fr->getDate());
+                $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
+                $artiste_en->setArchive($artiste_fr->getArchive());
+                $artiste_en->setItemId($artiste_fr->getItemId());
+            }
+
 
             $em->persist($artiste_fr);
 
-            $artiste_en->setImage($artiste_fr->getImage());
+            if ($langue_active == true) {
+                $artiste_en->setImage($artiste_fr->getImage());
+                $em->persist($artiste_en);
+            }
 
-            $em->persist($artiste_en);
             $em->flush();
 
             return $this->redirectToRoute('user_artiste');
@@ -65,6 +75,7 @@ class ArtisteController extends Controller
 
         return $this->render('@Cms/Artiste/new.html.twig', array(
             'form' => $form->createView(),
+            'langue_active' => $langue_active
         ));
     }
 
@@ -80,13 +91,17 @@ class ArtisteController extends Controller
 
         $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
         $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
+        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
         $langue = new Artiste();
 
         // dummy code - this is here just so that the Task has some tags
         // otherwise, this isn't an interesting example
         $langue->getArtiste()->add($artiste_fr);
-        $langue->getArtiste()->add($artiste_en);
+
+        if ($langue_active == true){
+            $langue->getArtiste()->add($artiste_en);
+        }
 
         $editForm = $this->createFormBuilder($langue)
             ->add('artiste', CollectionType::class, array(
@@ -104,15 +119,18 @@ class ArtisteController extends Controller
             $em->persist($artiste_fr);
             $em->flush();
 
-            $artiste_en->setImage($artiste_fr->getImage());
-            $em->persist($artiste_en);
-            $em->flush();
+            if ($langue_active == true){
+                $artiste_en->setImage($artiste_fr->getImage());
+                $em->persist($artiste_en);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
         }
 
         return $this->render('CmsBundle:Artiste:edit.html.twig', array(
             'form' => $editForm->createView(),
+            'langue_active' => $langue_active
         ));
     }
     /**
@@ -135,7 +153,9 @@ class ArtisteController extends Controller
         }
 
         $em->remove($artiste_fr);
-        $em->remove($artiste_en);
+
+        if ($artiste_en != null)
+            $em->remove($artiste_en);
 
         $em->flush();
 

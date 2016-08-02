@@ -48,12 +48,14 @@
                             <li><a href="{{ path('user_presse') }}">Presse</a></li>
                             <li><a href="{{ path('user_archive') }}">Archives</a></li>
                         </ul>
-                    <div class="container, nav pull-right" >
-                        <ul>
-                            <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
-                            <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
-                        </ul>
-                    </div>
+                        {% if langue_active == true %}
+                            <div class="container, nav pull-right" >
+                                <ul>
+                                    <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
+                                    <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </nav>

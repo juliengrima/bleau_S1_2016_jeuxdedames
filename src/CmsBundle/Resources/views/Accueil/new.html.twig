@@ -113,6 +113,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="container">
+                            <div class="row">
+                                <p class="">Activer l'anglais</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.langue_active) }}
+                                    {{ form_errors(accueil.langue_active) }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 {% elseif (accueil.vars.value.langue == 'en') %}
@@ -205,6 +214,15 @@
                                 <div class="input-group">
                                     {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
                                     {{ form_errors(accueil.file) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container hidden">
+                            <div class="row">
+                                <p class="">Activer l'anglais</p>
+                                <div class="input-group">
+                                    {{ form_widget(accueil.langue_active) }}
+                                    {{ form_errors(accueil.langue_active) }}
                                 </div>
                             </div>
                         </div>
