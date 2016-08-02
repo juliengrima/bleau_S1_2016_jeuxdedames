@@ -16,6 +16,9 @@ body {
     background-color: #00BCD4;
     margin: auto;
 }
+.footer {
+    position: fixed;
+}
 h4 {
     text-align: center;
     font-size: 30px;
@@ -2059,4 +2062,7 @@ figure.snip1239.hover figcaption {
 .imagecommercant {
     width: 50%;
     float: right;
+}
+.loginpannels {
+    text-align: center;
 }
