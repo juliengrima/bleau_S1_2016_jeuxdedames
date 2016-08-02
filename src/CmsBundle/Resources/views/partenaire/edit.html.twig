@@ -1,10 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Editer Partenaire </h1>
-    {{ form_start(form) }}
 
-<h1>roger</h1>
+    <h1>editer partenaire</h1>
+
+    <div class="container-fluid">
+        {{ form_start(form) }}
+
+        <div class="container">
+            <div class="row">
+                <p class="">Adresse</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Nom du commerçant'}}) }}
+                    {{ form_errors(form.adresse) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">photo</p>
+                <div class="input-group">
+                    {{ form_widget(form.file, {'attr': {'class':'help-block'}}) }}
+                    {{ form_errors(form.file) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Lien</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.lien, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                    {{ form_errors(form.lien) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Donation</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.donation, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                    {{ form_errors(form.donation) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input type="submit" value="Create" />
 
     {{ form_end(form) }}
 

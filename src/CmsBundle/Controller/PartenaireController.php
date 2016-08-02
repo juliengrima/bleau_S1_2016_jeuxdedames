@@ -9,7 +9,7 @@ use CmsBundle\Entity\Partenaire;
 use CmsBundle\Form\PartenaireType;
 
 /**
- * Commercant controller.
+ * Partenaire controller.
  *
  */
 class PartenaireController extends Controller
@@ -54,7 +54,7 @@ class PartenaireController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Commercant entity.
+     * Displays a form to edit an existing Partenaire entity.
      *
      */
     public function editAction(Request $request, Partenaire $partenaire)
@@ -75,7 +75,7 @@ class PartenaireController extends Controller
             $em->persist($partenaire);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_index', array('id' => $partenaire->getId()));
+            return $this->redirectToRoute('user_partenaire', array('id' => $partenaire->getId()));
         }
 
         return $this->render('CmsBundle:partenaire:edit.html.twig', array(
