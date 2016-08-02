@@ -9,7 +9,7 @@
                         <img src="{{ asset('uploads/imgcms/') }}{{ partenaire.image }}"/>
                         <figcaption>
                             <p>{{ partenaire.adresse }}</p>
-                            <p>{{ partenaire.lien }}</p>
+                            <p>{{ partenaire.lien | external_link }}</p>
                         </figcaption>
                     </figure>
                 </div>

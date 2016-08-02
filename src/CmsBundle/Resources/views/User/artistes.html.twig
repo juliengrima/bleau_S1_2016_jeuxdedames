@@ -10,7 +10,7 @@
                             <figcaption>
                                 <h3>{{ artiste.nom }}</h3>
                                 <p>{{ artiste.texte }}</p>
-                                <a href="{{ artiste.lien }}" target="_blank" class="read-more">En savoir plus</a>
+                                <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
                             </figcaption>
                         </figure>
                     </div>
