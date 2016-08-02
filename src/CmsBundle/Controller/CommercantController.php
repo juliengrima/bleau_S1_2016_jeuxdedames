@@ -35,8 +35,10 @@ class CommercantController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $commercant = new Commercant();
         $form = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
+        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,6 +52,7 @@ class CommercantController extends Controller
         return $this->render('CmsBundle:commercant:new.html.twig', array(
             'commercant' => $commercant,
             'form' => $form->createView(),
+            'langue_active' => $langue_active
         ));
     }
 
@@ -59,7 +62,11 @@ class CommercantController extends Controller
      */
     public function editAction(Request $request, Commercant $commercant)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $editForm = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
+        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -78,9 +85,10 @@ class CommercantController extends Controller
             return $this->redirectToRoute('commercant_index', array('id' => $commercant->getId()));
         }
 
-        return $this->render('CmsBundle:commercant:edit.html.twig', array(
+        return $this->render('@Cms/commercant/edit.html.twig', array(
             'commercant' => $commercant,
             'form' => $editForm->createView(),
+            'langue_active' => $langue_active
         ));
     }
 
