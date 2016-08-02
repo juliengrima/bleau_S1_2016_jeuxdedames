@@ -23,25 +23,37 @@ class AccueilController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $langue_active = false;
+
+        if (!empty($em->getRepository('CmsBundle:Accueil')->findAll())){
+            $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
+        }
+
         $langue = new Accueil();
 
         $accueil_fr = new Accueil();
         $accueil_fr->setLangue('fr');
         $langue->getAccueil()->add($accueil_fr);
-        $accueil_en = new Accueil();
-        $accueil_en->setLangue('en');
-        $langue->getAccueil()->add($accueil_en);
+
+        if ($langue_active == true) {
+            $accueil_en = new Accueil();
+            $accueil_en->setLangue('en');
+            $langue->getAccueil()->add($accueil_en);
+        }
 
         $form = $this->createForm(LangueType::class, $langue);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+
+            if ($langue_active == true) {
+                $em->persist($accueil_fr);
+                $accueil_en->setImage($accueil_fr->getImage());
+                $em->persist($accueil_en);
+            }
             $em->persist($accueil_fr);
-
-            $accueil_en->setImage($accueil_fr->getImage());
-
-            $em->persist($accueil_en);
             $em->flush();
 
             return $this->redirectToRoute('cms_homepage');
@@ -50,6 +62,7 @@ class AccueilController extends Controller
         return $this->render('CmsBundle:Accueil:new.html.twig', array(
             'langue' => $langue,
             'form' => $form->createView(),
+            'langue_active' => $langue_active
         ));
     }
 
@@ -64,10 +77,18 @@ class AccueilController extends Controller
         $accueil_fr = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'fr'));
         $accueil_en = $em->getRepository('CmsBundle:Accueil')->findOneBy(array('langue' => 'en'));
 
-        $langue = new Accueil();
+        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
+        $langue = new Accueil();
         $langue->getAccueil()->add($accueil_fr);
-        $langue->getAccueil()->add($accueil_en);
+
+        if ($langue_active == true){
+            if (empty($accueil_en)){
+                $accueil_en = new Accueil();
+                $accueil_en->setLangue('en');
+                $langue->getAccueil()->add($accueil_en);
+            }
+        }
 
         $editForm = $this->createFormBuilder($langue)
             ->add('accueil', CollectionType::class, array(
@@ -82,11 +103,15 @@ class AccueilController extends Controller
 
             $accueil_fr->preUpload();
 
-            $em->persist($accueil_fr);
-            $em->flush();
-
-            $accueil_en->setImage($accueil_fr->getImage());
-            $em->persist($accueil_en);
+            if ($langue_active == true) {
+                $em->persist($accueil_fr);
+                $em->flush();
+                $accueil_en->setImage($accueil_fr->getImage());
+                $em->persist($accueil_en);
+            }
+            else{
+                $em->persist($accueil_fr);
+            }
             $em->flush();
 
             return $this->redirectToRoute('cms_homepage');
@@ -95,6 +120,7 @@ class AccueilController extends Controller
         return $this->render('CmsBundle:Accueil:edit.html.twig', array(
             'accueil' => $langue,
             'form' => $editForm->createView(),
+            'langue_active' => $langue_active
         ));
     }
 }

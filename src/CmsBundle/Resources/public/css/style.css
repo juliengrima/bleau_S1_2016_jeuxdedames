@@ -55,6 +55,8 @@ img{
 }
 .edit_admin{
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .edit_admin a{
     text-align: center;
@@ -387,8 +389,8 @@ figure.snip1239.hover img {
     -webkit-transform: rotateY(-100deg) translateX(50%) scale(0.5);
     transform: rotateY(-100deg) translateX(50%) scale(0.5);
     opacity: 0;
-    -webkit-transition-delay: 0;
-    transition-delay: 0;
+    /*-webkit-transition-delay: 0;*/
+    /*transition-delay: 0;*/
 }
 figure.snip1239:hover figcaption,
 figure.snip1239.hover figcaption {
