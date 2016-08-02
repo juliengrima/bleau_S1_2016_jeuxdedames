@@ -5,6 +5,7 @@ namespace UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -24,4 +25,6 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+    protected $name;
+
 }

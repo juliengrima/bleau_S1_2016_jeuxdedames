@@ -34,17 +34,12 @@ class PresseController extends Controller
         $presse_en = new Presse();
         $presse_en->setLangue('en');
         $langue->getPresse()->add($presse_en);
-        $presse_es= new Presse();
-        $presse_es->setLangue('es');
-        $langue->getPresse()->add($presse_es);
-
         // end dummy code
 
         $form = $this->createFormBuilder($langue)
             ->add('presse', CollectionType::class, array(
                 'entry_type' => PresseType::class
             ))
-            ->add('submit','submit')
             ->getForm();
 
         $form->handleRequest($request);
@@ -53,15 +48,15 @@ class PresseController extends Controller
             $em = $this->getDoctrine()->getManager();
             $presse_fr->setItemId($id_item_max[0][1] + 1);
             $presse_en->setItemId($presse_fr->getItemId());
-            $presse_es->setItemId($presse_fr->getItemId());
+            $presse_en->setImage($presse_fr->getImage());
+            $presse_en->setDate($presse_fr->getDate());
+            $presse_en->setLien($presse_fr->getLien());
 
             $em->persist($presse_fr);
 
             $presse_en->setImage($presse_fr->getImage());
-            $presse_es->setImage($presse_fr->getImage());
 
             $em->persist($presse_en);
-            $em->persist($presse_es);
             $em->flush();
 
             return $this->redirectToRoute('user_presse');
@@ -84,7 +79,6 @@ class PresseController extends Controller
 
         $presse_fr = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
         $presse_en = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
-        $presse_es = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'es', 'item_id' => $id_item));
 
         $langue = new Presse();
 
@@ -92,7 +86,6 @@ class PresseController extends Controller
         // otherwise, this isn't an interesting example
         $langue->getPresse()->add($presse_fr);
         $langue->getPresse()->add($presse_en);
-        $langue->getPresse()->add($presse_es);
 
         $editForm = $this->createFormBuilder($langue)
             ->add('presse', CollectionType::class, array(
@@ -105,20 +98,13 @@ class PresseController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-//            if($editForm->get('file')->getData() != null) {
-//
-//                if($partenaire->getImage() != null) {
-//                    unlink(__DIR__.'/../../../web/uploads/imgcms/'.$partenaire->getImage());
-//                    $partenaire->setImage(null);
-//                }
-//            }
-
-
-            $presse->preUpload();
+            $presse_fr->preUpload();
 
             $em->persist($presse_fr);
+            $em->flush();
+
+            $presse_en->setImage($presse_fr->getImage());
             $em->persist($presse_en);
-            $em->persist($presse_es);
             $em->flush();
 
             return $this->redirectToRoute('user_presse', array('id' => $presse->getId()));
@@ -133,18 +119,23 @@ class PresseController extends Controller
      *
      */
     public function deleteAction($id) {
-
         $em = $this->getDoctrine()->getManager();
-        $presse = $em->getRepository('CmsBundle:Presse')->find($id);
+        $presse_id_item = $em->getRepository('CmsBundle:Presse')->find($id)->getItemId();
+
+        $presse_fr = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'fr', 'item_id' => $presse_id_item));
+        $presse_en = $em->getRepository('CmsBundle:Presse')->findOneBy(array('langue' => 'en', 'item_id' => $presse_id_item));
+
         $presses = $em->getRepository('CmsBundle:Presse')->findAll();
 
-        if (!$presse) {
+        if (!$presse_id_item) {
             throw $this->createNotFoundException(
                 'Pas de document trouvé' . $id
             );
         }
 
-        $em->remove($presse);
+        $em->remove($presse_fr);
+        $em->remove($presse_en);
+
         $em->flush();
 
         return $this->redirect($this->generateUrl('user_presse', array(
