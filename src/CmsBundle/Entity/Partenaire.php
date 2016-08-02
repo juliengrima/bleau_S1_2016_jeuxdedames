@@ -122,16 +122,6 @@ class Partenaire
     private $lien;
 
     /**
-     * @var string
-     */
-    private $langue;
-
-    /**
-     * @var integer
-     */
-    private $item_id;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $partenaire;
@@ -248,54 +238,6 @@ class Partenaire
     public function getLien()
     {
         return $this->lien;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param string $langue
-     *
-     * @return Partenaire
-     */
-    public function setLangue($langue)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return string
-     */
-    public function getLangue()
-    {
-        return $this->langue;
-    }
-
-    /**
-     * Set itemId
-     *
-     * @param integer $itemId
-     *
-     * @return Partenaire
-     */
-    public function setItemId($itemId)
-    {
-        $this->item_id = $itemId;
-
-        return $this;
-    }
-
-    /**
-     * Get itemId
-     *
-     * @return integer
-     */
-    public function getItemId()
-    {
-        return $this->item_id;
     }
 
     /**
