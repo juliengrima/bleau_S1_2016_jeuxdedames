@@ -34,11 +34,12 @@ class ArtisteController extends Controller
         $langue->getArtiste()->add($artiste_fr);
 
         if ($langue_active == true){
-            $artiste_en = new Artiste();
-            $artiste_en->setLangue('en');
-            $langue->getArtiste()->add($artiste_en);
+            if (empty($accueil_en)) {
+                $artiste_en = new Artiste();
+                $artiste_en->setLangue('en');
+                $langue->getArtiste()->add($artiste_en);
+            }
         }
-
 
         $form = $this->createFormBuilder($langue)
             ->add('artiste', CollectionType::class, array(
@@ -100,6 +101,11 @@ class ArtisteController extends Controller
         $langue->getArtiste()->add($artiste_fr);
 
         if ($langue_active == true){
+            if (empty($accueil_en) == false){
+                $artiste_en = new Artiste();
+                $artiste_en->setLangue('en');
+                $artiste_en->setItemId($artiste_fr->getItemId());
+            }
             $langue->getArtiste()->add($artiste_en);
         }
 
@@ -120,7 +126,10 @@ class ArtisteController extends Controller
             $em->flush();
 
             if ($langue_active == true){
+                $artiste_en->setDate($artiste_fr->getDate());
                 $artiste_en->setImage($artiste_fr->getImage());
+                $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
+                $artiste_en->setArchive($artiste_fr->getArchive());
                 $em->persist($artiste_en);
                 $em->flush();
             }

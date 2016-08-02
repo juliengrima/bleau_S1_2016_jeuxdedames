@@ -17,6 +17,10 @@ class UserController extends Controller
 
         $local = $this->UserGetLocal();
 
+        if (empty($em->getRepository('CmsBundle:Accueil')->findAll())){
+            return $this->redirectToRoute('accueil_new');
+        }
+
         $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
         $accueils = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => $local));
