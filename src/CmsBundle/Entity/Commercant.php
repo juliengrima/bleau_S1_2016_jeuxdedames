@@ -95,6 +95,7 @@ class Commercant
 
     /*generate*/
 
+ 
     /**
      * @var integer
      */
@@ -109,6 +110,11 @@ class Commercant
      * @var string
      */
     private $adresse;
+
+    /**
+     * @var string
+     */
+    private $nom;
 
     /**
      * @var integer
@@ -177,6 +183,30 @@ class Commercant
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Commercant
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**

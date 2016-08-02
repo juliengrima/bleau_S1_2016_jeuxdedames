@@ -34,6 +34,7 @@ CmsBundle\Entity\Presse:
             type: integer
             generator:
                 strategy: IDENTITY
+
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]

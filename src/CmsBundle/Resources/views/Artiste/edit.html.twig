@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Editer Artiste </h1>
+    <h1>Editer un artiste </h1>
     {{ form_start(form) }}
 
-    <div>
+    <div class="container-fluid">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             {% for accueil in form.artiste %}
@@ -12,8 +12,6 @@
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
                 {% elseif (accueil.vars.value.langue == 'en')%}
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
-                {% else %}
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -98,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
+                        <div class="container hidden">
                             <div class="row">
                                 <p class="">Photo de l'oeuvre</p>
                                 <div class="input-group">
@@ -127,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
+                        <div class="container hidden">
                             <div class="row">
                                 <div class="checkbox">
                                     <label>
@@ -137,70 +135,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% elseif (accueil.vars.value.langue == 'es') %}
-                    <div role="tabpanel" class="tab-pane" id="messages">
-                        <h1>Langue: {{ accueil.vars.value.langue }}</h1>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Nom</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Photo de l'oeuvre</p>
-                                <div class="input-group">
-                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
-                                    {{ form_errors(accueil.file) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Texte descriptif</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.texte, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                                    {{ form_errors(accueil.texte) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Lien vers l'artiste</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
+                        <div class="container hidden">
                             <div class="row">
                                 <div class="checkbox">
                                     <label>

@@ -3,36 +3,52 @@
 {% block body %}
     <h1>Commercant list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Adresse</th>
-                <th>Codepostal</th>
-                <th>Ville</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for commercant in commercants %}
-            <tr>
-                <td>{{ commercant.adresse }}</td>
-                <td>{{ commercant.code }}</td>
-                <td>{{ commercant.ville }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Codepostal</th>
+                        <th>Ville</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for commercant in commercants %}
+                        <tr>
+                            <td>{{ commercant.nom }}</td>
+                            <td>{{ commercant.adresse }}</td>
+                            <td>{{ commercant.code }}</td>
+                            <td>{{ commercant.ville }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('commercant_edit', { 'id': commercant.id }) }}">Editer</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('commercant_delete', { 'id': commercant.id }) }}">Supprimer</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('commercant_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_commercant') }}">Retour à la carte</a>
+            </div>
+            {#{% endif %}#}
+        </div>
+    </div>
+
 {% endblock %}

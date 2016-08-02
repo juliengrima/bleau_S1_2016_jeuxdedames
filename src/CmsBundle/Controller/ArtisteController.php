@@ -40,7 +40,6 @@ class ArtisteController extends Controller
             ->add('artiste', CollectionType::class, array(
                 'entry_type' => ArtisteType::class
                     ))
-            ->add('submit','submit')
             ->getForm();
 
         $form->handleRequest($request);
@@ -51,7 +50,7 @@ class ArtisteController extends Controller
             $artiste_fr->setItemId($id_item_max[0][1] + 1);
             $artiste_en->setDate($artiste_fr->getDate());
             $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
-            $artiste_en->setArchive(1);
+            $artiste_en->setArchive($artiste_fr->getArchive());
             $artiste_en->setItemId($artiste_fr->getItemId());
 
             $em->persist($artiste_fr);
@@ -100,10 +99,12 @@ class ArtisteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-
-            $artiste->preUpload();
+            $artiste_fr->preUpload();
 
             $em->persist($artiste_fr);
+            $em->flush();
+
+            $artiste_en->setImage($artiste_fr->getImage());
             $em->persist($artiste_en);
             $em->flush();
 
@@ -120,16 +121,22 @@ class ArtisteController extends Controller
      */
     public function deleteAction($id) {
         $em = $this->getDoctrine()->getManager();
-        $artiste = $em->getRepository('CmsBundle:Artiste')->find($id);
+        $artiste_id_item = $em->getRepository('CmsBundle:Artiste')->find($id)->getItemId();
+
+        $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $artiste_id_item));
+        $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $artiste_id_item));
+
         $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
 
-        if (!$artiste) {
+        if (!$artiste_id_item) {
             throw $this->createNotFoundException(
                 'Pas de document trouvé' . $id
             );
         }
 
-        $em->remove($artiste);
+        $em->remove($artiste_fr);
+        $em->remove($artiste_en);
+
         $em->flush();
 
         return $this->redirect($this->generateUrl('user_artiste', array(

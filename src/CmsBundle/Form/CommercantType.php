@@ -19,6 +19,7 @@ class CommercantType extends AbstractType
             ->add('code')
             ->add('ville')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
+            ->add('nom')
         ;
     }
     

@@ -15,7 +15,7 @@
                                 <h3>{{ presse.nom }}</h3>
                                 <p>{{ presse.texte }}</p>
                                 <p>{{ presse.date|date("d/m/Y") }}</p>
-                                <a href="{{ presse.lien }}" class="read-more">An savoir plus</a>
+                                <a href="{{ presse.lien | external_link }}" class="read-more">An savoir plus</a>
                             </figcaption>
                         </figure>
                     </div>
