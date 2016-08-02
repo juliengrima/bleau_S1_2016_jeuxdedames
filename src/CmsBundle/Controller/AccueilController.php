@@ -83,11 +83,11 @@ class AccueilController extends Controller
         $langue->getAccueil()->add($accueil_fr);
 
         if ($langue_active == true){
-            if (empty($accueil_en)){
+            if (empty($accueil_en) == false){
                 $accueil_en = new Accueil();
                 $accueil_en->setLangue('en');
-                $langue->getAccueil()->add($accueil_en);
             }
+            $langue->getAccueil()->add($accueil_en);
         }
 
         $editForm = $this->createFormBuilder($langue)
