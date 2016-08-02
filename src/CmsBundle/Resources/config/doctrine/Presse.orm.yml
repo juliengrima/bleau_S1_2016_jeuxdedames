@@ -25,6 +25,7 @@ CmsBundle\Entity\Presse:
             type: string
             length: 255
             column: lien
+            nullable: true
         date:
             type: date
         langue:
