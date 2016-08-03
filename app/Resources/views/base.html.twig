@@ -28,6 +28,10 @@
 
     <body>
         <header>
+            {% if langue_active is not defined %}
+                {% set langue_active = null %}
+            {% endif %}
+
             {% if langue_active == null %}
             <!-- ******** NAVBAR ******* -->
             <nav class="navbar navbar-default">
