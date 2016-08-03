@@ -83,7 +83,7 @@ class AccueilController extends Controller
         $langue->getAccueil()->add($accueil_fr);
 
         if ($langue_active == true){
-            if (empty($accueil_en) == false){
+            if (empty($accueil_en) == true){
                 $accueil_en = new Accueil();
                 $accueil_en->setLangue('en');
             }
