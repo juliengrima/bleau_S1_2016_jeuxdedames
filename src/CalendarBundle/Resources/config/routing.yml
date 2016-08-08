@@ -1,0 +1,7 @@
+calendar_events:
+    resource: "@CalendarBundle/Resources/config/routing/events.yml"
+    prefix:   /events
+
+calendar_homepage:
+    path:     /calendar
+    defaults: { _controller: CalendarBundle:Default:index }

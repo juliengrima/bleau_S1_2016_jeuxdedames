@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div id='calendar'></div>
+{% endblock %}
+
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset ('bundles/calendar/css/fullcalendar_perso.css') }}"/>
+    {#<link rel="stylesheet" href="{{ asset ('bundles/calendar/css/fullcalendar.min.css')}}"/>#}
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    {#Appel JS Calendar#}
+    <script src="{{ asset('bundles/calendar/js_calendar/1moment.min.js') }}"></script>
+    <script src="{{ asset('bundles/calendar/js_calendar/2fullcalendar.js') }}"></script>
+    <script src="{{ asset('bundles/calendar/js_calendar/3calendarconfig.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+{% endblock %}
