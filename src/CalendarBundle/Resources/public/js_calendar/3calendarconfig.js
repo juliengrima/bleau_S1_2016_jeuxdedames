@@ -26,7 +26,7 @@ $(document).ready(function() {
             dow: [1, 2, 3, 4, 5]
         },
         handleWindowResize: true, // redimenssionne auto du calendrier en fonction de la width du navigateur
-        weekends: false, // affichage des weekends
+        weekends: true, // affichage des weekends
         allDaySlot: false, // recapitulatif de la journée en haut du calendar
         slotLabelFormat: 'HH:mm', // format de l'heure sur les slots
         timeFormat: 'HH:mm',
@@ -35,47 +35,54 @@ $(document).ready(function() {
         scrollTime: '09:00:00', // heure sur laquelle le calendar pointe par default
         slotEventOverlap: false, // Les évènements ne se chevauchent pas
         height: 'auto',
-        forceEventDuration: true // on oblige le user à mettre une heure de fin à l'evenement
+        forceEventDuration: true, // on oblige le user à mettre une heure de fin à l'evenement
 
-        // events: Routing.generate('events'),
+        events: Routing.generate('events'),
+
+        dayClick: function(date) {
+            if (date._d >= current_date_time){
+                window.location = Routing.generate('events') + date.format() + '/new';
+            }
+        },
+
+        eventRender: function(event, element, calEvent) {
+            var editEvent = Routing.generate('events') + event.id + '/edit';
+            element.each(function() {
+                element.append(
+                    '<strong>' +
+                    event.titre +
+                    event.contenu +
+                    '</strong>' 
+                // ' + editEvent + '
+                );
+            })
+        },
         //
-        // dayClick: function(date) {
-        //     if (admin != null && date._d >= current_date_time){
-        //         window.location = Routing.generate('dashboard') + 'event/ ' + date.format() + '/new';
-        //     }
-        // },
+        eventClick:  function(calEvent){
         //
-        // eventRender: function(event, element) {
-        //     element.each(function() {
-        //         element.append('<strong>' + event.titre + '</strong>');
-        //     })
-        // },
-        //
-        // eventClick:  function(calEvent){
-        //
-        //     var day = moment(calEvent.start._d).format("dddd Do MMMM YYYY");
-        //     var ponctuation = ' de ';
-        //     var startTime = moment(calEvent.start._i).format('HH:mm à ');
-        //     var endTime = moment(calEvent.end._i).format("HH:mm");
-        //     var Time = day + ponctuation + startTime + endTime;
-        //     var editEvent = Routing.generate('dashboard') + 'event/' + calEvent.id + '/edit';
-        //     var deleteEvent = Routing.generate('dashboard') + 'event/' + calEvent.id + '/delete';
-        //
-        //     $('#modalTime').html(Time);
-        //     $('#modalTitle').html(calEvent.titre);
-        //     $('#modalBody').html(calEvent.contenu);
-        //     $('#fullCalModal').modal();
+            var day = moment(calEvent.start._d).format("dddd Do MMMM YYYY");
+            var ponctuation = ' de ';
+           var startTime = moment(calEvent.start._i).format('HH:mm à ');
+            var endTime = moment(calEvent.end._i).format("HH:mm");
+           var Time = day + ponctuation + startTime + endTime;
+             var editEvent = Routing.generate('events') + calEvent.id + '/edit';
+           var deleteEvent = Routing.generate('events') + calEvent.id + '/delete';
+
+            $('#modalTime').html(Time);
+            $('#modalTitle').html(calEvent.titre);
+            $('#modalBody').html(calEvent.contenu);
+            $('#fullCalModal').modal();
         //
         //     if (user == calEvent.idUser.username){
-        //         $('#delete_event').show();
-        //         $('#delete_event').attr('href', deleteEvent);
-        //         $('#edit_event').show();
-        //         $('#edit_event').attr('href', editEvent);
+            $('#delete_event').show();
+            $('#delete_event').attr('href', deleteEvent);
+            $('#edit_event').show();
+            $('#edit_event').attr('href', editEvent);
         //     }
         //     else {
         //         $('#edit_event').hide();
         //         $('#delete_event').hide();
         //     }
-        // }
+        }
     });
 });
