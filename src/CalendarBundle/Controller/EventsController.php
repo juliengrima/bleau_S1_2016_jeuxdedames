@@ -2,11 +2,15 @@
 
 namespace CalendarBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use CalendarBundle\Entity\Events;
 use CalendarBundle\Form\EventsType;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Events controller.
@@ -22,20 +26,52 @@ class EventsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $events = $em->getRepository('CalendarBundle:Events')->findAll();
+        $entities = $em->getRepository('CalendarBundle:Events')->findAll();
 
-        return $this->render('CalendarBundle:events:index.html.twig', array(
-            'events' => $events,
-        ));
+        $normalizer = new ObjectNormalizer();
+
+        $encoder = new JsonEncoder();
+
+        $dateCallback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format(\DateTime::ISO8601)
+                : '';
+        };
+
+        $normalizer->setCallbacks(array('start' => $dateCallback, 'end' => $dateCallback));
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonObject = $serializer->serialize($entities, 'json');
+
+        $response = new Response();
+        $response->setContent($jsonObject);
+
+        return $response;
     }
+
+
 
     /**
      * Creates a new Events entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $start)
     {
         $event = new Events();
+        if ($start == 0) {
+            $newTime = new \DateTime();
+            $startEvent = $newTime->format('d-m-Y H:i:s');
+            $event->setStart(new \DateTime($startEvent));
+        }
+        else {
+            $event->setStart(new \DateTime($start));
+            $newTime = new \DateTime($start);
+        }
+        // On définie une date de fin min avec un interval de 1 h
+        $endtime = new \DateTime($start);
+        $endEvent = $endtime->format('d-m-Y H:i:s');
+        $event->setEnd(new \DateTime($endEvent));
+
         $form = $this->createForm('CalendarBundle\Form\EventsType', $event);
         $form->handleRequest($request);
 
@@ -44,7 +80,7 @@ class EventsController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return $this->redirectToRoute('events_show', array('id' => $event->getId()));
+            return $this->redirectToRoute('calendar_homepage');
         }
 
         return $this->render('CalendarBundle:events:new.html.twig', array(
@@ -53,19 +89,7 @@ class EventsController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Events entity.
-     *
-     */
-    public function showAction(Events $event)
-    {
-        $deleteForm = $this->createDeleteForm($event);
 
-        return $this->render('CalendarBundle:events:show.html.twig', array(
-            'event' => $event,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Events entity.
@@ -73,7 +97,6 @@ class EventsController extends Controller
      */
     public function editAction(Request $request, Events $event)
     {
-        $deleteForm = $this->createDeleteForm($event);
         $editForm = $this->createForm('CalendarBundle\Form\EventsType', $event);
         $editForm->handleRequest($request);
 
@@ -82,47 +105,17 @@ class EventsController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return $this->redirectToRoute('events_edit', array('id' => $event->getId()));
+            return $this->redirectToRoute('calendar_homepage', array('id' => $event->getId()));
         }
 
         return $this->render('CalendarBundle:events:edit.html.twig', array(
             'event' => $event,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            ));
     }
 
-    /**
-     * Deletes a Events entity.
-     *
-     */
-    public function deleteAction(Request $request, Events $event)
-    {
-        $form = $this->createDeleteForm($event);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($event);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('events_index');
+    public function deleteAction($id){
+        
     }
 
-    /**
-     * Creates a form to delete a Events entity.
-     *
-     * @param Events $event The Events entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Events $event)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('events_delete', array('id' => $event->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }

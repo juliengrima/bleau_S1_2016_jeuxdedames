@@ -1,16 +1,14 @@
-events_index:
+events:
     path:     /
     defaults: { _controller: "CalendarBundle:Events:index" }
     methods:  GET
+    options:
+        expose: true
 
-events_show:
-    path:     /{id}/show
-    defaults: { _controller: "CalendarBundle:Events:show" }
-    methods:  GET
 
 events_new:
-    path:     /new
-    defaults: { _controller: "CalendarBundle:Events:new" }
+    path:     /{start}/new
+    defaults: { _controller: "CalendarBundle:Events:new", start: 0 }
     methods:  [GET, POST]
 
 events_edit:

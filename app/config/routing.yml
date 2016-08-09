@@ -2,6 +2,7 @@ calendar:
     resource: "@CalendarBundle/Resources/config/routing.yml"
     prefix:   /
 
+
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /user
