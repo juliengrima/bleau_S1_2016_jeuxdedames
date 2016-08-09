@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new CmsBundle\CmsBundle(),
             new UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new CalendarBundle\CalendarBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
