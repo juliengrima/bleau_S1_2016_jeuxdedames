@@ -114,8 +114,18 @@ class EventsController extends Controller
             ));
     }
 
-    public function deleteAction($id){
-        
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('CalendarBundle:Events')->findOneById($id);
+
+        if (!empty($event))
+        {
+            $em->remove($event);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('calendar_homepage');
     }
 
 }
