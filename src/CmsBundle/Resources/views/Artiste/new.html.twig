@@ -8,7 +8,7 @@
 
         {% if langue_active == true %}
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <ng b     ul class="nav nav-tabs" role="tablist">
                 {% for accueil in form.artiste %}
                     {% if (accueil.vars.value.langue == 'fr') %}
                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
@@ -16,7 +16,7 @@
                         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>
+            </ngul>
 
 
             <!-- Tab panes -->
