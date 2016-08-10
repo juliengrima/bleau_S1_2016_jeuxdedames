@@ -1,7 +1,7 @@
-CalendarBundle\Entity\Events:
+CmsBundle\Entity\Categorie:
     type: entity
     table: null
-    repositoryClass: CalendarBundle\Repository\EventsRepository
+    repositoryClass: CmsBundle\Repository\CategorieRepository
     id:
         id:
             type: integer
@@ -9,18 +9,12 @@ CalendarBundle\Entity\Events:
             generator:
                 strategy: AUTO
     fields:
-        start:
-            type: datetime
-        end:
-            type: datetime
-        titre:
+        nomDeLaCategorie:
             type: string
             length: 255
-        contenu:
+            column: nom_de_la_categorie
+        backgroundColor:
             type: string
             length: 255
-        color:
-            type: string
-            length: 255
-
+            column: couleur
     lifecycleCallbacks: {  }

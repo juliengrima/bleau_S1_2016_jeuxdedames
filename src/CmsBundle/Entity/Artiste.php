@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Artiste
 {
-
+    
     public $file;
 
     protected function getUploadDir()
@@ -95,7 +95,7 @@ class Artiste
         }
     }
 
-
+    
     /*generate*/
 
     /**
@@ -419,5 +419,34 @@ class Artiste
     public function getItemId()
     {
         return $this->item_id;
+    }
+    /**
+     * @var \CmsBundle\Entity\Categorie
+     */
+    private $categorie;
+
+
+    /**
+     * Set categorie
+     *
+     * @param \CmsBundle\Entity\Categorie $categorie
+     *
+     * @return Artiste
+     */
+    public function setCategorie(\CmsBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \CmsBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

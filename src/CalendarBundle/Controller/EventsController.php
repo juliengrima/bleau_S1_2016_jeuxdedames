@@ -28,6 +28,7 @@ class EventsController extends Controller
 
         $entities = $em->getRepository('CalendarBundle:Events')->findAll();
 
+
         $normalizer = new ObjectNormalizer();
 
         $encoder = new JsonEncoder();
@@ -66,6 +67,7 @@ class EventsController extends Controller
         else {
             $event->setStart(new \DateTime($start));
             $newTime = new \DateTime($start);
+
         }
         // On définie une date de fin min avec un interval de 1 h
         $endtime = new \DateTime($start);
