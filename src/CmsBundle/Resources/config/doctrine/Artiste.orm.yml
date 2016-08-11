@@ -55,5 +55,3 @@ CmsBundle\Entity\Artiste:
     manyToOne:
         categorie:
             targetEntity: CmsBundle\Entity\Categorie
-            joinColumn:
-                onDelete: CASCADE
