@@ -24,3 +24,4 @@ CalendarBundle\Entity\Events:
             length: 255
 
     lifecycleCallbacks: {  }
+

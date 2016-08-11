@@ -17,15 +17,14 @@ class EventsType extends AbstractType
         $builder
             ->add('start', 'datetime' , array(
                 'minutes' => range(0, 30, 30),
-                'model_timezone' => 'Europe/Paris'
+              //  'model_timezone' => 'Europe/Paris'
             ))
             ->add('end', 'datetime' , array(
                 'minutes' => range(0, 30, 30),
-                'model_timezone' => 'Europe/Paris'
+             //   'model_timezone' => 'Europe/Paris'
             ))
             ->add('titre')
             ->add('contenu')
-            ->add('color')
         ;
     }
     

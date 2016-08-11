@@ -13,8 +13,4 @@ CmsBundle\Entity\Categorie:
             type: string
             length: 255
             column: nom_de_la_categorie
-        backgroundColor:
-            type: string
-            length: 255
-            column: couleur
     lifecycleCallbacks: {  }

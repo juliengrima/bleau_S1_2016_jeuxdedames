@@ -9,7 +9,7 @@
                         <img src="{{ asset('uploads/imgcms/') }}{{ partenaire.image }}"/>
                         <figcaption>
                             <p>{{ partenaire.adresse }}</p>
-                            <p>{{ partenaire.lien | external_link }}</p>
+                            <a class="accederaulien" href="{{ partenaire.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
                         </figcaption>
                     </figure>
                 </div>
