@@ -17,11 +17,10 @@ class ArtisteType extends AbstractType
         $builder
             ->add('nom')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
-            ->add('texte', 'textarea')
+            ->add('categorie')
             ->add('ajouterslider')
             ->add('archive')
             ->add('lien')
-            ->add('categorie')
         ;
     }
     
