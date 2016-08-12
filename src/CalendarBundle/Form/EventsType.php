@@ -24,7 +24,7 @@ class EventsType extends AbstractType
              //   'model_timezone' => 'Europe/Paris'
             ))
             ->add('titre')
-            ->add('contenu')
+            ->add('contenu', 'textarea')
         ;
     }
     

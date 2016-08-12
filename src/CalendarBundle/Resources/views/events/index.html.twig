@@ -1,47 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Events list</h1>
-
-    <table>
-        <thead>
+    <h1>Liste des évènements</h1>
+    <div class="container">
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Start</th>
-                <th>End</th>
                 <th>Titre</th>
-                <th>Contenu</th>
-                <th>Color</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Description</th>
+                <th>Couleur</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td><a href="{{ path('events_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
-                <td>{% if event.start %}{{ event.start|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if event.end %}{{ event.end|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ event.titre }}</td>
-                <td>{{ event.contenu }}</td>
-                <td>{{ event.color }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('events_show', { 'id': event.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('events_edit', { 'id': event.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.titre }}</td>
+                    <td>{% if event.start %}Le {{ event.start|date('d-m-Y à H:i') }}{% endif %}</td>
+                    <td>{% if event.end %}Le {{ event.end|date('d-m-Y à H:i') }}{% endif %}</td>
+                    <td>{{ event.contenu }}</td>
+                    <td>{{ event.color }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('events_edit', { 'id': event.id }) }}">Modifier</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('events_delete', { 'id': event.id }) }}">Supprimer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('events_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+    <div class="edit_admin">
+        <a class="btn btn-default edit_admin"  href="{{ path('calendar_homepage') }}">Retour au calendrier</a>
+    </div>
 {% endblock %}

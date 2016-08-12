@@ -8,17 +8,17 @@
 
         <div class="container">
             <div class="row">
-                <p class="">Adresse</p>
+                <p class="">Nom</p>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Nom du commerçant'}}) }}
+                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Nom du partenaire'}}) }}
                     {{ form_errors(form.adresse) }}
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <p class="">photo</p>
+                <p class="">Photo</p>
                 <div class="input-group">
                     {{ form_widget(form.file, {'attr': {'class':'help-block'}}) }}
                     {{ form_errors(form.file) }}
@@ -51,7 +51,7 @@
     <div class="row">
         {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
         <div class="edit_admin">
-            <input class="btn btn-default edit_admin"  type="submit" value="Create" />
+            <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
         </div>
         {#{% endif %}#}
     </div>

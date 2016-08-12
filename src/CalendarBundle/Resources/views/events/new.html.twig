@@ -1,16 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Events creation</h1>
+    <h1>Création d'un évènement</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('events') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <p class="">Date de début d'évènement</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        {{ form_widget(form.start) }}
+                        {{ form_errors(form.start) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="">Date de fin d'évènement</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        {{ form_widget(form.end ) }}
+                        {{ form_errors(form.end) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Titre de l'évènement</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.titre , {'attr': {'class': 'form-control', 'placeholder': 'Titre de l\'évènement'}}) }}
+                    {{ form_errors(form.titre) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Description de l'évènement</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.contenu , {'attr': {'class': 'form-control', 'placeholder': 'Description de l\'évènement'}}) }}
+                    {{ form_errors(form.contenu) }}
+                </div>
+            </div>
+        </div>
+        <div class="edit_admin">
+            <input class="btn btn-default edit_admin"  type="submit" value="Créer" />
+            <a class="btn btn-default edit_admin"  href="{{ path('calendar_homepage') }}">Retour au calendrier</a>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

@@ -13,12 +13,14 @@
                         </figcaption>
                     </figure>
                 </div>
-                <div class="row">
-                    <div class="edit_admin">
-                        <a class="btn btn-default edit_admin" href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a>
-                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('partenaire_delete', {'id':  partenaire.Id  }) }}" title="Supprimer">Supprimer</a>
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <div class="row">
+                        <div class="edit_admin">
+                            <a class="btn btn-default edit_admin" href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">Editer</a>
+                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('partenaire_delete', {'id':  partenaire.Id  }) }}" title="Supprimer">Supprimer</a>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
             {#   MODAL   #}
             <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -38,11 +40,11 @@
 
         {% endfor %}
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
             <div class="edit_admin">
                 <a class="btn btn-default edit_admin" href="{{ path('partenaire_new') }}">Ajouter un nouveau partenaire</a>
             </div>
-            {#{% endif %}#}
+            {% endif %}
         </div>
     </div>
     {#   MODAL   #}

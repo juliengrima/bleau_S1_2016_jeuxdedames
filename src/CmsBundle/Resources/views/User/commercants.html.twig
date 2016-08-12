@@ -5,12 +5,12 @@
     <div id="map"></div>
 
     <div class="row">
-        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-        <div class="edit_admin">
-            <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
-            <a class="btn btn-default edit_admin" href="{{ path('commercant_index') }}">Administrer les commerçants</a>
-        </div>
-        {#{% endif %}#}
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
+                <a class="btn btn-default edit_admin" href="{{ path('commercant_index') }}">Administrer les commerçants</a>
+            </div>
+        {% endif %}
     </div>
 
 

@@ -104,7 +104,7 @@ class CommercantController extends Controller
 
         if (!$commercant) {
             throw $this->createNotFoundException(
-                'Pas de document trouvé' . $id
+                'Pas de commerçant trouvé' . $id
             );
         }
 

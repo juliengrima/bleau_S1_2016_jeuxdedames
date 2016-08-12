@@ -58,24 +58,16 @@
             </div>
         </div>
 
-        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div class="row">
                 <div class="edit_admin">
                     <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer</a>
-                </div>
-            </div>
-        {#{% endif %}#}
-
-    {% endfor %}
-
-    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-        {% if accueils == null %}
-            <div class="row">
-                <div class="edit_admin">
-                    <a class="btn btn-default edit_admin" href="{{ path('accueil_new') }}">Créer la page d'accueil</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('cms_admin') }}">Accéder à l'interface admin</a>
                 </div>
             </div>
         {% endif %}
-    {#{% endif %}#}
+
+    {% endfor %}
+
 
 {% endblock %}

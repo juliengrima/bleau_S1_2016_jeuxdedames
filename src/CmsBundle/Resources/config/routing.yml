@@ -2,6 +2,10 @@ cms_homepage:
     path:     /
     defaults: { _controller: CmsBundle:User:index }
 
+cms_admin:
+    path:     /admin
+    defaults: { _controller: CmsBundle:Admin:index }
+
 cms_accueil:
     resource: "@CmsBundle/Resources/config/routing/accueil.yml"
     prefix:   /admin/accueil
@@ -25,24 +29,3 @@ cms_presse:
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /user
-
-
-#index:
-#    path:     /
-#    defaults: { _controller: CmsBundle:Commercant:index }
-#
-#new:
-#    path:     /new
-#    defaults: { _controller: CmsBundle:Commercant:new }
-#
-#show:
-#    path:     /show
-#    defaults: { _controller: CmsBundle:Commercant:show }
-#
-#edit:
-#    path:     /edit
-#    defaults: { _controller: CmsBundle:Commercant:edit }
-#
-#delete:
-#    path:     /delete
-#    defaults: { _controller: CmsBundle:Commercant:delete }
