@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        footer{
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="admin">
+        <h1>Interface d'administration</h1>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="{{ path('cms_homepage') }}" type="button" class="btn btn-default">Administrer la page d'accueil</a>
+            <a href="{{ path('user_artiste') }}" type="button" class="btn btn-default">Administrer les artistes</a>
+            <a href="{{ path('commercant_index') }}" type="button" class="btn btn-default">Administrer les commerçants</a>
+            <a href="{{ path('user_partenaire') }}" type="button" class="btn btn-default">Administrer les partenaires</a>
+            <a href="{{ path('user_presse') }}" type="button" class="btn btn-default">Administrer la presse</a>
+        </div>
+    </div>
+
+
+{% endblock %}

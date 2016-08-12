@@ -3,40 +3,42 @@
 
 {% block body %}
 
+    <div class="calendar">
+        <div class="row">
+            <h1>Evènements</h1>
+        </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div id='calendar'></div>
             </div>
         </div>
 
-        {#<ul>#}
-            {#<li>#}
-                {#<a href="{{ path('events_edit', { 'id': event.id }) }}">edit</a>#}
-            {#</li>#}
-        {#</ul>#}
-    <div class="edit_admin">
-                <a class="btn btn-default edit_admin" href="{{ path('events_new') }}">nouvel evenement</a>
-    </div>
+        <div class="row edit_admin">
+            <a class="btn btn-default edit_admin" href="{{ path('events_new') }}">Ajouter un évènement</a>
+            <a class="btn btn-default edit_admin" href="{{ path('show_all_events') }}">Voir tous les évènements</a>
+        </div>
 
 
-    <div id="fullCalModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                    <h4 id="modalTime" class="modal-title"></h4>
-                </div>
-                <div class="modal-header">
-                    <h4 id="modalTitle" class="modal-title"></h4>
-                </div>
-                <div id="modalBody" class="modal-body"></div>
-                <div class="modal-footer">
-                    <a href="#" id="delete_event" class="btn btn-default">Supprimer</a>
-                    <a href="#" id="edit_event" class="btn btn-primary">Modifier</a>
+        <div id="fullCalModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                        <h6 id="modalTime" class="modal-title"></h6>
+                    </div>
+                    <div class="modal-header">
+                        <h6 id="modalTitle" class="modal-title"></h6>
+                    </div>
+                    <div id="modalBody" class="modal-body"></div>
+                    <div class="modal-footer">
+                        <a href="#" id="delete_event" class="btn btn-default">Supprimer</a>
+                        <a href="#" id="edit_event" class="btn btn-primary">Modifier</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 
@@ -44,10 +46,7 @@
 
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset ('bundles/calendar/css/fullcalendar_perso.css') }}"/>
-    {#<link rel="stylesheet" href="{{ asset ('bundles/calendar/css/fullcalendar.min.css')}}"/>#}
-
-
+    <link rel="stylesheet" href="{{ asset ('bundles/calendar/css/fullcalendar.css')}}"/>
 
 {% endblock %}
 

@@ -18,9 +18,7 @@ body {
     background-color: #00BCD4;
     margin: auto;
 }
-.footer {
-    position: fixed;
-}
+
 h4 {
     text-align: center;
     font-size: 30px;
@@ -119,6 +117,9 @@ img{
 /***************FIN NAVBAR ******************/
 
 /*************** FOOTER *********************/
+.footer {
+    position: fixed;
+}
 
 footer .row{
     text-align: center;
@@ -534,4 +535,31 @@ figure.snip1239.hover figcaption {
 }
 .accederaulien {
     color: white;
+}
+
+
+/******** Calendrier *********/
+
+.calendar #calendar {
+    margin-top: 30px;
+}
+.calendar .modal h6{
+    color: black;
+    text-align: center;
+}
+.calendar .modal p{
+    color: black;
+}
+
+
+/****** Admin ******/
+.admin{
+    text-align: center;
+}
+.admin .btn-group{
+    margin-top: 30px;
+}
+.form_login{
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

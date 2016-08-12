@@ -5,6 +5,9 @@ events:
     options:
         expose: true
 
+show_all_events:
+    path: /events
+    defaults: { _controller: "CalendarBundle:Events:showAllEvents" }
 
 events_new:
     path:     /{start}/new

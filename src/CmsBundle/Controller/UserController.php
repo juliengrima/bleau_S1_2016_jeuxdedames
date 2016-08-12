@@ -91,6 +91,7 @@ class UserController extends Controller
 
         $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 1));
 
+        $years = null;
         foreach ($artistes as $artiste) {
             $years[] = $artiste->getDate()->format("Y");
         }

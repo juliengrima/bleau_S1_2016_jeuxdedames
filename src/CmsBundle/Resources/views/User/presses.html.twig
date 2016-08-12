@@ -19,22 +19,23 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="row">
-                        <div class="edit_admin">
-                            <a class="btn btn-default edit_admin" href="{{ path('presse_edit', { 'id': presse.id }) }}">Editer</a>
-                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('presse_delete', {'id':  presse.id  }) }}" title="Supprimer">Supprimer</a>
+                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        <div class="row">
+                            <div class="edit_admin">
+                                <a class="btn btn-default edit_admin" href="{{ path('presse_edit', { 'id': presse.id }) }}">Editer</a>
+                                <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('presse_delete', {'id':  presse.id  }) }}" title="Supprimer">Supprimer</a>
+                            </div>
                         </div>
-
-                    </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-            <div class="edit_admin">
-                <a class="btn btn-default edit_admin" href="{{ path('presse_new') }}">Ajouter une nouvelle presse</a>
-            </div>
-            {#{% endif %}#}
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('presse_new') }}">Ajouter une nouvelle presse</a>
+                </div>
+            {% endif %}
         </div>
     </div>
     {#   MODAL   #}

@@ -18,6 +18,15 @@ use Symfony\Component\Serializer\Serializer;
  */
 class EventsController extends Controller
 {
+    public function showAllEventsAction(){
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('CalendarBundle:Events')->findBy(array(), array('start' => 'desc'));
+
+        return $this->render('@Calendar/events/index.html.twig', array(
+            'events' => $events
+        ));
+    }
+
     /**
      * Lists all Events entities.
      *
@@ -50,8 +59,6 @@ class EventsController extends Controller
         return $response;
     }
 
-
-
     /**
      * Creates a new Events entity.
      *
@@ -63,16 +70,14 @@ class EventsController extends Controller
             $newTime = new \DateTime();
             $startEvent = $newTime->format('d-m-Y H:i:s');
             $event->setStart(new \DateTime($startEvent));
+            $endtime = new \DateTime();
+            $endEvent = $endtime->format('d-m-Y H:i:s');
+            $event->setEnd(new \DateTime($endEvent));
         }
         else {
             $event->setStart(new \DateTime($start));
-            $newTime = new \DateTime($start);
-
+            $event->setEnd(new \DateTime($start));
         }
-        // On définie une date de fin min avec un interval de 1 h
-        $endtime = new \DateTime($start);
-        $endEvent = $endtime->format('d-m-Y H:i:s');
-        $event->setEnd(new \DateTime($endEvent));
 
         $form = $this->createForm('CalendarBundle\Form\EventsType', $event);
         $form->handleRequest($request);
@@ -90,9 +95,7 @@ class EventsController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-
-
+    
     /**
      * Displays a form to edit an existing Events entity.
      *

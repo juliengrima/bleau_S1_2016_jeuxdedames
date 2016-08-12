@@ -1,13 +1,3 @@
-partenaire_index:
-    path:     /
-    defaults: { _controller: "CmsBundle:Partenaire:index" }
-    methods:  GET
-
-partenaire_show:
-    path:     /{id}/show
-    defaults: { _controller: "CmsBundle:Partenaire:show" }
-    methods:  GET
-
 partenaire_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Partenaire:new" }

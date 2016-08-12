@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Artiste creation </h1>
+    <h1>Ajout d'un nouvel artiste</h1>
     {{ form_start(form) }}
 
     <div class="container-fluid">
 
         {% if langue_active == true %}
             <!-- Nav tabs -->
-            <ng b     ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs" role="tablist">
                 {% for accueil in form.artiste %}
                     {% if (accueil.vars.value.langue == 'fr') %}
                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
@@ -16,7 +16,7 @@
                         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
                     {% endif %}
                 {% endfor %}
-            </ngul>
+            </ul>
 
 
             <!-- Tab panes -->
@@ -97,7 +97,7 @@
                         </div>
                     {% elseif (accueil.vars.value.langue == 'en') %}
                         <div role="tabpanel" class="tab-pane" id="profile">
-                            <h1>Langue: {{ accueil.vars.value.langue }}</h1>
+                            <h1>Langue: Anglais</h1>
                             <div class="container">
                                 <div class="row">
                                 <p class="">Nom</p>
@@ -239,7 +239,7 @@
     <div class="row">
         {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
         <div class="edit_admin">
-            <input class="btn btn-default edit_admin"  type="submit" value="Create" />
+            <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
         </div>
         {#{% endif %}#}
     </div>

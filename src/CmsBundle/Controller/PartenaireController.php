@@ -15,21 +15,6 @@ use CmsBundle\Form\PartenaireType;
 class PartenaireController extends Controller
 {
     /**
-     * Lists all Partenaire entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
-
-        return $this->render('CmsBundle:partenaire:index.html.twig', array(
-            'partenaires' => $partenaires,
-        ));
-    }
-
-    /**
      * Creates a new Partenaire entity.
      *
      */
@@ -96,7 +81,7 @@ class PartenaireController extends Controller
 
         if (!$partenaire) {
             throw $this->createNotFoundException(
-                'Pas de document trouvé' . $id
+                'Pas de partenaire trouvé' . $id
             );
         }
 
