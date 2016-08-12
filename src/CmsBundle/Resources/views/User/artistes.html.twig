@@ -10,7 +10,9 @@
                             <figcaption>
                                 <h3>{{ artiste.nom }}</h3>
                                 <p>{{ artiste.categorie }}</p>
+                                {% if (artiste.lien != null) %}
                                 <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
+                                {% endif %}
                             </figcaption>
                         </figure>
                     </div>

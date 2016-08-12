@@ -11,7 +11,6 @@
                 <div class="col-sm-3 col-sm-offset-3">
                     <p class="">Date de début d'évènement</p>
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         {{ form_widget(form.start) }}
                         {{ form_errors(form.start) }}
                     </div>
@@ -19,7 +18,6 @@
                 <div class="col-md-3">
                     <p class="">Date de fin d'évènement</p>
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         {{ form_widget(form.end ) }}
                         {{ form_errors(form.end) }}
                     </div>
@@ -43,6 +41,16 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                     {{ form_widget(form.contenu , {'attr': {'class': 'form-control', 'placeholder': 'Description de l\'évènement'}}) }}
                     {{ form_errors(form.contenu) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Couleur</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.color , {'attr': {'class': 'form-control', 'placeholder': 'Description de l\'évènement'}}) }}
+                    {{ form_errors(form.color) }}
                 </div>
             </div>
         </div>

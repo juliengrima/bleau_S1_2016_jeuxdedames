@@ -67,8 +67,8 @@ $(document).ready(function() {
             var deleteEvent = Routing.generate('events') + calEvent.id + '/delete';
 
             $('#modalTime').html(Time);
-            $('#modalTitle').html(calEvent.titre);
-            $('#modalBody').html('<p>' + calEvent.contenu + '</p>');
+            $('#modalTitle').html( calEvent.titre );
+            $('#modalBody').html( calEvent.contenu );
             $('#fullCalModal').modal();
 
             $('#delete_event').show();

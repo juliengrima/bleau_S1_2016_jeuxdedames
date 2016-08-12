@@ -12,27 +12,30 @@
                 <div id='calendar'></div>
             </div>
         </div>
-
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
         <div class="row edit_admin">
             <a class="btn btn-default edit_admin" href="{{ path('events_new') }}">Ajouter un évènement</a>
             <a class="btn btn-default edit_admin" href="{{ path('show_all_events') }}">Voir tous les évènements</a>
         </div>
-
+        {% endif %}
 
         <div id="fullCalModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                        <h6 id="modalTime" class="modal-title"></h6>
+                        <h6 style="color:black" id="modalTime" class="modal-title"></h6>
                     </div>
                     <div class="modal-header">
-                        <h6 id="modalTitle" class="modal-title"></h6>
+                        <h6 style="color: black" id="modalTitle" class="modal-title"></h6>
                     </div>
-                    <div id="modalBody" class="modal-body"></div>
+
+                    <div style="color:black" id="modalBody" class="modal-body"></div>
                     <div class="modal-footer">
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
                         <a href="#" id="delete_event" class="btn btn-default">Supprimer</a>
                         <a href="#" id="edit_event" class="btn btn-primary">Modifier</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
