@@ -17,10 +17,6 @@ CmsBundle\Entity\Artiste:
             type: string
             length: 255
             column: Image
-        texte:
-            type: string
-            length: 255
-            column: texte
         lien:
             type: string
             length: 255
