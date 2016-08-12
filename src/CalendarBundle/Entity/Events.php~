@@ -1,0 +1,12 @@
+<?php
+
+namespace CalendarBundle\Entity;
+
+/**
+ * Events
+ */
+class Events
+{
+
+
+}

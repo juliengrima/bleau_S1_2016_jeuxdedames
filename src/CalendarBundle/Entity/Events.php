@@ -8,20 +8,9 @@ namespace CalendarBundle\Entity;
 class Events
 {
 
-    public function isDateValid(ExecutionContextInterface $context)
-    {
-        if ($this->end->getTimestamp() <= $this->start->getTimestamp()) {
-            $context->buildViolation('La date de fin ne peut être avant la date de début d\'évènement')
-                ->atPath('end')
-                ->addViolation();
-        }
-    }
 
-
-    // GENERATE //
-    
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -54,7 +43,7 @@ class Events
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -181,4 +170,3 @@ class Events
         return $this->color;
     }
 }
-

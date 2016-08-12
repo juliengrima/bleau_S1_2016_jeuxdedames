@@ -56,6 +56,7 @@ class ArtisteController extends Controller
 
             if ($langue_active == true){
                 $artiste_en->setDate($artiste_fr->getDate());
+                $artiste_en->setCategorie($artiste_fr->getCategorie());
                 $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
                 $artiste_en->setArchive($artiste_fr->getArchive());
                 $artiste_en->setItemId($artiste_fr->getItemId());

@@ -19,5 +19,9 @@ CalendarBundle\Entity\Events:
         contenu:
             type: string
             length: 255
+        color:
+            type: string
+            length: 255
 
     lifecycleCallbacks: {  }
+

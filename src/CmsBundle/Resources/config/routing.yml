@@ -26,6 +26,11 @@ cms_presse:
     resource: "@CmsBundle/Resources/config/routing/presse.yml"
     prefix:   /admin/presse
 
+cms_categorie:
+    resource: "@CmsBundle/Resources/config/routing/categorie.yml"
+    prefix:   /admin/categorie
+
+
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /user

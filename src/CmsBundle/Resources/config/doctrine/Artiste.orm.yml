@@ -51,3 +51,7 @@ CmsBundle\Entity\Artiste:
             targetEntity: CmsBundle\Entity\Artiste
             mappedBy: artiste
             cascade:   [persist]
+
+    manyToOne:
+        categorie:
+            targetEntity: CmsBundle\Entity\Categorie

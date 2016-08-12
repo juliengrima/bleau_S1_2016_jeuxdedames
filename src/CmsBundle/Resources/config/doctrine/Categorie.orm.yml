@@ -1,0 +1,16 @@
+CmsBundle\Entity\Categorie:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\CategorieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomDeLaCategorie:
+            type: string
+            length: 255
+            column: nom_de_la_categorie
+    lifecycleCallbacks: {  }

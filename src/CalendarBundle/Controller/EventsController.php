@@ -26,6 +26,7 @@ class EventsController extends Controller
             'events' => $events
         ));
     }
+
     /**
      * Lists all Events entities.
      *
@@ -35,6 +36,7 @@ class EventsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('CalendarBundle:Events')->findAll();
+
 
         $normalizer = new ObjectNormalizer();
 
@@ -93,9 +95,7 @@ class EventsController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-
-
+    
     /**
      * Displays a form to edit an existing Events entity.
      *
