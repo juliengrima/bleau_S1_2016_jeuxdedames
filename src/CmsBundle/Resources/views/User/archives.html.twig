@@ -4,7 +4,6 @@
     {{ parent() }}
     <style>
         footer{
-            position: fixed;
             width: 100%;
             bottom: 0px;
         }
@@ -13,41 +12,40 @@
 
 {% block body %}
     {% if years != null %}
-        <ul id="menu-accordeon">
-            <li><a href="#">Menu des Catégorie d'artiste</a>
-                <ul>
-                    <li><a href="#">Art</a></li>
-                    <li><a href="#">Art décoratif</a></li>
-                    <li><a href="#">Art graphique</a></li>
-                </ul>
-            </li>
-        </ul>
         <div class="panel-group row" id="accordion" role="tablist" aria-multiselectable="true">
             <div class=" panel-default">
-                {% for year in years %}
+                {% for artiste in artistes %}
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ year }}" aria-expanded="true" aria-controls="collapseOne">
-                                {{ year }}
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ artiste.categorie }}" aria-expanded="true" aria-controls="collapseOne">
+                                {{ artiste.categorie }}
                             </a>
                         </h4>
                     </div>
                     {% for artiste in artistes %}
-                        {% if artiste.date|date("Y") == year %}
-                            <div id="{{ year }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="col-md-3 col-sm-4 col-xs-6 artistepage">
-                                    <figure class="snip1239">
-                                        <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
-                                        <figcaption>
-                                            <h3 class="editartiste2">{{ artiste.nom }}</h3>
-                                            <p class="editartiste2">{{ artiste.texte }}</p>
-                                            <a href="{{ artiste.lien | external_link }}" class="read-more">Read More</a>
-                                        </figcaption>
-                                    </figure>
-                                    <p class="editartiste"><a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a></p>
+                            {% if artiste.categorie %}
+                                <div id="{{ artiste.categorie }}" class="panel-collapse collapse in, row" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="col-md-3 col-sm-4 col-xs-6 artistepage">
+                                        <figure class="snip1239">
+                                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
+                                            <figcaption>
+                                                <h3 class="editartiste2">{{ artiste.nom }}</h3>
+                                                <p class="editartiste2">{{ artiste.categorie }}</p>
+                                                <a href="{{ artiste.lien | external_link }}" class="read-more">Read More</a>
+                                            </figcaption>
+                                        </figure>
+
+                                        <div class="row">
+                                            <div class="edit_admin">
+                                                <a class="btn btn-default edit_admin" href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a>
+                                                <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('artiste_delete', {'id':  artiste.Id  }) }}" title="Supprimer">Supprimer</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
-                        {% endif %}
+                            {% endif %}
+
                     {% endfor %}
                 {% endfor %}
             </div>
