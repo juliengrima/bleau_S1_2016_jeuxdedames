@@ -22,7 +22,7 @@ class ArtisteController extends Controller
     public function newAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $categories = $this->getRepository('Categorie')->findAll();
+        $categories = $em->getRepository('CmsBundle:Categorie')->findAll();
         $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
         $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
