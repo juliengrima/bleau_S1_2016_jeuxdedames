@@ -44,7 +44,7 @@ class CategorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
+            return $this->redirectToRoute('categorie_index', array('id' => $categorie->getId()));
         }
 
         return $this->render('CmsBundle:categorie:new.html.twig', array(
@@ -52,20 +52,7 @@ class CategorieController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-    /**
-     * Finds and displays a Categorie entity.
-     *
-     */
-    public function showAction(Categorie $categorie)
-    {
-        $deleteForm = $this->createDeleteForm($categorie);
-
-        return $this->render('CmsBundle:categorie:show.html.twig', array(
-            'categorie' => $categorie,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
 
     /**
      * Displays a form to edit an existing Categorie entity.
@@ -73,7 +60,6 @@ class CategorieController extends Controller
      */
     public function editAction(Request $request, Categorie $categorie)
     {
-        $deleteForm = $this->createDeleteForm($categorie);
         $editForm = $this->createForm('CmsBundle\Form\CategorieType', $categorie);
         $editForm->handleRequest($request);
 
@@ -88,7 +74,6 @@ class CategorieController extends Controller
         return $this->render('CmsBundle:categorie:edit.html.twig', array(
             'categorie' => $categorie,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -96,33 +81,40 @@ class CategorieController extends Controller
      * Deletes a Categorie entity.
      *
      */
-    public function deleteAction(Request $request, Categorie $categorie)
-    {
-        $form = $this->createDeleteForm($categorie);
-        $form->handleRequest($request);
+    public function deleteAction($id, Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $categorie = $em->getRepository('CmsBundle:Categorie')->find($id);
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($categorie);
-            $em->flush();
+        if (!$categorie) {
+            throw $this->createNotFoundException(
+                'Pas de catégorie trouvée' . $id
+            );
+        }
+        else{
+            foreach ($artistes as $key => $artiste){
+                if ($artiste->getCategorie() == $categorie->getNomDeLaCategorie()){
+
+                    $request->getSession()
+                        ->getFlashBag()
+                        ->add('error',  'Afin de supprimer cette catégorie, il faut au préalable supprimer tous les artistes concernés par celle ci')
+                    ;
+
+                    $url = $this->generateUrl('categorie_index');
+                    return $this->redirect($url);
+                }
+            }
         }
 
-        return $this->redirectToRoute('categorie_index');
-    }
+        $em->remove($categorie);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Categorie entity.
-     *
-     * @param Categorie $categorie The Categorie entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Categorie $categorie)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('categorie_delete', array('id' => $categorie->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+        $request->getSession()
+            ->getFlashBag()
+            ->add('success',  'Suppression confirmée')
         ;
+
+        $url = $this->generateUrl('categorie_index');
+        return $this->redirect($url);
     }
 }

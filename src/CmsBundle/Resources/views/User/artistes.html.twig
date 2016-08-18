@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container-fluid block_artiste">
+        <div class="title_section">
+            <h1>Artistes</h1>
+        </div>
         <div class="row">
             {% for artiste in artistes %}
                 <div class="col-md-3 col-sm-4 col-xs-6">
@@ -31,6 +34,10 @@
             {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <div class="edit_admin">
                     <a class="btn btn-default edit_admin" href="{{ path('artiste_new') }}">Ajouter un nouvel artiste</a>
+                </div>
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('categorie_index') }}">Administrer les catégories</a>
                 </div>
             {% endif %}
         </div>

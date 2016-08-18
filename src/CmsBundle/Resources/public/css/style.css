@@ -4,12 +4,13 @@
         clear:both; !important;
     }
 }
+.title_section{
+    background-color: #288493;
+}
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #288493;
-
 }
 body {
     font-size: 15px;

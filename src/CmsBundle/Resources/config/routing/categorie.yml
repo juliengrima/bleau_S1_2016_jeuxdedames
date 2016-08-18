@@ -21,4 +21,5 @@ categorie_edit:
 categorie_delete:
     path:     /{id}/delete
     defaults: { _controller: "CmsBundle:Categorie:delete" }
-    methods:  DELETE
+    requirements:
+        id:  \d+

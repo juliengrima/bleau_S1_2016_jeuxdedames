@@ -1,39 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% elseif app.session.flashBag.has('error') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('error') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <h1>Categorie list</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nomdelacategorie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for categorie in categories %}
+                    <tr>
+                        <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                        <td>{{ categorie.nomDeLaCategorie }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Editer</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}">Supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nomdelacategorie</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
-                <td>{{ categorie.nomDeLaCategorie }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-{% endblock %}
+    <div class="row">
+        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+        <div class="edit_admin">
+            <a class="btn btn-default edit_admin" href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie</a>
+            <a class="btn btn-default edit_admin" href="{{ path('cms_homepage') }}">Retour sur la page d'accueil</a>
+        </div>
+        {#{% endif %}#}
+    </div>
+</div>
+        {% endblock %}
