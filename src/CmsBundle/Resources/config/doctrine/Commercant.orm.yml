@@ -13,6 +13,7 @@ CmsBundle\Entity\Commercant:
             type: string
             length: 255
             column: image
+            nullable: true
         adresse:
             type: string
             length: 255
