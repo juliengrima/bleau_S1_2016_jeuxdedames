@@ -1,0 +1,11 @@
+newsletter_index:
+    path: /
+    defaults: { _controller: CmsBundle:Newsletters:index }
+
+newsletter_adduser:
+    path: add
+    defaults: { _controller: CmsBundle:Newsletters:Abonnement }
+
+newsletter_desabonnement:
+    path: desabonnement
+    defaults: { _controller: CmsBundle:Newsletters:Desabonnement }

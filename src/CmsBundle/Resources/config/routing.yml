@@ -34,3 +34,8 @@ cms_categorie:
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /user
+
+cms_newsletter:
+    resource: "@CmsBundle/Resources/config/routing/newsletters.yml"
+    prefix:     /newsletter
+

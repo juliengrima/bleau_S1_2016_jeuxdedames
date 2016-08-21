@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="title_section">
+        <h1>Newsletter</h1>
+    </div>
+
+    <div class="text-center edit_admin">
+        <a href="#" type="button" class="btn btn-default">Envoyer une Newsletter</a>
+        <a href="#" type="button" class="btn btn-default">Consulter les Newsletter</a>
+    </div>
+
+    <div class="title_section">
+        <h1>Liste des abonnés</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Adresse mail</th>
+                            <th>Date d'inscription</th>
+                            <th>Etat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in list_users %}
+                        <tr>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.dateInscription|date('d-m-Y') }}</td>
+                            {% if user.etat == 1 %}
+                                <td>Actif</td>
+                            {% else %}
+                                <td>Inactif</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

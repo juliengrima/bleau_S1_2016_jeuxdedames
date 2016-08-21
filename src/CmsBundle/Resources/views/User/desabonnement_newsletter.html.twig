@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row text-center newsletter">
+        {% if app.request.locale == 'fr' %}
+            <h2>Saississez votre adresse email ci dessous afin de vous désabonner</h2>
+        {% elseif app.request.locale == 'en' %}
+            <h2>Enter your email adresse below to unsubscribe</h2>
+        {% endif %}
+        <form action="{{ path('newsletter_desabonnement') }}" method="post">
+            <input type="email" name="email" placeholder="E-mail" required="required" />
+            <input type="submit" value="Valider" />
+        </form>
+    </div>
+
+{% endblock %}
