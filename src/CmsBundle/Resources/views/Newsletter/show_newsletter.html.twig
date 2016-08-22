@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="title_section">
+        <h1>Newsletter n° {{ newsletter.id }}</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h6>Libellé de la Newsletter</h6>
+            <p class="newsletter_show">{{ newsletter.libelle }}</p>
+        </div>
+        <div class="row">
+            <h6>Objet du mail</h6>
+            <p class="newsletter_show">{{ newsletter.objet }}</p>
+        </div>
+        <div class="row">
+            <h6>Corps du mail</h6>
+            <div class="newsletter_show">{{ newsletter.texte|raw }}</div>
+        </div>
+        <div class="row">
+            <h6>Fichier pdf de la newsletter associé</h6>
+            <p class="newsletter_show">{{ newsletter.filename }}  => <a href="{{ asset('uploads/newsletters_file/') }}{{ newsletter.filename }}">Télécharger</a></p>
+        </div>
+    </div>
+    <div class="edit_admin">
+        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show') }}">Retour à la liste des newsletters</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete', {'id': newsletter.id } ) }}">Supprimer la newsletter</a>
+    </div>
+{% endblock %}

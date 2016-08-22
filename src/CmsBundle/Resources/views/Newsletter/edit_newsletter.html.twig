@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
+
+    <div class="title_section">
+        <h1>Edition de la newsletter n°{{ newsletter.id }}</h1>
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <p>Libelle</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.libelle, {'attr': {'class': 'form-control', 'placeholder': 'Saississez le libele de la Newsletter'}}) }}
+                {{ form_errors(edit_form.libelle) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Objet</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.objet, {'attr': {'class': 'form-control', 'placeholder': 'Saississez l\'objet du mail'}}) }}
+                {{ form_errors(edit_form.objet) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Contenu</p>
+            <div class="">
+                {{ form_widget(edit_form.texte) }}
+                {{ form_errors(edit_form.texte) }}
+            </div>
+        </div>
+        <div class="row">
+            <p class="">Fichier pdf de la Newsletter</p>
+            <div class="input-group">
+                {{ form_widget(edit_form.file, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(edit_form.file) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="edit_admin">
+        <input class="btn btn-default edit_admin"  type="submit" value="Modifier la newsletter" />
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete') }}"Supprimer la newsletter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show') }}">Retour à la liste des newsletters</a>
+    </div>
+
+    {{ form_end(edit_form) }}
+{% endblock %}

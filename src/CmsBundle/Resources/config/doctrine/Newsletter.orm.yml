@@ -1,0 +1,33 @@
+CmsBundle\Entity\Newsletter:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\NewsletterRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        objet:
+            type: string
+            length: 255
+        texte:
+            type: string
+            length: 255
+        filename:
+            type: string
+            length: 255
+            nullable: true
+        dateCrea:
+            type: date
+        etat:
+            type: boolean
+        dateEnvoie:
+            type: date
+            nullable: true
+
+    lifecycleCallbacks:

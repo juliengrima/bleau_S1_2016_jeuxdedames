@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
+
+    <div class="title_section">
+        <h1>Création d'une Newsletter</h1>
+    </div>
+
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="row">
+            <p>Libelle</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.libelle, {'attr': {'class': 'form-control', 'placeholder': 'Saississez le libele de la Newsletter'}}) }}
+                {{ form_errors(form.libelle) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Objet</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.objet, {'attr': {'class': 'form-control', 'placeholder': 'Saississez l\'objet du mail'}}) }}
+                {{ form_errors(form.objet) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Contenu</p>
+            <div class="">
+                {{ form_widget(form.texte) }}
+                {{ form_errors(form.texte) }}
+            </div>
+        </div>
+        <div class="row">
+            <p class="">Fichier pdf de la Newsletter</p>
+            <div class="input-group">
+                {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(form.file) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="edit_admin">
+        <input class="btn btn-default edit_admin"  type="submit" value="Créer la Newsletter" />
+        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show') }}">Retour à la liste des newsletters</a>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

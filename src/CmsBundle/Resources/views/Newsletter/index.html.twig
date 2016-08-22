@@ -7,8 +7,8 @@
     </div>
 
     <div class="text-center edit_admin">
-        <a href="#" type="button" class="btn btn-default">Envoyer une Newsletter</a>
-        <a href="#" type="button" class="btn btn-default">Consulter les Newsletter</a>
+        <a href="{{ path('newsletter_create') }}" type="button" class="btn btn-default">Créer une Newsletter</a>
+        <a href="{{ path('newsletters_show') }}" type="button" class="btn btn-default">Consulter les Newsletter</a>
     </div>
 
     <div class="title_section">
@@ -28,15 +28,19 @@
                     </thead>
                     <tbody>
                     {% for user in list_users %}
-                        <tr>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.dateInscription|date('d-m-Y') }}</td>
-                            {% if user.etat == 1 %}
+                        {% if user.etat == 1 %}
+                            <tr>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.dateInscription|date('d-m-Y') }}</td>
                                 <td>Actif</td>
-                            {% else %}
+                            </tr>
+                        {% else %}
+                            <tr style="background-color: red;">
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.dateInscription|date('d-m-Y') }}</td>
                                 <td>Inactif</td>
-                            {% endif %}
-                        </tr>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>

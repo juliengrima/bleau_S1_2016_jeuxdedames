@@ -1,0 +1,70 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-error">
+            {% for msg in app.session.flashBag.get('error') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% elseif app.session.flashBag.has('succes_edit') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('succes_edit') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="title_section">
+        <h1>Liste des Newsletters</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Libellé</th>
+                            <th>Date de création</th>
+                            <th>Etat</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for newsletter in newsletters %}
+                            <tr {% if newsletter.etat == true %}
+                                    style="background-color: green;"
+                                {% else %}
+                                    style="background-color: red;"
+                                {% endif %}
+                            >
+                                <td>{{ newsletter.libelle }}</td>
+                                <td>{{ newsletter.dateCrea|date('d-m-Y') }}</td>
+                                <td>
+                                    {% if newsletter.etat == true %}
+                                        Envoyé le {{ newsletter.dateEnvoie|date('d-m-Y') }}
+                                    {% else %}
+                                        Non envoyé
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="{{ path('newsletter_show', { 'id': newsletter.id }) }}">Voir</a></li>
+                                        <li><a href="{{ path('newsletter_edit', { 'id': newsletter.id}) }}">Modifier</a></li>
+                                        <li><a href="{{ path('newsletter_delete', { 'id': newsletter.id }) }}">Supprimer</a></li>
+                                        <li>Envoyer</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="edit_admin">
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_create') }}">Créer une newslleter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_index') }}">Retour à l'accueil Newslleters</a>
+    </div>
+{% endblock %}

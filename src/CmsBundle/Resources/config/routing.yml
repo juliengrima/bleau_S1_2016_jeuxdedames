@@ -30,12 +30,10 @@ cms_categorie:
     resource: "@CmsBundle/Resources/config/routing/categorie.yml"
     prefix:   /admin/categorie
 
+cms_newsletter:
+    resource: "@CmsBundle/Resources/config/routing/newsletters.yml"
+    prefix:    /admin/newsletter
 
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /user
-
-cms_newsletter:
-    resource: "@CmsBundle/Resources/config/routing/newsletters.yml"
-    prefix:     /newsletter
-

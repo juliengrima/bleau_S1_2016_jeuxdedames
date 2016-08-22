@@ -36,7 +36,7 @@ h3{
 }
 
 h6, h5{
-    font-size: 30px;
+    font-size: 20px;
 }
 p {
     padding: auto;
@@ -567,6 +567,11 @@ figure.snip1239.hover figcaption {
 /******** Newsletter ******/
 .flashmsg_newsletter{
     text-align: center;
+}
+
+.newsletter_show{
+    padding: 5px 5px 5px 5px;
+    border: 1px solid navajowhite;
 }
 
 /******* FlashBag ******/

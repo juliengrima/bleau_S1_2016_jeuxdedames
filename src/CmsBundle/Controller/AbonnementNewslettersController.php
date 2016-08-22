@@ -6,19 +6,19 @@ use CmsBundle\Entity\AbonnementNews;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class NewslettersController extends Controller
+class AbonnementNewslettersController extends Controller
 {
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
         $list_users = $em->getRepository('CmsBundle:AbonnementNews')->findAll();
 
-        return $this->render('CmsBundle:Newsletters:index.html.twig', array(
+        return $this->render('CmsBundle:Newsletter:index.html.twig', array(
            'list_users' => $list_users
         ));
     }
 
-    public function AbonnementAction(Request $request)
+    public function abonnementAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -68,7 +68,7 @@ class NewslettersController extends Controller
         }
     }
 
-    public function DesabonnementAction(Request $request){
+    public function desabonnementAction(Request $request){
 
         $em = $this->getDoctrine()->getManager();
 

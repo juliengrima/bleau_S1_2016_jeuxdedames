@@ -81,4 +81,33 @@ class AbonnementNews
     {
         return $this->etat;
     }
+    /**
+     * @var \DateTime
+     */
+    private $date_inscription;
+
+
+    /**
+     * Set dateInscription
+     *
+     * @param \DateTime $dateInscription
+     *
+     * @return AbonnementNews
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->date_inscription = $dateInscription;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscription
+     *
+     * @return \DateTime
+     */
+    public function getDateInscription()
+    {
+        return $this->date_inscription;
+    }
 }
