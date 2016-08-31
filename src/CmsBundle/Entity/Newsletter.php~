@@ -39,7 +39,7 @@ class Newsletter
     {
         if (null !== $this->file) {
             // do whatever you want to generate a unique name
-            $this->filename = 'newsletter_n°' . $this->getId() . '.' . $this->file->guessExtension();
+            $this->filename = 'newsletter_n-' . $this->getId() . '.' . $this->file->guessExtension();
         }
     }
 
@@ -66,6 +66,7 @@ class Newsletter
     public function removeUpload()
     {
         if ($file = $this->getAbsolutePath()) {
+            $this->filename = null;
             unlink($file);
         }
     }

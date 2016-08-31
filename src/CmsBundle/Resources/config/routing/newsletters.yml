@@ -33,3 +33,10 @@ newsletter_edit:
     methods: [GET, POST]
     requirements:
         id:  \d+
+
+newsletter_send:
+    path:     /newsletter_send/{id}
+    defaults: { _controller: CmsBundle:Newsletter:sendMail }
+    methods: [GET, POST]
+    requirements:
+        id:  \d+

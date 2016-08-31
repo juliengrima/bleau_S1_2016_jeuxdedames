@@ -29,5 +29,7 @@ CmsBundle\Entity\Newsletter:
         dateEnvoie:
             type: date
             nullable: true
+        pj:
+            type: boolean
 
     lifecycleCallbacks:

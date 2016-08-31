@@ -24,7 +24,9 @@
         </div>
     </div>
     <div class="edit_admin">
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_send', { 'id': newsletter.id }) }}">Envoyer la newsletter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">Modifier la newsletter</a>
         <a class="btn btn-default edit_admin" href="{{ path('newsletters_show') }}">Retour à la liste des newsletters</a>
-        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete', {'id': newsletter.id } ) }}">Supprimer la newsletter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete', {'id': newsletter.id }) }}">Supprimer la newsletter</a>
     </div>
 {% endblock %}

@@ -31,6 +31,7 @@ class NewsletterController extends Controller
 
             $newsletter->setDateCrea(new \DateTime());
             $newsletter->setEtat(false);
+            $newsletter->setPj(false);
 
             $em->persist($newsletter);
             $em->flush();
@@ -61,18 +62,20 @@ class NewsletterController extends Controller
 
     public function editAction(Request $request, Newsletter $newsletter){
         $editForm = $this->createForm(NewsletterType::class, $newsletter);
+
+        if ($newsletter->getFilename() != null)
+            $editForm->add('pj');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()){
 
             $em = $this->getDoctrine()->getManager();
 
-            $newsletter->preUpload();
-
-            if ($newsletter->getFilename() != null && $newsletter->file != null){
+            if ($newsletter->getFilename() != null && $newsletter->file != null || $newsletter->getPj() == true){
                 $newsletter->removeUpload();
             }
 
+            $newsletter->setPj(false);
             $em->persist($newsletter);
             $em->flush();
 
@@ -114,6 +117,57 @@ class NewsletterController extends Controller
         $em->remove($newsletter);
         if ($newsletter->getFilename() != null)
             $newsletter->removeUpload();
+        $em->flush();
+
+        return $this->redirectToRoute('newsletters_show');
+    }
+
+    protected function getUsersMail(){
+        $em = $this->getDoctrine()->getManager();
+        $users_actifs = $em->getRepository('CmsBundle:AbonnementNews')->findBy(array('etat' => true));
+        $destinataires = '';
+
+        foreach ($users_actifs as $key => $user){
+            if ($destinataires == '')
+                $destinataires = $user->getEmail();
+            else
+                $destinataires .= ', ' . $user->getEmail();
+        }
+        return explode(", ", $destinataires);
+    }
+    public function sendMailAction(Newsletter $newsletter){
+
+        $em = $this->getDoctrine()->getManager();
+        $destinataires = $this->getUsersMail();
+        $file = $newsletter->getWebPath();
+        $desabonnement = '<p style="margin-top: 60px; text-align: center;">Pour vous desabonner, <a href="' . __DIR__ . $this->generateUrl('newsletter_desabonnement') .'">cliquez ici</a><p>';
+
+        if ($newsletter->getFilename() != null){
+            $message = \Swift_Message::newInstance()
+                ->setSubject($newsletter->getObjet())
+                ->setFrom(array($this->getParameter('mailer_user') => 'Jeux de Dames'))
+                ->setTo($destinataires)
+                ->setBody(
+                    $newsletter->getTexte() .
+                    $desabonnement, 'text/html')
+                ->attach(\Swift_Attachment::fromPath($file));
+        }
+        else{
+            $message = \Swift_Message::newInstance()
+                ->setSubject($newsletter->getObjet())
+                ->setFrom(array($this->getParameter('mailer_user') => 'Jeux de Dames'))
+                ->setTo($destinataires)
+                ->setBody(
+                    $newsletter->getTexte() .
+                    $desabonnement, 'text/html');
+        }
+
+
+        $this->get('mailer')->send($message);
+
+        $newsletter->setEtat(true);
+
+        $em->persist($newsletter);
         $em->flush();
 
         return $this->redirectToRoute('newsletters_show');

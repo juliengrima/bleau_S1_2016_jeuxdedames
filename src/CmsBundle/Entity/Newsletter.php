@@ -291,4 +291,33 @@ class Newsletter
     {
         return $this->dateEnvoie;
     }
+    /**
+     * @var boolean
+     */
+    private $pj;
+
+
+    /**
+     * Set pj
+     *
+     * @param boolean $pj
+     *
+     * @return Newsletter
+     */
+    public function setPj($pj)
+    {
+        $this->pj = $pj;
+
+        return $this;
+    }
+
+    /**
+     * Get pj
+     *
+     * @return boolean
+     */
+    public function getPj()
+    {
+        return $this->pj;
+    }
 }

@@ -16,8 +16,8 @@
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/font-awesome.css') }}"/>
 
             <!-- Font Google -->
-            {#<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />#}
-            {#<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>#}
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
 
             <!-- Appel feuille de style -->
             <link rel="stylesheet" href="{{ asset ('bundles/cms/css/style.css') }}"/>
@@ -67,6 +67,8 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             {% if langue_active == true %}
+                                <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
+                                <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
                                 {% if app.request.locale == 'en' %}
                                     <li><a href="{{ path('user_artiste') }}">Artists</a></li>
                                     <li><a href="{{ path('user_partenaire') }}">Partnaires </a></li>
@@ -91,15 +93,6 @@
                                 <li><a href="{{ path('user_archive') }}">Archive</a></li>
                             {% endif %}
                         </ul>
-
-                        {% if langue_active == true %}
-                            <div class="container nav pull-right" >
-                                <ul>
-                                    <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
-                                    <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
-                                </ul>
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
             </nav>
@@ -126,7 +119,6 @@
                     <input type="submit" value="Valider" />
                 </form>
             </div>
-            <a href="{{ path('newsletter_desabonnement') }}">se desabonner</a>
         </footer>
 
         {% block javascripts %}

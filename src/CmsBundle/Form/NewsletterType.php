@@ -21,7 +21,7 @@ class NewsletterType extends AbstractType
                 'attr' => array(
                     'class' => 'tinymce'
                 )))
-            ->add('file', 'file', array('label' => 'Pièce jointe', 'required' => false));
+            ->add('file', 'file', array('label' => 'Pièce jointe', 'required' => false))
         ;
     }
     

@@ -29,24 +29,42 @@
         </div>
         <div class="row">
             <p>Contenu</p>
-            <div class="">
+            <div>
                 {{ form_widget(edit_form.texte) }}
                 {{ form_errors(edit_form.texte) }}
             </div>
         </div>
         <div class="row">
-            <p class="">Fichier pdf de la Newsletter</p>
-            <div class="input-group">
+            {% if newsletter.filename != null %}
+                <div class="col-md-3">
+                    <p class="">Fichier pdf de la Newsletter: <a href="{{ asset('uploads/newsletters_file/') }}{{ newsletter.filename }}" target="_blank">{{ newsletter.filename }}</a></p>
+                </div>
+            {% endif %}
+            <div class="col-md-3 input-group">
+            {% if newsletter.filename != null %}
+                <p>Selectionnez un autre fichier:</p>
+            {% else %}
+                <p>Selectionnez un fichier:</p>
+            {% endif %}
                 {{ form_widget(edit_form.file, {'attr': {'class': 'help-block'}}) }}
                 {{ form_errors(edit_form.file) }}
             </div>
         </div>
+        {% if newsletter.filename != null %}
+            <div class="row">
+                <div class="input-group">
+                    Supprimer la pièce jointe
+                    {{ form_widget(edit_form.pj) }}
+                    {{ form_errors(edit_form.pj) }}
+                </div>
+            </div>
+        {% endif %}
     </div>
 
     <div class="edit_admin">
         <input class="btn btn-default edit_admin"  type="submit" value="Modifier la newsletter" />
-        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete') }}"Supprimer la newsletter</a>
-        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show') }}">Retour à la liste des newsletters</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete', { 'id': newsletter.id }) }}">Supprimer la newsletter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show', { 'id': newsletter.id }) }}">Retour à la liste des newsletters</a>
     </div>
 
     {{ form_end(edit_form) }}
