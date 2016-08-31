@@ -1,0 +1,21 @@
+CmsBundle\Entity\AbonnementNews:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\AbonnementNewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+            unique: true
+        etat:
+            type: boolean
+        date_inscription:
+            type: datetime
+
+    lifecycleCallbacks: {  }

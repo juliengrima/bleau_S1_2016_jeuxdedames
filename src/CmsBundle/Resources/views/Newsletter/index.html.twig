@@ -1,0 +1,50 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="title_section">
+        <h1>Newsletter</h1>
+    </div>
+
+    <div class="text-center edit_admin">
+        <a href="{{ path('newsletter_create') }}" type="button" class="btn btn-default">Créer une Newsletter</a>
+        <a href="{{ path('newsletters_show') }}" type="button" class="btn btn-default">Consulter les Newsletter</a>
+    </div>
+
+    <div class="title_section">
+        <h1>Liste des abonnés</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Adresse mail</th>
+                            <th>Date d'inscription</th>
+                            <th>Etat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in list_users %}
+                        {% if user.etat == 1 %}
+                            <tr>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.dateInscription|date('d-m-Y') }}</td>
+                                <td>Actif</td>
+                            </tr>
+                        {% else %}
+                            <tr style="background-color: red;">
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.dateInscription|date('d-m-Y') }}</td>
+                                <td>Inactif</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

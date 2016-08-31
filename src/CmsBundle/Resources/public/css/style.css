@@ -36,7 +36,7 @@ h3{
 }
 
 h6, h5{
-    font-size: 30px;
+    font-size: 20px;
 }
 p {
     padding: auto;
@@ -109,7 +109,7 @@ img{
     font-weight: bold;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .nav_custom a {
         font-size: 25px;
     }
@@ -132,6 +132,7 @@ footer{
     text-align: center;
     color: white;
     font-family: "Damion", Helvetica, Arial, sans-serif !important;
+    padding-bottom: 40px;
 }
 
 /*************** FIN FOOTER *******************/
@@ -561,4 +562,19 @@ figure.snip1239.hover figcaption {
 .form_login{
     margin-top: 100px;
     margin-bottom: 100px;
+}
+
+/******** Newsletter ******/
+.flashmsg_newsletter{
+    text-align: center;
+}
+
+.newsletter_show{
+    padding: 5px 5px 5px 5px;
+    border: 1px solid navajowhite;
+}
+
+/******* FlashBag ******/
+.alert-error{
+    background-color: red;
 }

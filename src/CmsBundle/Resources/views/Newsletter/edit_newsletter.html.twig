@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
+
+    <div class="title_section">
+        <h1>Edition de la newsletter n°{{ newsletter.id }}</h1>
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <p>Libelle</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.libelle, {'attr': {'class': 'form-control', 'placeholder': 'Saississez le libele de la Newsletter'}}) }}
+                {{ form_errors(edit_form.libelle) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Objet</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.objet, {'attr': {'class': 'form-control', 'placeholder': 'Saississez l\'objet du mail'}}) }}
+                {{ form_errors(edit_form.objet) }}
+            </div>
+        </div>
+        <div class="row">
+            <p>Contenu</p>
+            <div>
+                {{ form_widget(edit_form.texte) }}
+                {{ form_errors(edit_form.texte) }}
+            </div>
+        </div>
+        <div class="row">
+            {% if newsletter.filename != null %}
+                <div class="col-md-3">
+                    <p class="">Fichier pdf de la Newsletter: <a href="{{ asset('uploads/newsletters_file/') }}{{ newsletter.filename }}" target="_blank">{{ newsletter.filename }}</a></p>
+                </div>
+            {% endif %}
+            <div class="col-md-3 input-group">
+            {% if newsletter.filename != null %}
+                <p>Selectionnez un autre fichier:</p>
+            {% else %}
+                <p>Selectionnez un fichier:</p>
+            {% endif %}
+                {{ form_widget(edit_form.file, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(edit_form.file) }}
+            </div>
+        </div>
+        {% if newsletter.filename != null %}
+            <div class="row">
+                <div class="input-group">
+                    Supprimer la pièce jointe
+                    {{ form_widget(edit_form.pj) }}
+                    {{ form_errors(edit_form.pj) }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="edit_admin">
+        <input class="btn btn-default edit_admin"  type="submit" value="Modifier la newsletter" />
+        <a class="btn btn-default edit_admin" href="{{ path('newsletter_delete', { 'id': newsletter.id }) }}">Supprimer la newsletter</a>
+        <a class="btn btn-default edit_admin" href="{{ path('newsletters_show', { 'id': newsletter.id }) }}">Retour à la liste des newsletters</a>
+    </div>
+
+    {{ form_end(edit_form) }}
+{% endblock %}

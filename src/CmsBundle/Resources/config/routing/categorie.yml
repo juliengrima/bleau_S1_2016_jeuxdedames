@@ -3,11 +3,6 @@ categorie_index:
     defaults: { _controller: "CmsBundle:Categorie:index" }
     methods:  GET
 
-categorie_show:
-    path:     /{id}/show
-    defaults: { _controller: "CmsBundle:Categorie:show" }
-    methods:  GET
-
 categorie_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Categorie:new" }
