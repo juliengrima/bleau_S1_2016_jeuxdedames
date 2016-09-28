@@ -15,9 +15,9 @@
                                 {% for artiste in artistes %}
                                     {% if artiste.ajouterslider == true %}
                                         {% if (artiste.lien != null) %}
-                                            <a href="{{ artiste.lien | external_link }}"><img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
+                                            <a href="{{ artiste.lien | external_link }}"><img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
                                         {% else %}
-                                            <img style="width: 250px" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
