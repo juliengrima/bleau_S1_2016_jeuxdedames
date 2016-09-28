@@ -62,13 +62,12 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ path('cms_homepage') }}">Jeux de Dames</a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-left">
                             {% if langue_active == true %}
-                                <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
-                                <li class="lilili"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img class="d" src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
+                                <li class="drapeaux"><a href="{{ path('cms_homepage', { '_locale': 'fr' }) }}"><img src=" {{ asset ('bundles/cms/images/frenchflag.jpg') }}"/></a></li>
+                                <li class="drapeaux"><a href="{{ path('cms_homepage', { '_locale': 'en' }) }}"><img src=" {{ asset ('bundles/cms/images/englishflag.jpg') }}"/></a></li>
                                 {% if app.request.locale == 'en' %}
                                     <li><a href="{{ path('user_artiste') }}">Artists</a></li>
                                     <li><a href="{{ path('user_partenaire') }}">Partnaires </a></li>
@@ -76,6 +75,7 @@
                                     <li><a href="{{ path ('calendar_homepage') }}">Events</a></li>
                                     <li><a href="{{ path('user_presse') }}">News</a></li>
                                     <li><a href="{{ path('user_archive') }}">Records</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                                 {% else  %}
                                     <li><a href="{{ path('user_artiste') }}">Artistes</a></li>
                                     <li><a href="{{ path('user_partenaire') }}">Partenaires </a></li>
@@ -83,6 +83,7 @@
                                     <li><a href="{{ path ('calendar_homepage') }}">Evenements</a></li>
                                     <li><a href="{{ path('user_presse') }}">Presse</a></li>
                                     <li><a href="{{ path('user_archive') }}">Archive</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                                 {% endif %}
                             {% else %}
                                 <li><a href="{{ path('user_artiste') }}">Artistes</a></li>
@@ -91,6 +92,7 @@
                                 <li><a href="{{ path ('calendar_homepage') }}">Evenements</a></li>
                                 <li><a href="{{ path('user_presse') }}">Presse</a></li>
                                 <li><a href="{{ path('user_archive') }}">Archive</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -100,26 +102,62 @@
 
         {% block body %}{% endblock %}
 
-        <footer>
+        <footer class="container-fluid">
             <!-- ******** FOOTER ******** -->
-            <div class="row text-center reseaux">
-                <h2>Vous pouvez nous retrouver</h2>
-                <h2>Sur nos différents réseaux sociaux</h2>
+            <div class="col-md-4">
+                <div class="row">
+                    <p>Vous pouvez nous retrouver sur nos différents réseaux sociaux</p>
+                </div>
+                <div class="row">
+                    <a href="#" class="icone_reseau"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/Jeux2dames/?fref=ts" class="icone_reseau"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                    <a href="#" class="icone_reseau"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
+                </div>
             </div>
-            <div class="row text-center">
-                <a href="#" class="icone_reseau"><i class="fa fa-instagram fa-4x" aria-hidden="true"></i></a>
-                <a href="https://www.facebook.com/Jeux2dames/?fref=ts" class="icone_reseau"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
-                <a href="#" class="icone_reseau"><i class="fa fa-youtube fa-4x" aria-hidden="true"></i></a>
+            <div class="col-md-4">
+                <div class="row">
+                    <p>S'abonner à la newsletter</p>
+                </div>
+                <div class="row">
+                    <form action="{{ path('newsletter_adduser') }}" method="POST">
+                        <input type="email" name="email" placeholder="Saisir l'adresse mail" required="required" />
+                        <input style="display: none;" name="route" value="{{ app.request.attributes.get('_route') }}" />
+                        <input class="news_input" type="submit" value="Valider" />
+                    </form>
+                </div>
             </div>
-            <div class="row text-center newsletter">
-                <h2>S'abonner à la newsletter</h2>
-                <form action="{{ path('newsletter_adduser') }}" method="post">
-                    <input type="email" name="email" placeholder="Saisir l'adresse mail" required="required" />
-                    <input style="display: none;" name="route" value="{{ app.request.attributes.get('_route') }}" />
-                    <input type="submit" value="Valider" />
-                </form>
+            <div class="col-md-4">
+                <div class="row">
+                    <p>Mentions légales</p>
+                </div>
+                <div class="row">
+                    <p>Association à but non lucratif, apolitique et non confessionnelle. N° W774005611</p>
+                </div>
             </div>
         </footer>
+
+
+        {# MODAL #}
+
+        <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="contact_modal modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Nous contacter</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Email: </p><a href="mailto:lesjeuxdedames@gmail.com?subject=Renseignement">lesjeuxdedames@gmail.com</a>
+                        <p>Téléphone: 06 84 76 20 58</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# MODAL #}
 
         {% block javascripts %}
 
