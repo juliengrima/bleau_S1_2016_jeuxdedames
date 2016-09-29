@@ -1,3 +1,8 @@
+@font-face {
+    font-family: grandhotel;
+    src: url(../fonts/GrandHotel-Regular.otf);
+}
+
 @media screen and (max-width: 340px) {
     nav .pull-right{
         display:block;
@@ -17,6 +22,7 @@ body {
     background-color: #00BCD4;
     /*background-color: #00BCD4;*/
     margin: auto;
+    font-family: grandhotel;
 }
 
 h4 {
@@ -99,7 +105,7 @@ img{
 }
 
 .nav_custom a {
-    font-family: "Damion", Helvetica, Arial, sans-serif !important;
+    font-family: grandhotel !important;
     color: #ffff1a !important;
     font-size: 30px;
     font-weight: bold;
@@ -127,7 +133,7 @@ footer{
     width: auto;
     text-align: center;
     color: white;
-    font-family: "Damion", Helvetica, Arial, sans-serif !important;
+    font-family: grandhotel !important;
 }
 .icone_reseau{
     margin-right: 5px;
@@ -148,7 +154,7 @@ footer .news_input{
 
 /********* HOME PAGE **********/
 .carousel_jdd{
-    font-family: "Damion", Helvetica, Arial, sans-serif;
+    font-family: grandhotel;
 }
 
 .carousel_jdd h1 {
@@ -250,7 +256,7 @@ input[type=checkbox]
 
 /************  ANIMATION IMAGE ********/
 figure.snip1239 {
-    font-family: "Damion", Helvetica, Arial, sans-serif !important;
+    font-family: grandhotel !important;
     position: relative;
     margin: 10px 1%;
     color: #ffffff;
