@@ -13,7 +13,6 @@
         {% endif %}
     </div>
 
-
 {% endblock %}
 
 {% block javascripts %}
@@ -27,34 +26,37 @@
         function initMap() {
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 48.408, lng: 2.699 },
-                zoom: 13
+                center: {lat: 48.405129, lng: 2.701341 },
+                zoom: 15
             });
             codeAddress();
-        }
-
+}
        // function initialize() {
 
         function codeAddress() {
+            var imageMarqueur = {
+                url: "{{ asset('bundles/cms/images/MapMarker_Bubble_Azure.png') }}",
+                size: new google.maps.Size(25, 40),
+                anchor: new google.maps.Point(0, 20)
+            };
             {% for commercant in commercants %}
                 var address = '{{ commercant.adresse }} {{ commercant.code }} {{ commercant.ville }}';
                     geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                            map.setCenter(results[0].geometry.location);
                             var marker = new google.maps.Marker({
                                 map: map,
+                                icon: imageMarqueur,
                                 position: results[0].geometry.location});
 
+
                             var description =
-                                '<div><img class="imagecommercant" src="{{ asset('uploads/imgcms/') }}{{ commercant.image }}"/></div>'+
-                                '<div><h3>{{ commercant.nom }}</h3></div>'+
-                                '<div><p>{{ commercant.adresse }}</p></div>'+
-                                '<div><p>{{ commercant.code }}</p></div>'+
-                                '<div><p>{{ commercant.ville }}</p></div>'+
-                                '<div>' +
-                                    '<a class="btn btn-default edit_admin" href="{{ path('commercant_edit', { 'id': commercant.id }) }}">Editer</a>'+
-                                    '<a class="btn btn-default edit_admin confirmModalLink" href="{{ path('commercant_delete', {'id':  commercant.id  }) }}" title="Supprimer">Supprimer</a>'+
-                                '</div>';
+                                    '<div id="iw_container">'+
+                                        '<div class="iw_title">{{ commercant.nom }}</div>'+
+                                        '<div class="iw_content">'+
+                                            '<p>{{ commercant.adresse }}</p>'+
+                                            '<a href="{{ commercant.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>'+
+                                         '</div>'+
+                                    '</div>';
 
                             attachDescription(marker, description);
                     } else {
@@ -69,11 +71,21 @@
         function attachDescription(marker, description) {
 
             var infowindow = new google.maps.InfoWindow({
-                content: description
+                content: description,
             });
 
-            marker.addListener('click', function() {
-                infowindow.open(marker.get('map'), marker);
+//            marker.addListener('click', function() {
+//                infowindow.open(marker.get('map'), marker);
+//            });
+
+            // procedure to show the Info Window using a click on the marker
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker); // map and marker are the variables defined previously
+            });
+
+            // event to close the infowindow with a click on the map
+            google.maps.event.addListener(map, 'click', function() {
+                infowindow.close();
             });
         }
 

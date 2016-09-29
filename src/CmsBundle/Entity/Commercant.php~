@@ -96,6 +96,7 @@ class Commercant
     /*generate*/
 
  
+
     /**
      * @var integer
      */
@@ -117,14 +118,9 @@ class Commercant
     private $nom;
 
     /**
-     * @var integer
-     */
-    private $code;
-
-    /**
      * @var string
      */
-    private $ville;
+    private $lien;
 
 
     /**
@@ -210,50 +206,26 @@ class Commercant
     }
 
     /**
-     * Set code
+     * Set lien
      *
-     * @param integer $code
+     * @param string $lien
      *
      * @return Commercant
      */
-    public function setCode($code)
+    public function setLien($lien)
     {
-        $this->code = $code;
+        $this->lien = $lien;
 
         return $this;
     }
 
     /**
-     * Get code
-     *
-     * @return integer
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return Commercant
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
+     * Get lien
      *
      * @return string
      */
-    public function getVille()
+    public function getLien()
     {
-        return $this->ville;
+        return $this->lien;
     }
 }

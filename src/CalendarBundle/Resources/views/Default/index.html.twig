@@ -5,7 +5,7 @@
 
     <div class="calendar">
         <div class="row">
-            <h1>Evènements</h1>
+            <h2>Evènements</h2>
         </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -33,8 +33,8 @@
                     <div style="color:black" id="modalBody" class="modal-body"></div>
                     <div class="modal-footer">
                         {% if is_granted("ROLE_SUPER_ADMIN") %}
-                        <a href="#" id="delete_event" class="btn btn-default">Supprimer</a>
-                        <a href="#" id="edit_event" class="btn btn-primary">Modifier</a>
+                            <a href="#" id="delete_event" class="btn btn-default">Supprimer</a>
+                            <a href="#" id="edit_event" class="btn btn-primary">Modifier</a>
                         {% endif %}
                     </div>
                 </div>

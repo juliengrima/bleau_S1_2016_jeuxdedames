@@ -25,6 +25,10 @@ CmsBundle\Entity\Commercant:
         ville:
             type: string
             length: 255
+        lien:
+            type: string
+            lenght: 255
+            nullable: true
     lifecycleCallbacks:
           prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
           preUpdate: [ preUpload, setUpdatedAtValue ]

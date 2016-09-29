@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
+
     <div class="container-fluid block_artiste">
         <div class="title_section">
             <h2>Artistes</h2>
@@ -11,7 +13,7 @@
                         <figure class="snip1239">
                             <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
                             <figcaption>
-                                <h3>{{ artiste.nom }}</h3>
+                                <h4>{{ artiste.nom }}</h4>
                                 <p>{{ artiste.categorie }}</p>
                                 {% if (artiste.lien != null) %}
                                 <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>

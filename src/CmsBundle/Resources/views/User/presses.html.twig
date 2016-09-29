@@ -2,12 +2,10 @@
 
 {% block body %}
 
-    <div class="title_section">
-        <h1>Presse</h1>
-    </div>
-
-
     <div class="container-fluid block_artiste">
+        <div class="title_section">
+            <h2>Presse</h2>
+        </div>
         <div class="row">
             {% for presse in presses %}
                 <div class="col-md-3 col-sm-4 col-xs-6">
@@ -18,7 +16,9 @@
                                 <h3>{{ presse.nom }}</h3>
                                 <p>{{ presse.texte }}</p>
                                 <p>{{ presse.date|date("d/m/Y") }}</p>
-                                <a href="{{ presse.lien | external_link }}" class="read-more">En savoir plus</a>
+                                {% if (presse.lien != null) %}
+                                    <a href="{{ presse.lien | external_link }}" class="read-more">En savoir plus</a>
+                                {% endif %}
                             </figcaption>
                         </figure>
                     </div>
