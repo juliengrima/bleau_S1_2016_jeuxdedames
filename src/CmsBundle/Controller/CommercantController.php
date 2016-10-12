@@ -81,6 +81,16 @@ class CommercantController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+                // Récupération lat et lng de l'adresse'
+                $rue = $editForm->getData()->getAdresse();
+                $code = $editForm->getData()->getCode();
+                $ville = $editForm->getData()->getVille();
+
+                $lat_lng = $this->getLatLng($rue, $code, $ville);
+                $commercant->setLat($lat_lng['lat']);
+                $commercant->setLng($lat_lng['lng']);
+
             if($editForm->get('file')->getData() != null) {
 
                 if($commercant->getImage() != null) {

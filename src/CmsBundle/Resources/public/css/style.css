@@ -28,25 +28,31 @@ body {
 h4 {
     font-size: 25px;
     font-family: grandhotel !important;
+    color: #ffff1a;
+
 }
 h1 {
     font-size: 40px;
     text-align: center;
     font-family: grandhotel !important;
+    color: #ffff1a;
 }
 h2 {
     font-size: 40px;
     margin: 2%;
     font-family: grandhotel !important;
+    color: #ffff1a;
 }
 h3{
     font-size: 30px;
     font-family: grandhotel !important;
+    color: #ffff1a;
 }
 
 h6, h5{
     font-size: 20px;
     font-family: grandhotel !important;
+    color: #ffff1a;
 }
 p {
     padding: auto;
@@ -159,7 +165,6 @@ footer .news_input{
 /********* HOME PAGE **********/
 
 .carousel_jdd h1 {
-    color: #ffff1a;
     font-size: 60px;
     margin-bottom: 30px;
 }
@@ -187,9 +192,6 @@ footer .news_input{
 .pres_equipe h1, .pres_equipe h2, .pres_equipe h3, .pres_equipe h4, .pres_equipe h5, .pres_equipe h6, .pres_equipe p{
     font-family: grandhotel !important;
     color: white !important;
-}
-.home_contenu h4{
-    color: #ffff1a;
 }
 @media screen and (max-width: 990px) {
     .home_presentation {
