@@ -1,5 +1,5 @@
 git status
-read -r -p "Fichiers ok ? [N/y] \n" response
+read -r -p "Fichiers ok ? [N/y]" response
 case $response in
     [yY][eE][sS]|[yY]) 
         git add .
@@ -12,7 +12,7 @@ esac
 
 git commit
 
-read -r -p "On push ? [N/y] \n" response
+read -r -p "On push ? [N/y]" response
 case $response in
     [yY][eE][sS]|[yY]) 
 		branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
