@@ -45,7 +45,7 @@ class UserController extends Controller
 
         $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 0));
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 0), array('nom' => 'asc'));
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
             'artistes' => $artistes,

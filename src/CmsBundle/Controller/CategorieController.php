@@ -22,7 +22,7 @@ class CategorieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('CmsBundle:Categorie')->findAll();
+        $categories = $em->getRepository('CmsBundle:Categorie')->findBy(array(), array('nomDeLaCategorie' => 'asc'));
 
         return $this->render('CmsBundle:categorie:index.html.twig', array(
             'categories' => $categories,

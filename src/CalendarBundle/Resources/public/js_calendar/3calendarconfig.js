@@ -9,7 +9,7 @@ $(document).ready(function() {
             right: 'today prev, next'
         },
         lang: 'fr',
-        defaultView: 'agendaWeek', // vue par default
+        defaultView: 'month', // vue par default
         views: { // format d'affichage de la date en fonction des vue
             month: {
                 titleFormat: 'MMMM YYYY'

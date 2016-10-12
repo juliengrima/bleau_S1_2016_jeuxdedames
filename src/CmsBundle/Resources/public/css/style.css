@@ -308,9 +308,12 @@ figure.snip1239 p {
     line-height: 1.5em;
 }
 figure.snip1239 h3 {
-    margin: 0;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-family: Helvetica !important;
+    color: white !important;
+}
+figure.snip1239 h4{
+    font-family: Helvetica !important;
+    color: white !important;
 }
 figure.snip1239 p {
     font-size: 20px;
