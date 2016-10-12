@@ -40,8 +40,7 @@ CmsBundle\Entity\Accueil:
             nullable: true
             column: Image
         contenu:
-            type: string
-            length: 255
+            type: text
             column: Contenu
         langue:
             type: string
