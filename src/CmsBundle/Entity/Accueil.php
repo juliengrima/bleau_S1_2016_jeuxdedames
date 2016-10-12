@@ -97,6 +97,7 @@ class Accueil
 
     /*generate*/
 
+ 
     /**
      * @var integer
      */
@@ -151,6 +152,11 @@ class Accueil
      * @var string
      */
     private $langue;
+
+    /**
+     * @var boolean
+     */
+    private $langue_active;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -416,6 +422,30 @@ class Accueil
     }
 
     /**
+     * Set langueActive
+     *
+     * @param boolean $langueActive
+     *
+     * @return Accueil
+     */
+    public function setLangueActive($langueActive)
+    {
+        $this->langue_active = $langueActive;
+
+        return $this;
+    }
+
+    /**
+     * Get langueActive
+     *
+     * @return boolean
+     */
+    public function getLangueActive()
+    {
+        return $this->langue_active;
+    }
+
+    /**
      * Add accueil
      *
      * @param \CmsBundle\Entity\Accueil $accueil
@@ -447,34 +477,5 @@ class Accueil
     public function getAccueil()
     {
         return $this->accueil;
-    }
-    /**
-     * @var boolean
-     */
-    private $langue_active;
-
-
-    /**
-     * Set langueActive
-     *
-     * @param boolean $langueActive
-     *
-     * @return Accueil
-     */
-    public function setLangueActive($langueActive)
-    {
-        $this->langue_active = $langueActive;
-
-        return $this;
-    }
-
-    /**
-     * Get langueActive
-     *
-     * @return boolean
-     */
-    public function getLangueActive()
-    {
-        return $this->langue_active;
     }
 }

@@ -22,26 +22,31 @@ body {
     background-color: #00BCD4;
     /*background-color: #00BCD4;*/
     margin: auto;
-    font-family: grandhotel;
+    font-family: Helvetica;
 }
 
 h4 {
     font-size: 25px;
+    font-family: grandhotel !important;
 }
 h1 {
     font-size: 40px;
     text-align: center;
+    font-family: grandhotel !important;
 }
 h2 {
     font-size: 40px;
     margin: 2%;
+    font-family: grandhotel !important;
 }
 h3{
     font-size: 30px;
+    font-family: grandhotel !important;
 }
 
 h6, h5{
     font-size: 20px;
+    font-family: grandhotel !important;
 }
 p {
     padding: auto;
@@ -133,7 +138,6 @@ footer{
     width: auto;
     text-align: center;
     color: white;
-    font-family: grandhotel !important;
 }
 .icone_reseau{
     margin-right: 5px;
@@ -153,9 +157,6 @@ footer .news_input{
 
 
 /********* HOME PAGE **********/
-.carousel_jdd{
-    font-family: grandhotel;
-}
 
 .carousel_jdd h1 {
     color: #ffff1a;
@@ -182,6 +183,13 @@ footer .news_input{
 .pres_equipe{
     padding-right: 30px;
     padding-left: 30px;
+}
+.pres_equipe h1, .pres_equipe h2, .pres_equipe h3, .pres_equipe h4, .pres_equipe h5, .pres_equipe h6, .pres_equipe p{
+    font-family: grandhotel !important;
+    color: white !important;
+}
+.home_contenu h4{
+    color: #ffff1a;
 }
 @media screen and (max-width: 990px) {
     .home_presentation {
@@ -256,7 +264,6 @@ input[type=checkbox]
 
 /************  ANIMATION IMAGE ********/
 figure.snip1239 {
-    font-family: grandhotel !important;
     position: relative;
     margin: 10px 1%;
     color: #ffffff;

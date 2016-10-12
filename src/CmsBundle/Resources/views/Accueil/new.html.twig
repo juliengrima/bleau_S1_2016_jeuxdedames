@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
+
     <h1>Administration page d'accueil </h1>
 
     {{ form_start(form) }}

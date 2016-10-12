@@ -18,24 +18,21 @@ CmsBundle\Entity\Accueil:
             length: 255
             column: premierTitre
         premiercontenu:
-            type: string
-            length: 255
+            type: text
             column: premierContenu
         deuxiemetitre:
             type: string
             length: 255
             column: deuxiemeTitre
         deuxiemecontenu:
-            type: string
-            length: 255
+            type: text
             column: deuxiemeContenu
         troisiemetitre:
             type: string
             length: 255
             column: troisiemeTitre
         troisiemecontenu:
-            type: string
-            length: 255
+            type: text
             column: troisiemeContenu
         image:
             type: string

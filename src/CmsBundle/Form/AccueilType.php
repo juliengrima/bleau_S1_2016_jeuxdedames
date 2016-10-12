@@ -17,7 +17,11 @@ class AccueilType extends AbstractType
         $builder
             ->add('titre')
             ->add('file', 'file', array('label' => 'Image', 'required' => false))
-            ->add('contenu', 'textarea')
+            ->add('contenu', 'textarea', array(
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode' // Skip it if you want to use default theme
+                )))
             ->add('premiertitre')
             ->add('premiercontenu', 'textarea')
             ->add('deuxiemetitre' )

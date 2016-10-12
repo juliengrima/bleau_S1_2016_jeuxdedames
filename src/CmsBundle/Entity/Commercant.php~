@@ -228,4 +228,62 @@ class Commercant
     {
         return $this->lien;
     }
+    /**
+     * @var integer
+     */
+    private $code;
+
+    /**
+     * @var string
+     */
+    private $ville;
+
+
+    /**
+     * Set code
+     *
+     * @param integer $code
+     *
+     * @return Commercant
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return integer
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Commercant
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
 }
