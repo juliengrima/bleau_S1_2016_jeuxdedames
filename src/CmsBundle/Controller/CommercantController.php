@@ -42,6 +42,16 @@ class CommercantController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+//            Récupération lat et lng de l'adresse'
+            $rue = $form->getData()->getAdresse();
+            $code = $form->getData()->getCode();
+            $ville = $form->getData()->getVille();
+
+            $lat_lng = $this->getLatLng($rue, $code, $ville);
+            $commercant->setLat($lat_lng['lat']);
+            $commercant->setLng($lat_lng['lng']);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($commercant);
             $em->flush();
@@ -114,5 +124,21 @@ class CommercantController extends Controller
         return $this->redirect($this->generateUrl('user_commercant', array(
             'commercant' => $commercants,
         )));
+    }
+
+    public function getLatLng($rue, $code_postal, $ville){
+
+        $rue = str_replace(" ", "%20", $rue);
+        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&sensor=true";
+
+        $result_string = file_get_contents($url);
+
+        $result = json_decode($result_string, true);
+
+        $location['lat'] = $result['results'][0]['geometry']['location']['lat'];
+        $location['lng'] = $result['results'][0]['geometry']['location']['lng'];
+
+        return $location;
+
     }
 }

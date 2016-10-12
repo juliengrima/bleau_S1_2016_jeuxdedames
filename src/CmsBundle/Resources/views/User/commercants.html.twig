@@ -20,11 +20,9 @@
     {{ parent() }}
     <script>
 
-        var geocoder;
         var map;
 
         function initMap() {
-            geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.405129, lng: 2.701341 },
                 zoom: 15
@@ -40,29 +38,27 @@
                 anchor: new google.maps.Point(0, 20)
             };
             {% for commercant in commercants %}
-                var address = '{{ commercant.adresse }} {{ commercant.code }} {{ commercant.ville }}';
-                    geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                            var marker = new google.maps.Marker({
-                                map: map,
-                                icon: imageMarqueur,
-                                position: results[0].geometry.location});
+                var lat = {{ commercant.lat }};
+                var lng = {{ commercant.lng }};
 
-
-                            var description =
-                                    '<div id="iw_container">'+
-                                        '<div class="iw_title">{{ commercant.nom }}</div>'+
-                                        '<div class="iw_content">'+
-                                            '<p>{{ commercant.adresse }}</p>'+
-                                            '<a href="{{ commercant.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>'+
-                                         '</div>'+
-                                    '</div>';
-
-                            attachDescription(marker, description);
-                    } else {
-                        alert("Geocode was not successful for the following reason: " + status);
-                    }
+                var marker = new google.maps.Marker({
+                    map: map,
+                    icon: imageMarqueur,
+                    position: {lat: lat, lng: lng }
                 });
+
+                var description =
+                        '<div id="iw_container">'+
+                            '<div class="iw_title">{{ commercant.nom }}</div>'+
+                            '<div class="iw_content">'+
+                                '<p>{{ commercant.adresse }}</p>'+
+                                '<a href="{{ commercant.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>'+
+                             '</div>'+
+                        '</div>';
+
+                attachDescription(marker, description);
+
+
             {% endfor %}
 
         }

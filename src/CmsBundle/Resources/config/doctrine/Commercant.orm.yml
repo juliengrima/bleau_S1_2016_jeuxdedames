@@ -25,6 +25,12 @@ CmsBundle\Entity\Commercant:
         ville:
             type: string
             length: 255
+        lat:
+            type: string
+            length: 255
+        lng:
+            type: string
+            length: 255
         lien:
             type: string
             lenght: 255
