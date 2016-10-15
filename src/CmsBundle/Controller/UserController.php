@@ -2,7 +2,10 @@
 
 namespace CmsBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
@@ -37,19 +40,57 @@ class UserController extends Controller
         ));
     }    
 
-    public function artistesAction()
+    public function artistesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $local = $this->UserGetLocal();
-
         $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
+        $status = 0;
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 0), array('nom' => 'asc'));
+//      Creation du formulaire pour recherche artiste
+        $formBuilder = $this->get('form.factory')->createBuilder('form');
+        $formBuilder
+            ->add('categoris', EntityType::class, array(
+                'class' => 'CmsBundle\Entity\Categorie',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.nomDeLaCategorie', 'ASC');
+                },
+                'choice_label' => 'nomDeLaCategorie',
+                'placeholder' => 'Spécifiez une catégorie',
+                'empty_data'  => null,
+                'required' => false
+            ));
+        $form = $formBuilder->getForm();
+        $form->handleRequest($request);
+
+        if ($form->getViewData() != null && $form->getViewData()['categoris'] != null)
+        {
+            $categorie = $form->getViewData()['categoris'];
+            $categorie_name = $categorie->getNomDeLaCategorie();
+            $categorie_id = $categorie->getId();
+            $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(
+                array(
+                    'langue' => $local,
+                    'archive' => 0,
+                    'categorie' => $categorie_id
+                ),
+                array('nom' => 'asc'));
+            $status = 1;
+        }
+        else
+        {
+            $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 0), array('nom' => 'asc'));
+
+        }
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
+            'form' => $form->createView(),
             'artistes' => $artistes,
-            'langue_active' => $langue_active
+            'langue_active' => $langue_active,
+            'categorie_name' => $categorie_name,
+            'status' => $status
         ));
     }
 

@@ -430,3 +430,38 @@ figure.snip1239.hover figcaption {
 .contact_modal{
     background-color: #288493;
 }
+
+/*Select categories*/
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #00BCD4;
+    color: white;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+.search_button{
+    margin-top: 2%;
+}
+.search_button input{
+    background-color: #00BCD4;
+    color: white;
+}
