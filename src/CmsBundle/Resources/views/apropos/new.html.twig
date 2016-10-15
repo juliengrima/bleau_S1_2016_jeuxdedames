@@ -1,16 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Apropos creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('user_apropos') }}">Retour à la page à propos</a>
-        </li>
-    </ul>
+    <h1>Créer la page à propos</h1>
+
+    <div class="container-fluid">
+        {{ form_start(form) }}
+
+        <div class="container">
+            <div class="row">
+                <p class="">Introduction</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.introduction) }}
+                    {{ form_errors(form.introduction) }}
+                </div>
+            </div>
+            <div class="row">
+                <p class="">Email de contact</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.emailcontact, {'attr': {'class': 'form-control', 'placeholder': 'Email de contact'}}) }}
+                    {{ form_errors(form.emailcontact) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Créer" />
+            </div>
+            {#{% endif %}#}
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
