@@ -1,0 +1,31 @@
+CmsBundle\Entity\Equipe:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\EquipeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        role:
+            type: string
+            length: 255
+        telephone:
+            type: integer
+        show_tel:
+            type: boolean
+
+    manyToOne:
+        images:
+            targetEntity: CmsBundle\Entity\Images
+            cascade: ["persist"]
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,84 @@
+<?php
+
+namespace CmsBundle\Entity;
+
+/**
+ * Apropos
+ */
+class Apropos
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $introduction;
+
+    /**
+     * @var string
+     */
+    private $emailcontact;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set introduction
+     *
+     * @param string $introduction
+     *
+     * @return Apropos
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
+    }
+
+    /**
+     * Set emailcontact
+     *
+     * @param string $emailcontact
+     *
+     * @return Apropos
+     */
+    public function setEmailcontact($emailcontact)
+    {
+        $this->emailcontact = $emailcontact;
+
+        return $this;
+    }
+
+    /**
+     * Get emailcontact
+     *
+     * @return string
+     */
+    public function getEmailcontact()
+    {
+        return $this->emailcontact;
+    }
+}
+

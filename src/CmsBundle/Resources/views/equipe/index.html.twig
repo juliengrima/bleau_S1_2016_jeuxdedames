@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="title_section">
+        <h1>Membres de l'équipe</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table membre">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Role</th>
+                            <th>Telephone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for equipe in equipes %}
+                        <tr>
+                            <td><img src="{{ asset('uploads/img_equipe/') }}{{ equipe.images.url }}" alt="{{ equipe.images.alt }}"></td>
+                            <td>{{ equipe.nom }}</td>
+                            <td>{{ equipe.prenom }}</td>
+                            <td>{{ equipe.role }}</td>
+                            <td>{{ equipe.telephone }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('admin_equipe_delete', {'id':  equipe.Id  }) }}" title="Supprimer">Supprimer</a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_edit', { 'id': equipe.id }) }}">Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un nouveau membre</a>
+                <a class="btn btn-default edit_admin" href="{{ path('cms_homepage') }}">Retour sur la page d'accueil</a>
+            </div>
+            {#{% endif %}#}
+        </div>
+    </div>
+    {#   MODAL   #}
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de vouloir supprimer cet artiste ?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn" id="confirmModalNo" name="non" value="Non">
+                    <input type="button" class="btn" id="confirmModalYes" name="oui" value="Oui">
+                </div>
+            </div>
+        </div>
+    </div>
+    {#   MODAL   #}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        });
+        $(document).ready(function () {
+            var theHREF;
+            $(".confirmModalLink").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#confirmModal").modal("show");
+            });
+            $("#confirmModalNo").click(function(e) {
+                $("#confirmModal").modal("hide");
+            });
+            $("#confirmModalYes").click(function(e) {
+                window.location.href = theHREF;
+            });
+        });
+
+    </script>
+
+{% endblock %}

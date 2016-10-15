@@ -135,6 +135,7 @@ class NewsletterController extends Controller
         }
         return explode(", ", $destinataires);
     }
+
     public function sendMailAction(Newsletter $newsletter){
 
         $em = $this->getDoctrine()->getManager();

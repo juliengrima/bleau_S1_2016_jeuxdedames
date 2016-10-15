@@ -1,24 +1,25 @@
 CmsBundle\Entity\Accueil:
     properties:
-        # ...
         file:
             - Image: ~
 
 CmsBundle\Entity\Artiste:
     properties:
-        # ...
         file:
             - Image: ~
 
 CmsBundle\Entity\Partenaire:
     properties:
-        # ...
         file:
             - Image: ~
 
 CmsBundle\Entity\Presse:
     properties:
-        # ...
+        file:
+            - Image: ~
+
+CmsBundle\Entity\Images:
+    properties:
         file:
             - Image: ~
 

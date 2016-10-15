@@ -47,6 +47,7 @@ class UserController extends Controller
         $local = $this->UserGetLocal();
         $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
         $status = 0;
+        $categorie_name = null;
 
 //      Creation du formulaire pour recherche artiste
         $formBuilder = $this->get('form.factory')->createBuilder('form');
@@ -143,6 +144,7 @@ class UserController extends Controller
             'langue_active' => $langue_active
         ));
     }
+
     public function pressesAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -156,6 +158,19 @@ class UserController extends Controller
         return $this->render('CmsBundle:User:presses.html.twig' , array (
             'presses' => $presses,
             'langue_active' => $langue_active
+        ));
+    }
+
+    public function aproposAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $apropos = $em->getRepository('CmsBundle:Apropos')->findAll();
+        $equipe = $em->getRepository('CmsBundle:Equipe')->findBy(array(), array('nom' => 'asc'));
+
+        return $this->render('CmsBundle:User:apropos.html.twig' , array (
+            'apropos' => $apropos,
+            'equipe' => $equipe
         ));
     }
 }

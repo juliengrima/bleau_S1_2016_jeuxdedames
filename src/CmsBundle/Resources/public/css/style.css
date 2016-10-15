@@ -406,6 +406,9 @@ figure.snip1239.hover figcaption {
 .admin .btn-group{
     margin-top: 30px;
 }
+.admin .btn-group a{
+    margin: 10px;
+}
 .form_login{
     margin-top: 100px;
     margin-bottom: 100px;
@@ -464,4 +467,34 @@ figure.snip1239.hover figcaption {
 .search_button input{
     background-color: #00BCD4;
     color: white;
+}
+
+/*Section à propos */
+.membre td{
+    width: 20%;
+    vertical-align: inherit;
+}
+.membre img{
+    width: 80%;
+}
+.block_apropos h3{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.block_apropos img{
+    width: 100%;
+}
+
+/*Confirme modal*/
+.modal p{
+    color: #0f0f0f;
+}
+
+/*Formulaire de contact*/
+
+.form_contact{
+    margin: auto;
+    margin-bottom: 40px;
+    width: 60%;
 }

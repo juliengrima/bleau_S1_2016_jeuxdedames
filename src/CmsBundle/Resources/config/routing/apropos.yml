@@ -1,0 +1,9 @@
+admin_apropos_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Apropos:new" }
+    methods:  [GET, POST]
+
+admin_apropos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Apropos:edit" }
+    methods:  [GET, POST]

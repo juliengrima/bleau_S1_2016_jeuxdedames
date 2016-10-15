@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Categorie edit</h1>
+    <h1>Modifier une catégorie</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="container-fluid">
+        {{ form_start(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="container">
+            <div class="row">
+                <p class="">Nom de la catégorie</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(edit_form.nomDeLaCategorie, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la catégorie'}}) }}
+                    {{ form_errors(edit_form.nomDeLaCategorie) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
+            </div>
+            {#{% endif %}#}
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
 {% endblock %}

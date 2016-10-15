@@ -97,7 +97,7 @@ class CategorieController extends Controller
 
                     $request->getSession()
                         ->getFlashBag()
-                        ->add('error',  'Afin de supprimer cette catégorie, il faut au préalable supprimer tous les artistes concernés par celle ci')
+                        ->add('error',  'Afin de supprimer cette catégorie, il faut au préalable supprimer ou modifier tous les artistes concernés par celle ci')
                     ;
 
                     $url = $this->generateUrl('categorie_index');

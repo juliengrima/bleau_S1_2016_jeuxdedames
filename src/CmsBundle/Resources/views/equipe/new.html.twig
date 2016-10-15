@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajout d'un membre</h1>
+
+    <div class="container-fluid">
+        {{ form_start(form) }}
+            <div class="container">
+                <div class="row">
+                    <p class="">Nom du membre</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom du membre'}}) }}
+                        {{ form_errors(form.nom) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="">Prenom du membre</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prenom du membre'}}) }}
+                        {{ form_errors(form.prenom) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="">Status du membre</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        {{ form_widget(form.role, {'attr': {'class': 'form-control', 'placeholder': 'Status du membre'}}) }}
+                        {{ form_errors(form.role) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="">Telephone du membre</p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Telephone du membre'}}) }}
+                        {{ form_errors(form.telephone) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        {{ form_widget(form.images, {'attr': {'class': 'help-block'}}) }}
+                        {{ form_errors(form.images) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="checkbox">
+                        <label>
+                            {{ form_widget(form.showTel) }} Afficher le numéro de téléphone
+                        </label>
+                        {{ form_errors(form.showTel) }}
+                    </div>
+                </div>
+                <div class="row">
+                    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                    <div class="edit_admin">
+                        <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
+                    </div>
+                    {#{% endif %}#}
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

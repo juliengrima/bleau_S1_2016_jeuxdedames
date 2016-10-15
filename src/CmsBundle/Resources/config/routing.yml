@@ -34,6 +34,19 @@ cms_newsletter:
     resource: "@CmsBundle/Resources/config/routing/newsletters.yml"
     prefix:    /admin/newsletter
 
+cms_admin_equipe:
+    resource: "@CmsBundle/Resources/config/routing/equipe.yml"
+    prefix:   /admin/equipe
+
+cms_contact:
+    path: /send
+    defaults: { _controller: CmsBundle:Contact:send }
+    methods: [POST, GET]
+
+cms_admin_apropos:
+    resource: "@CmsBundle/Resources/config/routing/apropos.yml"
+    prefix:   /admin/apropos
+
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /user

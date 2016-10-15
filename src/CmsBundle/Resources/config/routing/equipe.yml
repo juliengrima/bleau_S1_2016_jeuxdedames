@@ -1,0 +1,25 @@
+admin_equipe_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Equipe:index" }
+    methods:  GET
+
+admin_equipe_show:
+    path:     /{id}/show
+    defaults: { _controller: "CmsBundle:Equipe:show" }
+    methods:  GET
+
+admin_equipe_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Equipe:new" }
+    methods:  [GET, POST]
+
+admin_equipe_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Equipe:edit" }
+    methods:  [GET, POST]
+
+admin_equipe_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CmsBundle:Equipe:delete" }
+    requirements:
+        id:  \d+

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for page in apropos %}
+
+        <div class="container-fluid block_apropos">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 title_section">
+                    <h2>A propos</h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h3>Introduction</h3>
+                </div>
+                <div class="row">
+                    {{ page.introduction|raw }}
+                </div>
+                <div class="row">
+                    <h3>Notre equipe</h3>
+                </div>
+                <div class="row">
+                    {% for membre in equipe %}
+                        <div class="col-md-2">
+                            <img src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                            <p>{{ membre.nom|upper }} {{ membre.prenom|capitalize }}</p>
+                            <p>{{ membre.role }}</p>
+                            {% if membre.showTel == 1 %}
+                                <p>{{ membre.telephone }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <h3>Nous contacter</h3>
+                </div>
+                <div class="row form_contact">
+                    <form action="{{ path('cms_contact') }}" method="post">
+                        <div class="form-group">
+                            <label for="nom">Votre nom:</label>
+                            <input type="text" class="form-control" name="nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Votre email:</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="sujet">Sujet:</label>
+                            <input type="text" class="form-control" name="sujet">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Votre message:</label>
+                            <textarea class="form-control" rows="3" placeholder="Votre message" name="message"></textarea>
+                        </div>
+                        <div class="edit_admin">
+                            <input class="btn btn-default edit_admin"  type="submit" value="Envoyer" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <div class="edit_admin">
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un membre</a>
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_apropos_edit', { 'id': page.id }) }}">Editer</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

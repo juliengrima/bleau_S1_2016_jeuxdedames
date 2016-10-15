@@ -1,0 +1,11 @@
+<?php
+
+namespace CmsBundle\Entity;
+
+/**
+ * Equipe
+ */
+class Equipe
+{
+
+}

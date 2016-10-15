@@ -18,6 +18,10 @@ user_presse:
     path:     /presses
     defaults: { _controller: CmsBundle:User:presses }
 
+user_apropos:
+    path:     /apropos
+    defaults: { _controller: CmsBundle:User:apropos }
+
 newsletter_adduser:
     path:     /abonnement
     defaults: { _controller: CmsBundle:AbonnementNewsletters:abonnement }

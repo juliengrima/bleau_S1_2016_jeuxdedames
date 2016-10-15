@@ -1,0 +1,17 @@
+CmsBundle\Entity\Apropos:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\AproposRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        introduction:
+            type: text
+        emailcontact:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

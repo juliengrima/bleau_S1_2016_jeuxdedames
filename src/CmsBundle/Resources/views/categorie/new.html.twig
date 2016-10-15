@@ -1,27 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Categorie creation</h1>
+    <h1>Ajout d'une catégorie</h1>
 
-<div class="container-fluid">
-    {{ form_start(form) }}
+    <div class="container-fluid">
+        {{ form_start(form) }}
 
-    <div class="container">
-        <div class="row">
-            <p class="">Nom de la catégorie</p>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                {{ form_widget(form.nomDeLaCategorie, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la catégorie'}}) }}
-                {{ form_errors(form.nomDeLaCategorie) }}
+        <div class="container">
+            <div class="row">
+                <p class="">Nom de la catégorie</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.nomDeLaCategorie, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la catégorie'}}) }}
+                    {{ form_errors(form.nomDeLaCategorie) }}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-        <div class="edit_admin">
-            <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
+        <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
+            </div>
+            {#{% endif %}#}
         </div>
-        {#{% endif %}#}
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 {% endblock %}
