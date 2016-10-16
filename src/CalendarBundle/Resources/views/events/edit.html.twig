@@ -1,5 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/calendar/css/bootstrap-colorpicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/calendar/css/bootstrap-colorpicker.css.map') }}">
+
+    <style>
+        .color_actuel_event{
+            width: 100px;
+            height: 20px;
+            background-color: {{ event.color }};
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <h1>Editer un évènement</h1>
 
@@ -46,10 +61,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <p class="">Description de l'évènement</p>
+                <p class="">Couleur actuelle: <div class="color_actuel_event"></div></p>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(edit_form.color , {'attr': {'class': 'form-control', 'placeholder': 'Description de l\'évènement'}}) }}
+                    {{ form_widget(edit_form.color , {'attr': {'placeholder': 'Modifier'}}) }}
                     {{ form_errors(edit_form.color) }}
                 </div>
             </div>
@@ -70,4 +85,15 @@
         {{ form_end(edit_form) }}
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/calendar/js_colopicker/bootstrap-colorpicker.js') }}"></script>
+    <script>
+        $(function () {
+            $('#events_color').colorpicker();
+        });
+
+    </script>
 {% endblock %}
