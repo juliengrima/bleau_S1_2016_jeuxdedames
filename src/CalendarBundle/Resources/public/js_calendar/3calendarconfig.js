@@ -68,8 +68,9 @@ $(document).ready(function() {
 
             $('#modalTime').html(Time);
             $('#modalTitle').html( calEvent.titre );
-            if (calEvent.images != null){
-                $('#imgevent').attr( 'src', asset + calEvent.images.webPath, 'alt', calEvent.images.alt );
+            console.log(calEvent);
+            if (calEvent.images.url != null){
+                $('#imgevent').html( '<img src="' + asset + calEvent.images.webPath + '" alt="' + calEvent.images.alt +'"/>' );
             }
             $('#fullCalModal').modal();
 
