@@ -55,34 +55,23 @@
                                 '<a href="{{ commercant.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>'+
                              '</div>'+
                         '</div>';
+            
+                var infoWindow = new google.maps.InfoWindow();
+                //Attach click event to the marker.
+                (function (marker, description) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                        infoWindow.setContent(description);
+                        infoWindow.open(map, marker);
+                    });
 
-                attachDescription(marker, description);
-
+                    google.maps.event.addListener(map, 'click', function() {
+                        infoWindow.close();
+                    });
+                })(marker, description);
 
             {% endfor %}
 
-        }
-
-
-        function attachDescription(marker, description) {
-
-            var infowindow = new google.maps.InfoWindow({
-                content: description,
-            });
-
-//            marker.addListener('click', function() {
-//                infowindow.open(marker.get('map'), marker);
-//            });
-
-            // procedure to show the Info Window using a click on the marker
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker); // map and marker are the variables defined previously
-            });
-
-            // event to close the infowindow with a click on the map
-            google.maps.event.addListener(map, 'click', function() {
-                infowindow.close();
-            });
         }
 
     </script>
