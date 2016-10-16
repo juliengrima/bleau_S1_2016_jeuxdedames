@@ -198,4 +198,33 @@ class Events
     {
         return $this->images;
     }
+    /**
+     * @var boolean
+     */
+    private $add_home_actu;
+
+
+    /**
+     * Set addHomeActu
+     *
+     * @param boolean $addHomeActu
+     *
+     * @return Events
+     */
+    public function setAddHomeActu($addHomeActu)
+    {
+        $this->add_home_actu = $addHomeActu;
+
+        return $this;
+    }
+
+    /**
+     * Get addHomeActu
+     *
+     * @return boolean
+     */
+    public function getAddHomeActu()
+    {
+        return $this->add_home_actu;
+    }
 }

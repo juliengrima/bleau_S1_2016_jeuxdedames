@@ -62,12 +62,21 @@
                 </div>
             </div>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="input-group">
                     {{ form_widget(form.images, {'attr': {'class': 'help-block'}}) }}
                     {{ form_errors(form.images) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget(form.addHomeActu) }} Afficher en page d'accueil
+                    </label>
+                    {{ form_errors(form.addHomeActu) }}
                 </div>
             </div>
         </div>

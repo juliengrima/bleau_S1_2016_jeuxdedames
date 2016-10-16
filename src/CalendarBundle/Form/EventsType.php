@@ -4,6 +4,7 @@ namespace CalendarBundle\Form;
 
 use CmsBundle\Form\ImagesType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -30,9 +31,11 @@ class EventsType extends AbstractType
             ->add('images', ImagesType::class, array(
                 'label' => 'Image de l\'évènement'
             ))
+            ->add('addHomeActu', CheckboxType::class, array(
+                'required' => false
+            ))
         ;
     }
-    
     /**
      * @param OptionsResolver $resolver
      */

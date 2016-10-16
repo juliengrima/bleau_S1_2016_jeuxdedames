@@ -22,6 +22,8 @@ CalendarBundle\Entity\Events:
         color:
             type: string
             length: 255
+        add_home_actu:
+            type: boolean
 
     manyToOne:
         images:
