@@ -123,14 +123,15 @@ class EventsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('CalendarBundle:Events')->findOneById($id);
+        $img_evenement = $em->getRepository('CmsBundle:Images')->findOneById($event->getImages()->getId());
 
         if (!empty($event))
         {
+            $em->remove($img_evenement);
             $em->remove($event);
             $em->flush();
         }
 
         return $this->redirectToRoute('calendar_homepage');
     }
-
 }

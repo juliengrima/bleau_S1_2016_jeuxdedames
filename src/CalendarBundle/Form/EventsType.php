@@ -2,6 +2,7 @@
 
 namespace CalendarBundle\Form;
 
+use CmsBundle\Form\ImagesType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,6 +27,9 @@ class EventsType extends AbstractType
             ->add('titre')
             ->add('contenu', 'textarea')
             ->add('color')
+            ->add('images', ImagesType::class, array(
+                'label' => 'Image de l\'évènement'
+            ))
         ;
     }
     

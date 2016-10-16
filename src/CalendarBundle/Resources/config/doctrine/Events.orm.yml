@@ -23,5 +23,10 @@ CalendarBundle\Entity\Events:
             type: string
             length: 255
 
+    manyToOne:
+        images:
+            targetEntity: CmsBundle\Entity\Images
+            cascade: ["persist"]
+
     lifecycleCallbacks: {  }
 

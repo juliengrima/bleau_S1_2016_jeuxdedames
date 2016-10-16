@@ -40,7 +40,8 @@ $(document).ready(function() {
         events: Routing.generate('events'),
 
         dayClick: function(date) {
-            if (date._d >= current_date_time){
+            console.log(roles);
+            if (date._d >= current_date_time && roles != null){
                 window.location = Routing.generate('events') + date.format() + '/new';
             }
         },
@@ -56,7 +57,6 @@ $(document).ready(function() {
                 );
             })
         },
-
         eventClick:  function(calEvent){
             var day = moment(calEvent.start._d).format("dddd Do MMMM YYYY");
             var ponctuation = ' de ';
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
             $('#modalTime').html(Time);
             $('#modalTitle').html( calEvent.titre );
-            $('#modalBody').html( calEvent.contenu );
+            $('#imgevent').attr( 'src', asset + calEvent.images.webPath, 'alt', calEvent.images.alt );
             $('#fullCalModal').modal();
 
             $('#delete_event').show();

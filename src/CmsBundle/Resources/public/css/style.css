@@ -395,8 +395,17 @@ figure.snip1239.hover figcaption {
 .calendar .modal p{
     color: black;
 }
-.calendar{
+.calendar h6{
+    font-size: 20px;
+    font-family: Helvetica !important;
     color: white;
+}
+.calendar .modal-content{
+    background-color: #03C9A9;
+}
+#imgevent{
+    width: 100%;
+    text-align: center;
 }
 
 /****** Admin ******/

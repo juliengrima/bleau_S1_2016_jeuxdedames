@@ -169,4 +169,33 @@ class Events
     {
         return $this->color;
     }
+    /**
+     * @var \CmsBundle\Entity\Images
+     */
+    private $images;
+
+
+    /**
+     * Set images
+     *
+     * @param \CmsBundle\Entity\Images $images
+     *
+     * @return Events
+     */
+    public function setImages(\CmsBundle\Entity\Images $images = null)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return \CmsBundle\Entity\Images
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }
