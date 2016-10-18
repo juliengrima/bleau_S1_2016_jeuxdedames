@@ -33,8 +33,8 @@ class UserController extends Controller
 
         $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local, 'ajouterslider' => true));
 
-        if (count($artistes) >= 20)
-            $artistes = array_rand($artistes, 20);
+//        if (count($artistes) >= 20)
+//            $artistes = array_rand($artistes, 20);
 
         return $this->render('CmsBundle:User:index.html.twig', array(
             'accueils' => $accueils,
