@@ -68,7 +68,7 @@ class EquipeController extends Controller
             $em->persist($equipe);
             $em->flush();
 
-            return $this->redirectToRoute('admin_equipe_edit', array('id' => $equipe->getId()));
+            return $this->redirectToRoute('user_apropos', array('id' => $equipe->getId()));
         }
 
         return $this->render('CmsBundle:equipe:edit.html.twig', array(
