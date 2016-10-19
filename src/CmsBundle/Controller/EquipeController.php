@@ -91,6 +91,6 @@ class EquipeController extends Controller
         $em->remove($membre);
         $em->flush();
 
-        return $this->redirectToRoute('admin_equipe_index');
+        return $this->redirectToRoute('user_apropos');
     }
 }
