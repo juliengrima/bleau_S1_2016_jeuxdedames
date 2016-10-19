@@ -33,8 +33,8 @@ class UserController extends Controller
 
         $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local, 'ajouterslider' => true));
 
-        if (count($artistes) >= 4){
-            $random_key = array_rand($artistes, 4);
+        if (count($artistes) >= 25){
+            $random_key = array_rand($artistes, 25);
             $ran_artistes = array();
             foreach ($artistes as $key => $value){
                 if (in_array($key, $random_key)){
