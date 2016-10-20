@@ -62,7 +62,7 @@ p {
 }
 img{
     height: auto;
-    width: auto;
+    width: 100%;
 }
 .vcenter {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -158,6 +158,9 @@ footer p{
 footer .news_input{
     background-color: #03C9A9;
     color: white;
+}
+.second_line_footer{
+    margin-top: 4%;
 }
 /*************** FIN FOOTER *******************/
 
