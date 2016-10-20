@@ -507,3 +507,9 @@ figure.snip1239.hover figcaption {
     margin-bottom: 40px;
     width: 60%;
 }
+
+@media screen and (min-width: 800px){
+    .row {
+        margin-bottom: 0 !important;
+    }
+}
