@@ -52,3 +52,7 @@ CmsBundle\Entity\Artiste:
     manyToOne:
         categorie:
             targetEntity: CmsBundle\Entity\Categorie
+            inversedBy: artiste
+            joinColumn:
+                name: categorie_id
+                referencedColumnName: id

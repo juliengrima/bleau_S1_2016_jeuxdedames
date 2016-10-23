@@ -286,4 +286,62 @@ class Commercant
     {
         return $this->ville;
     }
+    /**
+     * @var string
+     */
+    private $lat;
+
+    /**
+     * @var string
+     */
+    private $lng;
+
+
+    /**
+     * Set lat
+     *
+     * @param string $lat
+     *
+     * @return Commercant
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return string
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * Set lng
+     *
+     * @param string $lng
+     *
+     * @return Commercant
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return string
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
 }

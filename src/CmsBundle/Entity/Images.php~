@@ -2,6 +2,8 @@
 
 namespace CmsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Images
  */
@@ -28,7 +30,43 @@ class Images
     {
         return null === $this->url ? null : $this->getUploadRootDir() . '/' . $this->url;
     }
-    
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->url = uniqid().'.'.$this->file->guessExtension();
+            $this->alt = $this->file->getClientOriginalName();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        $this->file->move($this->getUploadRootDir(), $this->url);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+
 //    GENERATED CODE
 
     /**
@@ -104,5 +142,4 @@ class Images
     {
         return $this->alt;
     }
-
 }

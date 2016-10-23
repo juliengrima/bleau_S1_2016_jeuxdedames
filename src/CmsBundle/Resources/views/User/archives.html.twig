@@ -4,61 +4,68 @@
     {{ parent() }}
     <style>
         footer{
-            width: 100%;
-            bottom: 0px;
+            position:fixed;
+            left:0px;
+            bottom:0px;
+            width:100%;
+        }
+        .ariche_block{
+            margin:5px;
         }
     </style>
 {% endblock %}
 
 {% block body %}
+    <div class="ariche_block">
     {% if artistes != null %}
         <div class="title_section">
             <h2>Archives</h2>
         </div>
         <h6 style="text-align: center;">Cliquez sur une catégorie pour visualiser les artistes correspondant</h6>
 
-        {% for artiste in artistes %}
-            <div class="panel-group row" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class=" panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="{% if artiste.categorie != null %}#{{ artiste.categorie }}{% else %}#no_categ{% endif %}" aria-expanded="true" aria-controls="collapseOne">
-                                {% if artiste.categorie != null %}
-                                    {{ artiste.categorie }}
-                                {% else %}
-                                    Non catégorisé
-                                {% endif %}
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="{% if artiste.categorie != null %}{{ artiste.categorie }}{% else %}no_categ{% endif %}" class="panel-collapse collapse in, row" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="col-md-3 col-sm-4 col-xs-6 artistepage">
-                            <figure class="snip1239">
-                                <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
-                                <figcaption>
-                                    <h3 class="editartiste2">{{ artiste.nom }}</h3>
-                                    <p class="editartiste2">{{ artiste.categorie }}</p>
-                                    {% if (artiste.lien != null) %}
-                                        <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
-                                    {% endif %}
-                                </figcaption>
-                            </figure>
-                            {% if is_granted("ROLE_SUPER_ADMIN") %}
-                                <div class="row">
-                                    <div class="edit_admin">
-                                        <a class="btn btn-default edit_admin" href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a>
-                                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('artiste_delete', {'id':  artiste.Id  }) }}" title="Supprimer">Supprimer</a>
+        <div class="panel-group row" id="accordion" role="tablist" aria-multiselectable="true">
+        {% for categ in categories %}
+            <div class="panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ categ.nomDeLaCategorie }}" aria-expanded="true" aria-controls="collapseOne">
+                            {{ categ.nomDeLaCategorie }}
+                        </a>
+                    </h4>
+                </div>
+                <div id="{{ categ.nomDeLaCategorie }}" class="panel-collapse collapse in, row" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        {% for artiste in categ.artiste %}
+                            <div class="col-md-3 col-sm-4 col-xs-6 artistepage">
+                                <figure class="snip1239">
+                                    <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
+                                    <figcaption>
+                                        <h3 class="editartiste2">{{ artiste.nom }}</h3>
+                                        <p class="editartiste2">{{ artiste.categorie }}</p>
+                                        {% if (artiste.lien != null) %}
+                                            <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
+                                        {% endif %}
+                                    </figcaption>
+                                </figure>
+                                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                                    <div class="row">
+                                        <div class="edit_admin">
+                                            <a class="btn btn-default edit_admin" href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a>
+                                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('artiste_delete', {'id':  artiste.Id  }) }}" title="Supprimer">Supprimer</a>
+                                        </div>
                                     </div>
-                                </div>
-                            {% endif %}
-                        </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         {% endfor %}
+        </div>
     {% else %}
         <div class="title_section">
             <h1>Il n'y a pas d'artiste dans les archives</h1>
         </div>
     {% endif %}
+    </div>
 {% endblock %}

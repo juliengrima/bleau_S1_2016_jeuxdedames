@@ -87,4 +87,50 @@ class Categorie
     {
         return $this->backgroundColor;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $artiste;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     *
+     * @return Categorie
+     */
+    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste[] = $artiste;
+
+        return $this;
+    }
+
+    /**
+     * Remove artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     */
+    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste->removeElement($artiste);
+    }
+
+    /**
+     * Get artiste
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtiste()
+    {
+        return $this->artiste;
+    }
 }

@@ -61,3 +61,4 @@ CmsBundle\Entity\Accueil:
             targetEntity: CmsBundle\Entity\Accueil
             mappedBy: accueil
             cascade:   [persist]
+

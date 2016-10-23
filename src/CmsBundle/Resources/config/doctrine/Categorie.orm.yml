@@ -13,4 +13,10 @@ CmsBundle\Entity\Categorie:
             type: string
             length: 255
             column: nom_de_la_categorie
+
+    oneToMany:
+        artiste:
+            targetEntity: CmsBundle\Entity\Artiste
+            mappedBy: categorie
+
     lifecycleCallbacks: {  }

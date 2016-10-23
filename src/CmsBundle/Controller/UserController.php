@@ -153,14 +153,20 @@ class UserController extends Controller
 
         $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('langue' => $local,'archive' => 1));
 
-        $years = null;
-        foreach ($artistes as $artiste) {
-            $years[] = $artiste->getDate()->format("Y");
+        $categ_id = array();
+        foreach ($artistes as  $artiste){
+            if ($artiste->getCategorie() != null){
+                if (!in_array($artiste->getCategorie()->getId(), $categ_id)){
+                    $categ_id[] = $artiste->getCategorie()->getId();
+                }
+            }
         }
 
+        $categories = $em->getRepository('CmsBundle:Categorie')->findBy(array('id' => $categ_id));
+
         return $this->render('CmsBundle:User:archives.html.twig' , array (
-            'years' => $years,
             'artistes' => $artistes,
+            'categories' => $categories,
             'langue_active' => $langue_active
         ));
     }
