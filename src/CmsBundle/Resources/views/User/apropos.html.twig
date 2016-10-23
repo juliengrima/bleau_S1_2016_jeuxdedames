@@ -6,7 +6,7 @@
             height: 100px;
         }
         .img_apropos{
-            height:200px;
+            height:220px;
         }
     </style>
     {% for page in apropos %}
@@ -31,7 +31,7 @@
                     {% for membre in equipe %}
                         <div class="col-md-2">
                             <div class="img_apropos">
-                                <img class="img_apropos" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                                <img src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
                             </div>
                             <div class="info">
                                 <p>{{ membre.nom|upper }} {{ membre.prenom|capitalize }}</p>
