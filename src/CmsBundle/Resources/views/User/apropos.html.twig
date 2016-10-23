@@ -30,7 +30,9 @@
                 <div class="row">
                     {% for membre in equipe %}
                         <div class="col-md-2">
-                            <img class="img_apropos" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                            <div class="img_apropos">
+                                <img class="img_apropos" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                            </div>
                             <div class="info">
                                 <p>{{ membre.nom|upper }} {{ membre.prenom|capitalize }}</p>
                                 <p>{{ membre.role }}</p>
