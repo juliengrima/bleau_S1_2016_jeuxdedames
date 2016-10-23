@@ -61,4 +61,8 @@ CmsBundle\Entity\Accueil:
             targetEntity: CmsBundle\Entity\Accueil
             mappedBy: accueil
             cascade:   [persist]
+    manyToOne:
+        image_2:
+            targetEntity: CmsBundle\Entity\Images
+            cascade: ["persist"]
 

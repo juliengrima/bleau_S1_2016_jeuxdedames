@@ -105,6 +105,15 @@
                     </div>
                     <div class="container">
                         <div class="row">
+                            <p class="">Image au milieu de la page</p>
+                            <div class="input-group">
+                                {{ form_widget(accueil.image2, {'attr': {'class': 'help-block'}}) }}
+                                {{ form_errors(accueil.image2) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
                             <p class="">Activer l'anglais</p>
                             <div class="input-group">
                                 {{ form_widget(accueil.langue_active) }}

@@ -64,6 +64,7 @@ class EquipeController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $equipe->getImages()->preUpload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($equipe);
             $em->flush();

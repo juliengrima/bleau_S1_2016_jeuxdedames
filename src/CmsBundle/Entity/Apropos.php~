@@ -81,4 +81,3 @@ class Apropos
         return $this->emailcontact;
     }
 }
-

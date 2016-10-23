@@ -29,6 +29,7 @@ class AccueilType extends AbstractType
             ->add('troisiemetitre')
             ->add('troisiemecontenu', 'textarea')
             ->add('langue_active')
+            ->add('image2', ImagesType::class)
         ;
     }
     

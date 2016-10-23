@@ -478,4 +478,33 @@ class Accueil
     {
         return $this->accueil;
     }
+    /**
+     * @var \CmsBundle\Entity\Images
+     */
+    private $image_2;
+
+
+    /**
+     * Set image2
+     *
+     * @param \CmsBundle\Entity\Images $image2
+     *
+     * @return Accueil
+     */
+    public function setImage2(\CmsBundle\Entity\Images $image2 = null)
+    {
+        $this->image_2 = $image2;
+
+        return $this;
+    }
+
+    /**
+     * Get image2
+     *
+     * @return \CmsBundle\Entity\Images
+     */
+    public function getImage2()
+    {
+        return $this->image_2;
+    }
 }

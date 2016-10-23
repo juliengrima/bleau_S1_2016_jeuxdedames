@@ -102,7 +102,7 @@ class AccueilController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $accueil_fr->preUpload();
-
+            $accueil_fr->getImage2()->preUpload();
             if ($langue_active == true) {
                 $em->persist($accueil_fr);
                 $em->flush();
