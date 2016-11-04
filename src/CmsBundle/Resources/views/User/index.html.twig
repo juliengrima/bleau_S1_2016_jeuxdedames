@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <h1>{{ accueil.titre }}</h1>
                         <figure>
-                            <marquee behavior="scroll"  direction="left" height="350" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
+                            <marquee behavior="scroll"  direction="left" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
                                 {% for artiste in artistes %}
                                     {% if artiste.ajouterslider == true %}
                                         {% if (artiste.lien != null) %}

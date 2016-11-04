@@ -126,6 +126,7 @@ img{
     .nav_custom a {
         font-size: 25px;
     }
+
 }
 
 /***************FIN NAVBAR ******************/
@@ -514,5 +515,18 @@ figure.snip1239.hover figcaption {
 @media screen and (min-width: 800px){
     .row {
         margin-bottom: 0 !important;
+    }
+}
+
+
+/*MOBILE RESPONSIVE*/
+
+
+@media screen and (max-width: 769px){
+    .navbar-collapse {
+        margin-left: 15px !important;
+    }
+    .logo_dame{
+        display: none;
     }
 }
