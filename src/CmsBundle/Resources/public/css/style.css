@@ -20,7 +20,6 @@ body {
     font-size: 15px;
     line-height: 1.42857143;
     background-color: #00BCD4;
-    /*background-color: #00BCD4;*/
     margin: auto;
     font-family: Helvetica;
 }
@@ -121,10 +120,34 @@ img{
     font-size: 30px;
     font-weight: bold;
 }
+.button_left{
+    display: none;
+}
+.navbar-header{
+     margin-right: 0px !important;
+     margin-left: 0px !important;
+}
+.navbar-header h6{
+    display: none;
+}
 
 @media screen and (max-width: 1000px) {
     .nav_custom a {
         font-size: 25px;
+    }
+    .button_right {
+        margin-right: 20px !important;
+    }
+    .button_left {
+        display: block;
+        margin-top: 3px;
+        margin-left: 10px;
+        width: 40px;
+        float: left;
+    }
+    .navbar-header h6{
+        text-align: center;
+        display: none;
     }
 
 }
@@ -512,12 +535,9 @@ figure.snip1239.hover figcaption {
     width: 60%;
 }
 
-@media screen and (min-width: 800px){
-    .row {
-        margin-bottom: 0 !important;
-    }
+.home_equipe{
+    margin-bottom:30px;
 }
-
 
 /*MOBILE RESPONSIVE*/
 

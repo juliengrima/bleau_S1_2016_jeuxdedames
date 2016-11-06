@@ -49,4 +49,4 @@ cms_admin_apropos:
 
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
-    prefix:   /user
+    prefix:   /

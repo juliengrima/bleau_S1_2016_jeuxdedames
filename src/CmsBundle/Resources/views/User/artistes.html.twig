@@ -4,19 +4,19 @@
 
     <div class="container-fluid block_artiste">
         <div class="row">
-            <div class="col-md-6 col-sm-12 title_section">
+            <div class="col-xs-5 title_section">
                 <h2>Artistes</h2>
                 {% if status == 1 %}
                     <h1>{{ categorie_name|capitalize }}</h1>
                 {% endif %}
             </div>
-            <div class="col-md-6 col-sm-12 search_button">
+            <div class="col-xs-6 search_button">
                 {{ form_start(form) }}
-                    <div class="select-style col-md-4">
-                        {{ form_widget(form.categoris) }}
-                        {{ form_errors(form.categoris) }}
-                    </div>
-                <div class="col-md-2">
+                <div class="select-style col-xs-10">
+                    {{ form_widget(form.categoris) }}
+                    {{ form_errors(form.categoris) }}
+                </div>
+                <div class="col-xs-2">
                     <input type="submit" value="Afficher">
                 </div>
                 {{ form_end(form) }}

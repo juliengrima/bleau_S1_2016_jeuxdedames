@@ -9,9 +9,7 @@ user:
 
 cms:
     resource: "@CmsBundle/Resources/config/routing.yml"
-    prefix:   /{_locale}/
-    requirements:
-        _locale:  fr|en|es|
+    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

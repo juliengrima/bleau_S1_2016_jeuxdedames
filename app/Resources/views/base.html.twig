@@ -60,15 +60,16 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid nav_custom">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed button_right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <img style="width:100%; float: left"  src="{{ asset('bundles/cms/images/logo_dames.png') }}" alt="logo jdd">
-                        </button>
+                        <a href="{{ path('cms_homepage') }}">
+                            <img class="button_left" src="{{ asset('bundles/cms/images/logo_dames.png') }}" alt="logo jdd">
+                        </a>
+                        <h6>Les jeux de dames</h6>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
