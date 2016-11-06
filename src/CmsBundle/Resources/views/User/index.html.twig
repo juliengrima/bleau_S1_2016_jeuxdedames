@@ -10,19 +10,26 @@
                 <div class="section">
                     <div class="col-md-12">
                         <h1>{{ accueil.titre }}</h1>
-                        <figure>
-                            <marquee behavior="scroll"  direction="left" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">
-                                {% for artiste in artistes %}
-                                    {% if artiste.ajouterslider == true %}
-                                        {% if (artiste.lien != null) %}
-                                            <a href="{{ artiste.lien | external_link }}"><img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>
-                                        {% else %}
-                                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            </marquee>
-                        </figure>
+                        {#<figure>#}
+                            {#<marquee behavior="scroll"  direction="left" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">#}
+                                {#{% for artiste in artistes %}#}
+                                    {#{% if artiste.ajouterslider == true %}#}
+                                        {#{% if (artiste.lien != null) %}#}
+                                            {#<a href="{{ artiste.lien | external_link }}"><img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>#}
+                                        {#{% else %}#}
+                                            {#<img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">#}
+                                        {#{% endif %}#}
+                                    {#{% endif %}#}
+                                {#{% endfor %}#}
+                            {#</marquee>#}
+                        {#</figure>#}
+                        <div id="slider" style="height: 300px;">
+                            {% for artiste in artistes %}
+                                    <div class="aligner-item" style="width: 200px !important; ">
+                                        <img style="width: 100% !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                                    </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,4 +79,63 @@
     {% endfor %}
 
 
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/cms/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/cms/css/slider_accueil.css') }}">
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/cms/slick/slick.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                centerMode: true,
+                variableWidth: true,
+                accessibility: false,
+                autoplay: true,
+                arrows: false,
+                pauseOnFocus: false,
+                pauseOnHover: false,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+        });
+    </script>
 {% endblock %}
