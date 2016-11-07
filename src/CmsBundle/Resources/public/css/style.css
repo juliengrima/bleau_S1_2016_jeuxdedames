@@ -24,11 +24,10 @@ body {
     font-family: Helvetica;
 }
 
-h4 {
+.h4 {
     font-size: 25px;
     font-family: grandhotel !important;
     color: #ffff1a;
-
 }
 h1 {
     font-size: 40px;
@@ -511,9 +510,45 @@ figure.snip1239.hover figcaption {
 .membre img{
     width: 80%;
 }
+
+.card_web{
+    display: block;
+}
+.card_responsive{
+    display: none;
+}
+
+.card_web .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card_web .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    margin: auto;
+}
+
+.row_cards{
+    margin-top: 15px
+}
+
 .block_apropos h3{
     margin-top: 40px;
     margin-bottom: 40px;
+}
+.info{
+    padding-left: 10px;
+}
+.info span {
+    font-size: 1.1em;
+    color: white;
 }
 
 .block_apropos img{
@@ -547,4 +582,207 @@ figure.snip1239.hover figcaption {
     .logo_dame{
         display: none;
     }
+    .form_contact{
+        width: 90%;
+    }
+    .card_web{
+        display: none;
+    }
+    .card_responsive{
+        display: block;
+    }
+}
+
+
+
+
+.card_responsive .card-panel {
+    transition: box-shadow .25s;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+
+}
+
+.card_responsive .card {
+    position: relative;
+    margin: 0.5rem 0 1rem 0;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+}
+
+.card_responsive .card .card-title {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.card_responsive .card .card-title.activator {
+    cursor: pointer;
+}
+
+.card_responsive .card.small, .card.medium, .card.large {
+    position: relative;
+}
+
+.card_responsive .card.small .card-image, .card.medium .card-image, .card.large .card-image {
+    max-height: 60%;
+    overflow: hidden;
+}
+
+.card_responsive .card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
+    max-height: 40%;
+}
+
+.card_responsive .card.small .card-content, .card.medium .card-content, .card.large .card-content {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.card_responsive .card.small .card-action, .card.medium .card-action, .card.large .card-action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card_responsive .card.small {
+    height: 300px;
+}
+
+.card_responsive .card.medium {
+    height: 400px;
+}
+
+.card_responsive .card.large {
+    height: 500px;
+}
+
+.card_responsive .card.horizontal {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card_responsive .card.horizontal.small .card-image, .card.horizontal.medium .card-image, .card.horizontal.large .card-image {
+    height: 100%;
+    max-height: none;
+    overflow: visible;
+}
+
+.card_responsive .card.horizontal.small .card-image img, .card.horizontal.medium .card-image img, .card.horizontal.large .card-image img {
+    height: 100%;
+}
+
+.card_responsive .card.horizontal .card-image {
+    max-width: 50%;
+}
+
+.card_responsive .card.horizontal .card-image img {
+    border-radius: 2px 0 0 2px;
+    max-width: 100%;
+    width: auto;
+}
+
+.card_responsive .card.horizontal .card-stacked {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+}
+
+.card_responsive .card.horizontal .card-stacked .card-content {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.card_responsive .card.sticky-action .card-action {
+    z-index: 2;
+}
+
+.card_responsive .card.sticky-action .card-reveal {
+    z-index: 1;
+    padding-bottom: 64px;
+}
+
+.card_responsive .card .card-image {
+    position: relative;
+}
+
+.card_responsive .card .card-image img {
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.card_responsive .card .card-image .card-title {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.card_responsive .card .card-content {
+    padding: 20px;
+    border-radius: 0 0 2px 2px;
+}
+
+.card_responsive .card .card-content p {
+    margin: 0;
+    color: inherit;
+}
+
+.card_responsive .card .card-content .card-title {
+    line-height: 48px;
+}
+
+.card_responsive .card .card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 20px;
+}
+
+.card_responsive .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #ffab40;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+
+.card_responsive .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+    color: #ffd8a6;
+}
+
+.card_responsive .card .card-reveal {
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    left: 0;
+    top: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+}
+
+.card_responsive .card .card-reveal .card-title {
+    cursor: pointer;
+    display: block;
+}
+
+.card_responsive p{
+    margin: 0px 0px;
 }

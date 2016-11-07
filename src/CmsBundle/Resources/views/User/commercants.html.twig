@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div id="map"></div>
-
     <div class="row">
         {% if is_granted("ROLE_SUPER_ADMIN") %}
             <div class="edit_admin">
@@ -12,6 +9,8 @@
             </div>
         {% endif %}
     </div>
+
+    <div id="map"></div>
 
 {% endblock %}
 

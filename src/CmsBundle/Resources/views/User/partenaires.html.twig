@@ -2,9 +2,17 @@
 
 {% block body %}
     <div class="container-fluid">
+        <div class="row">
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('partenaire_new') }}">Ajouter un nouveau partenaire</a>
+                </div>
+            {% endif %}
+        </div>
         <div class="title_section">
             <h2>Partenaires</h2>
         </div>
+
         {% for partenaire in partenaires %}
             <div class="col-md-3 col-sm-4 col-xs-6">
                 <div class="row">
@@ -44,13 +52,6 @@
             {#   MODAL   #}
 
         {% endfor %}
-        <div class="row">
-            {% if is_granted("ROLE_SUPER_ADMIN") %}
-            <div class="edit_admin">
-                <a class="btn btn-default edit_admin" href="{{ path('partenaire_new') }}">Ajouter un nouveau partenaire</a>
-            </div>
-            {% endif %}
-        </div>
     </div>
     {#   MODAL   #}
     <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

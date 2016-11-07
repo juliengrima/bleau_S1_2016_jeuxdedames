@@ -6,7 +6,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <td>Nom</td>
                 <td>Image</td>
                 <td>Texte</td>
@@ -17,7 +16,6 @@
         <tbody>
         {% for presse in presses %}
             <tr>
-                <td><a href="{{ path('presse_show', { 'id': presse.id }) }}">{{ presse.id }}</a></td>
                 <td>{{ presse.nom }}</td>
                 <td>{{ presse.image }}</td>
                 <td>{{ presse.texte }}</td>

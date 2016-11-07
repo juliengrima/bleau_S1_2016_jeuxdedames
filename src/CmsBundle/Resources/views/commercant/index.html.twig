@@ -5,6 +5,14 @@
 
     <div class="container-fluid">
         <div class="row">
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_commercant') }}">Retour à la carte</a>
+            </div>
+            {#{% endif %}#}
+        </div>
+        <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <table class="table">
                     <thead>
@@ -40,16 +48,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-
-
-        <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-            <div class="edit_admin">
-                <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
-                <a class="btn btn-default edit_admin" href="{{ path('user_commercant') }}">Retour à la carte</a>
-            </div>
-            {#{% endif %}#}
         </div>
     </div>
 

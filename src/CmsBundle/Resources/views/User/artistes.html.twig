@@ -4,6 +4,15 @@
 
     <div class="container-fluid block_artiste">
         <div class="row">
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('artiste_new') }}">Ajouter un nouvel artiste</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('categorie_index') }}">Administrer les catégories</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
             <div class="col-xs-5 title_section">
                 <h2>Artistes</h2>
                 {% if status == 1 %}
@@ -48,17 +57,6 @@
                     {% endif %}
                 </div>
             {% endfor %}
-        </div>
-        <div class="row">
-            {% if is_granted("ROLE_SUPER_ADMIN") %}
-                <div class="edit_admin">
-                    <a class="btn btn-default edit_admin" href="{{ path('artiste_new') }}">Ajouter un nouvel artiste</a>
-                </div>
-                <div class="edit_admin">
-                    <a class="btn btn-default edit_admin" href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie</a>
-                    <a class="btn btn-default edit_admin" href="{{ path('categorie_index') }}">Administrer les catégories</a>
-                </div>
-            {% endif %}
         </div>
     </div>
     {#   MODAL   #}

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <style>
-        .info{
-            height: 100px;
-        }
-        .img_apropos{
-            height:230px;
-            margin-top: 20px;
-        }
-    </style>
+
     {% for page in apropos %}
 
         <div class="container-fluid block_apropos">
+            <div class="row">
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <div class="edit_admin">
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un membre</a>
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_apropos_edit', { 'id': page.id }) }}">Editer</a>
+                    </div>
+                {% endif %}
+            </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12 title_section">
                     <h2>A propos</h2>
@@ -29,30 +29,53 @@
                     <h3>Notre equipe</h3>
                 </div>
                 <div class="row">
-                    {% for membre in equipe %}
-                        <div class="col-md-2">
-                            <div class="img_apropos">
-                                <img src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
-                            </div>
-                            <div class="info">
-                                <p>{{ membre.nom|upper }} {{ membre.prenom|capitalize }}</p>
-                                <p>{{ membre.role }}</p>
-                                {% if membre.showTel == 1 %}
-                                    <p>{{ membre.telephone }}</p>
-                                {% endif %}
-                            </div>
-
-                            {% if is_granted("ROLE_SUPER_ADMIN") %}
-                                <div class="row">
-                                    <div class="edit_admin">
-                                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_edit', { 'id': membre.id }) }}">Editer</a>
-                                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('admin_equipe_delete', {'id':  membre.Id  }) }}" title="Supprimer">Supprimer</a>
+                    {% set i = 0 %}
+                    <div class="card_web">
+                        {% for membre in equipe %}
+                            {% if i == 0 %}
+                                <div class="row row_cards">
+                            {% endif %}
+                            <div class="col-xs-3">
+                                <div class="card">
+                                    <img style="width:100%" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                                    <div class="info container">
+                                        <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>
+                                        <p>Rôle: {{ membre.role }}</p>
+                                        {% if membre.showTel == 1 %}
+                                            <p>Téléphone: {{ membre.telephone }}</p>
+                                        {% endif %}
                                     </div>
                                 </div>
+                            </div>
+                            {% set i = i + 1 %}
+                            {% if i == 4 %}
+                                </div>
+                                {% set i = 0 %}
                             {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for membre in equipe %}
+                        <div class="card_responsive">
+                            <div class="col-xs-12">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img style="width:100%" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>
+                                        <p>Rôle: {{ membre.role }}</p>
+                                        {% if membre.showTel == 1 %}
+                                            <p>Téléphone: {{ membre.telephone }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
+            </div>
+
+            <div class="container">
                 <div class="row">
                     <h3>Nous contacter</h3>
                 </div>
@@ -79,14 +102,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="row">
-                {% if is_granted("ROLE_SUPER_ADMIN") %}
-                    <div class="edit_admin">
-                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un membre</a>
-                        <a class="btn btn-default edit_admin" href="{{ path('admin_apropos_edit', { 'id': page.id }) }}">Editer</a>
-                    </div>
-                {% endif %}
             </div>
         </div>
 
