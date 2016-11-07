@@ -1,3 +1,7 @@
+artiste_index:
+    path:     /index
+    defaults: { _controller: "CmsBundle:Artiste:index" }
+
 artiste_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Artiste:new" }

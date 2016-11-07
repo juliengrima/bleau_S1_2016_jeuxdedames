@@ -203,7 +203,7 @@ footer .news_input{
 }
 
 .vcenter img{
-    width: 75%;
+    width: 85%;
     margin: auto;
 }
 .home_presentation{
@@ -787,4 +787,8 @@ figure.snip1239.hover figcaption {
 
 .card_responsive p{
     margin: 0px 0px;
+}
+
+#example p{
+    color: black;
 }

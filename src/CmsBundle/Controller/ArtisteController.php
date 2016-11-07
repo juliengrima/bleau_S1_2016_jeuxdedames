@@ -16,6 +16,18 @@ use CmsBundle\Form\ArtisteType;
 class ArtisteController extends Controller
 {
     /**
+     * Index all artistes
+     *
+     */
+    public function indexAction(){
+        $em = $this->getDoctrine()->getManager();
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+        return $this->render('@Cms/Artiste/index.html.twig', array(
+            'artistes' => $artistes,
+        ));
+    }
+
+    /**
      * Creates a new Artiste entity.
      *
      */
