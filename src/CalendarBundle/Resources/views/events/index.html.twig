@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Liste des évènements</h1>
     <div class="container">
-        <table class="table">
+        <table id="example" class="display" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Titre</th>
@@ -42,4 +42,23 @@
     <div class="edit_admin">
         <a class="btn btn-default edit_admin"  href="{{ path('calendar_homepage') }}">Retour au calendrier</a>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
 {% endblock %}

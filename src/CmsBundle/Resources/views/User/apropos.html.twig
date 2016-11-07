@@ -9,7 +9,8 @@
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
                     <div class="edit_admin">
                         <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un membre</a>
-                        <a class="btn btn-default edit_admin" href="{{ path('admin_apropos_edit', { 'id': page.id }) }}">Editer</a>
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_index') }}">Gérer les membres</a>
+                        <a class="btn btn-default edit_admin" href="{{ path('admin_apropos_edit', { 'id': page.id }) }}">Editer la page</a>
                     </div>
                 {% endif %}
             </div>
@@ -38,7 +39,7 @@
                             <div class="col-xs-3">
                                 <div class="card">
                                     <img style="width:100%" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
-                                    <div class="info container">
+                                    <div class="info">
                                         <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>
                                         <p>Rôle: {{ membre.role }}</p>
                                         {% if membre.showTel == 1 %}
@@ -46,6 +47,14 @@
                                         {% endif %}
                                     </div>
                                 </div>
+                                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                                    <div class="row">
+                                        <div class="edit_admin">
+                                            <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_edit', { 'id': membre.id }) }}">Editer</a>
+                                            <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('admin_equipe_delete', {'id':  membre.Id  }) }}" title="Supprimer">Supprimer</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </div>
                             {% set i = i + 1 %}
                             {% if i == 4 %}

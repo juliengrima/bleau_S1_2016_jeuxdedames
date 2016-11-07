@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <table class="table membre">
+                <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Photo</th>
@@ -92,5 +92,18 @@
         });
 
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
 {% endblock %}

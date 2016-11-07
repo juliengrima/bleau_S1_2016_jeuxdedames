@@ -85,6 +85,9 @@
                                     <li><a href="{{ path('user_presse') }}">News</a></li>
                                     <li><a href="{{ path('user_archive') }}">Records</a></li>
                                     <li><a href="{{ path('user_apropos') }}">A propos</a></li>
+                                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                                        <li><a href="{{ path('cms_admin') }}">Administration</a></li>
+                                    {% endif %}
                                 {% else  %}
                                     <li><a href="{{ path('cms_homepage') }}">Accueil</a></li>
                                     <li><a href="{{ path('user_artiste') }}">Artistes</a></li>
@@ -94,6 +97,9 @@
                                     <li><a href="{{ path('user_presse') }}">Presse</a></li>
                                     <li><a href="{{ path('user_archive') }}">Archives</a></li>
                                     <li><a href="{{ path('user_apropos') }}">A propos</a></li>
+                                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                                        <li><a href="{{ path('cms_admin') }}">Administration</a></li>
+                                    {% endif %}
                                 {% endif %}
                             {% else %}
                                 <li><a href="{{ path('cms_homepage') }}">Accueil</a></li>
@@ -104,6 +110,9 @@
                                 <li><a href="{{ path('user_presse') }}">Presse</a></li>
                                 <li><a href="{{ path('user_archive') }}">Archives</a></li>
                                 <li><a href="{{ path('user_apropos') }}">A propos</a></li>
+                                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                                    <li><a href="{{ path('cms_admin') }}">Administration</a></li>
+                                {% endif %}
                             {% endif %}
                         </ul>
                     </div>
