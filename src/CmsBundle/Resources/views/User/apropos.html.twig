@@ -42,7 +42,7 @@
                                         <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>
                                         <p>Rôle: {{ membre.role }}</p>
                                         {% if membre.showTel == 1 %}
-                                            <p>Téléphone: {{ membre.telephone }}</p>
+                                            <p>Téléphone: 0{{ membre.telephone }}</p>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -53,9 +53,10 @@
                                 {% set i = 0 %}
                             {% endif %}
                         {% endfor %}
+                        </div>
                     </div>
-                    {% for membre in equipe %}
-                        <div class="card_responsive">
+                    <div class="card_responsive">
+                        {% for membre in equipe %}
                             <div class="col-xs-12">
                                 <div class="card horizontal">
                                     <div class="card-image">
@@ -70,8 +71,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+
                 </div>
             </div>
 

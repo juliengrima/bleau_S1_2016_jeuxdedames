@@ -88,8 +88,8 @@ class EquipeController extends Controller
         $membre = $em->getRepository('CmsBundle:Equipe')->findOneById($id);
         $img_membre = $em->getRepository('CmsBundle:Images')->findOneById($membre->getImages()->getId());
 
-        $em->remove($img_membre);
         $em->remove($membre);
+        $em->remove($img_membre);
         $em->flush();
 
         return $this->redirectToRoute('user_apropos');

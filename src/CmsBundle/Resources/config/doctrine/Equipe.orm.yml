@@ -26,6 +26,6 @@ CmsBundle\Entity\Equipe:
     manyToOne:
         images:
             targetEntity: CmsBundle\Entity\Images
-            cascade: ["persist"]
+            cascade: ["all"]
 
     lifecycleCallbacks: {  }

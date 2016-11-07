@@ -24,7 +24,7 @@ body {
     font-family: Helvetica;
 }
 
-.h4 {
+h4 {
     font-size: 25px;
     font-family: grandhotel !important;
     color: #ffff1a;
@@ -221,7 +221,6 @@ footer .news_input{
     .home_presentation {
         padding-bottom: 10px;
         padding-top: 10px;
-        text-align: center;
     }
     .home_contenu{
         margin-bottom: 30px;
@@ -694,6 +693,8 @@ figure.snip1239.hover figcaption {
     -ms-flex: 1;
     flex: 1;
     position: relative;
+    justify-content: center;
+    margin-left: 15px;
 }
 
 .card_responsive .card.horizontal .card-stacked .card-content {
