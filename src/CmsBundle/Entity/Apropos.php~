@@ -7,8 +7,9 @@ namespace CmsBundle\Entity;
  */
 class Apropos
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -26,7 +27,7 @@ class Apropos
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {

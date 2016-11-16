@@ -12,8 +12,9 @@ class Categorie
         return $this->nomDeLaCategorie;
     }
 
-    //
+    //Generated Code
   
+
     /**
      * @var integer
      */
@@ -25,10 +26,17 @@ class Categorie
     private $nomDeLaCategorie;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $backgroundColor;
+    private $artiste;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -62,42 +70,6 @@ class Categorie
     public function getNomDeLaCategorie()
     {
         return $this->nomDeLaCategorie;
-    }
-
-    /**
-     * Set backgroundColor
-     *
-     * @param string $backgroundColor
-     *
-     * @return Categorie
-     */
-    public function setBackgroundColor($backgroundColor)
-    {
-        $this->backgroundColor = $backgroundColor;
-
-        return $this;
-    }
-
-    /**
-     * Get backgroundColor
-     *
-     * @return string
-     */
-    public function getBackgroundColor()
-    {
-        return $this->backgroundColor;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $artiste;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

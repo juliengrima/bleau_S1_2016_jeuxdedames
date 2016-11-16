@@ -42,25 +42,14 @@ CmsBundle\Entity\Accueil:
         contenu:
             type: text
             column: Contenu
-        langue:
-            type: string
-            lenght: 2
-            column: langue
-        langue_active:
-            type: boolean
 
     lifecycleCallbacks:
-        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
-        preUpdate: [ preUpload, setUpdatedAtValue ]
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
         postPersist: [ upload ]
         postUpdate: [ upload ]
         postRemove: [ removeUpload ]
 
-    oneToMany:
-        accueil:
-            targetEntity: CmsBundle\Entity\Accueil
-            mappedBy: accueil
-            cascade:   [persist]
     manyToOne:
         image_2:
             targetEntity: CmsBundle\Entity\Images

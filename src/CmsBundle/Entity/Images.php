@@ -69,8 +69,9 @@ class Images
 
 //    GENERATED CODE
 
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -88,7 +89,7 @@ class Images
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {

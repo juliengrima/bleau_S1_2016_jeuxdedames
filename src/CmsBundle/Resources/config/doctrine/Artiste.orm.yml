@@ -28,31 +28,19 @@ CmsBundle\Entity\Artiste:
             type: boolean
         archive:
             type: boolean
-        langue:
-            type: string
-            lenght: 2
-        item_id:
-            type: integer
-            generator:
-                strategy: IDENTITY
 
     lifecycleCallbacks:
-          prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
-          preUpdate: [ preUpload, setUpdatedAtValue ]
+          prePersist: [ preUpload ]
+          preUpdate: [ preUpload ]
           postPersist: [ upload ]
           postUpdate: [ upload ]
           postRemove: [ removeUpload ]
-
-    oneToMany:
-        artiste:
-            targetEntity: CmsBundle\Entity\Artiste
-            mappedBy: artiste
-            cascade:   [persist]
 
     manyToOne:
         categorie:
             targetEntity: CmsBundle\Entity\Categorie
             inversedBy: artiste
             joinColumn:
-                name: categorie_id
-                referencedColumnName: id
+                nullable: false
+
+

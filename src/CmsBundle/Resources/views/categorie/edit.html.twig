@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier une catégorie</h1>
+    <h1>Modifier une catégorie: {{ categorie.nomDeLaCategorie }}</h1>
 
     <div class="container-fluid">
         {{ form_start(edit_form) }}
@@ -17,11 +17,9 @@
             </div>
         </div>
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
             <div class="edit_admin">
                 <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
             </div>
-            {#{% endif %}#}
         </div>
         {{ form_end(edit_form) }}
     </div>

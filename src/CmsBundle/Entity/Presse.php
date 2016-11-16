@@ -44,30 +44,6 @@ class Presse
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
      * @ORM\PostPersist
      */
     public function upload()
@@ -94,7 +70,6 @@ class Presse
     }
 
     /*generate*/
-
 
     /**
      * @var integer
@@ -126,28 +101,6 @@ class Presse
      */
     private $date;
 
-    /**
-     * @var string
-     */
-    private $langue;
-
-    /**
-     * @var integer
-     */
-    private $item_id;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $presse;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->presse = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -278,86 +231,11 @@ class Presse
     {
         return $this->date;
     }
-
     /**
-     * Set langue
-     *
-     * @param string $langue
-     *
-     * @return Presse
+     * @ORM\PreUpdate
      */
-    public function setLangue($langue)
+    public function setUpdatedAtValue()
     {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return string
-     */
-    public function getLangue()
-    {
-        return $this->langue;
-    }
-
-    /**
-     * Set itemId
-     *
-     * @param integer $itemId
-     *
-     * @return Presse
-     */
-    public function setItemId($itemId)
-    {
-        $this->item_id = $itemId;
-
-        return $this;
-    }
-
-    /**
-     * Get itemId
-     *
-     * @return integer
-     */
-    public function getItemId()
-    {
-        return $this->item_id;
-    }
-
-    /**
-     * Add presse
-     *
-     * @param \CmsBundle\Entity\Presse $presse
-     *
-     * @return Presse
-     */
-    public function addPresse(\CmsBundle\Entity\Presse $presse)
-    {
-        $this->presse[] = $presse;
-
-        return $this;
-    }
-
-    /**
-     * Remove presse
-     *
-     * @param \CmsBundle\Entity\Presse $presse
-     */
-    public function removePresse(\CmsBundle\Entity\Presse $presse)
-    {
-        $this->presse->removeElement($presse);
-    }
-
-    /**
-     * Get presse
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPresse()
-    {
-        return $this->presse;
+        // Add your code here
     }
 }

@@ -7,6 +7,7 @@
             {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <div class="edit_admin">
                     <a class="btn btn-default edit_admin" href="{{ path('presse_new') }}">Ajouter une nouvelle presse</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('presse_index') }}">Administrer la presse</a>
                 </div>
             {% endif %}
         </div>

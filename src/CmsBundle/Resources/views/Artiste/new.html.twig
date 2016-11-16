@@ -5,223 +5,71 @@
     {{ form_start(form) }}
 
     <div class="container-fluid">
-
-        {% if langue_active == true %}
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                {% for accueil in form.artiste %}
-                    {% if (accueil.vars.value.langue == 'fr') %}
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
-                    {% elseif (accueil.vars.value.langue == 'en')%}
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ accueil.vars.value.langue }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                {% for accueil in form.artiste %}
-                    {% if (accueil.vars.value.langue == 'fr') %}
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <h1>Langue: Français</h1>
-                            <div class="container">
-                                <div class="row">
-                                <p class="">Nom</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                <p class="">Photo de l'oeuvre</p>
-                                <div class="input-group">
-                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
-                                    {{ form_errors(accueil.file) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="">Categorie</p>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                        {{ form_widget(accueil.categorie, {'attr': {'class': 'form-control', 'placeholder': 'Categorie'}}) }}
-                                        {{ form_errors(accueil.categorie) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                <p class="">Lien vers l'artiste</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                         {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% elseif (accueil.vars.value.langue == 'en') %}
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <h1>Langue: Anglais</h1>
-                            <div class="container">
-                                <div class="row">
-                                <p class="">Nom</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row hidden">
-                                <p class="">Photo de l'oeuvre</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
-                                    {{ form_errors(accueil.file) }}
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="">Categorie</p>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                        {{ form_widget(accueil.categorie, {'attr': {'class': 'form-control', 'placeholder': 'Categorie'}}) }}
-                                        {{ form_errors(accueil.categorie) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                <p class="">Lien vers l'artiste</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row hidden">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
-                                </div>
-                            </div>
-                            <div class="row hidden">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+        <div class="container">
+            <div class="row">
+                <p class="">Nom</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                    {{ form_errors(form.nom) }}
+                </div>
             </div>
-        {% else %}
-            {% for accueil in form.artiste %}
-                {% if (accueil.vars.value.langue == 'fr') %}
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                        <h1>Langue: Français</h1>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Nom</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                    {{ form_errors(accueil.nom) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Photo de l'oeuvre</p>
-                                <div class="input-group">
-                                    {{ form_widget(accueil.file, {'attr': {'class': 'help-block'}}) }}
-                                    {{ form_errors(accueil.file) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Catégorie</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.categorie, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.categorie) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <p class="">Lien vers l'artiste</p>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(accueil.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
-                                    {{ form_errors(accueil.lien) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.ajouterslider) }} Ajouter au slider
-                                    </label>
-                                    {{ form_errors(accueil.ajouterslider) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ form_widget(accueil.archive) }} Ajouter aux archives
-                                    </label>
-                                    {{ form_errors(accueil.archive) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Photo de l'oeuvre</p>
+                <div class="input-group">
+                    {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
+                    {{ form_errors(form.file) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Catégorie</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
+                    {{ form_errors(form.categorie) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Lien vers l'artiste</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.lien, {'attr': {'class': 'form-control', 'placeholder': 'Lien'}}) }}
+                    {{ form_errors(form.lien) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget(form.ajouterslider) }} Ajouter au slider
+                    </label>
+                    {{ form_errors(form.ajouterslider) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget(form.archive) }} Ajouter aux archives
+                    </label>
+                    {{ form_errors(form.archive) }}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
-        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
         <div class="edit_admin">
             <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
         </div>
-        {#{% endif %}#}
     </div>
 
     {{ form_end(form) }}

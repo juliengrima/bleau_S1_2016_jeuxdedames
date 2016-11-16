@@ -44,7 +44,7 @@ class CategorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('categorie_index', array('id' => $categorie->getId()));
+            return $this->redirectToRoute('categorie_index');
         }
 
         return $this->render('CmsBundle:categorie:new.html.twig', array(
@@ -88,7 +88,7 @@ class CategorieController extends Controller
 
         if (!$categorie) {
             throw $this->createNotFoundException(
-                'Pas de catégorie trouvée' . $id
+                'Pas de catégorie trouvée'
             );
         }
         else{
@@ -114,7 +114,6 @@ class CategorieController extends Controller
             ->add('success',  'Suppression confirmée')
         ;
 
-        $url = $this->generateUrl('categorie_index');
-        return $this->redirect($url);
+        return $this->redirectToRoute('categorie_index');
     }
 }

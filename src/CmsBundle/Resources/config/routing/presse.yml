@@ -3,11 +3,6 @@ presse_index:
     defaults: { _controller: "CmsBundle:Presse:index" }
     methods:  GET
 
-presse_show:
-    path:     /{id}/show
-    defaults: { _controller: "CmsBundle:Presse:show" }
-    methods:  GET
-
 presse_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Presse:new" }

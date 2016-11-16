@@ -108,6 +108,16 @@ class Newsletter
      */
     private $etat;
 
+    /**
+     * @var \DateTime
+     */
+    private $dateEnvoie;
+
+    /**
+     * @var boolean
+     */
+    private $pj;
+
 
     /**
      * Get id
@@ -262,11 +272,6 @@ class Newsletter
     {
         return $this->etat;
     }
-    /**
-     * @var \DateTime
-     */
-    private $dateEnvoie;
-
 
     /**
      * Set dateEnvoie
@@ -291,11 +296,6 @@ class Newsletter
     {
         return $this->dateEnvoie;
     }
-    /**
-     * @var boolean
-     */
-    private $pj;
-
 
     /**
      * Set pj

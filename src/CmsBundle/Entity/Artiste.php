@@ -44,30 +44,6 @@ class Artiste
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
      * @ORM\PostPersist
      */
     public function upload()
@@ -88,10 +64,8 @@ class Artiste
      */
     public function removeUpload()
     {
-        if ($this->getLangue() == 'fr'){
-            if ($file = $this->getAbsolutePath()) {
-                unlink($file);
-            }
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
         }
     }
 
@@ -116,11 +90,6 @@ class Artiste
     /**
      * @var string
      */
-    private $texte;
-
-    /**
-     * @var string
-     */
     private $lien;
 
     /**
@@ -139,22 +108,10 @@ class Artiste
     private $archive;
 
     /**
-     * @var string
+     * @var \CmsBundle\Entity\Categorie
      */
-    private $langue;
+    private $categorie;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $artiste;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -212,30 +169,6 @@ class Artiste
     public function getImage()
     {
         return $this->image;
-    }
-
-    /**
-     * Set texte
-     *
-     * @param string $texte
-     *
-     * @return Artiste
-     */
-    public function setTexte($texte)
-    {
-        $this->texte = $texte;
-
-        return $this;
-    }
-
-    /**
-     * Get texte
-     *
-     * @return string
-     */
-    public function getTexte()
-    {
-        return $this->texte;
     }
 
     /**
@@ -333,98 +266,6 @@ class Artiste
     {
         return $this->archive;
     }
-
-    /**
-     * Set langue
-     *
-     * @param string $langue
-     *
-     * @return Artiste
-     */
-    public function setLangue($langue)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return string
-     */
-    public function getLangue()
-    {
-        return $this->langue;
-    }
-
-    /**
-     * Add artiste
-     *
-     * @param \CmsBundle\Entity\Artiste $artiste
-     *
-     * @return Artiste
-     */
-    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
-    {
-        $this->artiste[] = $artiste;
-
-        return $this;
-    }
-
-    /**
-     * Remove artiste
-     *
-     * @param \CmsBundle\Entity\Artiste $artiste
-     */
-    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
-    {
-        $this->artiste->removeElement($artiste);
-    }
-
-    /**
-     * Get artiste
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArtiste()
-    {
-        return $this->artiste;
-    }
-    /**
-     * @var integer
-     */
-    private $item_id;
-
-
-    /**
-     * Set itemId
-     *
-     * @param integer $itemId
-     *
-     * @return Artiste
-     */
-    public function setItemId($itemId)
-    {
-        $this->item_id = $itemId;
-
-        return $this;
-    }
-
-    /**
-     * Get itemId
-     *
-     * @return integer
-     */
-    public function getItemId()
-    {
-        return $this->item_id;
-    }
-    /**
-     * @var \CmsBundle\Entity\Categorie
-     */
-    private $categorie;
-
 
     /**
      * Set categorie

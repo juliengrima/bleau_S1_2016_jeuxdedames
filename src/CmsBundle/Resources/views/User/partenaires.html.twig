@@ -6,6 +6,7 @@
             {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <div class="edit_admin">
                     <a class="btn btn-default edit_admin" href="{{ path('partenaire_new') }}">Ajouter un nouveau partenaire</a>
+                    <a class="btn btn-default edit_admin" href="{{ path('partenaire_index') }}">Administrer les partenaires</a>
                 </div>
             {% endif %}
         </div>

@@ -7,12 +7,10 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
             <div class="edit_admin">
                 <a class="btn btn-default edit_admin" href="{{ path('admin_equipe_new') }}">Ajouter un nouveau membre</a>
-                <a class="btn btn-default edit_admin" href="{{ path('cms_homepage') }}">Retour sur la page d'accueil</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_apropos') }}">Retour à la page a propos</a>
             </div>
-            {#{% endif %}#}
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -30,11 +28,11 @@
                     <tbody>
                     {% for equipe in equipes %}
                         <tr>
-                            <td><img src="{{ asset('uploads/img_equipe/') }}{{ equipe.images.url }}" alt="{{ equipe.images.alt }}"></td>
+                            <td><img style="width: 160px !important;" src="{{ asset('uploads/img_equipe/') }}{{ equipe.images.url }}" alt="{{ equipe.images.alt }}"></td>
                             <td>{{ equipe.nom }}</td>
                             <td>{{ equipe.prenom }}</td>
                             <td>{{ equipe.role }}</td>
-                            <td>{{ equipe.telephone }}</td>
+                            <td>0{{ equipe.telephone }}</td>
                             <td>
                                 <ul>
                                     <li>
@@ -94,8 +92,12 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
     </script>
     <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 

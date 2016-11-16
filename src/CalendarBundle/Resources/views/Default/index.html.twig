@@ -7,17 +7,17 @@
         <div class="row">
             <h2>Evènements</h2>
         </div>
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+            <div class="row edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('events_new') }}">Ajouter un évènement</a>
+                <a class="btn btn-default edit_admin" href="{{ path('show_all_events') }}">Administrer tous les évènements</a>
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div id='calendar'></div>
             </div>
         </div>
-        {% if is_granted("ROLE_SUPER_ADMIN") %}
-        <div class="row edit_admin">
-            <a class="btn btn-default edit_admin" href="{{ path('events_new') }}">Ajouter un évènement</a>
-            <a class="btn btn-default edit_admin" href="{{ path('show_all_events') }}">Voir tous les évènements</a>
-        </div>
-        {% endif %}
 
         <div id="fullCalModal" class="modal fade">
             <div class="modal-dialog">

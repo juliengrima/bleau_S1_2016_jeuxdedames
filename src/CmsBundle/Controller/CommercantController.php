@@ -35,34 +35,34 @@ class CommercantController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $commercant = new Commercant();
         $form = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
-        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-//            Récupération lat et lng de l'adresse'
+//          Récupération lat et lng de l'adresse'
             $rue = $form->getData()->getAdresse();
             $code = $form->getData()->getCode();
             $ville = $form->getData()->getVille();
 
             $lat_lng = $this->getLatLng($rue, $code, $ville);
-            $commercant->setLat($lat_lng['lat']);
-            $commercant->setLng($lat_lng['lng']);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commercant);
-            $em->flush();
+            if ($lat_lng['lat'] != null && $lat_lng['lng'] != null){
+                $commercant->setLat($lat_lng['lat']);
+                $commercant->setLng($lat_lng['lng']);
 
-            return $this->redirectToRoute('user_commercant', array('id' => $commercant->getId()));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($commercant);
+                $em->flush();
+
+                return $this->redirectToRoute('commercant_index');
+            }
         }
 
         return $this->render('CmsBundle:commercant:new.html.twig', array(
             'commercant' => $commercant,
             'form' => $form->createView(),
-            'langue_active' => $langue_active
         ));
     }
 
@@ -72,10 +72,7 @@ class CommercantController extends Controller
      */
     public function editAction(Request $request, Commercant $commercant)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $editForm = $this->createForm('CmsBundle\Form\CommercantType', $commercant);
-        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
         $editForm->handleRequest($request);
 
@@ -102,13 +99,12 @@ class CommercantController extends Controller
             $em->persist($commercant);
             $em->flush();
 
-            return $this->redirectToRoute('commercant_index', array('id' => $commercant->getId()));
+            return $this->redirectToRoute('commercant_index');
         }
 
         return $this->render('@Cms/commercant/edit.html.twig', array(
             'commercant' => $commercant,
             'form' => $editForm->createView(),
-            'langue_active' => $langue_active
         ));
     }
 
@@ -119,21 +115,17 @@ class CommercantController extends Controller
      */
     public function deleteAction($id) {
         $em = $this->getDoctrine()->getManager();
-        $commercant = $em->getRepository('CmsBundle:Commercant')->find($id);
-        $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
+        $commercant = $em->getRepository('CmsBundle:Commercant')->findOneById($id);
 
         if (!$commercant) {
             throw $this->createNotFoundException(
-                'Pas de commerçant trouvé' . $id
+                'Pas de commerçant trouvé'
             );
         }
-
         $em->remove($commercant);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('user_commercant', array(
-            'commercant' => $commercants,
-        )));
+        return $this->redirectToRoute('commercant_index');
     }
 
     public function getLatLng($rue, $code_postal, $ville){
@@ -149,6 +141,5 @@ class CommercantController extends Controller
         $location['lng'] = $result['results'][0]['geometry']['location']['lng'];
 
         return $location;
-
     }
 }

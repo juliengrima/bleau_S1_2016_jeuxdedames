@@ -7,8 +7,9 @@ namespace CmsBundle\Entity;
  */
 class AbonnementNews
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -17,11 +18,21 @@ class AbonnementNews
      */
     private $email;
 
+    /**
+     * @var boolean
+     */
+    private $etat;
+
+    /**
+     * @var \DateTime
+     */
+    private $date_inscription;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -53,12 +64,6 @@ class AbonnementNews
     }
 
     /**
-     * @var boolean
-     */
-    private $etat;
-
-
-    /**
      * Set etat
      *
      * @param boolean $etat
@@ -81,11 +86,6 @@ class AbonnementNews
     {
         return $this->etat;
     }
-    /**
-     * @var \DateTime
-     */
-    private $date_inscription;
-
 
     /**
      * Set dateInscription

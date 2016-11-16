@@ -15,6 +15,19 @@ use CmsBundle\Form\PartenaireType;
 class PartenaireController extends Controller
 {
     /**
+     * List all Partenaire
+     *
+     */
+    public function indexAction(){
+        $em = $this->getDoctrine()->getManager();
+        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
+        return $this->render('@Cms/partenaire/index.html.twig', array(
+            'partenaires' => $partenaires
+        ));
+    }
+
+
+    /**
      * Creates a new Partenaire entity.
      *
      */
@@ -29,7 +42,7 @@ class PartenaireController extends Controller
             $em->persist($partenaire);
             $em->flush();
 
-            return $this->redirectToRoute('user_partenaire', array('id' => $partenaire->getId()));
+            return $this->redirectToRoute('user_partenaire');
         }
 
         return $this->render('CmsBundle:partenaire:new.html.twig', array(
@@ -77,7 +90,6 @@ class PartenaireController extends Controller
     public function deleteAction($id) {
         $em = $this->getDoctrine()->getManager();
         $partenaire = $em->getRepository('CmsBundle:Partenaire')->find($id);
-        $partenaires = $em->getRepository('CmsBundle:Partenaire')->findAll();
 
         if (!$partenaire) {
             throw $this->createNotFoundException(
@@ -88,8 +100,6 @@ class PartenaireController extends Controller
         $em->remove($partenaire);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('user_partenaire', array(
-            '$partenaire' => $partenaires,
-        )));
+        return $this->redirectToRoute('user_partenaire');
     }
 }

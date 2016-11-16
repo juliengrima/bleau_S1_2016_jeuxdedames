@@ -37,7 +37,6 @@ class EventsController extends Controller
 
         $entities = $em->getRepository('CalendarBundle:Events')->findAll();
 
-
         $normalizer = new ObjectNormalizer();
 
         $encoder = new JsonEncoder();

@@ -28,23 +28,10 @@ CmsBundle\Entity\Presse:
             nullable: true
         date:
             type: date
-        langue:
-            type: string
-            length: 2
-        item_id:
-            type: integer
-            generator:
-                strategy: IDENTITY
 
     lifecycleCallbacks:
-          prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+          prePersist: [ preUpload ]
           preUpdate: [ preUpload, setUpdatedAtValue ]
           postPersist: [ upload ]
           postUpdate: [ upload ]
           postRemove: [ removeUpload ]
-
-    oneToMany:
-        presse:
-            targetEntity: CmsBundle\Entity\Presse
-            mappedBy: presse
-            cascade:   [persist]

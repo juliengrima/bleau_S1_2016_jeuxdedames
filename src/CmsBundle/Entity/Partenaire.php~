@@ -43,30 +43,6 @@ class Partenaire
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
      * @ORM\PostPersist
      */
     public function upload()
@@ -92,8 +68,7 @@ class Partenaire
         }
     }
     
-    
-    
+
 //Generate
 
     /**
@@ -121,18 +96,6 @@ class Partenaire
      */
     private $lien;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $partenaire;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -239,38 +202,27 @@ class Partenaire
     {
         return $this->lien;
     }
-
     /**
-     * Add partenaire
-     *
-     * @param \CmsBundle\Entity\Partenaire $partenaire
-     *
-     * @return Partenaire
+     * @ORM\PrePersist
      */
-    public function addPartenaire(\CmsBundle\Entity\Partenaire $partenaire)
+    public function setCreatedAtValue()
     {
-        $this->partenaire[] = $partenaire;
-
-        return $this;
+        // Add your code here
     }
 
     /**
-     * Remove partenaire
-     *
-     * @param \CmsBundle\Entity\Partenaire $partenaire
+     * @ORM\PrePersist
      */
-    public function removePartenaire(\CmsBundle\Entity\Partenaire $partenaire)
+    public function setExpiresAtValue()
     {
-        $this->partenaire->removeElement($partenaire);
+        // Add your code here
     }
 
     /**
-     * Get partenaire
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @ORM\PreUpdate
      */
-    public function getPartenaire()
+    public function setUpdatedAtValue()
     {
-        return $this->partenaire;
+        // Add your code here
     }
 }

@@ -43,30 +43,6 @@ class Accueil
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
      * @ORM\PostPersist
      */
     public function upload()
@@ -92,12 +68,9 @@ class Accueil
         }
     }
 
-
-
-
     /*generate*/
 
- 
+
     /**
      * @var integer
      */
@@ -149,27 +122,10 @@ class Accueil
     private $contenu;
 
     /**
-     * @var string
+     * @var \CmsBundle\Entity\Images
      */
-    private $langue;
+    private $image_2;
 
-    /**
-     * @var boolean
-     */
-    private $langue_active;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $accueil;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->accueil = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -396,93 +352,6 @@ class Accueil
     {
         return $this->contenu;
     }
-
-    /**
-     * Set langue
-     *
-     * @param string $langue
-     *
-     * @return Accueil
-     */
-    public function setLangue($langue)
-    {
-        $this->langue = $langue;
-
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return string
-     */
-    public function getLangue()
-    {
-        return $this->langue;
-    }
-
-    /**
-     * Set langueActive
-     *
-     * @param boolean $langueActive
-     *
-     * @return Accueil
-     */
-    public function setLangueActive($langueActive)
-    {
-        $this->langue_active = $langueActive;
-
-        return $this;
-    }
-
-    /**
-     * Get langueActive
-     *
-     * @return boolean
-     */
-    public function getLangueActive()
-    {
-        return $this->langue_active;
-    }
-
-    /**
-     * Add accueil
-     *
-     * @param \CmsBundle\Entity\Accueil $accueil
-     *
-     * @return Accueil
-     */
-    public function addAccueil(\CmsBundle\Entity\Accueil $accueil)
-    {
-        $this->accueil[] = $accueil;
-
-        return $this;
-    }
-
-    /**
-     * Remove accueil
-     *
-     * @param \CmsBundle\Entity\Accueil $accueil
-     */
-    public function removeAccueil(\CmsBundle\Entity\Accueil $accueil)
-    {
-        $this->accueil->removeElement($accueil);
-    }
-
-    /**
-     * Get accueil
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAccueil()
-    {
-        return $this->accueil;
-    }
-    /**
-     * @var \CmsBundle\Entity\Images
-     */
-    private $image_2;
-
 
     /**
      * Set image2

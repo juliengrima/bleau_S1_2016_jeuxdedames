@@ -3,7 +3,6 @@
 namespace CmsBundle\Controller;
 
 
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CmsBundle\Entity\Artiste;
@@ -22,6 +21,7 @@ class ArtisteController extends Controller
     public function indexAction(){
         $em = $this->getDoctrine()->getManager();
         $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
+
         return $this->render('@Cms/Artiste/index.html.twig', array(
             'artistes' => $artistes,
         ));
@@ -35,62 +35,25 @@ class ArtisteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('CmsBundle:Categorie')->findAll();
-        $id_item_max = $em->getRepository('CmsBundle:Artiste')->getIdItemArtiste();
-        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
 
-        $langue = new Artiste();
+        $artiste = new Artiste();
 
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
-        $artiste_fr = new Artiste();
-        $artiste_fr->setLangue('fr');
-        $langue->getArtiste()->add($artiste_fr);
-
-        if ($langue_active == true){
-            if (empty($accueil_en)) {
-                $artiste_en = new Artiste();
-                $artiste_en->setLangue('en');
-                $langue->getArtiste()->add($artiste_en);
-            }
-        }
-
-        $form = $this->createFormBuilder($langue)
-            ->add('artiste', CollectionType::class, array(
-                'entry_type' => ArtisteType::class
-                    ))
-            ->getForm();
+        $form = $this->createForm(ArtisteType::class, $artiste);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $artiste_fr->setDate(new \DateTime());
-            $artiste_fr->setItemId($id_item_max[0][1] + 1);
+            $artiste->setDate(new \DateTime());
 
-            if ($langue_active == true){
-                $artiste_en->setDate($artiste_fr->getDate());
-                $artiste_en->setCategorie($artiste_fr->getCategorie());
-                $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
-                $artiste_en->setArchive($artiste_fr->getArchive());
-                $artiste_en->setItemId($artiste_fr->getItemId());
-            }
-
-
-            $em->persist($artiste_fr);
-
-            if ($langue_active == true) {
-                $artiste_en->setImage($artiste_fr->getImage());
-                $em->persist($artiste_en);
-            }
-
+            $em->persist($artiste);
             $em->flush();
 
-            return $this->redirectToRoute('user_artiste');
+            return $this->redirectToRoute('artiste_index');
         }
 
         return $this->render('@Cms/Artiste/new.html.twig', array(
             'form' => $form->createView(),
-            'langue_active' => $langue_active,
             'categorie' => $categories
         ));
     }
@@ -101,90 +64,43 @@ class ArtisteController extends Controller
      */
     public function editAction(Request $request, Artiste $artiste)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $id_item = $artiste->getItemId();
-
-        $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $id_item));
-        $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $id_item));
-        $langue_active = $em->getRepository('CmsBundle:Accueil')->findBy(array('langue' => 'fr'))[0]->getLangueActive();
-
-        $langue = new Artiste();
-
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
-        $langue->getArtiste()->add($artiste_fr);
-
-        if ($langue_active == true){
-            if (empty($accueil_en) == false){
-                $artiste_en = new Artiste();
-                $artiste_en->setLangue('en');
-                $artiste_en->setItemId($artiste_fr->getItemId());
-            }
-            $langue->getArtiste()->add($artiste_en);
-        }
-
-        $editForm = $this->createFormBuilder($langue)
-            ->add('artiste', CollectionType::class, array(
-                'entry_type' => ArtisteType::class
-            ))
-            ->getForm();
+        $editForm = $this->createForm('CmsBundle\Form\ArtisteType', $artiste);
 
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $artiste_fr->preUpload();
+            $artiste->preUpload();
 
-            $em->persist($artiste_fr);
+            $em->persist($artiste);
             $em->flush();
 
-            if ($langue_active == true){
-                $artiste_en->setDate($artiste_fr->getDate());
-                $artiste_en->setImage($artiste_fr->getImage());
-                $artiste_en->setAjouterslider($artiste_fr->getAjouterslider());
-                $artiste_en->setArchive($artiste_fr->getArchive());
-                $em->persist($artiste_en);
-                $em->flush();
-            }
-
-            return $this->redirectToRoute('user_artiste', array('id' => $artiste->getId()));
+            return $this->redirectToRoute('artiste_index', array('id' => $artiste->getId()));
         }
 
         return $this->render('CmsBundle:Artiste:edit.html.twig', array(
-            'form' => $editForm->createView(),
-            'langue_active' => $langue_active
+            'edit_form' => $editForm->createView(),
+            'artiste' => $artiste
         ));
     }
+
     /**
      * Remove an existing record and a file.
      *
      */
     public function deleteAction($id) {
         $em = $this->getDoctrine()->getManager();
-        $artiste_id_item = $em->getRepository('CmsBundle:Artiste')->find($id)->getItemId();
+        $artiste = $em->getRepository('CmsBundle:Artiste')->findOneById($id);
 
-        $artiste_fr = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'fr', 'item_id' => $artiste_id_item));
-        $artiste_en = $em->getRepository('CmsBundle:Artiste')->findOneBy(array('langue' => 'en', 'item_id' => $artiste_id_item));
-
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findAll();
-
-        if (!$artiste_id_item) {
+        if (!$artiste) {
             throw $this->createNotFoundException(
-                'Pas de document trouvé' . $id
+                'Pas d\'artiste trouvé'
             );
         }
-
-        $em->remove($artiste_fr);
-
-        if ($artiste_en != null)
-            $em->remove($artiste_en);
-
+        $em->remove($artiste);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('user_artiste', array(
-            'artistes' => $artistes,
-        )));
+        return $this->redirectToRoute('artiste_index');
     }
 }

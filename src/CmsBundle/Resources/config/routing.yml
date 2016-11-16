@@ -1,11 +1,3 @@
-cms_homepage:
-    path:     /
-    defaults: { _controller: CmsBundle:User:index }
-
-cms_admin:
-    path:     /admin
-    defaults: { _controller: CmsBundle:Admin:index }
-
 cms_accueil:
     resource: "@CmsBundle/Resources/config/routing/accueil.yml"
     prefix:   /admin/accueil
@@ -38,11 +30,6 @@ cms_admin_equipe:
     resource: "@CmsBundle/Resources/config/routing/equipe.yml"
     prefix:   /admin/equipe
 
-cms_contact:
-    path: /send
-    defaults: { _controller: CmsBundle:Contact:send }
-    methods: [POST, GET]
-
 cms_admin_apropos:
     resource: "@CmsBundle/Resources/config/routing/apropos.yml"
     prefix:   /admin/apropos
@@ -50,3 +37,17 @@ cms_admin_apropos:
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /
+
+cms_contact:
+    path: /send
+    defaults: { _controller: CmsBundle:Contact:send }
+    methods: [POST, GET]
+
+cms_homepage:
+    path:     /
+    defaults: { _controller: CmsBundle:User:index }
+
+cms_admin:
+    path:     /admin
+    defaults: { _controller: CmsBundle:Admin:index }
+

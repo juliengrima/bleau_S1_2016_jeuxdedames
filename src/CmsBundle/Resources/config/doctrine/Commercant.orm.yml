@@ -35,8 +35,9 @@ CmsBundle\Entity\Commercant:
             type: string
             lenght: 255
             nullable: true
+
     lifecycleCallbacks:
-          prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+          prePersist: [ preUpload ]
           preUpdate: [ preUpload, setUpdatedAtValue ]
           postPersist: [ upload ]
           postUpdate: [ upload ]

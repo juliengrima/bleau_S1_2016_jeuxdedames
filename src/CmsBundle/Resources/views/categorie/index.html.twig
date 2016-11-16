@@ -19,14 +19,12 @@
     <div class="title_section">
         <h1>Liste des catégories</h1>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
             <div class="edit_admin">
                 <a class="btn btn-default edit_admin" href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie</a>
-                <a class="btn btn-default edit_admin" href="{{ path('cms_homepage') }}">Retour sur la page d'accueil</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_artistet') }}">Retour aux artistes</a>
             </div>
-            {#{% endif %}#}
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -66,8 +64,12 @@
     {{ parent() }}
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
     </script>
     <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 

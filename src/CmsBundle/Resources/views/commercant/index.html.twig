@@ -5,12 +5,10 @@
 
     <div class="container">
         <div class="row">
-            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
             <div class="edit_admin">
                 <a class="btn btn-default edit_admin" href="{{ path('commercant_new') }}">Ajouter un nouveau commerçant</a>
                 <a class="btn btn-default edit_admin" href="{{ path('user_commercant') }}">Retour à la carte</a>
             </div>
-            {#{% endif %}#}
         </div>
         <div class="row">
             <table id="example" class="display" cellspacing="0" width="100%">
@@ -60,11 +58,14 @@
     {{ parent() }}
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
     </script>
     <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
 {% endblock %}
 
 {% block stylesheets %}

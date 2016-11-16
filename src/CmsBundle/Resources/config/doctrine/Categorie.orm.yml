@@ -18,5 +18,6 @@ CmsBundle\Entity\Categorie:
         artiste:
             targetEntity: CmsBundle\Entity\Artiste
             mappedBy: categorie
+            nullable: false
 
     lifecycleCallbacks: {  }

@@ -1,3 +1,7 @@
+partenaire_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Partenaire:index" }
+
 partenaire_new:
     path:     /new
     defaults: { _controller: "CmsBundle:Partenaire:new" }

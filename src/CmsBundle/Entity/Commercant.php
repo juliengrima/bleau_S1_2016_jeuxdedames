@@ -18,17 +18,17 @@ class Commercant
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     public function getWebPath()
     {
-        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
     }
 
     public function getAbsolutePath()
     {
-        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+        return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
     }
 
     /**
@@ -40,31 +40,6 @@ class Commercant
             // do whatever you want to generate a unique name
             $this->image = uniqid() . '.' . $this->file->guessExtension();
         }
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-    
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
     }
 
     /**
@@ -95,8 +70,6 @@ class Commercant
 
     /*generate*/
 
- 
-
     /**
      * @var integer
      */
@@ -116,6 +89,26 @@ class Commercant
      * @var string
      */
     private $nom;
+
+    /**
+     * @var integer
+     */
+    private $code;
+
+    /**
+     * @var string
+     */
+    private $ville;
+
+    /**
+     * @var string
+     */
+    private $lat;
+
+    /**
+     * @var string
+     */
+    private $lng;
 
     /**
      * @var string
@@ -206,40 +199,6 @@ class Commercant
     }
 
     /**
-     * Set lien
-     *
-     * @param string $lien
-     *
-     * @return Commercant
-     */
-    public function setLien($lien)
-    {
-        $this->lien = $lien;
-
-        return $this;
-    }
-
-    /**
-     * Get lien
-     *
-     * @return string
-     */
-    public function getLien()
-    {
-        return $this->lien;
-    }
-    /**
-     * @var integer
-     */
-    private $code;
-
-    /**
-     * @var string
-     */
-    private $ville;
-
-
-    /**
      * Set code
      *
      * @param integer $code
@@ -286,16 +245,6 @@ class Commercant
     {
         return $this->ville;
     }
-    /**
-     * @var string
-     */
-    private $lat;
-
-    /**
-     * @var string
-     */
-    private $lng;
-
 
     /**
      * Set lat
@@ -343,5 +292,36 @@ class Commercant
     public function getLng()
     {
         return $this->lng;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Commercant
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
     }
 }

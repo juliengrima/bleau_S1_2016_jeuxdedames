@@ -53,11 +53,9 @@
                 </div>
             </div>
             <div class="row">
-                {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
                 <div class="edit_admin">
                     <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
                 </div>
-                {#{% endif %}#}
             </div>
         </div>
         {{ form_end(edit_form) }}

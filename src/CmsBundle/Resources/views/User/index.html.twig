@@ -2,81 +2,62 @@
 
 {% block body %}
 
-    {% for accueil in accueils %}
-
-        <div class="container-fluid">
-            {% if is_granted("ROLE_SUPER_ADMIN") %}
-                <div class="row">
-                    <div class="edit_admin">
-                        <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer</a>
-                        <a class="btn btn-default edit_admin" href="{{ path('cms_admin') }}">Accéder à l'interface admin</a>
-                    </div>
-                </div>
-            {% endif %}
-            <!-- ******** CAROUSSEL ******** -->
-            <div class="row carousel_jdd">
-                <div class="section">
-                    <div class="col-md-12">
-                        <h1>{{ accueil.titre }}</h1>
-                        {#<figure>#}
-                            {#<marquee behavior="scroll"  direction="left" width="auto" scrollamount="2" scrolldelay="18" truespeed="true">#}
-                                {#{% for artiste in artistes %}#}
-                                    {#{% if artiste.ajouterslider == true %}#}
-                                        {#{% if (artiste.lien != null) %}#}
-                                            {#<a href="{{ artiste.lien | external_link }}"><img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"></a>#}
-                                        {#{% else %}#}
-                                            {#<img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">#}
-                                        {#{% endif %}#}
-                                    {#{% endif %}#}
-                                {#{% endfor %}#}
-                            {#</marquee>#}
-                        {#</figure>#}
-                        <div id="slider" style="height: 300px;">
-                            {% for artiste in artistes %}
-                                    <div class="aligner-item" style="width: 200px !important; ">
-                                        <img style="max-height:300px !important; width: 100% !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
-                                    </div>
-                            {% endfor %}
-                        </div>
-                    </div>
+    <div class="container-fluid">
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+            <div class="row">
+                <div class="edit_admin">
+                    <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page d'accueil</a>
                 </div>
             </div>
-
-                <!-- ******** TEXTE PRESENTATION ******** -->
-
-            <div class="row home_presentation">
-                <div class="section">
-                    <div class="col-md-4 home_contenu">
-                        <h4 class="">{{ accueil.premiertitre }}</h4>
-                        <p class="">{{ accueil.premiercontenu }}</p>
+        {% endif %}
+        <!-- ******** CAROUSSEL ******** -->
+        <div class="row carousel_jdd">
+            <div class="section">
+                <div class="col-md-12">
+                    <h1>{{ accueil.titre }}</h1>
+                    <div id="slider" style="height: 300px;">
+                        {% for artiste in artistes %}
+                                <div class="aligner-item" style="width: 200px !important; margin-right: 5px; ">
+                                    <img style="max-height:300px !important; width: 100% !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                                </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-md-4 home_contenu">
-                        <h4 class="">{{ accueil.deuxiemetitre }}</h4>
-                        <p class="">{{ accueil.deuxiemecontenu }}</p>
-                    </div>
-                    <div class="col-md-4 home_contenu">
-                        <h4 class="">{{ accueil.troisiemetitre }}</h4>
-                        <p class="">{{ accueil.troisiemecontenu }}</p>
-                    </div>
-                </div><!--/row -->
-            </div>
-
-            <!-- ******** NOTRE EQUIPE ******** -->
-            <div class="row home_equipe">
-                <div class="col-md-4 col-xs-6 vcenter">
-                    <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
-                </div>
-                <div class="col-md-4 col-xs-6 vcenter">
-                    <img src="{{ asset('uploads/img_equipe/') }}{{ accueil.image2.url }}">
-                </div>
-                <div class="col-md-4 col-xs-12 pres_equipe">
-                    <p>{{ accueil.contenu|raw|nl2br }}</p>
                 </div>
             </div>
         </div>
 
-    {% endfor %}
+            <!-- ******** TEXTE PRESENTATION ******** -->
 
+        <div class="row home_presentation">
+            <div class="section">
+                <div class="col-md-4 home_contenu">
+                    <h4 class="">{{ accueil.premiertitre }}</h4>
+                    <p class="">{{ accueil.premiercontenu }}</p>
+                </div>
+                <div class="col-md-4 home_contenu">
+                    <h4 class="">{{ accueil.deuxiemetitre }}</h4>
+                    <p class="">{{ accueil.deuxiemecontenu }}</p>
+                </div>
+                <div class="col-md-4 home_contenu">
+                    <h4 class="">{{ accueil.troisiemetitre }}</h4>
+                    <p class="">{{ accueil.troisiemecontenu }}</p>
+                </div>
+            </div><!--/row -->
+        </div>
+
+        <!-- ******** NOTRE EQUIPE ******** -->
+        <div class="row home_equipe">
+            <div class="col-md-4 col-xs-6 vcenter">
+                <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
+            </div>
+            <div class="col-md-4 col-xs-6 vcenter">
+                <img src="{{ asset('uploads/img_equipe/') }}{{ accueil.image2.url }}">
+            </div>
+            <div class="col-md-4 col-xs-12 pres_equipe">
+                <p>{{ accueil.contenu|raw|nl2br }}</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
