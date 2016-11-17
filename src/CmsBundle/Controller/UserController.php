@@ -118,6 +118,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 1));
+        $videos = $em->getRepository('CmsBundle:Youtube')->findAll();
 
         $categ_id = array();
         foreach ($artistes as  $artiste){
@@ -133,6 +134,7 @@ class UserController extends Controller
         return $this->render('CmsBundle:User:archives.html.twig' , array (
             'artistes' => $artistes,
             'categories' => $categories,
+            'videos' => $videos
         ));
     }
 

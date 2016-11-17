@@ -34,6 +34,10 @@ cms_admin_apropos:
     resource: "@CmsBundle/Resources/config/routing/apropos.yml"
     prefix:   /admin/apropos
 
+cms_admin_youtube:
+    resource: "@CmsBundle/Resources/config/routing/youtube.yml"
+    prefix:   /admin/youtube
+
 user:
     resource: "@CmsBundle/Resources/config/routing/user.yml"
     prefix:   /

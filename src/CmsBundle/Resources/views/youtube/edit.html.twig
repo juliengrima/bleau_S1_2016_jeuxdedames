@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Editer une video: {{ youtube.title }}</h1>
+    {{ form_start(edit_form) }}
+
+    <div class="container-fluid">
+
+    <div class="container">
+        <div class="row">
+            <p class="">Titre de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
+                {{ form_errors(edit_form.title) }}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p class="">Lien de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
+                {{ form_errors(edit_form.link) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="edit_admin">
+            <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
+        </div>
+    </div>
+
+    {{ form_end(edit_form) }}
+
+{% endblock %}

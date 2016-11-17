@@ -1,0 +1,19 @@
+CmsBundle\Entity\Youtube:
+    type: entity
+    table: null
+    repositoryClass: CmsBundle\Repository\YoutubeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        link:
+            type: string
+            nullable: false
+        title:
+            type: string
+            nullable: false
+    lifecycleCallbacks: {  }

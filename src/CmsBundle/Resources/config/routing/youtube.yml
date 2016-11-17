@@ -1,0 +1,19 @@
+admin_youtube_index:
+    path:     /
+    defaults: { _controller: "CmsBundle:Youtube:index" }
+    methods:  GET
+
+admin_youtube_new:
+    path:     /new
+    defaults: { _controller: "CmsBundle:Youtube:new" }
+    methods:  [GET, POST]
+
+admin_youtube_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CmsBundle:Youtube:edit" }
+    methods:  [GET, POST]
+
+admin_youtube_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CmsBundle:Youtube:delete" }
+    methods:  [GET, POST]

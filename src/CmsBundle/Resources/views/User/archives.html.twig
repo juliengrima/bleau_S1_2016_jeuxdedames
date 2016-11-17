@@ -6,11 +6,21 @@
         .row_video{
             text-align: center;
         }
+        iframe{
+            width:100% !important;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
-
+    <div class="row">
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('admin_youtube_new') }}">Ajouter une nouvelle video</a>
+                <a class="btn btn-default edit_admin" href="{{ path('admin_youtube_index') }}">Administrer les video</a>
+            </div>
+        {% endif %}
+    </div>
     <div class="container-fluid">
         <div class="ariche_block">
             {% if artistes != null %}
@@ -69,12 +79,14 @@
     </div>
 
     <div class="container-fluid">
-        <h1>Archive Video</h1>
-        <div class="row row_video">
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/YAG5ziakyD0" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="row row_video">
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/OBACwMmhtRA" frameborder="0" allowfullscreen></iframe></iframe>
+        <h1>Archives Video</h1>
+        <div class="row">
+            {% for video in videos %}
+                <div class="col-md-6 row_video">
+                    <h2>{{ video.title }}</h2>
+                    {{ video.link|raw }}
+                </div>
+            {% endfor %}
         </div>
     </div>
 

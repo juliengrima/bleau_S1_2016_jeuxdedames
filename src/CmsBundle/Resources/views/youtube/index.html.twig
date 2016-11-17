@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste de video</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('admin_youtube_new') }}">Ajouter une nouvelle video</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_archive') }}">Retour au archive</a>
+            </div>
+        </div>
+        <div class="row">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Titre de la video</th>
+                    <th>Lien video</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for youtube in youtubes %}
+                    <tr>
+                        <td>{{ youtube.title }}</td>
+                        <td>{{ youtube.link }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('admin_youtube_edit', { 'id': youtube.id }) }}">Editer</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_youtube_delete', { 'id': youtube.id }) }}">Supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajout d'une nouvelle video</h1>
+
+    <div class="container-fluid">
+        {{ form_start(form) }}
+
+        <div class="container">
+            <div class="row">
+                <p class="">Titre de la video</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
+                    {{ form_errors(form.title) }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Lien de la video</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
+                    {{ form_errors(form.link) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Ajouter" />
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
