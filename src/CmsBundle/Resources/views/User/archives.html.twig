@@ -6,8 +6,25 @@
         .row_video{
             text-align: center;
         }
+        .row_video h5{
+            height:70px;
+        }
         iframe{
-            width:100% !important;
+            width:300px !important;
+            height: 200px !important;
+        }
+        .panel-title{
+            text-align: center;
+            font-family: inherit !important;
+            color: white !important;
+        }
+        .panel-default>.panel-heading{
+            background-image: -webkit-linear-gradient(top,#288493 0,#00BCD4 100%);
+            background-image: -o-linear-gradient(top,#288493 0,#00BCD4 100%);
+            background-image: -webkit-gradient(linear,left top,left bottom,from(#288493),to(#00BCD4));
+            background-image: linear-gradient(to bottom,#288493 0,#00BCD4 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+            background-repeat: repeat-x;
         }
     </style>
 {% endblock %}
@@ -34,12 +51,12 @@
                         <div class="panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ categ.nomDeLaCategorie }}" aria-expanded="true" aria-controls="collapseOne">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ categ.id }}" aria-expanded="true" aria-controls="collapseOne">
                                         {{ categ.nomDeLaCategorie }}
                                     </a>
                                 </h4>
                             </div>
-                            <div id="{{ categ.nomDeLaCategorie }}" class="panel-collapse collapse in, row" role="tabpanel" aria-labelledby="headingOne">
+                            <div id="{{ categ.id }}" class="panel-collapse collapse in, row" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
                                     {% for artiste in categ.artiste %}
                                         {% if artiste.archive == true %}
@@ -79,11 +96,11 @@
     </div>
 
     <div class="container-fluid">
-        <h1>Archives Video</h1>
+        <h2>Archives Video</h2>
         <div class="row">
             {% for video in videos %}
-                <div class="col-md-6 row_video">
-                    <h2>{{ video.title }}</h2>
+                <div class="col-md-3 row_video">
+                    <h5>{{ video.title }}</h5>
                     {{ video.link|raw }}
                 </div>
             {% endfor %}
