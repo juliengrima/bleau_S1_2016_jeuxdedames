@@ -94,7 +94,18 @@ class UserController extends Controller
 
         $commercants = $em->getRepository('CmsBundle:Commercant')->findAll();
 
+        $wrong_commercant = array();
+        foreach ($commercants as $key => $commercant){
+            if (!$commercant->getLat() || !$commercant->getLng()){
+                if (in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles())){
+                    $wrong_commercant[] = $commercants[$key];
+                }
+                unset($commercants[$key]);
+            }
+        }
+
         return $this->render('CmsBundle:User:commercants.html.twig', array(
+            'wrong_commercant' => $wrong_commercant,
             'commercants' => $commercants,
         ));
     }

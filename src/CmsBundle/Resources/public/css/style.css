@@ -407,6 +407,16 @@ figure.snip1239.hover figcaption {
     color: black;
 }
 
+.wrong_commercant{
+    background-color: indianred;
+    text-align: center;
+    border: 6px solid red;
+    padding: 15px 15px;
+    margin-top: 20px;
+}
+.wrong_commercant h3{
+    color: black;
+}
 /******** Calendrier *********/
 
 .calendar #calendar {

@@ -48,16 +48,14 @@ class CommercantController extends Controller
 
             $lat_lng = $this->getLatLng($rue, $code, $ville);
 
-            if ($lat_lng['lat'] != null && $lat_lng['lng'] != null){
-                $commercant->setLat($lat_lng['lat']);
-                $commercant->setLng($lat_lng['lng']);
+            $commercant->setLat($lat_lng['lat']);
+            $commercant->setLng($lat_lng['lng']);
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($commercant);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($commercant);
+            $em->flush();
 
-                return $this->redirectToRoute('commercant_index');
-            }
+            return $this->redirectToRoute('commercant_index');
         }
 
         return $this->render('CmsBundle:commercant:new.html.twig', array(
