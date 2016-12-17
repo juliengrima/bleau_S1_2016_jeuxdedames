@@ -40,7 +40,6 @@ $(document).ready(function() {
         events: Routing.generate('events'),
 
         dayClick: function(date) {
-            console.log(roles);
             if (date._d >= current_date_time && roles != null){
                 window.location = Routing.generate('events') + date.format() + '/new';
             }
@@ -68,7 +67,6 @@ $(document).ready(function() {
 
             $('#modalTime').html(Time);
             $('#modalTitle').html( calEvent.titre );
-            console.log(calEvent);
             if (calEvent.images.url != null){
                 $('#imgevent').html( '<img src="' + asset + calEvent.images.webPath + '" alt="' + calEvent.images.alt +'"/>' );
             }
@@ -78,7 +76,6 @@ $(document).ready(function() {
             $('#delete_event').attr('href', deleteEvent);
             $('#edit_event').show();
             $('#edit_event').attr('href', editEvent);
-
         }
     });
 });

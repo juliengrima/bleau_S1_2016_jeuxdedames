@@ -97,7 +97,8 @@ class UserController extends Controller
         $wrong_commercant = array();
         foreach ($commercants as $key => $commercant){
             if (!$commercant->getLat() || !$commercant->getLng()){
-                if (in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles())){
+                $securityContext = $this->container->get('security.authorization_checker');
+                if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
                     $wrong_commercant[] = $commercants[$key];
                 }
                 unset($commercants[$key]);
