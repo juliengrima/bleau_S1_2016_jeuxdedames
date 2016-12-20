@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Modification d'un commerçant: {{ commercant.nom }}</h1>
-
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="flash-notice">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
     <div class="container-fluid">
         {{ form_start(form) }}
 

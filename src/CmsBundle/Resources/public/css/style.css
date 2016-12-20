@@ -802,3 +802,12 @@ figure.snip1239.hover figcaption {
 #example p{
     color: black;
 }
+
+/*FLASH MESSAGE*/
+.flash-notice{
+    text-align: center;
+    padding: 30px;
+    border: 2px orange solid;
+    background-color: orange;
+    font-size: 18px;
+}

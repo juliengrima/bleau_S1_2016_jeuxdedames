@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Ajout d'un nouveau commerçant</h1>
-
+    {% for flash_message in app.session.flashBag.get('notice') %}
+        <div class="flash-notice">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
     <div class="container-fluid">
         {{ form_start(form) }}
 

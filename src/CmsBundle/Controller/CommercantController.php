@@ -47,6 +47,16 @@ class CommercantController extends Controller
             $ville = $form->getData()->getVille();
 
             $lat_lng = $this->getLatLng($rue, $code, $ville);
+            if ($lat_lng == 500){
+                $this->addFlash(
+                    'notice',
+                    'Une erreur est survenue lors de l\'enregistrement de l\'adresse, veuillez vérifier'
+                );
+                return $this->render('CmsBundle:commercant:new.html.twig', array(
+                    'form' => $form->createView(),
+                    'commercant' => $commercant,
+                ));
+            }
 
             $commercant->setLat($lat_lng['lat']);
             $commercant->setLng($lat_lng['lng']);
@@ -83,6 +93,13 @@ class CommercantController extends Controller
                 $ville = $editForm->getData()->getVille();
 
                 $lat_lng = $this->getLatLng($rue, $code, $ville);
+                if ($lat_lng == 500){
+                    $this->addFlash(
+                        'error',
+                        'Une erreur est survenue lors de l\'enregistrement de l\'adresse, veuillez vérifier'
+                    );
+                    return $this->redirectToRoute('commercant_edit', array('id' => $commercant->getId()));
+                }
                 $commercant->setLat($lat_lng['lat']);
                 $commercant->setLng($lat_lng['lng']);
 
@@ -129,15 +146,22 @@ class CommercantController extends Controller
     public function getLatLng($rue, $code_postal, $ville){
 
         $rue = str_replace(" ", "%20", $rue);
-        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&sensor=true";
+//        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&sensor=true";
+
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&key=AIzaSyD0M1-1_fcOUWWPgI3L_RXGOJSjZu88oVg";
+
 
         $result_string = file_get_contents($url);
 
         $result = json_decode($result_string, true);
 
-        $location['lat'] = $result['results'][0]['geometry']['location']['lat'];
-        $location['lng'] = $result['results'][0]['geometry']['location']['lng'];
+        if (isset($result['results'][0])){
+            $location['lat'] = $result['results'][0]['geometry']['location']['lat'];
+            $location['lng'] = $result['results'][0]['geometry']['location']['lng'];
 
-        return $location;
+            return $location;
+        }
+        else
+            return $location = 500;
     }
 }
