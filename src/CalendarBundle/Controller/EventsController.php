@@ -106,6 +106,9 @@ class EventsController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $event->getImages()->preUpload();
+
             $em->persist($event);
             $em->flush();
 
