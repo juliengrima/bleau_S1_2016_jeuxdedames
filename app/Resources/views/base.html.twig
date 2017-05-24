@@ -53,10 +53,6 @@
         </div>
 
         <header>
-            {% if langue_active is not defined %}
-                {% set langue_active = false %}
-            {% endif %}
-
             <nav class="navbar navbar-default">
                 <div class="container-fluid nav_custom">
                     <div class="navbar-header">
@@ -139,7 +135,6 @@
         {% block javascripts %}
 
             <!-- Appel Jquery -->
-            <script src="{{ asset ('bundles/cms/js/jquery-3.0.0.min.js') }}"></script>
             <script src="{{ asset ('bundles/cms/js/jquery-2.0.0.min.js') }}"></script>
 
             <!-- Appel JavaScript Bootstrap -->

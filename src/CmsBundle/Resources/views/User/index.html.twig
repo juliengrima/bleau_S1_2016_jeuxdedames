@@ -18,7 +18,7 @@
                     <div id="slider" style="height: 300px;">
                         {% for artiste in artistes %}
                                 <div class="aligner-item" style="width: 200px !important; margin-right: 5px; ">
-                                    <img style="max-height:300px !important; width: 100% !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}">
+                                    <img style="max-height:300px !important; width: 100% !important;" src="{{ asset('uploads/imgcms/' ~ artiste.image) }}">
                                 </div>
                         {% endfor %}
                     </div>
@@ -48,10 +48,10 @@
         <!-- ******** NOTRE EQUIPE ******** -->
         <div class="row home_equipe">
             <div class="col-md-4 col-xs-6 vcenter">
-                <img src="{{ asset('uploads/imgcms/') }}{{ accueil.image }}">
+                <img src="{{ asset('uploads/imgcms/' ~ accueil.image) }}">
             </div>
             <div class="col-md-4 col-xs-6 vcenter">
-                <img src="{{ asset('uploads/img_equipe/') }}{{ accueil.image2.url }}">
+                <img src="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}">
             </div>
             <div class="col-md-4 col-xs-12 pres_equipe">
                 <p>{{ accueil.contenu|raw|nl2br }}</p>

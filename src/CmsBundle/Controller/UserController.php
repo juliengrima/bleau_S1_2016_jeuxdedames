@@ -14,25 +14,11 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $accueils = $em->getRepository('CmsBundle:Accueil')->findOneBy(array());
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('ajouterslider' => true));
-
-        if (count($artistes) >= 15){
-            $ran_artistes = array();
-            $random_key = array_rand($artistes, 15);
-            foreach ($artistes as $key => $value){
-                if (in_array($key, $random_key)){
-                    $ran_artistes[] = $value;
-                }
-            }
-        }
-        else{
-            $ran_artistes = $artistes;
-        }
-
+        $accueils = $em->getRepository('CmsBundle:Accueil')->getAccueilContent();
+        $artistes = $em->getRepository('CmsBundle:Artiste')->getImageSlider();
         return $this->render('CmsBundle:User:index.html.twig', array(
             'accueil' => $accueils,
-            'artistes' => $ran_artistes,
+            'artistes' => $artistes,
         ));
 
     }    
