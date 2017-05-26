@@ -1,6 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset ('bundles/cms/css/jquery.fancybox.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/cms/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/cms/css/slider_accueil.css') }}">
+{% endblock %}
+
 {% block body %}
+
+    <style>
+        iframe{
+            width:300px !important;
+            height: 200px !important;
+        }
+    </style>
 
     <div class="container-fluid">
         {% if is_granted("ROLE_SUPER_ADMIN") %}
@@ -32,15 +46,24 @@
             <div class="section">
                 <div class="col-md-4 home_contenu">
                     <h4 class="">{{ accueil.premiertitre }}</h4>
-                    <p class="">{{ accueil.premiercontenu }}</p>
+                    <p class="contentHome">{{ accueil.premiercontenu }}</p>
+                    <a class="enSavoitPlusAccueil" href="{{ path('user_apropos') }}">
+                        En savoir plus sur l'association...
+                    </a>
                 </div>
                 <div class="col-md-4 home_contenu">
                     <h4 class="">{{ accueil.deuxiemetitre }}</h4>
-                    <p class="">{{ accueil.deuxiemecontenu }}</p>
+                    <p class="contentHome">{{ accueil.deuxiemecontenu }}</p>
+                    <a class="enSavoitPlusAccueil" href="{{ path('calendar_homepage') }}">
+                        En savoir plus sur nos évènements...
+                    </a>
                 </div>
                 <div class="col-md-4 home_contenu">
                     <h4 class="">{{ accueil.troisiemetitre }}</h4>
-                    <p class="">{{ accueil.troisiemecontenu }}</p>
+                    <p class="contentHome">{{ accueil.troisiemecontenu }}</p>
+                    <a class="enSavoitPlusAccueil" href="{{ path('user_commercant') }}">
+                        En savoir plus sur nos commerçant...
+                    </a>
                 </div>
             </div><!--/row -->
         </div>
@@ -48,73 +71,38 @@
         <!-- ******** NOTRE EQUIPE ******** -->
         <div class="row home_equipe">
             <div class="col-md-4 col-xs-6 vcenter">
-                <img src="{{ asset('uploads/imgcms/' ~ accueil.image) }}">
+                <a href="{{ asset('uploads/imgcms/' ~ accueil.image) }}" data-fancybox>
+                    <img src="{{ asset('uploads/imgcms/' ~ accueil.image) }}">
+                </a>
             </div>
             <div class="col-md-4 col-xs-6 vcenter">
-                <img src="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}">
+                <a href="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}" data-fancybox>
+                    <img src="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}">
+                </a>
             </div>
-            <div class="col-md-4 col-xs-12 pres_equipe">
-                <p>{{ accueil.contenu|raw|nl2br }}</p>
+            <div class="col-md-4 col-xs-6 vcenter">
+                {{ accueil.videoLink|raw }}
             </div>
         </div>
+
+        <div class="text-center">
+            <p>{{ accueil.contenu|raw|nl2br }}</p>
+        </div>
     </div>
-
-{% endblock %}
-
-{% block stylesheets %}
-
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/cms/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/cms/css/slider_accueil.css') }}">
 
 {% endblock %}
 
 {% block javascripts %}
 
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/cms/js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/cms/slick/slick.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('#slider').slick({
-                dots: false,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                centerMode: true,
-                variableWidth: true,
-                accessibility: false,
-                autoplay: true,
-                arrows: false,
-                pauseOnFocus: false,
-                pauseOnHover: false,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
+            slideHome();
+            showTexte(600);
+            $("[data-fancybox]").fancybox({
+                // Options will go here
             });
         });
     </script>

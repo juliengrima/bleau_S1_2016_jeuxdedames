@@ -55,3 +55,7 @@ CmsBundle\Entity\Accueil:
             targetEntity: CmsBundle\Entity\Images
             cascade: ["persist"]
 
+    oneToOne:
+        video:
+            targetEntity: CmsBundle\Entity\Youtube
+            cascade: ['all']

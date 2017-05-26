@@ -6,24 +6,21 @@
     <div class="container-fluid">
         {{ form_start(form) }}
 
-        <div class="container">
-            <div class="row">
-                <p class="">Titre de la video</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
-                    {{ form_errors(form.title) }}
-                </div>
+        <div class="row">
+            <p class="">Titre de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
+                {{ form_errors(form.title) }}
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Lien de la video</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
-                    {{ form_errors(form.link) }}
-                </div>
+
+        <div class="row">
+            <p class="">Lien de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
+                {{ form_errors(form.link) }}
             </div>
         </div>
 

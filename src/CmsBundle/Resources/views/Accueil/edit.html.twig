@@ -3,9 +3,10 @@
 {% block body %}
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
     <h1>Administration de la page d'accueil </h1>
-    {{ form_start(edit_form) }}
 
     <div class="container">
+        {{ form_start(edit_form) }}
+
         <div class="row">
             <p class="">Titre au dessus du slide</p>
             <div class="input-group">
@@ -71,27 +72,47 @@
             </div>
         </div>
         <div class="row">
-            <p>Image bas gauche</p>
-            <div class="input-group">
-                {{ form_widget(edit_form.file, {'attr': {'class': 'help-block'}}) }}
-                {{ form_errors(edit_form.file) }}
+            <div class="col-md-6 col-xs-12 text-center">
+                <p>Image bas gauche</p>
+                <div class="input-group center-block">
+                    {{ form_widget(edit_form.file, {'attr': {'class': 'help-block center-block'}}) }}
+                    {{ form_errors(edit_form.file) }}
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-12 text-center">
+                <p>Image au milieu de la page</p>
+                <div class="input-group center-block">
+                    {{ form_widget(edit_form.image2.file, {'attr': {'class': 'help-block center-block'}}) }}
+                    {{ form_errors(edit_form.image2.file) }}
+                </div>
             </div>
         </div>
         <div class="row">
-            <p>Image au milieu de la page</p>
+            <p class="">Titre de la video</p>
             <div class="input-group">
-                {{ form_widget(edit_form.image2.file, {'attr': {'class': 'help-block'}}) }}
-                {{ form_errors(edit_form.image2.file) }}
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.video.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
+                {{ form_errors(edit_form.video.title) }}
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="edit_admin">
-            <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
+        <div class="row">
+            <p class="">Lien de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(edit_form.video.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
+                {{ form_errors(edit_form.video.link) }}
+            </div>
         </div>
-    </div>
 
-    {{ form_end(edit_form) }}
+        <div class="row">
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Modifier" />
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+
+    </div>
 
 {% endblock %}

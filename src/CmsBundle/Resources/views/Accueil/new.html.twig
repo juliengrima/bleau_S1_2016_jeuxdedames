@@ -6,116 +6,124 @@
 
     <h1>Administration page d'accueil </h1>
 
-    {{ form_start(form) }}
-
     <div class="container-fluid">
 
-        <div class="container">
-            <div class="row">
-                <p class="">Titre</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                    {{ form_errors(form.titre) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Premier Titre</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.premiertitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.premiertitre) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Premier Contenu</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.premiercontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.premiercontenu) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Deuxieme Titre</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.deuxiemetitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.deuxiemetitre) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Deuxieme Contenu</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.deuxiemecontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.deuxiemecontenu) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Troisième Titre</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.troisiemetitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.troisiemetitre) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Troisieme Contenu</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.troisiemecontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.troisiemecontenu) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Contenu en face de l'image</p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
-                    {{ form_errors(form.contenu) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Image en bas à droite de la page</p>
-                <div class="input-group">
-                    {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
-                    {{ form_errors(form.file) }}
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <p class="">Image au milieu de la page</p>
-                <div class="input-group">
-                    {{ form_widget(form.image2, {'attr': {'class': 'help-block'}}) }}
-                    {{ form_errors(form.image2) }}
-                </div>
-            </div>
-        </div>
-    </div>
+        {{ form_start(form) }}
 
-    <div class="row">
-        <div class="edit_admin">
-            <input class="btn btn-default edit_admin"  type="submit" value="Créer" />
+        <div class="row">
+            <p class="">Titre</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                {{ form_errors(form.titre) }}
+            </div>
         </div>
-    </div>
 
-    {{ form_end(form) }}
+        <div class="row">
+            <p class="">Premier Titre</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.premiertitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.premiertitre) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Premier Contenu</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.premiercontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.premiercontenu) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Deuxieme Titre</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.deuxiemetitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.deuxiemetitre) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Deuxieme Contenu</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.deuxiemecontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.deuxiemecontenu) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Troisième Titre</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.troisiemetitre, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.troisiemetitre) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Troisieme Contenu</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.troisiemecontenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.troisiemecontenu) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Contenu en face de l'image</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                {{ form_errors(form.contenu) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Image en bas à droite de la page</p>
+            <div class="input-group">
+                {{ form_widget(form.file, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(form.file) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Image au milieu de la page</p>
+            <div class="input-group">
+                {{ form_widget(form.image2, {'attr': {'class': 'help-block'}}) }}
+                {{ form_errors(form.image2) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Titre de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la video'}}) }}
+                {{ form_errors(form.title) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="">Lien de la video</p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                {{ form_widget(form.link, {'attr': {'class': 'form-control', 'placeholder': 'Lien de la video'}}) }}
+                {{ form_errors(form.link) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="edit_admin">
+                <input class="btn btn-default edit_admin"  type="submit" value="Créer" />
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
 
 {% endblock %}

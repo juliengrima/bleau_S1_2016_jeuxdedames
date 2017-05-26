@@ -146,7 +146,6 @@ class CommercantController extends Controller
     public function getLatLng($rue, $code_postal, $ville){
 
         $rue = str_replace(" ", "%20", $rue);
-//        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&sensor=true";
 
         $url = "https://maps.googleapis.com/maps/api/geocode/json?address=". $rue . "%20" . $code_postal . "%20" . $ville . "&key=AIzaSyD0M1-1_fcOUWWPgI3L_RXGOJSjZu88oVg";
 

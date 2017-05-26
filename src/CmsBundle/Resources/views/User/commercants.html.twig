@@ -97,15 +97,6 @@
                     position: {lat: lat, lng: lng }
                 });
 
-                {#var description =#}
-                        {#'<div id="iw_container">'+#}
-                            {#'<div class="iw_title">{{ commercant.nom }}</div>'+#}
-                            {#'<div class="iw_content">'+#}
-                                {#'<p>{{ commercant.adresse }}</p>'+#}
-                                {#'<a href="{{ commercant.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>'+#}
-                             {#'</div>'+#}
-                        {#'</div>';#}
-
                 var description =
                     '<div id="iw-container">' +
                     '<div class="iw-title">{{ commercant.nom }}</div>' +
@@ -117,7 +108,7 @@
                     '</div>' +
                     '<div class="iw-bottom-gradient"></div>' +
                     '</div>';
-            
+
                 var infoWindow = new google.maps.InfoWindow();
                 //Attach click event to the marker.
                 (function (marker, description) {

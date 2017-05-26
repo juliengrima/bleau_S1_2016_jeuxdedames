@@ -16,7 +16,6 @@ class UserController extends Controller
 
         $accueils = $em->getRepository('CmsBundle:Accueil')->getAccueilContent();
         $artistes = $em->getRepository('CmsBundle:Artiste')->getImageSlider();
-
         return $this->render('CmsBundle:User:index.html.twig', array(
             'accueil' => $accueils,
             'artistes' => $artistes,

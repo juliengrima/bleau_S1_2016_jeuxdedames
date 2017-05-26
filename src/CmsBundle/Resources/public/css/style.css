@@ -218,6 +218,21 @@ footer .news_input{
     font-family: grandhotel !important;
     color: white !important;
 }
+
+/*Show more and less homepage*/
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+
+.enSavoitPlusAccueil{
+    font-size: 20px;
+    font-family: grandhotel !important;
+    color: #ffff1a;
+}
+
 @media screen and (max-width: 990px) {
     .home_presentation {
         padding-bottom: 10px;

@@ -16,7 +16,7 @@ class EquipeRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getAllEquipeMembers(){
         $qb = $this->createQueryBuilder('e');
-        $qb->select('e.nom', 'e.prenom', 'e.role', 'e.show_tel as showTel', 'e.telephone')
+        $qb->select('e.nom', 'e.prenom', 'e.role', 'e.show_tel as showTel', 'e.telephone', 'e.id')
             ->join('e.images', 'i')
             ->addSelect('i.url as imageUrl', 'i.alt as imageAlt')
             ->orderBy('e.nom', 'ASC');
