@@ -5,6 +5,7 @@ namespace CmsBundle\Controller;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
@@ -114,23 +115,51 @@ class UserController extends Controller
             $sortCategories[$item['nomDeLaCategorie']][$key] = $item;
         }
 
-        $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
 
         return $this->render('CmsBundle:User:archives.html.twig' , array (
-            'categories' => $sortCategories,
-            'videos' => $videos
+            'categories' => $sortCategories
         ));
     }
 
-    public function pressesAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+//    public function pressesAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $presses = $em->getRepository('CmsBundle:Presse')->findAll();
+//        $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
+//
+//        return $this->render('CmsBundle:User:presses.html.twig' , array (
+//            'presses' => $presses,
+//            'videos' => $videos
+//        ));
+//    }
 
-        $presses = $em->getRepository('CmsBundle:Presse')->findAll();
+    public function pressesAction(Request $request){
+        if ($request->isXmlHttpRequest()){
+            $select = $request->get('type');
+            $em = $this->getDoctrine()->getManager();
+            $response = new JsonResponse();
+            $content = array(
+                'content' => null
+            );
 
-        return $this->render('CmsBundle:User:presses.html.twig' , array (
-            'presses' => $presses,
-        ));
+            if ($select == null || $select == 'presseContent'){
+                $presses = $em->getRepository('CmsBundle:Presse')->findAll();
+                $content['content'] = $this->renderView('@Cms/User/presse/articles.html.twig', array(
+                    'presses' => $presses
+                ));
+            }
+            elseif ($select == 'videoContent'){
+                $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
+                $content['content'] = $this->renderView('@Cms/User/presse/videos.html.twig', array(
+                    'videos' => $videos
+                ));
+            }
+
+            $response->setData($content);
+            return $response;
+        }
+        return $this->render('@Cms/User/presses.html.twig');
     }
 
     public function aproposAction()

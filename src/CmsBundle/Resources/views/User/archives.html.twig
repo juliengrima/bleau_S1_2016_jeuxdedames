@@ -3,16 +3,6 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        .row_video{
-            text-align: center;
-        }
-        .row_video h5{
-            height:70px;
-        }
-        iframe{
-            width:300px !important;
-            height: 200px !important;
-        }
         .panel-title{
             text-align: center;
             font-family: inherit !important;
@@ -91,18 +81,6 @@
                     <h1>Il n'y a pas d'artiste dans les archives</h1>
                 </div>
             {% endif %}
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <h2>Archives Video</h2>
-        <div class="row">
-            {% for video in videos %}
-                <div class="col-md-3 row_video">
-                    <h5>{{ video.title }}</h5>
-                    {{ video.link|raw }}
-                </div>
-            {% endfor %}
         </div>
     </div>
 

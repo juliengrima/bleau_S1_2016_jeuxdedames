@@ -1,0 +1,30 @@
+<div class="title_section">
+    <h2>Presse</h2>
+</div>
+<div class="row">
+    {% for presse in presses %}
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="row">
+                <figure class="snip1239">
+                    <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
+                    <figcaption>
+                        <h3>{{ presse.nom }}</h3>
+                        <p>{{ presse.texte }}</p>
+                        <p>{{ presse.date|date("d/m/Y") }}</p>
+                        {% if (presse.lien != null) %}
+                            <a href="{{ presse.lien | external_link }}" class="read-more">En savoir plus</a>
+                        {% endif %}
+                    </figcaption>
+                </figure>
+            </div>
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <div class="row">
+                    <div class="edit_admin">
+                        <a class="btn btn-default edit_admin" href="{{ path('presse_edit', { 'id': presse.id }) }}">Editer</a>
+                        <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('presse_delete', {'id':  presse.id  }) }}" title="Supprimer">Supprimer</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

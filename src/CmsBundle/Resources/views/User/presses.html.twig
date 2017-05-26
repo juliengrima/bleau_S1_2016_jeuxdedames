@@ -1,7 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <style>
+        .row_video{
+            text-align: center;
+        }
+        .row_video h5{
+            height:70px;
+        }
 
+        iframe{
+            width:300px !important;
+            height: 200px !important;
+        }
+    </style>
     <div class="container-fluid block_artiste">
         <div class="row">
             {% if is_granted("ROLE_SUPER_ADMIN") %}
@@ -11,38 +23,16 @@
                 </div>
             {% endif %}
         </div>
-        <div class="title_section">
-            <h2>Presse</h2>
+        <div class="title_section text-center">
+            <a class="selectChoice choiceLink" href="" id="videoContent">Videos</a>
+            <a class="selectChoice choiceLink" href="" id="presseContent">Presse</a>
         </div>
-        <div class="row">
-            {% for presse in presses %}
-                <div class="col-md-3 col-sm-4 col-xs-6">
-                    <div class="row">
-                        <figure class="snip1239">
-                            <img src="{{ asset('uploads/imgcms/') }}{{ presse.image }}"/>
-                            <figcaption>
-                                <h3>{{ presse.nom }}</h3>
-                                <p>{{ presse.texte }}</p>
-                                <p>{{ presse.date|date("d/m/Y") }}</p>
-                                {% if (presse.lien != null) %}
-                                    <a href="{{ presse.lien | external_link }}" class="read-more">En savoir plus</a>
-                                {% endif %}
-                            </figcaption>
-                        </figure>
-                    </div>
-                    {% if is_granted("ROLE_SUPER_ADMIN") %}
-                        <div class="row">
-                            <div class="edit_admin">
-                                <a class="btn btn-default edit_admin" href="{{ path('presse_edit', { 'id': presse.id }) }}">Editer</a>
-                                <a class="btn btn-default edit_admin confirmModalLink" href="{{ path('presse_delete', {'id':  presse.id  }) }}" title="Supprimer">Supprimer</a>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-            {% endfor %}
+        <div id="result">
+
         </div>
 
     </div>
+
     {#   MODAL   #}
     <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -65,7 +55,7 @@
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').focus()
-        })
+        });
         $(document).ready(function () {
             var theHREF;
             $(".confirmModalLink").click(function(e) {
@@ -79,6 +69,26 @@
             $("#confirmModalYes").click(function(e) {
                 window.location.href = theHREF;
             });
+            var select = null;
+            getPresse(select);
         });
+
+
+        function getPresse(select){
+            $.ajax({
+                type: "POST",
+                data : { type: select },
+                dataType: 'json',
+                url: '{{ path('user_presse') }}',
+                success: function(data)
+                {
+                    $("#result").html(data.content);
+                    $(".selectChoice").click(function(e){
+                        e.preventDefault();
+                        getPresse($(this).attr('id'));
+                    });
+                }
+            });
+        }
     </script>
 {% endblock %}

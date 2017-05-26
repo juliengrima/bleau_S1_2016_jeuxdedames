@@ -870,3 +870,12 @@ figure.snip1239.hover figcaption {
     background-color: orange;
     font-size: 18px;
 }
+
+
+/*Presse*/
+.choiceLink{
+    font-size: 40px;
+    margin: 2%;
+    font-family: grandhotel !important;
+    color: #ffff1a;
+}
