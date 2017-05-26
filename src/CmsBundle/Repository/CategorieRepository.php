@@ -10,4 +10,19 @@ namespace CmsBundle\Repository;
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return array
+     * Get Categories and each artistes where archive = true
+     */
+    public function getAllArtisteArchiveTrue(){
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c.id as idCateg', 'c.nomDeLaCategorie')
+            ->join('c.artiste', 'a')
+            ->where('a.archive = true')
+            ->addSelect('a.nom', 'a.id', 'a.image', 'a.lien')
+            ->orderBy('c.nomDeLaCategorie');
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

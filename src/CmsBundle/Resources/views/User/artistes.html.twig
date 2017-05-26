@@ -17,7 +17,7 @@
             <div class="col-xs-5 title_section">
                 <h2>Artistes</h2>
                 {% if status == 1 %}
-                    <h1>{{ categorie_name|capitalize }}</h1>
+                    <h1>{{ artistes|first.categorie|capitalize }}</h1>
                 {% endif %}
             </div>
             <div class="col-xs-6 search_button">
@@ -38,12 +38,12 @@
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="row">
                         <figure class="snip1239">
-                            <img src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}"/>
+                            <img src="{{ asset('uploads/imgcms/' ~ artiste.image) }}"/>
                             <figcaption>
                                 <h4>{{ artiste.nom }}</h4>
                                 <p>{{ artiste.categorie }}</p>
                                 {% if (artiste.lien != null) %}
-                                <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
+                                    <a href="{{ artiste.lien | external_link }}" target="_blank" class="read-more">En savoir plus</a>
                                 {% endif %}
                             </figcaption>
                         </figure>
@@ -81,7 +81,7 @@
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').focus()
-        })
+        });
         $(document).ready(function () {
             var theHREF;
             $(".confirmModalLink").click(function(e) {

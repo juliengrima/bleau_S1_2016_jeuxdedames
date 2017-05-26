@@ -36,7 +36,7 @@
                         {% endif %}
                         <div class="col-xs-3">
                             <div class="card">
-                                <img style="width:100%" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                                <img style="width:100%" src="{{ asset('uploads/img_equipe/' ~ membre.imageUrl) }}" alt="{{ membre.imageAlt }}">
                                 <div class="info">
                                     <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>
                                     <p>Rôle : {{ membre.role }}</p>
@@ -67,7 +67,7 @@
                         <div class="col-xs-12">
                             <div class="card horizontal">
                                 <div class="card-image">
-                                    <img style="width:100%" src="{{ asset('uploads/img_equipe/') }}{{ membre.images.url }}" alt="{{ membre.images.alt }}">
+                                    <img style="width:100%" src="{{ asset('uploads/img_equipe/' ~ membre.imageUrl) }}" alt="{{ membre.imageAlt }}">
                                 </div>
                                 <div class="card-stacked">
                                     <p><span><b>{{ membre.nom }} {{ membre.prenom }}</b></span></p>

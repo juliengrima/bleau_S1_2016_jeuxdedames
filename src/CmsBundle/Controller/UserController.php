@@ -16,6 +16,7 @@ class UserController extends Controller
 
         $accueils = $em->getRepository('CmsBundle:Accueil')->getAccueilContent();
         $artistes = $em->getRepository('CmsBundle:Artiste')->getImageSlider();
+
         return $this->render('CmsBundle:User:index.html.twig', array(
             'accueil' => $accueils,
             'artistes' => $artistes,
@@ -28,7 +29,6 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $status = 0;
-        $categorie_name = null;
 
 //      Creation du formulaire pour recherche artiste
         $formBuilder = $this->get('form.factory')->createBuilder('form');
@@ -44,32 +44,24 @@ class UserController extends Controller
                 'empty_data'  => null,
                 'required' => false
             ));
+
         $form = $formBuilder->getForm();
         $form->handleRequest($request);
 
         if ($form->getViewData() != null && $form->getViewData()['categoris'] != null)
         {
             $categorie = $form->getViewData()['categoris'];
-            $categorie_name = $categorie->getNomDeLaCategorie();
-            $categorie_id = $categorie->getId();
-            $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(
-                array(
-                    'archive' => 0,
-                    'categorie' => $categorie_id
-                ),
-                array('nom' => 'asc'));
+            $artistes = $em->getRepository('CmsBundle:Artiste')->getAllArtisteArchiveFalse($categorie);
             $status = 1;
         }
         else
         {
-            $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 0), array('nom' => 'asc'));
-
+            $artistes = $em->getRepository('CmsBundle:Artiste')->getAllArtisteArchiveFalse($categorie = null);
         }
 
         return $this->render('CmsBundle:User:artistes.html.twig', array(
             'form' => $form->createView(),
             'artistes' => $artistes,
-            'categorie_name' => $categorie_name,
             'status' => $status
         ));
     }
@@ -115,23 +107,18 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy(array('archive' => 1));
-        $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
+        $categories = $em->getRepository('CmsBundle:Categorie')->getAllArtisteArchiveTrue();
 
-        $categ_id = array();
-        foreach ($artistes as  $artiste){
-            if (!is_null($artiste->getCategorie())){
-                if (!in_array($artiste->getCategorie()->getId(), $categ_id)){
-                    $categ_id[] = $artiste->getCategorie()->getId();
-                }
-            }
+        $sortCategories = array();
+        foreach($categories as $key => $item)
+        {
+            $sortCategories[$item['nomDeLaCategorie']][$key] = $item;
         }
 
-        $categories = $em->getRepository('CmsBundle:Categorie')->findBy(array('id' => $categ_id));
+        $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
 
         return $this->render('CmsBundle:User:archives.html.twig' , array (
-            'artistes' => $artistes,
-            'categories' => $categories,
+            'categories' => $sortCategories,
             'videos' => $videos
         ));
     }
@@ -152,7 +139,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $apropos = $em->getRepository('CmsBundle:Apropos')->findOneBy(array());
-        $equipe = $em->getRepository('CmsBundle:Equipe')->findBy(array(), array('nom' => 'asc'));
+        $equipe = $em->getRepository('CmsBundle:Equipe')->getAllEquipeMembers();
 
         return $this->render('CmsBundle:User:apropos.html.twig' , array (
             'apropos' => $apropos,

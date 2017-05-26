@@ -2,6 +2,7 @@
 
 namespace CmsBundle\Repository;
 
+use CmsBundle\Entity\Categorie;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -57,6 +58,25 @@ class ArtisteRepository extends EntityRepository
             ->where('a.id IN (:ids)')
             ->setParameter('ids', $random_ids);
         return $qb->getQuery()->getResult();
+    }
 
+    /**
+     * @param $categorie Categorie
+     * @return array
+     * Get All artistes where Archive == false
+     * And if search form, where Categorie is defined
+     */
+    public function getAllArtisteArchiveFalse($categorie){
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('a.nom', 'a.image', 'a.id', 'a.lien')
+            ->where('a.archive = false')
+            ->join('a.categorie', 'c')
+            ->addSelect('c.nomDeLaCategorie as categorie');
+        if ($categorie != null){
+            $qb->where('c = :categorie')
+                ->setParameter('categorie', $categorie);
+        }
+            $qb->orderBy('a.nom', 'ASC');
+        return $qb->getQuery()->getResult();
     }
 }
