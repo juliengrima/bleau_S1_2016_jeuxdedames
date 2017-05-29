@@ -49,14 +49,14 @@ function slideHome(){
     });
 }
 
-// Show more and less
-function showTexte(showChar) {
-    var contentHome = $('.contentHome');
+// Show more and less by nb char
+function showTexte(showChar, contentClassSelected) {
+    var contentClass = $('.' + contentClassSelected);
     var ellipsestext = "...";
     var moretext = "Lire la suite";
     var lesstext = "Masquer";
 
-    contentHome.each(function () {
+    contentClass.each(function () {
         var content = $(this).html();
         if (content.length > showChar){
             var showContent = content.substr(0, showChar);
