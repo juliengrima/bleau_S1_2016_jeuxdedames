@@ -2,6 +2,7 @@
 
 namespace CmsBundle\Controller;
 
+use CmsBundle\Form\SearchArtisteType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,26 +32,12 @@ class UserController extends Controller
         $status = 0;
 
 //      Creation du formulaire pour recherche artiste
-        $formBuilder = $this->get('form.factory')->createBuilder('form');
-        $formBuilder
-            ->add('categoris', EntityType::class, array(
-                'class' => 'CmsBundle\Entity\Categorie',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->orderBy('c.nomDeLaCategorie', 'ASC');
-                },
-                'choice_label' => 'nomDeLaCategorie',
-                'placeholder' => 'Spécifiez une catégorie',
-                'empty_data'  => null,
-                'required' => false
-            ));
-
-        $form = $formBuilder->getForm();
+        $form = $this->createForm(SearchArtisteType::class);
         $form->handleRequest($request);
 
-        if ($form->getViewData() != null && $form->getViewData()['categoris'] != null)
+        if ($form->isSubmitted())
         {
-            $categorie = $form->getViewData()['categoris'];
+            $categorie = $form->getViewData()['categorie'];
             $artistes = $em->getRepository('CmsBundle:Artiste')->getAllArtisteArchiveFalse($categorie);
             $status = 1;
         }
@@ -145,13 +132,13 @@ class UserController extends Controller
 
             if ($select == null || $select == 'presseContent'){
                 $presses = $em->getRepository('CmsBundle:Presse')->findAll();
-                $content['content'] = $this->renderView('@Cms/User/presse/articles.html.twig', array(
+                $content['content'] = $this->renderView('@Cms/User/include_presse/articles.html.twig', array(
                     'presses' => $presses
                 ));
             }
             elseif ($select == 'videoContent'){
                 $videos = $em->getRepository('CmsBundle:Youtube')->findBy(array(), array('title' => 'ASC'));
-                $content['content'] = $this->renderView('@Cms/User/presse/videos.html.twig', array(
+                $content['content'] = $this->renderView('@Cms/User/include_presse/videos.html.twig', array(
                     'videos' => $videos
                 ));
             }
