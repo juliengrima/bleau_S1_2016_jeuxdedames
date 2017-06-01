@@ -92,15 +92,15 @@
                 <form action="{{ path('cms_contact') }}" method="post">
                     <div class="form-group">
                         <label for="nom">Votre nom:</label>
-                        <input type="text" class="form-control" name="nom">
+                        <input id="nom" type="text" class="form-control" name="nom">
                     </div>
                     <div class="form-group">
                         <label for="email">Votre email:</label>
-                        <input type="email" class="form-control" name="email">
+                        <input id="email" type="email" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label for="sujet">Sujet:</label>
-                        <input type="text" class="form-control" name="sujet">
+                        <input id="sujet" type="text" class="form-control" name="sujet">
                     </div>
                     <div class="form-group">
                         <label for="message">Votre message:</label>
@@ -120,7 +120,64 @@
     {{ parent() }}
     <script>
         $(document).ready(function(){
-            showTexte(89, 'contentApropos');
+            var contentClassSelected = 'contentApropos';
+            var nbElement = $(".contentApropos > p").length;
+
+            showTexteApropos(nbElement, contentClassSelected);
+
+            function showTexteApropos(nbElement, contentClassSelected) {
+                var ellipsestext = "  ....";
+                var nbShowElement = Math.round(nbElement / 4);
+                var moretext = "Lire la suite";
+                var lesstext = "Masquer";
+
+                if (nbElement > 4){
+                    var showElements = $('.' + contentClassSelected + '> p:nth-child(-n+' + nbShowElement + ')');
+                    var showElementsLenght = showElements.length;
+
+                    var hideElements = $('.' + contentClassSelected + '> p:nth-child(n+' + (nbShowElement + 1) + ')');
+                    var showContent = '';
+                    var hideContent = '';
+
+                    showElements.each(function(index){
+                        var classDivP = $(this).attr('class');
+                        if (index == showElementsLenght -1){
+                            showContent += "<p class='" + classDivP + "'>" + $(this).html() + "<span class='moreellipses'>" + ellipsestext+ "&nbsp;</span></p>";
+                        }
+                        else{
+                            showContent += "<p class='" + classDivP + "'>" + $(this).html() + "</p>";
+                        }
+                    });
+
+                    hideElements.each(function(){
+                        var classDivP = $(this).attr('class');
+                        hideContent += "<p class='" + classDivP + "'>" + $(this).html() + "</p>";
+                    });
+
+                    var html =
+                        showContent +
+                        '<span class="morecontent">' +
+                            '<span>' + hideContent + '</span>&nbsp;&nbsp;' +
+                            '<a href="" class="morelink text-center">' + moretext + '</a>' +
+                        '</span>';
+                    $('.' + contentClassSelected).html(html);
+                }
+
+                $(".morelink").click(function(e){
+                    e.preventDefault();
+                    if($(this).hasClass("less")) {
+                        $(this).removeClass("less");
+                        $(this).html(moretext);
+                        $('.moreellipses').show();
+                        $('.morecontent span').slideUp("slow")
+                    } else {
+                        $(this).addClass("less");
+                        $(this).html(lesstext);
+                        $('.morecontent span').slideDown("slow")
+                        $('.moreellipses').hide();
+                    }
+                });
+            }
         });
     </script>
 
