@@ -24,7 +24,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "stfalcon/tinymce-bundle": "1.0"
+        "stfalcon/tinymce-bundle": "1.0",
+        "facebook/graph-sdk": "^5.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

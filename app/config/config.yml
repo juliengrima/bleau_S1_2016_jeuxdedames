@@ -8,6 +8,11 @@ imports:
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    fb_app_id: "%facebook_app_id%"
+    fb_app_secret: "%facebook_app_secret%"
+    fb_page_id: "%facebook_page_id%"
+    fb_token: "%facebook_token%"
 
 framework:
     #esi:             ~

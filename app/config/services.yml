@@ -12,3 +12,9 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+
+    app_core.facebook:
+        # notre classe
+        class: CmsBundle\Facebook\FacebookService
+        #  on ajoute nos identifiants en paramètre
+        arguments: ["%fb_app_id%","%fb_app_secret%","%fb_page_id%","%fb_token%"]

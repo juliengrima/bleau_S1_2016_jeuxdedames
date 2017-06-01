@@ -3,8 +3,6 @@
 namespace CmsBundle\Controller;
 
 use CmsBundle\Form\SearchArtisteType;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
