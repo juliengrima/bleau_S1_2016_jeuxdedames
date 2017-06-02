@@ -83,8 +83,35 @@ class EventsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            /*
+             * Dans le controller nécéssaire:
+             *
+            La methode poster prend en parametre:
+            1: Le message
+            2: Le lien sur lequel le post menera
+            3: La photo
+            4: Le nom
+            5: Le titre du post
+            6: La description du post
+            */
+
             $em->persist($event);
             $em->flush();
+
+//            $picture = [
+//                'titre' => $event->getTitre(),
+//                'source' => $event->getImages()->getAbsolutePath(),
+//            ];
+//            $idImageFacebook = $this->get('app_core.facebook')->postPicture($picture);
+
+//            $attachment = array(
+//                "link" => 'http://www.lesjeuxdedames.com/',
+//                "name" => 'Les jeux de dames',
+//                "object_attachment" => $idImageFacebook->getField('id'),
+//                'message' => $event->getTitre() . "du " . $event->getStart()->format('Y-m-d') . " au " . $event->getEnd()->format('Y-m-d')
+//            );
+//            $this->get('app_core.facebook')->poster($attachment);
 
             return $this->redirectToRoute('calendar_homepage');
         }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dbc57254edb1614a11149b42959e611",
+    "content-hash": "1dd0eb3a2c712f22ed07542716161595",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1516,17 +1516,17 @@
         },
         {
             "name": "stfalcon/tinymce-bundle",
-            "version": "v1.0",
+            "version": "v2.0",
             "target-dir": "Stfalcon/Bundle/TinymceBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stfalcon/TinymceBundle.git",
-                "reference": "405a7f67fc63bc636b84fbd2d1a0d11a855eeadd"
+                "reference": "998761a554a59540576129cceb88745d35f63074"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/405a7f67fc63bc636b84fbd2d1a0d11a855eeadd",
-                "reference": "405a7f67fc63bc636b84fbd2d1a0d11a855eeadd",
+                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/998761a554a59540576129cceb88745d35f63074",
+                "reference": "998761a554a59540576129cceb88745d35f63074",
                 "shasum": ""
             },
             "require": {
@@ -1534,6 +1534,11 @@
                 "symfony/symfony": ">=2.1"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Stfalcon\\Bundle\\TinymceBundle": ""
@@ -1567,7 +1572,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2016-03-29T12:05:00+00:00"
+            "time": "2016-03-29T12:07:40+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

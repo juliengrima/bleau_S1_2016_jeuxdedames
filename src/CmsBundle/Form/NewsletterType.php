@@ -3,6 +3,8 @@
 namespace CmsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,11 +19,11 @@ class NewsletterType extends AbstractType
         $builder
             ->add('libelle')
             ->add('objet')
-            ->add('texte', 'textarea', array(
+            ->add('texte', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'tinymce'
                 )))
-            ->add('file', 'file', array('label' => 'Pièce jointe', 'required' => false))
+            ->add('file', FileType::class, array('label' => 'Pièce jointe', 'required' => false))
         ;
     }
     

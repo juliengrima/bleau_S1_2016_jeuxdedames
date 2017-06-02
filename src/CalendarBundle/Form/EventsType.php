@@ -5,6 +5,8 @@ namespace CalendarBundle\Form;
 use CmsBundle\Form\ImagesType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,16 +19,16 @@ class EventsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start', 'datetime' , array(
+            ->add('start', DateTimeType::class , array(
                 'minutes' => range(0, 30, 30),
               //  'model_timezone' => 'Europe/Paris'
             ))
-            ->add('end', 'datetime' , array(
+            ->add('end', DateTimeType::class , array(
                 'minutes' => range(0, 30, 30),
              //   'model_timezone' => 'Europe/Paris'
             ))
             ->add('titre')
-            ->add('contenu', 'textarea')
+            ->add('contenu', TextareaType::class)
             ->add('color')
             ->add('images', ImagesType::class, array(
                 'label' => 'Image de l\'évènement'

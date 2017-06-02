@@ -3,6 +3,8 @@
 namespace CmsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,8 +20,8 @@ class CommercantType extends AbstractType
             ->add('adresse')
             ->add('code')
             ->add('ville')
-            ->add('lien', 'text', array('required' => false))
-            ->add('file', 'file', array('label' => 'Image', 'required' => false))
+            ->add('lien', TextType::class, array('required' => false))
+            ->add('file', FileType::class, array('label' => 'Image', 'required' => false))
             ->add('nom')
         ;
     }

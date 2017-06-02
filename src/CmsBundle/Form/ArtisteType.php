@@ -3,6 +3,7 @@
 namespace CmsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,7 @@ class ArtisteType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('file', 'file', array('label' => 'Image', 'required' => false))
+            ->add('file', FileType::class, array('label' => 'Image', 'required' => false))
             ->add('categorie')
             ->add('ajouterslider')
             ->add('archive')

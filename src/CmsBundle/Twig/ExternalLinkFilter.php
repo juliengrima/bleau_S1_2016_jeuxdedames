@@ -2,6 +2,7 @@
 
 namespace CmsBundle\Twig;
 
+
 class ExternalLinkFilter extends \Twig_Extension
 {
     public function getFilters()

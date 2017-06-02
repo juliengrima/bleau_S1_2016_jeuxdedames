@@ -29,21 +29,27 @@ class FacebookService
     }
 
     // Cette fonction permettra de poster sur notre page Facebook
-    public function poster($msg, $link, $picture, $name, $caption, $description)
+    public function poster($attachment)
     {
         //cette array contendra les paramètres de notre requête, ici on se contente d'envoyer un texte, mais on pourrait envoyer également avec d'autre paramêtre un lien, une image, etc...
-        $attachment = array(
-            'access_token' => $this->token,
-            'message' => $msg,
-            "link" => $link,
-            "picture" => $picture,
-            "name" => $name,
-            "caption" => $caption,
-            "description" => $description
-        );
+        $attachment['access_token'] = $this->token;
+//        $attachment['link'] = "http://www.lesjeuxdedames.com";
 
         // on poste sur notre page Facebook
         $this->connection->post('/'.$this->pageID.'/feed', $attachment, $this->token);
+    }
+
+    public function postPicture($picture){
+
+        // Upload a photo for a user
+        $data = [
+            'message' => $picture['titre'],
+            'source' => $this->connection->fileToUpload($picture['source']),
+            'published' => false
+        ];
+
+        $response = $this->connection->post('/'.$this->pageID.'/photos', $data, $this->token);
+        return $response->getGraphNode();
     }
 }
 
@@ -58,6 +64,16 @@ La methode poster prend en parametre:
 4: Le nom
 5: Le titre du post
 6: La description du post
+
+        $attachment = array(
+            'access_token' => $this->token,
+            'message' => $msg,
+            "link" => $link,
+            "picture" => $picture,
+            "name" => $name,
+            "caption" => $caption,
+            "description" => $description
+        );
 
 $this->get('app_core.facebook')->poster("Mon premier post depuis Symfony sur cette page");
 

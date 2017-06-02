@@ -3,6 +3,7 @@
 namespace CmsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,7 @@ class PartenaireType extends AbstractType
         $builder
         ->add('adresse')
         ->add('lien')
-        ->add('file', 'file', array('label' => 'Image', 'required' => false))
+        ->add('file', FileType::class, array('label' => 'Image', 'required' => false))
         ->add('donation')
         ;
     }
