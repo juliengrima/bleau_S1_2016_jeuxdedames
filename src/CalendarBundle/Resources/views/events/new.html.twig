@@ -80,6 +80,16 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <p class="">Description du post pour la publication Facebook</p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    {{ form_widget(form.facebookDescription , {'attr': {'class': 'form-control', 'placeholder': 'Description de l\'évènement'}}) }}
+                    {{ form_errors(form.facebookDescription) }}
+                </div>
+            </div>
+        </div>
 
         <div class="edit_admin">
             <input class="btn btn-default edit_admin"  type="submit" value="Créer" />

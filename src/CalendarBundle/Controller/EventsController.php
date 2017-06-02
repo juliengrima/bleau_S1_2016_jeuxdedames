@@ -99,17 +99,16 @@ class EventsController extends Controller
             $em->persist($event);
             $em->flush();
 
-//            $picture = [
-//                'titre' => $event->getTitre(),
-//                'source' => $event->getImages()->getAbsolutePath(),
-//            ];
-//            $idImageFacebook = $this->get('app_core.facebook')->postPicture($picture);
+            $picture = [
+                'caption' => $_REQUEST['events']['facebookDescription'] . "\n \n Retrouvez nous sur http://wwww.lesjeuxdedames.com",
+                'source' => $event->getImages()->getAbsolutePath(),
+            ];
+            $this->get('app_core.facebook')->postPicture($picture);
 
 //            $attachment = array(
+//                'message' => $event->getTitre() . "du " . $event->getStart()->format('Y-m-d') . " au " . $event->getEnd()->format('Y-m-d'),
 //                "link" => 'http://www.lesjeuxdedames.com/',
-//                "name" => 'Les jeux de dames',
-//                "object_attachment" => $idImageFacebook->getField('id'),
-//                'message' => $event->getTitre() . "du " . $event->getStart()->format('Y-m-d') . " au " . $event->getEnd()->format('Y-m-d')
+//                "picture" => 'http://media.mmv.fr/bundles/mmvwebsite/media/contenu/vignette-region/vignette-montagne-ete.jpg',
 //            );
 //            $this->get('app_core.facebook')->poster($attachment);
 

@@ -61,10 +61,28 @@ class AccueilController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
+            $previousImg1 = $accueil->getImage();
+            $previousImg2 = $accueil->getImage2()->getUrl();
+
             $accueil->preUpload();
             $accueil->getImage2()->preUpload();
             $em->persist($accueil);
             $em->flush();
+
+            if ($previousImg1 != $accueil->getImage()){
+                $picture = [
+                    'caption' => "Retrouvez nous sur http://wwww.lesjeuxdedames.com",
+                    'source' => $accueil->getAbsolutePath()
+                ];
+                $this->get('app_core.facebook')->postPicture($picture);
+            }
+            if ($previousImg2 != $accueil->getImage2()->getUrl()){
+                $picture2 = [
+                    'caption' => "Retrouvez nous sur http://wwww.lesjeuxdedames.com",
+                    'source' => $accueil->getImage2()->getAbsolutePath()
+                ];
+                $this->get('app_core.facebook')->postPicture($picture2);
+            }
 
             return $this->redirectToRoute('cms_homepage');
         }

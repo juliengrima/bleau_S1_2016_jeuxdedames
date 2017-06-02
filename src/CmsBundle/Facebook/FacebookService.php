@@ -42,11 +42,11 @@ class FacebookService
     public function postPicture($picture){
 
         // Upload a photo for a user
-        $data = [
-            'message' => $picture['titre'],
-            'source' => $this->connection->fileToUpload($picture['source']),
-            'published' => false
-        ];
+        $data['source'] = $this->connection->fileToUpload($picture['source']);
+
+        if (array_key_exists('caption', $picture)){
+            $data['caption'] = $picture['caption'];
+        }
 
         $response = $this->connection->post('/'.$this->pageID.'/photos', $data, $this->token);
         return $response->getGraphNode();
