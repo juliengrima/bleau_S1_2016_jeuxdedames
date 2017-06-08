@@ -20,14 +20,6 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        {% if is_granted("ROLE_SUPER_ADMIN") %}
-            <div class="edit_admin">
-                <a class="btn btn-default edit_admin" href="{{ path('admin_youtube_new') }}">Ajouter une nouvelle video</a>
-                <a class="btn btn-default edit_admin" href="{{ path('admin_youtube_index') }}">Administrer les video</a>
-            </div>
-        {% endif %}
-    </div>
     <div class="container-fluid">
         <div class="ariche_block">
             {% if categories != null %}

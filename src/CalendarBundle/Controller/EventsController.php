@@ -83,19 +83,6 @@ class EventsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
-            /*
-             * Dans le controller nécéssaire:
-             *
-            La methode poster prend en parametre:
-            1: Le message
-            2: Le lien sur lequel le post menera
-            3: La photo
-            4: Le nom
-            5: Le titre du post
-            6: La description du post
-            */
-
             $em->persist($event);
             $em->flush();
 
@@ -104,13 +91,6 @@ class EventsController extends Controller
                 'source' => $event->getImages()->getAbsolutePath(),
             ];
             $this->get('app_core.facebook')->postPicture($picture);
-
-//            $attachment = array(
-//                'message' => $event->getTitre() . "du " . $event->getStart()->format('Y-m-d') . " au " . $event->getEnd()->format('Y-m-d'),
-//                "link" => 'http://www.lesjeuxdedames.com/',
-//                "picture" => 'http://media.mmv.fr/bundles/mmvwebsite/media/contenu/vignette-region/vignette-montagne-ete.jpg',
-//            );
-//            $this->get('app_core.facebook')->poster($attachment);
 
             return $this->redirectToRoute('calendar_homepage');
         }
