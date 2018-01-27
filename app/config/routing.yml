@@ -1,3 +1,7 @@
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
+    prefix:   /
+
 calendar:
     resource: "@CalendarBundle/Resources/config/routing.yml"
     prefix:   /
