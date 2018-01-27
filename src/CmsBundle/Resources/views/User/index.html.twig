@@ -20,7 +20,9 @@
         {% if is_granted("ROLE_SUPER_ADMIN") %}
             <div class="row">
                 <div class="edit_admin">
+                    {% for accueil in accueils %}
                     <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page d'accueil</a>
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
@@ -28,7 +30,9 @@
         <div class="row carousel_jdd">
             <div class="section">
                 <div class="col-md-12">
+                    {% for accueil in accueils %}
                     <h1>{{ accueil.titre }}</h1>
+                    {% endfor %}
                     <div id="slider" style="height: 300px;">
                         {% for artiste in artistes %}
                                 <div class="aligner-item" style="width: 200px !important; margin-right: 5px; ">
@@ -41,6 +45,7 @@
         </div>
 
             <!-- ******** TEXTE PRESENTATION ******** -->
+        {% for accueil in accueils %}
 
         <div class="row home_presentation">
             <div class="section">
@@ -81,7 +86,7 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-6 vcenter">
-                {{ accueil.videoLink|raw }}
+                {#{{ accueil.videoLink|raw }}#}
             </div>
         </div>
 
@@ -89,6 +94,8 @@
             <p>{{ accueil.contenu|raw|nl2br }}</p>
         </div>
     </div>
+
+    {% endfor %}
 
 {% endblock %}
 

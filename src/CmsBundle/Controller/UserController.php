@@ -14,10 +14,10 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $accueils = $em->getRepository('CmsBundle:Accueil')->getAccueilContent();
-        $artistes = $em->getRepository('CmsBundle:Artiste')->getImageSlider();
+        $accueils = $em->getRepository('CmsBundle:Accueil')->findBy(array ('id' => 1));
+        $artistes = $em->getRepository('CmsBundle:Artiste')->findBy (array ('ajouterslider' => true));
         return $this->render('CmsBundle:User:index.html.twig', array(
-            'accueil' => $accueils,
+            'accueils' => $accueils,
             'artistes' => $artistes,
         ));
 

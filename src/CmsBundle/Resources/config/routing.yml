@@ -50,6 +50,7 @@ cms_contact:
 cms_homepage:
     path:     /
     defaults: { _controller: CmsBundle:User:index }
+    methods: [POST, GET]
 
 cms_admin:
     path:     /admin
