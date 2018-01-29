@@ -12,13 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class AccueilRepository extends EntityRepository
 {
-//    public function getAccueilContent(){
-//        $qb = $this->createQueryBuilder('a');
-//        $qb->select('a.id', 'a.titre', 'a.premiertitre', 'a.premiercontenu', 'a.deuxiemetitre', 'a.deuxiemecontenu', 'a.troisiemetitre', 'a.troisiemecontenu', 'a.contenu', 'a.image')
-//            ->join('a.image_2', 'i')
-//            ->addSelect('i.url as image2', 'i.alt as alt2')
-//            ->join('a.video', 'v')
-//            ->addSelect('v.link as videoLink', 'v.title as videoTitle');
-//        return $qb->getQuery()->getSingleResult();
-//    }
+    public function getAccueilContent(){
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('a.id', 'a.titre', 'a.premiertitre', 'a.premiercontenu', 'a.deuxiemetitre', 'a.deuxiemecontenu', 'a.troisiemetitre', 'a.troisiemecontenu', 'a.contenu', 'a.image')
+            ->join('a.image_2', 'i')
+            ->addSelect('i.url as image2', 'i.alt as alt2')
+            ->join('a.video', 'v')
+            ->addSelect('v.link as videoLink', 'v.title as videoTitle');
+        return $qb->getQuery()->getSingleResult();
+    }
 }

@@ -1,0 +1,24 @@
+mobilelist_index:
+    path:     /
+    defaults: { _controller: "MobileBundle:MobileList:index" }
+    methods:  GET
+
+mobilelist_show:
+    path:     /{id}/show
+    defaults: { _controller: "MobileBundle:MobileList:show" }
+    methods:  GET
+
+mobilelist_new:
+    path:     /new
+    defaults: { _controller: "MobileBundle:MobileList:new" }
+    methods:  [GET, POST]
+
+mobilelist_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MobileBundle:MobileList:edit" }
+    methods:  [GET, POST]
+
+mobilelist_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MobileBundle:MobileList:delete" }
+    methods:  DELETE

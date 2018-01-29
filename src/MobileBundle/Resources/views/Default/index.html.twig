@@ -1,99 +1,86 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <style>
-        iframe{
-            width:300px !important;
-            height: 200px !important;
-        }
-    </style>
-
-    <div class="container-fluid">
-    {% if is_granted("ROLE_SUPER_ADMIN") %}
+    <h1>Liste des artistes</h1>
+    <div class="container">
         <div class="row">
             <div class="edit_admin">
-                {% for accueil in accueils %}
-                    <a class="btn btn-default edit_admin" href="{{ path('accueil_edit', { 'id': accueil.id }) }}">Editer la page d'accueil</a>
-                {% endfor %}
+                <a class="btn btn-default edit_admin" href="{{ path('artiste_new') }}">Ajouter un nouvel artiste</a>
+                <a class="btn btn-default edit_admin" href="{{ path('user_artiste') }}">Retour aux artistes</a>
             </div>
         </div>
-    {% endif %}
-    <!-- ******** CAROUSSEL ******** -->
-    <div class="row carousel_jdd">
-        <div class="section">
-            <div class="col-md-12">
-                {% for accueil in accueils %}
-                    <h1>{{ accueil.titre }}</h1>
+        <div class="row">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Photos</th>
+                    <th>Nom</th>
+                    <th>Lien</th>
+                    <th>Slider</th>
+                    <th>Archive</th>
+                    <th>Categorie</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for artiste in artistes %}
+                    <tr>
+                        <td><img style="width: 160px !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" alt="{{ artiste.nom }}"></td>
+                        <td>{{ artiste.nom }}</td>
+                        <td><a href="{{ artiste.lien }}">WebSite</a></td>
+                        <td>
+                            {% if artiste.ajouterslider == true %}
+                                <p>Oui</p>
+                            {% else %}
+                                <p>Non</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if artiste.archive == true %}
+                                <p>Oui</p>
+                            {% else %}
+                                <p>Non</p>
+                            {% endif %}
+                        </td>
+                        <td>{{ artiste.categorie }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('artiste_edit', { 'id': artiste.id }) }}">Editer</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('artiste_delete', { 'id': artiste.id }) }}">Supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
                 {% endfor %}
-                <div id="slider" style="height: 300px;">
-                    {% for artiste in artistes %}
-                        <div class="aligner-item" style="width: 200px !important; margin-right: 5px; ">
-                            <img style="max-height:300px !important; width: 100% !important;" src="{{ asset('uploads/imgcms/' ~ artiste.image) }}">
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <!-- ******** TEXTE PRESENTATION ******** -->
-    {% for accueil in accueils %}
-
-        <div class="row home_presentation">
-            <div class="section">
-                <div class="col-md-4 home_contenu">
-                    <h4 class="">{{ accueil.premiertitre }}</h4>
-                    <p class="contentHome">{{ accueil.premiercontenu }}</p>
-                    <a class="enSavoitPlusAccueil" href="{{ path('user_apropos') }}">
-                        En savoir plus sur l'association...
-                    </a>
-                </div>
-                <div class="col-md-4 home_contenu">
-                    <h4 class="">{{ accueil.deuxiemetitre }}</h4>
-                    <p class="contentHome">{{ accueil.deuxiemecontenu }}</p>
-                    <a class="enSavoitPlusAccueil" href="{{ path('calendar_homepage') }}">
-                        En savoir plus sur nos évènements...
-                    </a>
-                </div>
-                <div class="col-md-4 home_contenu">
-                    <h4 class="">{{ accueil.troisiemetitre }}</h4>
-                    <p class="contentHome">{{ accueil.troisiemecontenu }}</p>
-                    <a class="enSavoitPlusAccueil" href="{{ path('user_commercant') }}">
-                        En savoir plus sur nos commerçants...
-                    </a>
-                </div>
-            </div><!--/row -->
-        </div>
-
-        <!-- ******** NOTRE EQUIPE ******** -->
-        <div class="row home_equipe">
-            <div class="col-md-4 col-xs-6 vcenter">
-                <a href="{{ asset('uploads/imgcms/' ~ accueil.image) }}" data-fancybox>
-                    <img src="{{ asset('uploads/imgcms/' ~ accueil.image) }}">
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-6 vcenter">
-                <a href="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}" data-fancybox>
-                    <img src="{{ asset('uploads/img_equipe/' ~ accueil.image2) }}">
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-6 vcenter">
-                {#{{ accueil.videoLink|raw }}#}
-            </div>
-        </div>
-
-        <div class="text-center">
-            <p>{{ accueil.contenu|raw|nl2br }}</p>
-        </div>
-        </div>
-
-    {% endfor %}
 
 {% endblock %}
 
 {% block javascripts %}
 
     {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
 {% endblock %}

@@ -36,29 +36,29 @@ class ArtisteRepository extends EntityRepository
         return array_slice($numbers, 0, $quantity);
     }
 
-//    /**
-//     * @return mixed
-//     * Get nb rows in Artiste where imageSlider = true
-//     */
-//    private function getNbRowsInArtisteWhereAjoutSliderTrue(){
-//        $qb = $this->createQueryBuilder('a');
-//        $qb->select('count(a.id)')
-//            ->where('a.ajouterslider = true');
-//        return $qb->getQuery()->getSingleScalarResult();
-//    }
-//
-//    /**
-//     * @return array
-//     * Get random image
-//     */
-//    public function getImageSlider(){
-//        $random_ids = $this->UniqueRandomNumbersWithinRange(1, $this->getNbRowsInArtisteWhereAjoutSliderTrue(),15);
-//        $qb = $this->createQueryBuilder('a');
-//        $qb->select('a.image')
-//            ->where('a.id IN (:ids)')
-//            ->setParameter('ids', $random_ids);
-//        return $qb->getQuery()->getResult();
-//    }
+    /**
+     * @return mixed
+     * Get nb rows in Artiste where imageSlider = true
+     */
+    private function getNbRowsInArtisteWhereAjoutSliderTrue(){
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('count(a.id)')
+            ->where('a.ajouterslider = true');
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @return array
+     * Get random image
+     */
+    public function getImageSlider(){
+        $random_ids = $this->UniqueRandomNumbersWithinRange(1, $this->getNbRowsInArtisteWhereAjoutSliderTrue(),15);
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('a.image')
+            ->where('a.id IN (:ids)')
+            ->setParameter('ids', $random_ids);
+        return $qb->getQuery()->getResult();
+    }
 
     /**
      * @param $categorie Categorie

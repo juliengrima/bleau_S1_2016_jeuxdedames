@@ -1,7 +1,3 @@
-mobile:
-    resource: "@MobileBundle/Resources/config/routing.yml"
-    prefix:   /
-
 calendar:
     resource: "@CalendarBundle/Resources/config/routing.yml"
     prefix:   /
@@ -12,6 +8,10 @@ user:
 
 cms:
     resource: "@CmsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user:
