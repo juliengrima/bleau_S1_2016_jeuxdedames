@@ -1,0 +1,21 @@
+/* ------------------------- NEW -----------------------*/
+
+.main-select{
+    width: 300px;
+    height: 400px !important;
+    float: left;
+    border-style: solid;
+    border-color: #ffff1a;
+    border-width: 1px 1px 1px 1px;
+    background-color: #00BCD4;
+    color: #ffff;
+}
+
+.v-align{
+    margin-top: 200px;
+    font-size: 1.6em;
+    color: #ffff;
+}
+
+/* ------------------------- SHOW -----------------------*/
+

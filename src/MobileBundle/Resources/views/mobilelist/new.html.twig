@@ -1,16 +1,77 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('mobilePubilc/css/main.css') }}" />
+
+{% endblock %}
+
 {% block body %}
-    <h1>Mobilelist creation</h1>
+    <h1>Ajouter une nouvelle exposition</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <p class="">Date de début d'évènement</p>
+                    <div class="input-group">
+                        {{ form_widget(form.dateDebut) }}
+                        {{ form_errors(form.dateDebut) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="">Date de fin d'évènement</p>
+                    <div class="input-group">
+                        {{ form_widget(form.dateFin) }}
+                        {{ form_errors(form.dateFin) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <p class="">Sélection du commerçant</p>
+                    <div class="input-group">
+                        {{ form_widget(form.commercants, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                        {{ form_errors(form.commercants) }}
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <p class="v-align">=></p>
+                </div>
+                <div class="col-lg-5">
+                    <p class="">Sélection de l'artiste</p>
+                    <div class="input-group">
+                        {{ form_widget(form.artistess, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                        {{ form_errors(form.artistess) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="edit_admin">
+            <input class="btn btn-default edit_admin"  type="submit" value="Valider l'exposition" />
+            <a class="btn btn-default edit_admin"  href="{{ path('mobilelist_index') }}">Retour à la liste</a>
+        </div>
+
+    </div>
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('mobilelist_index') }}">Back to the list</a>
-        </li>
-    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/calendar/js_colopicker/bootstrap-colorpicker.js') }}"></script>
+    <script>
+        $(function () {
+            $('#events_color').colorpicker();
+        });
+    </script>
 {% endblock %}

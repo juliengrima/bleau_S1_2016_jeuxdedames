@@ -21,4 +21,4 @@ mobilelist_edit:
 mobilelist_delete:
     path:     /{id}/delete
     defaults: { _controller: "MobileBundle:MobileList:delete" }
-    methods:  DELETE
+    methods:  [GET, POST]

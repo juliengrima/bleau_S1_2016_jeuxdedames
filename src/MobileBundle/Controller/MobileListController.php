@@ -5,6 +5,7 @@ namespace MobileBundle\Controller;
 use MobileBundle\Entity\MobileList;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Mobilelist controller.
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MobileListController extends Controller
 {
+
     /**
      * Lists all mobileList entities.
      *
@@ -78,10 +80,10 @@ class MobileListController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('mobilelist_edit', array('id' => $mobileList->getId()));
+            return $this->redirectToRoute('mobilelist_show', array('id' => $mobileList->getId()));
         }
 
-        return $this->render('@Mobile/mobilelist/show.html.twig', array(
+        return $this->render('@Mobile/mobilelist/edit.html.twig', array(
             'mobileList' => $mobileList,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -3,5 +3,5 @@ mobile_mobilelist:
     prefix:   /admin/mobilelist
 
 mobile_homepage:
-    path:     /
-    defaults: { _controller: MobileBundle:Default:index }
+    path:     /mobile
+    defaults: { _controller: MobileBundle:Default:home }

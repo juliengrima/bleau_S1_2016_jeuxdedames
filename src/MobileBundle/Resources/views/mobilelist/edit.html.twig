@@ -1,21 +1,74 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('mobilePubilc/css/main.css') }}" />
+
+{% endblock %}
+
 {% block body %}
-    <h1>Mobilelist edit</h1>
+
+    <h1>Ajouter une nouvelle exposition</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+    <div class="container">
+
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <p class="">Date de début d'évènement</p>
+                    <div class="input-group">
+                        {{ form_widget(edit_form.dateDebut) }}
+                        {{ form_errors(edit_form.dateDebut) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="">Date de fin d'évènement</p>
+                    <div class="input-group">
+                        {{ form_widget(edit_form.dateFin) }}
+                        {{ form_errors(edit_form.dateFin) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <p class="">Sélection du commerçant</p>
+                    <div class="input-group">
+                        {{ form_widget(edit_form.commercants, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                        {{ form_errors(edit_form.commercants) }}
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <p class="v-align">=></p>
+                </div>
+                <div class="col-lg-5">
+                    <p class="">Sélection de l'artiste</p>
+                    <div class="input-group">
+                        {{ form_widget(edit_form.artistess, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                        {{ form_errors(edit_form.artistess) }}
+                    </div>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <input class="btn btn-default edit_admin"  type="submit" value="Modifier l'exposition" />
+            </div>
+            <div class="col-lg-4">
+                <a class="btn btn-default edit_admin"  href="{{ path('mobilelist_index') }}">Retour à la liste</a>
+            </div>
+
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('mobilelist_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="col-lg-4">
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer l'exposition" class="btn btn-default edit_admin">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
