@@ -10,13 +10,11 @@ MobileBundle\Entity\MobileList:
                 strategy: AUTO
     fields:
         dateDebut:
-            type: date
+            type: datetime
             nullable: true
-            column: date_debut
         dateFin:
-            type: date
+            type: datetime
             nullable: true
-            column: date_fin
 
     manyToOne:
         commercants:

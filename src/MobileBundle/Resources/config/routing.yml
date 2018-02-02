@@ -4,4 +4,5 @@ mobile_mobilelist:
 
 mobile_homepage:
     path:     /mobile
-    defaults: { _controller: MobileBundle:Default:home }
+    defaults: { _controller: MobileBundle:Default:getJson }
+    methods:  GET

@@ -14,30 +14,35 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
-    public function homeAction()
-    {
+
+    public function getJsonAction() {
 
         $em = $this->getDoctrine()->getManager();
         $mobileLists = $em->getRepository('MobileBundle:MobileList')->findAll();
 
-        if ($mobileLists != ''){
+        $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
+        $encoder = new JsonEncoder(); // Encodage des données en JSON
 
-            $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
-            $normalizer->setIgnoredAttributes(array('commercant', 'artiste'));
-            $encoder = new JsonEncoder(); // Encodage des données en JSON
-            $serializer = new Serializer(array($normalizer), array($encoder));
+        /* ENCODAGE DE DATE POUR RECUP */
+        $dateCallback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format(\DateTime::ISO8601)
+                : '';
+        };
 
-            $jsonObject = $serializer->serialize($mobileLists, 'json');
+        /* CREATION TABLEAU POUR ENVOI AU JSON */
+        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback));
+//        $normalizer->setIgnoredAttributes(array('commercant', 'artiste'));
+        $normalizer->setCircularReferenceHandler(function ($mobileLists) {
+            return $mobileLists->getName ('commercant');
+        });
 
-            $content = $this->renderView('@Mobile/mobilelist/content.html.twig', array(
-                'mobileLists'=>$mobileLists
-            ));
-            $response = new JsonResponse($content);
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonObject = $serializer->serialize($mobileLists, 'json');
 
-            return $response;
+        $response = new Response();
+        $response->setContent($jsonObject);
 
-        }
-
-        return $this->render('MobileBundle:Default:index.html.twig');
+        return $response;
     }
 }

@@ -22,3 +22,12 @@ mobilelist_delete:
     path:     /{id}/delete
     defaults: { _controller: "MobileBundle:MobileList:delete" }
     methods:  [GET, POST]
+
+###########################################
+#############@   Routes Json  #############
+###########################################
+#
+#mobile_index:
+#    path:     /mobile_json
+#    defaults: { _controller: "MobileBundle:Default:home" }
+#    methods:  GET
