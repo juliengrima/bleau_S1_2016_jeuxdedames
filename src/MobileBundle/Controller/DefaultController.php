@@ -2,6 +2,7 @@
 
 namespace MobileBundle\Controller;
 
+use CmsBundle\CmsBundle;
 use MobileBundle\Entity\MobileList;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,9 +21,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $mobileLists = $em->getRepository('MobileBundle:MobileList')->findAll();
 
-        $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
-        $encoder = new JsonEncoder(); // Encodage des données en JSON
-
         /* ENCODAGE DE DATE POUR RECUP */
         $dateCallback = function ($dateTime) {
             return $dateTime instanceof \DateTime
@@ -30,12 +28,12 @@ class DefaultController extends Controller
                 : '';
         };
 
+        $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
+        $encoder = new JsonEncoder(); // Encodage des données en JSON
+
         /* CREATION TABLEAU POUR ENVOI AU JSON */
         $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback));
-//        $normalizer->setIgnoredAttributes(array('commercant', 'artiste'));
-        $normalizer->setCircularReferenceHandler(function ($mobileLists) {
-            return $mobileLists->getName ('commercant');
-        });
+        $normalizer->setIgnoredAttributes(array('commercant', 'artiste'));
 
         $serializer = new Serializer(array($normalizer), array($encoder));
         $jsonObject = $serializer->serialize($mobileLists, 'json');

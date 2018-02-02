@@ -10,10 +10,10 @@ MobileBundle\Entity\MobileList:
                 strategy: AUTO
     fields:
         dateDebut:
-            type: datetime
+            type: date
             nullable: true
         dateFin:
-            type: datetime
+            type: date
             nullable: true
 
     manyToOne:
