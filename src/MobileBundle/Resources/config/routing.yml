@@ -6,3 +6,8 @@ mobile_homepage:
     path:     /mobile
     defaults: { _controller: MobileBundle:Default:getJson }
     methods:  GET
+
+mobile_events:
+    path:     /mobile/events
+    defaults: { _controller: MobileBundle:Default:getJsonevents }
+    methods:  GET

@@ -4,6 +4,7 @@ namespace MobileBundle\Controller;
 
 use CmsBundle\CmsBundle;
 use MobileBundle\Entity\MobileList;
+use CmsBundle\Entity\Artiste;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,24 +20,52 @@ class DefaultController extends Controller
     public function getJsonAction() {
 
         $em = $this->getDoctrine()->getManager();
-        $mobileLists = $em->getRepository('MobileBundle:MobileList')->findAll();
-
-        /* ENCODAGE DE DATE POUR RECUP */
-        $dateCallback = function ($dateTime) {
-            return $dateTime instanceof \DateTime
-                ? $dateTime->format(\DateTime::ISO8601)
-                : '';
-        };
+        $mobileList = $em->getRepository('MobileBundle:MobileList')->findAll();
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
 
+        /* ENCODAGE DE DATE POUR RECUP */
+        $dateCallback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format('d m Y')
+                : '';
+        };
+
         /* CREATION TABLEAU POUR ENVOI AU JSON */
-        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback));
-        $normalizer->setIgnoredAttributes(array('commercant', 'artiste'));
+        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback, 'date' => $dateCallback));
+        $normalizer->setIgnoredAttributes(array ('artiste'));
 
         $serializer = new Serializer(array($normalizer), array($encoder));
-        $jsonObject = $serializer->serialize($mobileLists, 'json');
+        $jsonObject = $serializer->serialize($mobileList, 'json');
+
+        $response = new Response();
+        $response->setContent($jsonObject);
+
+        return $response;
+    }
+
+    public function getJsoneventsAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $mobileList = $em->getRepository('CalendarBundle:Events')->findAll();
+
+        $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
+        $encoder = new JsonEncoder(); // Encodage des données en JSON
+
+        /* ENCODAGE DE DATE POUR RECUP */
+        $dateCallback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format('d m Y H:i')
+                : '';
+        };
+
+        /* CREATION TABLEAU POUR ENVOI AU JSON */
+        $normalizer->setCallbacks(array('start' => $dateCallback, 'end' => $dateCallback));
+        $normalizer->setIgnoredAttributes(array ('artiste'));
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonObject = $serializer->serialize($mobileList, 'json');
 
         $response = new Response();
         $response->setContent($jsonObject);
