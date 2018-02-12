@@ -10,4 +10,15 @@ namespace MobileBundle\Repository;
  */
 class MobileListRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getCommercantArtisteCategorie(){
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('a.id', 'a.dateDebut', 'a.dateFin')
+            ->join('a.commercants', 'i')
+            ->addSelect('i.nom', 'i.adresse', 'i.code', 'i.ville', 'i.lat', 'i.lng')
+            ->join('a.artistess', 'v')
+            ->addSelect('v.nom', 'v.date');
+        return $qb->getQuery()->getResult();
+    }
+
 }

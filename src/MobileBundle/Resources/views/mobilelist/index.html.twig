@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Liste des artistes</h1>
+    <div class="container">
+        <div class="row">
+            <div class="edit_admin">
+                <a class="btn btn-default edit_admin" href="{{ path('mobilelist_new') }}">Ajouter une nouvelle exposition</a>
+                <a class="btn btn-default edit_admin" href="{{ path('mobile_homepage') }}">Vérifier le fichier de données mobile</a>
+                <a class="btn btn-default edit_admin" href="{{ path('mobile_events') }}">Vérifier le fichier de données mobile évènements</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Galeries commerçantes</th>
+                        <th>Artistes exposants</th>
+                        <th>Dates des exposition</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for mobileList in mobileLists %}
+                    <tr>
+                        <td>{{ mobileList.commercants }}</td>
+                        <td>{{ mobileList.artistess }}</td>
+                        <td>{% if mobileList.dateDebut %}{{ mobileList.dateDebut|date('Y-m-d') }}{% endif %} /
+                            {% if mobileList.dateFin %}{{ mobileList.dateFin|date('Y-m-d') }}{% endif %}
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a class="btn btn-default edit_admin" href="{{ path('mobilelist_edit', { 'id': mobileList.id }) }}">Editer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+    <style>
+        footer{
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
+    </style>
+
+{% endblock %}

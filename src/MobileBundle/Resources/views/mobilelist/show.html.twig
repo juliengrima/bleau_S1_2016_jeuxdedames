@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        footer{
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Résultat de l'exposition</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Date de début</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>{% if mobileList.dateDebut %}{{ mobileList.dateDebut|date('d-m-Y') }}{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Date de fin</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>{% if mobileList.dateFin %}{{ mobileList.dateFin|date('d-m-Y') }}{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Galerie commerçante</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>{{ mobileList.commercants }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <p class="v-align">=></p>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Artiste exposant</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>{{ mobileList.artistess }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <a class="btn btn-default edit_admin" href="{{ path('mobilelist_index') }}">Retour à la liste</a>
+            </div>
+            <div class="col-lg-4">
+                <a class="btn btn-default edit_admin" href="{{ path('mobilelist_edit', { 'id': mobileList.id }) }}">Modifier l'exposition</a>
+            </div>
+            <div class="col-lg-4">
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer" class="btn btn-default edit_admin">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

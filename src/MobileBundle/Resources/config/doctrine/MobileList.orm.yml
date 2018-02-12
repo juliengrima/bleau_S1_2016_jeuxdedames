@@ -12,11 +12,9 @@ MobileBundle\Entity\MobileList:
         dateDebut:
             type: date
             nullable: true
-            column: date_debut
         dateFin:
             type: date
             nullable: true
-            column: date_fin
 
     manyToOne:
         commercants:

@@ -1,0 +1,17 @@
+{% for mobile in mobileLists %}
+
+    <ul>
+        <li>{{ mobile.artistess.nom }}</li>
+
+        <li>{{ mobile.commercants.nom }}</li>
+        <li>{{ mobile.commercants.adresse }}</li>
+        <li>{{ mobile.commercants.code }}</li>
+        <li>{{ mobile.commercants.ville }}</li>
+        <li>{{ mobile.commercants.lat }}</li>
+        <li>{{ mobile.commercants.lng }}</li>
+
+        <li>{% if mobile.dateDebut %}{{ mobile.dateDebut|date('Y-m-d') }}{% endif %}</li>
+        <li>{% if mobile.dateFin %}{{ mobile.dateFin|date('Y-m-d') }}{% endif %}}</li>
+    </ul>
+
+{% endfor %}

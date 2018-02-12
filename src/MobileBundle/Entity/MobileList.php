@@ -7,6 +7,13 @@ namespace MobileBundle\Entity;
  */
 class MobileList
 {
+
+//    public function __toString()
+//    {
+//        // TODO: Implement __toString() method.
+//        return $this->dateDebut;
+//    }
+
     /**
      * @var int
      */
@@ -21,6 +28,16 @@ class MobileList
      * @var \DateTime
      */
     private $dateFin;
+
+    /**
+     * @var \CmsBundle\Entity\Commercant
+     */
+    private $commercants;
+
+    /**
+     * @var \CmsBundle\Entity\Artiste
+     */
+    private $artistess;
 
 
     /**
@@ -80,16 +97,6 @@ class MobileList
     {
         return $this->dateFin;
     }
-    /**
-     * @var \CmsBundle\Entity\Commercant
-     */
-    private $commercants;
-
-    /**
-     * @var \CmsBundle\Entity\Artiste
-     */
-    private $artistess;
-
 
     /**
      * Set commercants
