@@ -68,10 +68,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/calendar/js_colopicker/bootstrap-colorpicker.js') }}"></script>
-    <script>
-        $(function () {
-            $('#events_color').colorpicker();
-        });
-    </script>
+
 {% endblock %}
