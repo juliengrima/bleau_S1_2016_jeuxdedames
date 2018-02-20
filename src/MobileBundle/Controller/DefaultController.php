@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends Controller
 {
@@ -47,8 +48,10 @@ class DefaultController extends Controller
 
     public function getJsoneventsAction() {
 
+        $dayDate = date("Y-m-d");
+
         $em = $this->getDoctrine()->getManager();
-        $mobileList = $em->getRepository('CalendarBundle:Events')->findAll();
+        $mobileList = $em->getRepository('CalendarBundle:Events')->findBy(array ('start' >= $dayDate));
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON

@@ -3,6 +3,8 @@
 namespace MobileBundle\Controller;
 
 use MobileBundle\Entity\MobileList;
+use CmsBundle\Entity\Artiste;
+use MobileBundle\MobileBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,8 +37,13 @@ class MobileListController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $mobileList = new Mobilelist();
+
         $form = $this->createForm('MobileBundle\Form\MobileListType', $mobileList);
+//        $em = $this->getDoctrine()->getManager();
+//        $mobileList->getArtistess ()->getArchive ();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
