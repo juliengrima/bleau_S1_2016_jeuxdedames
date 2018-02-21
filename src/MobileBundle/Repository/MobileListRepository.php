@@ -13,11 +13,12 @@ class MobileListRepository extends \Doctrine\ORM\EntityRepository
 
     public function getCommercantArtisteCategorie(){
         $qb = $this->createQueryBuilder('a');
-        $qb->select('a.id', 'a.dateDebut', 'a.dateFin')
+        $qb->select('a.id')
             ->join('a.commercants', 'i')
             ->addSelect('i.nom', 'i.adresse', 'i.code', 'i.ville', 'i.lat', 'i.lng')
             ->join('a.artistess', 'v')
-            ->addSelect('v.nom', 'v.date');
+            ->addSelect('v.nom', 'v.archive')
+            ->andWhere('v.archive = 0');
         return $qb->getQuery()->getResult();
     }
 

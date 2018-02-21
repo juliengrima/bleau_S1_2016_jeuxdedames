@@ -41,8 +41,6 @@ class MobileListController extends Controller
         $mobileList = new Mobilelist();
 
         $form = $this->createForm('MobileBundle\Form\MobileListType', $mobileList);
-//        $em = $this->getDoctrine()->getManager();
-//        $mobileList->getArtistess ()->getArchive ();
 
         $form->handleRequest($request);
 
