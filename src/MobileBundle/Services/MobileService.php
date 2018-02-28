@@ -8,11 +8,6 @@
 
 namespace MobileBundle\Services;
 
-use MobileBundle\Entity\MobileList;
-use CmsBundle\Entity\Artiste;
-use MobileBundle\MobileBundle;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
@@ -37,10 +32,11 @@ class MobileService extends Controller
 
         $qb = $repository->createQueryBuilder('p')
             ->select('p.id')
-            ->Where ('p.dateFin < CURRENT_DATE()')
+            ->Where ('p.dateFin > CURRENT_DATE()')
+            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
             ->join ('p.artistess', 'i')
             ->addSelect('i.nom', 'i.archive')
-            ->where ('i.archive = false')
+            ->andWhere ('i.archive = false')
             ->orderBy ('i.nom', 'DESC')
             ->join ('i.categorie', 'ca')
             ->addSelect ('ca.nomDeLaCategorie')
@@ -50,5 +46,3 @@ class MobileService extends Controller
         return $qb->getQuery()->getResult();
     }
 }
-
-//            ->setParameter('dateNow', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
