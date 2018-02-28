@@ -26,29 +26,30 @@ class MobileService extends Controller
 
     }
 
-    public function getArtistes(){
-//        Alias 's' = class searchrepository
-//        Alias 'c' = categorie
+    public function getjsonArtistesFalse($date){
+//        Alias 'p' = class mobileList
+//        Alias 'ca' = categorie
+//        Alias 'co' = commercants
+//        Alias 'a' = artistess
 
-        $repository = $this->getDoctrine()->getRepository('CmsBundle:Artiste');
+        $repository = $this->getDoctrine()
+            ->getRepository('MobileBundle:MobileList');
 
         $qb = $repository->createQueryBuilder('p')
-            ->select('p.id', 'p.nom', 'p.archive')
-            ->where('p.archive = false')
-            ->orderBy('p.archive', 'DESC');
+            ->select('p.id', 'p.dateDebut', 'p.dateFin')
+            ->Where ('p.dateDebut >= :dateNow')
+            ->setParameter('dateNow', $date)
+            ->join ('p.artistess', 'i')
+            ->addSelect('i.nom', 'i.archive')
+            ->where ('i.archive = false')
+            ->orderBy ('i.nom', 'DESC')
+            ->join ('i.categorie', 'ca')
+            ->addSelect ('ca.nomDeLaCategorie')
+            ->join ('p.commercants', 'co')
+            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
+
         return $qb->getQuery()->getResult();
     }
-
-//    public function getCommercants($m){
-////        Alias 's' = class searchrepository
-////        Alias 'c' = categorie
-//
-//        $repository = $this->getDoctrine()
-//            ->getRepository('CmsBundle:Commercant');
-//
-//        $qb = $repository->createQueryBuilder('p')
-//            ->select('p.id', 'p.nom')
-//            ->orderBy('p.nom', 'DESC');
-//        return $qb->getQuery()->getResult();
-//    }
 }
+
+//            ->setParameter('dateNow', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)

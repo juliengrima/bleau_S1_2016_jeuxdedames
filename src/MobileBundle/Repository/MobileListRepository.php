@@ -37,9 +37,8 @@ class MobileListRepository extends \Doctrine\ORM\EntityRepository
 
         $qb = $this->createQueryBuilder('p')
             ->select('p.id', 'p.dateDebut', 'p.dateFin')
-            ->andWhere ('p.dateDebut => :dateNow')
+            ->Where ('p.dateDebut >= :dateNow')
             ->setParameter('dateNow', $date)
-//            ->setParameter('dateNow', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
             ->join ('p.artistess', 'i')
             ->addSelect('i.nom', 'i.archive')
             ->where ('i.archive = false')
