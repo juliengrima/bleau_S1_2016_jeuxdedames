@@ -11,10 +11,8 @@ MobileBundle\Entity\MobileList:
     fields:
         dateDebut:
             type: date
-            nullable: true
         dateFin:
             type: date
-            nullable: true
 
     manyToOne:
         commercants:
