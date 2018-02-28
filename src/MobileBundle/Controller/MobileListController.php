@@ -4,6 +4,7 @@ namespace MobileBundle\Controller;
 
 use MobileBundle\Entity\MobileList;
 use CmsBundle\Entity\Artiste;
+use CmsBundle\Entity\Categorie;
 use MobileBundle\MobileBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,10 +40,16 @@ class MobileListController extends Controller
     {
 
         $mobileList = new Mobilelist();
+        $categorie = new Categorie();
 
         $form = $this->createForm('MobileBundle\Form\MobileListType', $mobileList);
 
+        $em = $this->getDoctrine ()->getManager ();
+        $mobileList = $em->getRepository ('MobileBundle:MobileList')->getArtistesFalse ();
+
         $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

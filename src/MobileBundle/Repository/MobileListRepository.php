@@ -1,6 +1,8 @@
 <?php
 
 namespace MobileBundle\Repository;
+use CmsBundle\Entity\Artiste;
+
 
 /**
  * MobileListRepository
@@ -11,14 +13,42 @@ namespace MobileBundle\Repository;
 class MobileListRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getCommercantArtisteCategorie(){
-        $qb = $this->createQueryBuilder('a');
-        $qb->select('a.id')
-            ->join('a.commercants', 'i')
-            ->addSelect('i.nom', 'i.adresse', 'i.code', 'i.ville', 'i.lat', 'i.lng')
-            ->join('a.artistess', 'v')
-            ->addSelect('v.nom', 'v.archive')
-            ->andWhere('v.archive = 0');
+    public function getArtistesFalse(){
+//        Alias 's' = class searchrepository
+//        Alias 'c' = categorie
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.id', 'p.dateDebut', 'p.dateFin')
+            ->join ('p.artistess', 'a')
+            ->select ('a.id', 'a.nom', 'a.archive')
+            ->where('a.archive = false')
+            ->orderBy('a.nom', 'DESC')
+            ->join ('p.commercants', 'c')
+            ->select ('c.id', 'c.nom')
+            ->orderBy('c.nom', 'DESC');
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getjsonArtistesFalse($date){
+//        Alias 'p' = class mobileList
+//        Alias 'ca' = categorie
+//        Alias 'co' = commercants
+//        Alias 'a' = artistess
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.id', 'p.dateDebut', 'p.dateFin')
+            ->andWhere ('p.dateDebut => :dateNow')
+            ->setParameter('dateNow', $date)
+//            ->setParameter('dateNow', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
+            ->join ('p.artistess', 'i')
+            ->addSelect('i.nom', 'i.archive')
+            ->where ('i.archive = false')
+            ->orderBy ('i.nom', 'DESC')
+            ->join ('i.categorie', 'ca')
+            ->addSelect ('ca.nomDeLaCategorie')
+            ->join ('p.commercants', 'co')
+            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
+
         return $qb->getQuery()->getResult();
     }
 
