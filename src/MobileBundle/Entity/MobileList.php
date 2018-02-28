@@ -11,9 +11,11 @@ class MobileList
 //    public function __toString()
 //    {
 //        // TODO: Implement __toString() method.
-//        return $this->dateDebut;
+//        return $this->dateNow;
 //    }
+//
 
+// -------------------------------------- GENERATED CODE ---------------------------------------------
     /**
      * @var int
      */

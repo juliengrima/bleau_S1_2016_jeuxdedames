@@ -18,3 +18,9 @@ services:
         class: CmsBundle\Facebook\FacebookService
         #  on ajoute nos identifiants en paramètre
         arguments: ["%fb_app_id%","%fb_app_secret%","%fb_page_id%","%fb_token%"]
+
+    # ---> SERVICES PLATEFORMEBUNDLE
+    # [...] SearchBundle/Service
+    mobile.service:
+        class: MobileBundle\Services\MobileService
+        arguments: ['@service_container']
