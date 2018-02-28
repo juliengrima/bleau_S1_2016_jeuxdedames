@@ -29,7 +29,7 @@ class DefaultController extends Controller
         };
 
         /* CREATION TABLEAU POUR ENVOI AU JSON */
-        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback, 'date' => $dateCallback));
+        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback));
         $normalizer->setIgnoredAttributes(array ('artiste'));
 
         $serializer = new Serializer(array($normalizer), array($encoder));
@@ -59,7 +59,6 @@ class DefaultController extends Controller
 
         /* CREATION TABLEAU POUR ENVOI AU JSON */
         $normalizer->setCallbacks(array('start' => $dateCallback, 'end' => $dateCallback));
-        $normalizer->setIgnoredAttributes(array ('artiste'));
 
         $serializer = new Serializer(array($normalizer), array($encoder));
         $jsonObject = $serializer->serialize($mobileList, 'json');
