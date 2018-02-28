@@ -26,7 +26,7 @@ class MobileService extends Controller
 
     }
 
-    public function getjsonArtistesFalse($date){
+    public function getjsonArtistesFalse(){
 //        Alias 'p' = class mobileList
 //        Alias 'ca' = categorie
 //        Alias 'co' = commercants
@@ -36,9 +36,8 @@ class MobileService extends Controller
             ->getRepository('MobileBundle:MobileList');
 
         $qb = $repository->createQueryBuilder('p')
-            ->select('p.id', 'p.dateDebut', 'p.dateFin')
-            ->Where ('p.dateDebut >= :dateNow')
-            ->setParameter('dateNow', $date)
+            ->select('p.id')
+            ->Where ('p.dateFin < CURRENT_DATE()')
             ->join ('p.artistess', 'i')
             ->addSelect('i.nom', 'i.archive')
             ->where ('i.archive = false')

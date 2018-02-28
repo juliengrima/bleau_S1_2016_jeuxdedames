@@ -21,15 +21,8 @@ class DefaultController extends Controller
 
     public function getJsonAction() {
 
-//      Récuperation de la date du moment
-        $date = new \DateTime('now');
-
-//        Recupération et filtrage via Repository
-//        $em = $this->getDoctrine ()->getManager ();
-//        $mobileList = $em->getRepository('MobileBundle:MobileList')->getjsonArtistesFalse ($date);
-
 //      Recupération et filtrage via Services
-        $mobileList = $this->container->get('mobile.service')->getjsonArtistesFalse ($date);
+        $mobileList = $this->container->get('mobile.service')->getjsonArtistesFalse ();
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
@@ -56,8 +49,6 @@ class DefaultController extends Controller
     }
 
     public function getJsoneventsAction() {
-
-        $dayDate = date("Y-m-d");
 
         $em = $this->getDoctrine()->getManager();
         $mobileList = $em->getRepository('CalendarBundle:Events')->findAll ();
