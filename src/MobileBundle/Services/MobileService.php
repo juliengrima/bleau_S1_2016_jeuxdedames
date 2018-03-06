@@ -25,7 +25,7 @@ class MobileService extends Controller
 //        Alias 'p' = class mobileList
 //        Alias 'ca' = categorie
 //        Alias 'co' = commercants
-//        Alias 'a' = artistess
+//        Alias 'i' = artistess
 
         $repository = $this->getDoctrine()
             ->getRepository('MobileBundle:MobileList');
@@ -40,6 +40,56 @@ class MobileService extends Controller
             ->orderBy ('i.nom', 'DESC')
             ->join ('i.categorie', 'ca')
             ->addSelect ('ca.nomDeLaCategorie')
+            ->join ('p.commercants', 'co')
+            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getjsonCommercant(){
+//        Alias 'p' = class mobileList
+//        Alias 'ca' = categorie
+//        Alias 'co' = commercants
+//        Alias 'i' = artistess
+
+        $repository = $this->getDoctrine()
+            ->getRepository('MobileBundle:MobileList');
+
+        $qb = $repository->createQueryBuilder('p')
+            ->select('p.id')
+            ->Where ('p.dateFin > CURRENT_DATE()')
+            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
+            ->join ('p.artistess', 'i')
+            ->addSelect('i.nom', 'i.archive')
+            ->andWhere ('i.archive = false')
+            ->join ('i.categorie', 'ca')
+            ->addSelect ('ca.nomDeLaCategorie')
+            ->join ('p.commercants', 'co')
+            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng')
+            ->orderBy ('co.nomco', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getjsonJob(){
+//        Alias 'p' = class mobileList
+//        Alias 'ca' = categorie
+//        Alias 'co' = commercants
+//        Alias 'i' = artistess
+
+        $repository = $this->getDoctrine()
+            ->getRepository('MobileBundle:MobileList');
+
+        $qb = $repository->createQueryBuilder('p')
+            ->select('p.id')
+            ->Where ('p.dateFin > CURRENT_DATE()')
+            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
+            ->join ('p.artistess', 'i')
+            ->addSelect('i.nom', 'i.archive')
+            ->andWhere ('i.archive = false')
+            ->join ('i.categorie', 'ca')
+            ->addSelect ('ca.nomDeLaCategorie')
+            ->orderBy ('ca.nomDeLaCategorie', 'DESC')
             ->join ('p.commercants', 'co')
             ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
 

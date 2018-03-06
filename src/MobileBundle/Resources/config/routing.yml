@@ -15,3 +15,10 @@ mobile_events:
     methods:  GET
     options:
         expose: true
+
+mobile_job:
+    path:     /mobile/job
+    defaults: { _controller: MobileBundle:Default:getJsonevents }
+    methods:  GET
+    options:
+        expose: true
