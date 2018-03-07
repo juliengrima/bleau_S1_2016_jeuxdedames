@@ -22,3 +22,10 @@ mobile_job:
     methods:  GET
     options:
         expose: true
+
+mobile_commercant:
+    path:     /mobile/trader
+    defaults: { _controller: MobileBundle:Default:getJsonCommercant }
+    methods:  GET
+    options:
+        expose: true
