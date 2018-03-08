@@ -20,6 +20,9 @@ class DefaultController extends Controller
 //      Recupération et filtrage via Services
         $mobileList = $this->container->get('mobile.service')->getjsonArtistesFalse ();
 
+//        $em = $this->getDoctrine ()->getManager ();
+//        $mobileList = $em->getRepository ('CmsBundle:Artiste')->findBy (array ('archive' => false));
+
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
 
