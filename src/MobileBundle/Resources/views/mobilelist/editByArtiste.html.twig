@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('mobilePubilc/css/main.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Ajouter une nouvelle exposition</h1>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 fa-align-center">
+                <p class="">Sélection de l'artiste</p>
+                <div class="input-group">
+                    {{ form_widget(edit_form.nom) }}
+                    {{ form_errors(edit_form.nom) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="input-group">
+                    {{ form_widget(edit_form.commercant1, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                    {{ form_errors(edit_form.commercant1) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group">
+                    {{ form_widget(edit_form.commercant2, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                    {{ form_errors(edit_form.commercant2) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group">
+                    {{ form_widget(edit_form.commercant3, {'attr': {'multiple': 'multiple', 'class': 'main-select'}}) }}
+                    {{ form_errors(edit_form.commercant3) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <input class="btn btn-default edit_admin"  type="submit" value="Modifier l'exposition" />
+            </div>
+            <div class="col-lg-4">
+                <a class="btn btn-default edit_admin"  href="{{ path('mobilelist_indexByArtistes') }}">Retour à la liste</a>
+            </div>
+
+    {{ form_end(edit_form) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
