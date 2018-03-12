@@ -118,6 +118,21 @@ class Artiste
      */
     private $categorie;
 
+    /**
+     * @var \CmsBundle\Entity\Commercant
+     */
+    private $commercant1;
+
+    /**
+     * @var \CmsBundle\Entity\Commercant
+     */
+    private $commercant2;
+
+    /**
+     * @var \CmsBundle\Entity\Commercant
+     */
+    private $commercant3;
+
 
     /**
      * Get id
@@ -295,5 +310,77 @@ class Artiste
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set commercant1
+     *
+     * @param \CmsBundle\Entity\Commercant $commercant1
+     *
+     * @return Artiste
+     */
+    public function setCommercant1(\CmsBundle\Entity\Commercant $commercant1 = null)
+    {
+        $this->commercant1 = $commercant1;
+
+        return $this;
+    }
+
+    /**
+     * Get commercant1
+     *
+     * @return \CmsBundle\Entity\Commercant
+     */
+    public function getCommercant1()
+    {
+        return $this->commercant1;
+    }
+
+    /**
+     * Set commercant2
+     *
+     * @param \CmsBundle\Entity\Commercant $commercant2
+     *
+     * @return Artiste
+     */
+    public function setCommercant2(\CmsBundle\Entity\Commercant $commercant2 = null)
+    {
+        $this->commercant2 = $commercant2;
+
+        return $this;
+    }
+
+    /**
+     * Get commercant2
+     *
+     * @return \CmsBundle\Entity\Commercant
+     */
+    public function getCommercant2()
+    {
+        return $this->commercant2;
+    }
+
+    /**
+     * Set commercant3
+     *
+     * @param \CmsBundle\Entity\Commercant $commercant3
+     *
+     * @return Artiste
+     */
+    public function setCommercant3(\CmsBundle\Entity\Commercant $commercant3 = null)
+    {
+        $this->commercant3 = $commercant3;
+
+        return $this;
+    }
+
+    /**
+     * Get commercant3
+     *
+     * @return \CmsBundle\Entity\Commercant
+     */
+    public function getCommercant3()
+    {
+        return $this->commercant3;
     }
 }

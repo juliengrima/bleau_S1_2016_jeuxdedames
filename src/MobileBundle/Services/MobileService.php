@@ -37,7 +37,6 @@ class MobileService extends Controller
         $qb = $repository->createQueryBuilder('a')
             ->select('a.id', 'a.nom')
             ->Where ('a.archive = false')
-//            ->andWhere ('a.commercant1 >= 0' ANd )
             ->join ('a.categorie', 'ca')
             ->addSelect('ca.nomDeLaCategorie')
             ->join ('a.commercant1', 'co1')

@@ -122,6 +122,11 @@ class Commercant
      */
     private $lien;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $artiste;
+
 
     /**
      * Get id
@@ -330,5 +335,47 @@ class Commercant
     public function setUpdatedAtValue()
     {
         // Add your code here
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     *
+     * @return Commercant
+     */
+    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste[] = $artiste;
+
+        return $this;
+    }
+
+    /**
+     * Remove artiste
+     *
+     * @param \CmsBundle\Entity\Artiste $artiste
+     */
+    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+    {
+        $this->artiste->removeElement($artiste);
+    }
+
+    /**
+     * Get artiste
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtiste()
+    {
+        return $this->artiste;
     }
 }
