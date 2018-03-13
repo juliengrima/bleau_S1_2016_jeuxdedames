@@ -36,17 +36,6 @@ CmsBundle\Entity\Commercant:
             lenght: 255
             nullable: true
 
-    oneToMany:
-        commercant1:
-            targetEntity: CmsBundle\Entity\Artiste
-            mappedBy: commercant1
-        commercant2:
-            targetEntity: CmsBundle\Entity\Artiste
-            mappedBy: commercant2
-        commercant3:
-            targetEntity: CmsBundle\Entity\Artiste
-            mappedBy: commercant3
-
     lifecycleCallbacks:
           prePersist: [ preUpload ]
           preUpdate: [ preUpload, setUpdatedAtValue ]

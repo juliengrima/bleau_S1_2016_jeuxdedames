@@ -85,6 +85,29 @@ class MobileService extends Controller
         return $qb->getQuery()->getResult();
     }
 
+    public function getjsonCommercant(){
+//        Alias 'a' = artiste
+//        Alias 'ca' = categorie
+//        Alias 'co' = commercant1
+
+        $repository = $this->getDoctrine()
+            ->getRepository('CmsBundle:Commercant');
+
+        $qb = $repository->createQueryBuilder('co')
+            ->select('co.id', 'co.nom', 'co.adresse',
+                'co.code', 'co.ville', 'co.lat', 'co.lng')
+            ->orderBy('nom')
+            ->join ('co.commercant1', 'a')
+            ->addSelect('a.nom as nomart')
+            ->join ('a.categorie', 'ca')
+            ->addSelect ('ca.nomDeLaCategorie')
+            ->Where ('a.commercant1 = co.id')
+            ->andWhere ('a.commercant2 = co.id')
+            ->andWhere () ('a.commercant3 = co.id');
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    ---------------------------------------------------------------------------------------------------
 
 

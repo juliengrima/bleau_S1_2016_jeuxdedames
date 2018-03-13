@@ -76,6 +76,38 @@ class DefaultController extends Controller
 
     }
 
+    public function getJsonCommercantAction() {
+
+//      Recupération et filtrage via Services
+//        $mobileList = $this->container->get('mobile.service')->getjsonCommercant ();
+
+        $em = $this->getDoctrine ()->getManager ();
+        $mobileList = $em->getRepository ('MobileBundle:MobileList')->findAll ();
+
+        $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
+        $encoder = new JsonEncoder(); // Encodage des données en JSON
+
+        /* ENCODAGE DE DATE POUR RECUP */
+        $dateCallback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format('d m Y')
+                : '';
+        };
+
+        /* CREATION TABLEAU POUR ENVOI AU JSON */
+        $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback, 'date' => $dateCallback));
+        $normalizer->setIgnoredAttributes(array ('artiste'));
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonObject = $serializer->serialize($mobileList, 'json');
+
+        $response = new Response();
+        $response->setContent($jsonObject);
+
+        return $response;
+
+    }
+
 //    ------------------------------------------------------------------------------------------------------
 
     public function getJsoneventsAction() {

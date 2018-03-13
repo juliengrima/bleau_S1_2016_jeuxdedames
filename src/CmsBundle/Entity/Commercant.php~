@@ -337,36 +337,46 @@ class Commercant
         // Add your code here
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+//    /**
+//     * Constructor
+//     */
+//    public function __construct()
+//    {
+//        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
+//    }
+//
+//    /**
+//     * Add artiste
+//     *
+//     * @param \CmsBundle\Entity\Artiste $artiste
+//     *
+//     * @return Commercant
+//     */
+//    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+//    {
+//        $this->artiste[] = $artiste;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove artiste
+//     *
+//     * @param \CmsBundle\Entity\Artiste $artiste
+//     */
+//    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+//    {
+//        $this->artiste->removeElement($artiste);
+//    }
 
     /**
-     * Add artiste
+     * Set artiste
      *
      * @param \CmsBundle\Entity\Artiste $artiste
-     *
-     * @return Commercant
      */
-    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+    public function setArtiste(\CmsBundle\Entity\Artiste $artiste)
     {
-        $this->artiste[] = $artiste;
-
-        return $this;
-    }
-
-    /**
-     * Remove artiste
-     *
-     * @param \CmsBundle\Entity\Artiste $artiste
-     */
-    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
-    {
-        $this->artiste->removeElement($artiste);
+        $this->artiste = $artiste;
     }
 
     /**
