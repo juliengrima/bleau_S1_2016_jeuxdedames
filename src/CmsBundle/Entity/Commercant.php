@@ -122,11 +122,6 @@ class Commercant
      */
     private $lien;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $artiste;
-
 
     /**
      * Get id
@@ -337,55 +332,130 @@ class Commercant
         // Add your code here
     }
 
-//    /**
-//     * Constructor
-//     */
-//    public function __construct()
-//    {
-//        $this->artiste = new \Doctrine\Common\Collections\ArrayCollection();
-//    }
-//
-//    /**
-//     * Add artiste
-//     *
-//     * @param \CmsBundle\Entity\Artiste $artiste
-//     *
-//     * @return Commercant
-//     */
-//    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
-//    {
-//        $this->artiste[] = $artiste;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Remove artiste
-//     *
-//     * @param \CmsBundle\Entity\Artiste $artiste
-//     */
-//    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
-//    {
-//        $this->artiste->removeElement($artiste);
-//    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $commercant1;
 
     /**
-     * Set artiste
-     *
-     * @param \CmsBundle\Entity\Artiste $artiste
+     * @var \Doctrine\Common\Collections\Collection
      */
-    public function setArtiste(\CmsBundle\Entity\Artiste $artiste)
+    private $commercant2;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $commercant3;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        $this->artiste = $artiste;
+        $this->commercant1 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commercant2 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commercant3 = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get artiste
+     * Add commercant1
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant1
+     *
+     * @return Commercant
+     */
+    public function addCommercant1(\CmsBundle\Entity\Artiste $commercant1)
+    {
+        $this->commercant1[] = $commercant1;
+
+        return $this;
+    }
+
+    /**
+     * Remove commercant1
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant1
+     */
+    public function removeCommercant1(\CmsBundle\Entity\Artiste $commercant1)
+    {
+        $this->commercant1->removeElement($commercant1);
+    }
+
+    /**
+     * Get commercant1
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getArtiste()
+    public function getCommercant1()
     {
-        return $this->artiste;
+        return $this->commercant1;
+    }
+
+    /**
+     * Add commercant2
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant2
+     *
+     * @return Commercant
+     */
+    public function addCommercant2(\CmsBundle\Entity\Artiste $commercant2)
+    {
+        $this->commercant2[] = $commercant2;
+
+        return $this;
+    }
+
+    /**
+     * Remove commercant2
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant2
+     */
+    public function removeCommercant2(\CmsBundle\Entity\Artiste $commercant2)
+    {
+        $this->commercant2->removeElement($commercant2);
+    }
+
+    /**
+     * Get commercant2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommercant2()
+    {
+        return $this->commercant2;
+    }
+
+    /**
+     * Add commercant3
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant3
+     *
+     * @return Commercant
+     */
+    public function addCommercant3(\CmsBundle\Entity\Artiste $commercant3)
+    {
+        $this->commercant3[] = $commercant3;
+
+        return $this;
+    }
+
+    /**
+     * Remove commercant3
+     *
+     * @param \CmsBundle\Entity\Artiste $commercant3
+     */
+    public function removeCommercant3(\CmsBundle\Entity\Artiste $commercant3)
+    {
+        $this->commercant3->removeElement($commercant3);
+    }
+
+    /**
+     * Get commercant3
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommercant3()
+    {
+        return $this->commercant3;
     }
 }

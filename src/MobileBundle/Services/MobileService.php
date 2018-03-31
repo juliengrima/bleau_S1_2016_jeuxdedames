@@ -96,14 +96,14 @@ class MobileService extends Controller
         $qb = $repository->createQueryBuilder('co')
             ->select('co.id', 'co.nom', 'co.adresse',
                 'co.code', 'co.ville', 'co.lat', 'co.lng')
-            ->orderBy('nom')
+            ->orderBy('co.nom')
             ->join ('co.commercant1', 'a')
             ->addSelect('a.nom as nomart')
             ->join ('a.categorie', 'ca')
             ->addSelect ('ca.nomDeLaCategorie')
             ->Where ('a.commercant1 = co.id')
             ->andWhere ('a.commercant2 = co.id')
-            ->andWhere () ('a.commercant3 = co.id');
+            ->andWhere ('a.commercant3 = co.id');
 
         return $qb->getQuery()->getResult();
     }

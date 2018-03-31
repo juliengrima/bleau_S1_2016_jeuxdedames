@@ -122,11 +122,6 @@ class Commercant
      */
     private $lien;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $artiste;
-
 
     /**
      * Get id
@@ -336,6 +331,10 @@ class Commercant
     {
         // Add your code here
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $artiste;
 
 //    /**
 //     * Constructor
@@ -348,11 +347,11 @@ class Commercant
 //    /**
 //     * Add artiste
 //     *
-//     * @param \CmsBundle\Entity\Artiste $artiste
+//     * @param \CmsBundle\Entity\CmsBundle/Entity/Artiste $artiste
 //     *
 //     * @return Commercant
 //     */
-//    public function addArtiste(\CmsBundle\Entity\Artiste $artiste)
+//    public function addArtiste(\CmsBundle\Entity\CmsBundle/Entity/Artiste $artiste)
 //    {
 //        $this->artiste[] = $artiste;
 //
@@ -362,15 +361,15 @@ class Commercant
 //    /**
 //     * Remove artiste
 //     *
-//     * @param \CmsBundle\Entity\Artiste $artiste
+//     * @param \CmsBundle\Entity\CmsBundle/Entity/Artiste $artiste
 //     */
-//    public function removeArtiste(\CmsBundle\Entity\Artiste $artiste)
+//    public function removeArtiste(\CmsBundle\Entity\CmsBundle/Entity/Artiste $artiste)
 //    {
 //        $this->artiste->removeElement($artiste);
 //    }
 
     /**
-     * Set artiste
+     * Remove artiste
      *
      * @param \CmsBundle\Entity\Artiste $artiste
      */

@@ -79,10 +79,10 @@ class DefaultController extends Controller
     public function getJsonCommercantAction() {
 
 //      Recupération et filtrage via Services
-//        $mobileList = $this->container->get('mobile.service')->getjsonCommercant ();
+        $mobileList = $this->container->get('mobile.service')->getjsonCommercant ();
 
-        $em = $this->getDoctrine ()->getManager ();
-        $mobileList = $em->getRepository ('MobileBundle:MobileList')->findAll ();
+//        $em = $this->getDoctrine ()->getManager ();
+//        $mobileList = $em->getRepository ('MobileBundle:MobileList')->findAll ();
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
@@ -116,7 +116,7 @@ class DefaultController extends Controller
         $day->format (' Y-m-d H:i');
 
         $em = $this->getDoctrine()->getManager();
-        $mobileList = $em->getRepository('CalendarBundle:Events')->findBy (array ('start' => $day));
+        $mobileList = $em->getRepository('CalendarBundle:Events')->findAll ();
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
