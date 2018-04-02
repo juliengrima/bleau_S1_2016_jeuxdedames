@@ -24,7 +24,7 @@ mobile_job:
         expose: true
 
 mobile_commercant:
-    path:     /mobile/trader
+    path:     /mobile/partner
     defaults: { _controller: MobileBundle:Default:getJsonCommercant }
     methods:  GET
     options:

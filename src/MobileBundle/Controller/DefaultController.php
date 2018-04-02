@@ -79,10 +79,10 @@ class DefaultController extends Controller
     public function getJsonCommercantAction() {
 
 //      Recupération et filtrage via Services
-        $mobileList = $this->container->get('mobile.service')->getjsonCommercant ();
+//        $mobileList = $this->container->get('mobile.service')->getjsonCommercant ();
 
-//        $em = $this->getDoctrine ()->getManager ();
-//        $mobileList = $em->getRepository ('MobileBundle:MobileList')->findAll ();
+        $em = $this->getDoctrine ()->getManager ();
+        $mobileList = $em->getRepository ('CmsBundle:Commercant')->findAll ();
 
         $normalizer = new ObjectNormalizer(); //Normalisation des données pour passer en JSON
         $encoder = new JsonEncoder(); // Encodage des données en JSON
@@ -96,7 +96,7 @@ class DefaultController extends Controller
 
         /* CREATION TABLEAU POUR ENVOI AU JSON */
         $normalizer->setCallbacks(array('dateDebut' => $dateCallback, 'dateFin' => $dateCallback, 'date' => $dateCallback));
-        $normalizer->setIgnoredAttributes(array ('artiste'));
+        $normalizer->setIgnoredAttributes(array ('artiste', 'commercant1', 'commercant2', 'commercant3'));
 
         $serializer = new Serializer(array($normalizer), array($encoder));
         $jsonObject = $serializer->serialize($mobileList, 'json');
