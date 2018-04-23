@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des artistes</h1>
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Photos</th>
+                    <th>Nom</th>
+                    <th>Lieux d'expositions</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for artiste in artistes %}
+                    <tr>
+                        <td><img style="width: 160px !important;" src="{{ asset('uploads/imgcms/') }}{{ artiste.image }}" alt="{{ artiste.nom }}"></td>
+                        <td>{{ artiste.nom }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    {{ artiste.commercant1 }}
+                                </li>
+                                <li>
+                                    {{ artiste.commercant2 }}
+                                </li>
+                                <li>
+                                    {{ artiste.commercant2 }}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-default edit_admin" href="{{ path('mobilelist_edit', { 'id': artiste.id }) }}">Editer les lieux d'expositions</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json"
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript" src=" https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+{% endblock %}

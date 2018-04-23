@@ -15,3 +15,17 @@ mobile_events:
     methods:  GET
     options:
         expose: true
+
+mobile_job:
+    path:     /mobile/job
+    defaults: { _controller: MobileBundle:Default:getJsonJob }
+    methods:  GET
+    options:
+        expose: true
+
+mobile_commercant:
+    path:     /mobile/partner
+    defaults: { _controller: MobileBundle:Default:getJsonCommercant }
+    methods:  GET
+    options:
+        expose: true

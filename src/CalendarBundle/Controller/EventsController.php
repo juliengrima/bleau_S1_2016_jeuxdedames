@@ -86,11 +86,11 @@ class EventsController extends Controller
             $em->persist($event);
             $em->flush();
 
-            $picture = [
-                'caption' => $_REQUEST['events']['facebookDescription'] . "\n \n Retrouvez nous sur http://wwww.lesjeuxdedames.com",
-                'source' => $event->getImages()->getAbsolutePath(),
-            ];
-            $this->get('app_core.facebook')->postPicture($picture);
+//            $picture = [
+//                'caption' => $_REQUEST['events']['facebookDescription'] . "\n \n Retrouvez nous sur http://www.lesjeuxdedames.com",
+//                'source' => $event->getImages()->getAbsolutePath(),
+//            ];
+//            $this->get('app_core.facebook')->postPicture($picture);
 
             return $this->redirectToRoute('calendar_homepage');
         }

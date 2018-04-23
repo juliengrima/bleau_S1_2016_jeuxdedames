@@ -42,5 +42,22 @@ CmsBundle\Entity\Artiste:
             inversedBy: artiste
             joinColumn:
                 nullable: false
+        commercant1:
+            targetEntity: CmsBundle\Entity\Commercant
+            inversedBy: artiste
+            joinColumn:
+                nullable: true
+        commercant2:
+            targetEntity: CmsBundle\Entity\Commercant
+            inversedBy: artiste
+            joinColumn:
+                nullable: true
+        commercant3:
+            targetEntity: CmsBundle\Entity\Commercant
+            inversedBy: artiste
+            joinColumn:
+                nullable: true
+
+
 
 
