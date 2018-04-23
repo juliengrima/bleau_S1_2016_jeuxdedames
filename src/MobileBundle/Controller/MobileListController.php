@@ -40,12 +40,8 @@ class MobileListController extends Controller
     {
 
         $mobileList = new Mobilelist();
-        $categorie = new Categorie();
 
         $form = $this->createForm('MobileBundle\Form\MobileListType', $mobileList);
-
-        $em = $this->getDoctrine ()->getManager ();
-        $mobileList = $em->getRepository ('MobileBundle:MobileList')->getArtistesFalse ();
 
         $form->handleRequest($request);
 

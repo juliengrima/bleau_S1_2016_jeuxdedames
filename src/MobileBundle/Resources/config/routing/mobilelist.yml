@@ -1,6 +1,11 @@
-mobilelist_index:
+#mobilelist_index:
+#    path:     /
+#    defaults: { _controller: "MobileBundle:MobileList:index" }
+#    methods:  GET
+
+mobilelist_indexByArtistes:
     path:     /
-    defaults: { _controller: "MobileBundle:MobileList:index" }
+    defaults: { _controller: "MobileBundle:Artiste:indexByArtistes" }
     methods:  GET
 
 mobilelist_show:
@@ -13,15 +18,20 @@ mobilelist_new:
     defaults: { _controller: "MobileBundle:MobileList:new" }
     methods:  [GET, POST]
 
+#mobilelist_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "MobileBundle:MobileList:edit" }
+#    methods:  [GET, POST]
+
 mobilelist_edit:
     path:     /{id}/edit
-    defaults: { _controller: "MobileBundle:MobileList:edit" }
+    defaults: { _controller: "MobileBundle:Artiste:edit" }
     methods:  [GET, POST]
 
 mobilelist_delete:
     path:     /{id}/delete
     defaults: { _controller: "MobileBundle:MobileList:delete" }
-    methods:  [GET, POST]
+    methods:  DELETE
 
 ###########################################
 #############@   Routes Json  #############

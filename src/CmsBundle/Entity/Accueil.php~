@@ -376,4 +376,33 @@ class Accueil
     {
         return $this->image_2;
     }
+    /**
+     * @var \CmsBundle\Entity\Youtube
+     */
+    private $video;
+
+
+    /**
+     * Set video
+     *
+     * @param \CmsBundle\Entity\Youtube $video
+     *
+     * @return Accueil
+     */
+    public function setVideo(\CmsBundle\Entity\Youtube $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \CmsBundle\Entity\Youtube
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
 }

@@ -15,11 +15,6 @@ MobileBundle\Entity\MobileList:
             type: date
 
     manyToOne:
-        commercants:
-          targetEntity: CmsBundle\Entity\Commercant
-          joinColumn:
-            name: commercant_id
-            referencedColumnName: id
         artistess:
           targetEntity: CmsBundle\Entity\Artiste
           joinColumn:
