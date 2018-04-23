@@ -32,11 +32,6 @@ class MobileList
     private $dateFin;
 
     /**
-     * @var \CmsBundle\Entity\Commercant
-     */
-    private $commercants;
-
-    /**
      * @var \CmsBundle\Entity\Artiste
      */
     private $artistess;
@@ -98,30 +93,6 @@ class MobileList
     public function getDateFin()
     {
         return $this->dateFin;
-    }
-
-    /**
-     * Set commercants
-     *
-     * @param \CmsBundle\Entity\Commercant $commercants
-     *
-     * @return MobileList
-     */
-    public function setCommercants(\CmsBundle\Entity\Commercant $commercants = null)
-    {
-        $this->commercants = $commercants;
-
-        return $this;
-    }
-
-    /**
-     * Get commercants
-     *
-     * @return \CmsBundle\Entity\Commercant
-     */
-    public function getCommercants()
-    {
-        return $this->commercants;
     }
 
     /**

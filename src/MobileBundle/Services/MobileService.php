@@ -22,77 +22,76 @@ class MobileService extends Controller
     }
 
     public function getjsonArtistesFalse(){
-//        Alias 'p' = class mobileList
+//        Alias 'a' = artiste
 //        Alias 'ca' = categorie
-//        Alias 'co' = commercants
-//        Alias 'i' = artistess
+//        Alias 'co1' = commercant1
+//        Alias 'co2' = commercant2
+//        Alias 'co3' = commercant3
 
-        $repository = $this->getDoctrine()
-            ->getRepository('MobileBundle:MobileList');
+//        $repository = $this->getDoctrine()
+//            ->getRepository('CmsBundle:Artiste');
 
-        $qb = $repository->createQueryBuilder('p')
-            ->select('p.id')
-            ->Where ('p.dateFin > CURRENT_DATE()')
-            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
-            ->join ('p.artistess', 'i')
-            ->addSelect('i.nom', 'i.archive')
-            ->andWhere ('i.archive = false')
-            ->orderBy ('i.nom', 'DESC')
-            ->join ('i.categorie', 'ca')
-            ->addSelect ('ca.nomDeLaCategorie')
-            ->join ('p.commercants', 'co')
-            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
+        $em = $this->getDoctrine ()->getManager ();
+        $repository = $em->getRepository ('CmsBundle:Artiste');
+
+        $qb = $repository->createQueryBuilder('a')
+            ->select('a.id', 'a.nom')
+            ->Where ('a.archive = false')
+            ->andWhere ('a.commercant1 > 0')
+            ->orWhere ('a.commercant2 > 0')
+            ->orWhere ('a.commercant3 > 0')
+            ->join ('a.categorie', 'ca')
+            ->addSelect('ca.nomDeLaCategorie')
+            ->leftJoin ('a.commercant1', 'co1')
+            ->addSelect ('co1.nom as nomco1', 'co1.adresse as adresseco1',
+                'co1.code as codeco1', 'co1.ville as villeco1', 'co1.lat as latco1', 'co1.lng as lngco1')
+            ->leftJoin ('a.commercant2', 'co2')
+            ->addSelect ('co2.nom as nomco2', 'co2.adresse as adresseco2',
+                'co2.code as codeco2', 'co2.ville as villeco2', 'co2.lat as latco2', 'co2.lng as lngco2')
+            ->leftJoin ('a.commercant3', 'co3')
+            ->addSelect ('co3.nom as nomco3', 'co3.adresse as adresseco3',
+                'co3.code as codeco3', 'co3.ville as villeco3', 'co3.lat as latco3', 'co3.lng as lngco3')
+            ->orderBy ('a.nom');
 
         return $qb->getQuery()->getResult();
+
     }
 
-    public function getjsonCommercant(){
-//        Alias 'p' = class mobileList
-//        Alias 'ca' = categorie
-//        Alias 'co' = commercants
-//        Alias 'i' = artistess
 
-        $repository = $this->getDoctrine()
-            ->getRepository('MobileBundle:MobileList');
-
-        $qb = $repository->createQueryBuilder('p')
-            ->select('p.id')
-            ->Where ('p.dateFin > CURRENT_DATE()')
-            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
-            ->join ('p.artistess', 'i')
-            ->addSelect('i.nom', 'i.archive')
-            ->andWhere ('i.archive = false')
-            ->join ('i.categorie', 'ca')
-            ->addSelect ('ca.nomDeLaCategorie')
-            ->join ('p.commercants', 'co')
-            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng')
-            ->orderBy ('co.nomco', 'DESC');
-
-        return $qb->getQuery()->getResult();
-    }
 
     public function getjsonJob(){
-//        Alias 'p' = class mobileList
+//        Alias 'a' = artiste
 //        Alias 'ca' = categorie
-//        Alias 'co' = commercants
-//        Alias 'i' = artistess
+//        Alias 'co1' = commercant1
+//        Alias 'co2' = commercant2
+//        Alias 'co3' = commercant3
 
         $repository = $this->getDoctrine()
-            ->getRepository('MobileBundle:MobileList');
+            ->getRepository('CmsBundle:Artiste');
 
-        $qb = $repository->createQueryBuilder('p')
-            ->select('p.id')
-            ->Where ('p.dateFin > CURRENT_DATE()')
-            ->andWhere ('p.dateDebut >= CURRENT_DATE()')
-            ->join ('p.artistess', 'i')
-            ->addSelect('i.nom', 'i.archive')
-            ->andWhere ('i.archive = false')
-            ->join ('i.categorie', 'ca')
-            ->addSelect ('ca.nomDeLaCategorie')
-            ->orderBy ('ca.nomDeLaCategorie', 'DESC')
-            ->join ('p.commercants', 'co')
-            ->addSelect ('co.nom as nomco', 'co.adresse', 'co.code', 'co.ville', 'co.lat', 'co.lng');
+        $qb = $repository->createQueryBuilder('a')
+            ->select('a.id', 'a.nom')
+            ->Where ('a.archive = false')
+            ->andWhere ('a.commercant1 > 0')
+            ->orWhere ('a.commercant2 > 0')
+            ->orWhere ('a.commercant3 > 0')
+            ->join ('a.categorie', 'ca')
+            ->addSelect('ca.nomDeLaCategorie')
+            ->leftJoin ('a.commercant1', 'co1')
+            ->addSelect ('co1.nom as nomco1', 'co1.adresse as adresseco1',
+                    'co1.code as codeco1', 'co1.ville as villeco1', 'co1.lat as latco1', 'co1.lng as lngco1')
+            ->leftJoin ('a.commercant2', 'co2')
+            ->addSelect ('co2.nom as nomco2', 'co2.adresse as adresseco2',
+                    'co2.code as codeco2', 'co2.ville as villeco2', 'co2.lat as latco2', 'co2.lng as lngco2')
+            ->leftJoin ('a.commercant3', 'co3')
+            ->addSelect ('co3.nom as nomco3', 'co3.adresse as adresseco3',
+                    'co3.code as codeco3', 'co3.ville as villeco3', 'co3.lat as latco3', 'co3.lng as lngco3')
+            ->orderBy ('ca.nomDeLaCategorie');
 
         return $qb->getQuery()->getResult();
     }
+
+//    ---------------------------------------------------------------------------------------------------
+
+
 }

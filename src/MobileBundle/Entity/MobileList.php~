@@ -7,6 +7,15 @@ namespace MobileBundle\Entity;
  */
 class MobileList
 {
+
+//    public function __toString()
+//    {
+//        // TODO: Implement __toString() method.
+//        return $this->dateNow;
+//    }
+//
+
+// -------------------------------------- GENERATED CODE ---------------------------------------------
     /**
      * @var int
      */
@@ -21,6 +30,16 @@ class MobileList
      * @var \DateTime
      */
     private $dateFin;
+
+    /**
+     * @var \CmsBundle\Entity\Commercant
+     */
+    private $commercants;
+
+    /**
+     * @var \CmsBundle\Entity\Artiste
+     */
+    private $artistess;
 
 
     /**
@@ -80,5 +99,52 @@ class MobileList
     {
         return $this->dateFin;
     }
-}
 
+    /**
+     * Set commercants
+     *
+     * @param \CmsBundle\Entity\Commercant $commercants
+     *
+     * @return MobileList
+     */
+    public function setCommercants(\CmsBundle\Entity\Commercant $commercants = null)
+    {
+        $this->commercants = $commercants;
+
+        return $this;
+    }
+
+    /**
+     * Get commercants
+     *
+     * @return \CmsBundle\Entity\Commercant
+     */
+    public function getCommercants()
+    {
+        return $this->commercants;
+    }
+
+    /**
+     * Set artistess
+     *
+     * @param \CmsBundle\Entity\Artiste $artistess
+     *
+     * @return MobileList
+     */
+    public function setArtistess(\CmsBundle\Entity\Artiste $artistess = null)
+    {
+        $this->artistess = $artistess;
+
+        return $this;
+    }
+
+    /**
+     * Get artistess
+     *
+     * @return \CmsBundle\Entity\Artiste
+     */
+    public function getArtistess()
+    {
+        return $this->artistess;
+    }
+}
